@@ -2,7 +2,7 @@ test_child_cannot_squat_another_root_grant (test_review_regressions.CredentialNa
 test_same_name_from_different_issuers_and_grant_isolated (test_review_regressions.CredentialNamespaceTests) ... FAIL
 test_wrong_audience_is_rejected (test_review_regressions.ResponseContractTests) ... FAIL
 test_journal_sequence_is_sqlite_bounded (test_review_regressions.ResponseContractTests) ... FAIL
-test_real_delivery_trace_includes_all_ancestor_key_expiries (test_review_regressions.AdapterExpiryTests) ... 
+test_real_delivery_trace_includes_all_ancestor_key_expiries (test_review_regressions.AdapterExpiryTests) ...
 ======================================================================
 ERROR: test_real_delivery_trace_includes_all_ancestor_key_expiries (test_review_regressions.AdapterExpiryTests) (kid=b'authority')
 ----------------------------------------------------------------------
