@@ -1,0 +1,31 @@
+{
+  "passed": true,
+  "test_methods": 28,
+  "signature_byte_mutations": 64,
+  "maximum_field_fixture_bytes": {
+    "context": 734,
+    "fact": 383,
+    "offer": 306,
+    "attempt": 546,
+    "final_query": 329,
+    "retired_query": 331,
+    "checkpoint_query": 261,
+    "final_receipt": 669,
+    "retire_ack": 363
+  },
+  "production_gc": false,
+  "network_integration": false,
+  "independent_interoperability": false,
+  "cddl_independently_validated": false,
+  "scope": "Strict signed messages, normalized fact stability and pure guards; durable authority state supplied by caller, no real persistence or crash testing.",
+  "python": "3.9.6",
+  "cryptography": "49.0.0",
+  "source_sha256": {
+    "retention_wire.py": "38ce3865e3be049cb570225216ec8e8ae192617b7124f03b2cb51612bd56e22a",
+    "test_retention_wire.py": "0a14471278b94db57c5a83096bb1714f5e5e73632b4bf68961dfaad7c261f3a0",
+    "retention_vectors.json": "cd4d9493dafa0e6874fc90b55838ce1ff7d3101d269d9b409c3375659ff425f8",
+    "retention_v2.cddl": "21b4ba22af615354ebb9a4103a96484bb2b889f2ea2beffc3be7f4897425a6e1",
+    "wire.py": "b2e95928c604c923ec549a74f599fd4a16fc4ccec5841474aabf64ec55de6d58",
+    "ledger.py": "5bdd63777480e26d56d89d00e4d0f7a7030668377ca164756f2752103cf04dc7"
+  }
+}

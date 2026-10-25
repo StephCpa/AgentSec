@@ -1,0 +1,130 @@
+{
+  "implementation": "witnessed_recipient.py",
+  "reference_class": "WitnessedMixedRecipientInbox",
+  "authenticated_class": "TLSWitnessedMixedRecipientInbox",
+  "storage_profiles": [
+    "witnessed-mixed-terminal-inbox-v1",
+    "mtls-witnessed-mixed-terminal-inbox-v1"
+  ],
+  "wire": "Reuses mixed-delivery-v1, mixed-delivery-terminal-v1 and existing authenticated witness RPC. No new ACK field or public proof that recipient runs this configuration.",
+  "scope": "Conditional LOCAL mixed recipient rollback fencing and exact recovery; requires trusted recipient/signing service and linearizable authenticated nonrollback receiver authority.",
+  "bootstrap": {
+    "namespace": "Explicit trusted 128-bit receiver namespace, distinct from sender deployment namespace; not selected by incoming request. Namespace, route/profile and key check bound in witnessed metadata.",
+    "create": "Fresh store plus explicit admin bootstrap; an existing namespace cannot be reinitialized. Normal open refuses missing store and never bootstraps.",
+    "restore": "Explicit restore_new into a fresh trusted schema or in-place exact-state recovery; no migration from old count/mixed inbox profiles.",
+    "keys": "Separate trusted receiver storage vault, witness signing pin and mTLS client authority roles. Reference same-file authority rejected. Production independent fault domains not established."
+  },
+  "state": {
+    "image": "Existing agent-ledger-image-v1 whole-state encoding; all recipient schema/rows except local witness_anchor",
+    "covered": [
+      "inbox_metadata",
+      "inbox",
+      "inbox_clock",
+      "inbox_closed",
+      "recipient_authority"
+    ],
+    "private": "Accepted result envelopes and terminal controls remain encrypted; witness does not hold vault master key",
+    "invariants": [
+      "Accepted/closed IDs disjoint",
+      "Combined route sequence exactly contiguous and unique",
+      "Record IDs/sequence and signed descriptors agree",
+      "Accepted event inside original lifetime; closed event after expiry; all events <= preserved clock floor",
+      "Exact trusted schema, expected route/profile/key/namespace metadata"
+    ],
+    "limit_bytes": 16777216
+  },
+  "transaction": {
+    "begin": "BEGIN IMMEDIATE then authenticate receiver witness head and check exact local image before time/business state",
+    "commit": "Witness CAS accepts complete next image before local anchor/local commit; only then sign ordinary or terminal ACK",
+    "reject": "Business rejection preserves witnessed monotonic clock floor; authority failure prevents receipt, never falls back",
+    "unknown_outcome": "Witness acceptance with lost reply/local process death is authoritative; stale copy must recover, never treat local rollback as unaccepted/unclosed",
+    "clones": "Same-head competing clones have at most one CAS winner; loser recovers authoritative event before signing"
+  },
+  "recovery": {
+    "checks": [
+      "authenticated current head/image hash",
+      "built-in trusted schema and columns",
+      "canonical byte equality",
+      "metadata route/profile/key/namespace binding",
+      "signature/AEAD verification of each record",
+      "disjoint IDs and contiguous sequence",
+      "first-event lifetime and clock consistency",
+      "unchanged authority head before local recovery commit"
+    ],
+    "effects": "One SQLite transaction; no result transmission, new acceptance, new closure, new sample or budget modification. Restored original ciphertext and first event times.",
+    "roles": "Restorer may fetch/restore but cannot commit live inbox transitions; observer cannot retrieve full image"
+  },
+  "retention": {
+    "policy": "Retain ALL accepted envelopes and CLOSED records in the authoritative image; no prune/GC/reset API.",
+    "rationale": "Deleting only receiver records could revive prior delivery IDs or sequence slots and erase original first-event evidence.",
+    "capacity": "Hard full-image limit; an over-limit transition rolls back locally without ACK and retains prior authoritative records. Lowered-threshold test covers limit path; not a throughput/capacity benchmark.",
+    "pending": "Separate v2 sender/recipient implement logical prefix GC, loopback authenticated delivery and conservative current-image byte admission; see retention_recipient_contract.json and retention_capacity_contract.json. Existing v1 retains ALL records. Archive availability, scalable history, interop and production proof remain."
+  },
+  "verification": {
+    "report": "witnessed_recipient_test_results.json",
+    "test_methods": 21,
+    "process_exit_scenarios": 10,
+    "scenarios": [
+      {
+        "operation": "accept",
+        "point": "before_witness_accept"
+      },
+      {
+        "operation": "accept",
+        "point": "after_witness_accept"
+      },
+      {
+        "operation": "accept",
+        "point": "after_local_anchor_write"
+      },
+      {
+        "operation": "accept",
+        "point": "after_inbox_commit"
+      },
+      {
+        "operation": "close",
+        "point": "before_inbox_terminal_commit"
+      },
+      {
+        "operation": "close",
+        "point": "after_witness_accept"
+      },
+      {
+        "operation": "close",
+        "point": "after_inbox_terminal_commit"
+      },
+      {
+        "operation": "restore",
+        "point": "after_recovery_delete"
+      },
+      {
+        "operation": "restore",
+        "point": "before_recovery_commit"
+      },
+      {
+        "operation": "restore",
+        "point": "after_recovery_commit"
+      }
+    ],
+    "authenticated_receiver_witness_requests": 203,
+    "delivery_exchange_attempts": 15,
+    "observed_delivery_tls_versions": [
+      "TLSv1.2"
+    ],
+    "full_pipeline": "Mixed signed/encrypted/witnessed sender, expired histogram closure then count delivery, independent receiver namespace/file/service; all synthetic and loopback on same host.",
+    "negative_control": "Rolling back both receiver store and receiver authority still allows repeated first acceptance, 100 -> 110; production nonrollback is not proved.",
+    "regressions": {
+      "delivery_transport": 25,
+      "delivery_terminal": 23,
+      "mixed_delivery": 21,
+      "mixed_terminal": 30
+    }
+  },
+  "remaining": [
+    "Production receiver/witness nonrollback, independent fault domains and cross-host disaster recovery",
+    "Cryptographic evidence to an external verifier of receiver witness state/configuration, if required; current ACK trusts recipient service",
+    "Existing v1 remains retain-all. V2 logical GC and conservative byte admission are separate; scalable journal, aggregate resource limits and key lifecycle remain.",
+    "Pre-L3 withheld/cancel and cross-route public observation protocol",
+    "Independent interoperability, complete security/observation proof, full P2/strong-baseline evaluation and broader P3-P6 work"
+  ]
+}

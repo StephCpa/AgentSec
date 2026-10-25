@@ -1,0 +1,233 @@
+{
+  "status": "partial_runtime_observation_evidence_not_complete_refinement",
+  "implementation": [
+    "public_input.py",
+    "public_observation.py"
+  ],
+  "changed_runtime": "public_gateway.py",
+  "test_report": "public_observation_test_results.json",
+  "concrete_fixes": [
+    "Pure public payload shape validation covers all five methods and bounded inner action/proof/chain schemas before effect dispatch. Only expected Rejected from these pure parsers becomes GW_PAYLOAD; programming errors remain failures.",
+    "Corrected public authorization denial names, including actual REVOKED/EXPIRED, ancestor inactivity, immutable operation conflict, public capacity/catalog/snapshot binding and chain attenuation checks. No broad catch of private/internal exceptions.",
+    "Strict method response vocabulary is checked before signing/journaling and on client verification. Extra private result/progress fields, malformed response status and inconsistent public status combinations are rejected."
+  ],
+  "assumptions": [
+    "Snapshot/catalog identity, shape, availability metadata, enrolled authority state, budget/control history and request ordering are part of the authorized public plan for this reference. If their existence is sensitive, the public-policy classification must be revisited.",
+    "Private datasets are represented by the same fixed 3-user roster and public 4-bucket catalog. Eight count datasets differ only by each user presence slot.",
+    "Matched public random coins and valid K40 random tapes are used to produce identical approved count output 1; cancelled jobs have no output. This is conditional testing, not a new noise distribution.",
+    "Normal trace comparisons cover complete signed application requests/responses and delivery/receipt bytes. They exclude TLS ciphertext, CPU/storage/transport timing, packetization, health/overload and full arbitrary-adversary observation."
+  ],
+  "response_boundary": [
+    {
+      "stage": "framing/TLS",
+      "observation": "reject handshake/frame or close connection",
+      "basis": "public bytes, certificate and transport state",
+      "remaining": "complete availability/timing/resource correspondence"
+    },
+    {
+      "stage": "authentication/window/request conflict",
+      "observation": "signed REJECTED, empty body, sequence 0",
+      "basis": "current enrolled identity, public request/time and immutable request key",
+      "remaining": "production identity lifecycle and physical costs"
+    },
+    {
+      "stage": "pure inner syntax",
+      "observation": "durable signed REJECTED, empty body, positive journal sequence",
+      "basis": "only authenticated request bytes; effect savepoint rolled back",
+      "remaining": "independent parser audit and full input-space coverage"
+    },
+    {
+      "stage": "public policy",
+      "observation": "durable signed REJECTED, exact retry",
+      "basis": "explicit reviewed error set from authorized public registry, policy and budget facts",
+      "remaining": "publicness assumptions must be enforced and reviewed for deployment"
+    },
+    {
+      "stage": "response vocabulary failure",
+      "observation": "abort; no signed/journaled extra-field response",
+      "basis": "internal output-shape violation",
+      "remaining": "implicit private condition causing this failure can still leak through abort"
+    },
+    {
+      "stage": "unknown integrity/private/store failure",
+      "observation": "abort or connection closure; no fabricated ordinary rejection",
+      "basis": "not approved public metadata by default",
+      "remaining": "requires explicit fault assumption or proven data-oblivious failure behavior; generic text is insufficient"
+    },
+    {
+      "stage": "authority outcome unknown",
+      "observation": "no success certainty until exact witness recovery; stale replica fenced",
+      "basis": "authoritative-state/retry contract",
+      "remaining": "failure timing and production fault-domain independence"
+    }
+  ],
+  "public_denial_codes": [
+    "ACCOUNT_REBIND",
+    "ACTION_CATALOG_OUTSIDE_LEAF",
+    "ACTION_CONFLICT",
+    "ACTION_EXPIRED_OR_EARLY",
+    "ACTION_OUTSIDE_LEAF",
+    "ACTION_OUTSIDE_WINDOW",
+    "ALREADY_PUBLISHED",
+    "ANCESTOR_KEY_INACTIVE",
+    "ATTENUATION_BOUNDS",
+    "ATTENUATION_SCOPE",
+    "BUDGET_EXHAUSTED",
+    "CATALOG_ATTENUATION",
+    "CHAIN_NAMESPACE",
+    "CHAIN_PARENT_BINDING",
+    "CHALLENGE_BINDING",
+    "CHALLENGE_EXPIRED",
+    "COST_LIMIT_MISMATCH",
+    "CREDENTIAL_IDENTITY",
+    "CREDENTIAL_ID_CONFLICT",
+    "CREDENTIAL_INACTIVE",
+    "CREDENTIAL_REVOKED",
+    "EXPIRED",
+    "GW_CURSOR",
+    "GW_PAYLOAD",
+    "GW_SCOPE",
+    "INVALID_SIGNATURE",
+    "ISSUER_KEY_BINDING",
+    "KEY_BINDING",
+    "KEY_INACTIVE",
+    "KEY_ROLE_OR_ACTOR",
+    "LEAF_BINDING",
+    "PROFILE_MISMATCH",
+    "PROOF_ACTION_BINDING",
+    "PROOF_PROFILE_BINDING",
+    "PROOF_REPLAY",
+    "PUBLICATION_BINDING_REQUIRED",
+    "PUBLICATION_ROUTE_BINDING",
+    "REVOKED",
+    "ROOT_BINDING",
+    "ROOT_CAP",
+    "ROOT_SCOPE",
+    "SIGNED_CAPACITY_MISMATCH",
+    "SIGNED_CATALOG_MISMATCH",
+    "SNAPSHOT_CATALOG_MISMATCH",
+    "SNAPSHOT_MECHANISM_MISMATCH",
+    "UNAUTHORIZED",
+    "UNAUTHORIZED_DOMAIN",
+    "UNKNOWN_CATALOG",
+    "UNKNOWN_KEY",
+    "UNKNOWN_SNAPSHOT",
+    "UNPINNED_ROOT",
+    "V2_ROUTE_REVOKED",
+    "WIRE_ACTION_CONFLICT",
+    "WRONG_AUDIENCE"
+  ],
+  "verification": {
+    "test_methods": 12,
+    "malformed_payload_cases": 24,
+    "public_policy_cases": 7,
+    "unmapped_internal_failure_cases": 5,
+    "runtime_trace_comparison": {
+      "cases": 32,
+      "datasets": 8,
+      "public_control_plans": 4,
+      "directed_neighbor_comparisons": 96,
+      "scope": "Exact equality of complete signed application request/response and delivery/receipt bytes under matched public coins and valid count tapes coupled to output 1. No equality claim for TLS ciphertext, runtime timing, traces with differing approved results, all random tapes or arbitrary adversaries."
+    },
+    "network_negative_controls": {
+      "requests": 6,
+      "cases": [
+        {
+          "mutant": "none",
+          "approved_outputs": [
+            1,
+            1
+          ],
+          "observations": [
+            "POLL",
+            "POLL"
+          ],
+          "same_prefix": true,
+          "trace_hashes": [
+            "2a7edb5a3ff484a30b2a72e31b59d7ce14abcc809d034cb3259851c1bce39cb5",
+            "2a7edb5a3ff484a30b2a72e31b59d7ce14abcc809d034cb3259851c1bce39cb5"
+          ],
+          "tls_versions": [
+            "TLSv1.2",
+            "TLSv1.2"
+          ]
+        },
+        {
+          "mutant": "private_failure",
+          "approved_outputs": [
+            1,
+            1
+          ],
+          "observations": [
+            "POLL",
+            "CONNECTION_CLOSED"
+          ],
+          "same_prefix": true,
+          "trace_hashes": [
+            "2a7edb5a3ff484a30b2a72e31b59d7ce14abcc809d034cb3259851c1bce39cb5",
+            "b95401db914e39e9ac7e05f4094c949298383be54af8b6fbd606995fa9758c4a"
+          ],
+          "tls_versions": [
+            "TLSv1.2",
+            "TLSv1.2"
+          ]
+        },
+        {
+          "mutant": "private_policy_alias",
+          "approved_outputs": [
+            1,
+            1
+          ],
+          "observations": [
+            "POLL",
+            "REJECTED"
+          ],
+          "same_prefix": true,
+          "trace_hashes": [
+            "2a7edb5a3ff484a30b2a72e31b59d7ce14abcc809d034cb3259851c1bce39cb5",
+            "2b9cbc976efc4752be1e0760c6da53a51dde72fa12de2050f59bf1a7895dadda"
+          ],
+          "tls_versions": [
+            "TLSv1.2",
+            "TLSv1.2"
+          ]
+        }
+      ],
+      "scope": "Actual loopback mTLS. Deliberate private-bit-dependent dispatch mutants after already released identical approved output. These are negative controls, not claimed defects present in normal dispatch. Generic rejection cannot repair an implicit private-data branch; connection closure is also observable."
+    },
+    "existing_gateway_regression": {
+      "test_methods": 23,
+      "actual_process_crash_count": 9,
+      "network": {
+        "requests": {
+          "witness": 916,
+          "public": 11,
+          "receiver_witness": 4,
+          "delivery": 1
+        },
+        "rejected_server_pin_attempts": 1,
+        "tls_versions": [
+          "TLSv1.2"
+        ],
+        "scope": "Actual loopback mTLS public challenge/submit/poll/cancel/final calls, socket response loss, authenticated witness, fresh replica exact response recovery. Trusted local scheduler plus full histogram result over separate mTLS recipient and authenticated recipient witness, followed by signed public final page. All services share one host/CA and synthetic keys."
+      }
+    }
+  },
+  "counterexample_interpretation": "The deliberately mutated dispatcher reads one private presence bit after identical approved output. Conditional STORAGE_INTEGRITY yields POLL versus connection closure; reusing the generic GW_PAYLOAD policy code yields POLL versus REJECTED. Matching error strings does not remove the branch. Normal dispatcher is not claimed to contain these injected branches; negative controls test the observation claim and fault assumptions.",
+  "no_claims": [
+    "No exhaustive DP distribution bound or independent cryptographic proof follows from paired equal-output traces.",
+    "No complete simulator/runtime trace-refinement adapter is implemented by this harness.",
+    "No physical constant-time, encrypted-packet equality or arbitrary adaptive/concurrent equivalence has been measured.",
+    "No universal safe masking of data-dependent failure, health or overload is supplied."
+  ],
+  "next_requirements": [
+    "Tie every public response/absence to a permitted public cause or approved mechanism output. Separate pure input errors from private execution failures in all future adapters.",
+    "Build an explicit runtime-to-simulator event adapter covering stateful command ordering, key/route revocation, errors and actual recipient acknowledgements.",
+    "Specify failure and availability assumptions; supply negative controls for any proposed private-failure recovery/masking rule rather than mapping all failures to REJECTED.",
+    "Complete OBS-6 physical observation and OBS-7 arbitrary-adversary proof; preserve real identity/lineage, production guarantees, strong P4 baselines and P5/P6 scope."
+  ],
+  "complete_error_mapping": false,
+  "complete_observation_privacy": false,
+  "formal_runtime_refinement": false,
+  "production_ready": false
+}

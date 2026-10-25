@@ -151,7 +151,7 @@ def run_scenario(*, sender_type=TLSRetentionSender, provision=populate):
                     try:exchange(req);raise AssertionError('expected dropped acknowledgement')
                     except OSError:pass
                     service.fault=lambda point:None
-                    sender.revoke_credential('t','workergrant')
+                    sender.revoke_credential('t','workergrant',root_id='root',kind='delegation',issuer_kid=b'manager')
                     try:sender.admit_v2(h,'forbidden-after-revoke',specs[0][0]);raise AssertionError('revocation bypass')
                     except Rejected as exc:revoked_error=str(exc);assert revoked_error=='ACTION_OR_KEY_INACTIVE'
                     record('revocation_blocks_new_delivery',error=revoked_error,old_admitted_tickets_retained=True)

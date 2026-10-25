@@ -1,0 +1,85 @@
+{
+  "profile": "mixed-delivery-v2",
+  "status": "complete_evidence_codec_and_offline_mixed_job_validation",
+  "v2_l3_admission": false,
+  "durable_receiver": true,
+  "network_service": true,
+  "implementation": "retention_delivery.py",
+  "schema": "retention_delivery_v2.cddl",
+  "vectors": "retention_delivery_vectors.json",
+  "report": "retention_delivery_test_results.json",
+  "objects": {
+    "descriptor": "Exact canonical CBOR route-context hash, seq/derived ID, operation, original issue/expiry and full mixed mechanism shape including action digest, domain/snapshot, accountant, public capacity, B/K, codec and catalog labels/digest.",
+    "envelope": "Sender COSE in RetentionDeliveryEnvelopeV2 domain; exact descriptor bytes and complete fixed-width result.",
+    "control": "Sender COSE in RetentionDeliveryTerminalV2 domain; exact same descriptor and empty or original signed envelope SHA256. No result.",
+    "attempt": "Sender COSE in RetentionDeliveryAttemptV2; DELIVERY/TERMINAL kind, signed body, fresh challenge. Both signatures checked.",
+    "receipt": "Receiver COSE in RetentionDeliveryReceiptV2; canonical retention fact, fresh challenge, exact signed attempt SHA256."
+  },
+  "fact_derivation": {
+    "descriptor_hash": "SHA256(CBOR([\"retention-delivery-descriptor\",2,canonical_descriptor_bytes]))",
+    "accepted": "Verify complete signed envelope and vector semantics; derive descriptor/action/ID/window from it; envelope_hash is SHA256 of exact signed envelope; event must lie in original validity interval.",
+    "closed": "Verify signed control and derive same descriptor/action/ID/window, envelope_hash from control; event must be at or after original expiry.",
+    "audit": "verify_fact_evidence reconstructs the entire canonical fact from signed original evidence and stored first-event time and requires byte equality.",
+    "reconciliation": "Existing terminal fact must match exact descriptor and original envelope binding. ACCEPTED with an empty envelope hash is invalid. Ordinary delivery rejects CLOSED. Retried ordinary/terminal/final-query receipts carry identical fact bytes for the same stored event."
+  },
+  "validation": {
+    "test_methods": 22,
+    "maximum_field_fixture_bytes": {
+      "descriptor": 5253,
+      "envelope": 5975,
+      "control": 5501,
+      "delivery_attempt": 6227,
+      "terminal_attempt": 5753,
+      "fact": 383,
+      "receipt": 668
+    },
+    "real_job_fixture": {
+      "histogram_buckets": 4,
+      "public_capacity": 3,
+      "result_widths": [
+        32,
+        8
+      ],
+      "source": "signed encrypted shared-account jobs; offline encoding only, no v2 L3 or network admission",
+      "unchanged_accounts": true
+    },
+    "source_hashes": "All transitive local source imports plus CDDL and deterministic vectors recorded in report.",
+    "negative_controls": [
+      "Trusted gateway can sign a different but range-valid result without proving computation; admission must bind actual committed output.",
+      "Trusted receiver can sign two in-window first times without persistent uniqueness; receiver transaction and sender consistency checks remain mandatory."
+    ],
+    "independent_interoperability": false,
+    "independent_cddl_validation": false,
+    "actual_process_crash_scenarios": 0,
+    "v2_network_requests": 0
+  },
+  "integration_plan": {
+    "sender_L3": "Use a new storage profile, not implicit v1 migration. Within one sender authority transaction: authenticate/current authority, validate existing signed operation and publication gate, bind a stable admission request key to operation+route+requested TTL, allocate monotonic unsigned sequence, derive ID, create L3 ticket and immutable canonical descriptor, and register outbox. A retry resolves the same assigned sequence; it must not allocate another sequence before checking its saved request binding.",
+    "sender_prepare": "Read actual COMMITTED result with existing authenticated decryption and result binding; compare all public metadata to admitted descriptor; sign/persist exact envelope before any transmission. No fresh sampling or cost refund.",
+    "sender_confirm": "Verify receipt against original signed request and envelope/control, compare stored final fact if already confirmed, archive evidence and advance only the contiguous confirmation frontier in one authority transaction; only then allow retirement offer signing.",
+    "receiver_first_event": "Under one write lock and current authority fence: update monotonic clock; reject sequence<=retired floor, check exact next sequence and public live-window capacity, verify complete incoming evidence, establish ACCEPTED/CLOSED exactly once and store its fact plus recoverable evidence. Terminal admission also requires current time>=original expiry. Authority accepts before local commit and reply.",
+    "receiver_retire": "Use pure retention transition only against current authoritative live records; atomically delete prefix/advance floor+root while retaining high water and clock. Reply after authority/local commit. Recover uncertain commits before proceeding.",
+    "unsigned_storage": "Use exact uint64 representation such as fixed 8-byte big-endian BLOBs with explicit length/type checks; preserve order and exhaustion. Do not store full range in SQLite signed INTEGER.",
+    "archival_boundary": "Sender admission request bindings, full evidence, privacy spending and witness history are not deleted by receiver record compaction; capacity is not globally bounded."
+  },
+  "remaining": [
+    "Scalable authority/history storage and bounded aggregate resources; receiver current-image admission implemented",
+    "Production audit access, scalable archive retrieval, availability and retention governance",
+    "Independent COSE/CDDL interoperability and parser review",
+    "Cross-host authority fault tests, identity/key lifecycle and production nonrollback evidence",
+    "Complete P2 workflow, strong baselines and full public-observation refinement; broader P3-P6 goals"
+  ],
+  "sender_integration": {
+    "contract": "retention_sender_contract.json",
+    "v2_l3_admission": true,
+    "result_and_evidence_persistence": true,
+    "recipient_and_result_network": true
+  },
+  "network_service_scope": "Reuses RecipientTLSService and DeliverySender.exchange framing over loopback mTLS, with v2 signed payload dispatch. The peer fingerprint is provided by authenticated transport. This is an integration fixture, not a production deployment/management API or complete public observation protocol.",
+  "recipient_integration": {
+    "contract": "retention_recipient_contract.json",
+    "report": "retention_recipient_test_results.json"
+  },
+  "recipient_capacity_contract": "retention_capacity_contract.json",
+  "archive_contract": "retention_archive_contract.json"
+}

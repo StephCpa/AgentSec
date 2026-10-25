@@ -1,0 +1,79 @@
+{
+  "passed": true,
+  "test_methods": 10,
+  "source_sha256": {
+    "prototype/test_contribution_delivery.py": "3017c1f5c89f82018b7acdeca28f1c84129baa4745ec31d0f4047633183f814a",
+    "prototype/retention_delivery.py": "35dd17fa0d0d50aa34674239fe68a128b1865421ef8e371145abb996e00d0d46",
+    "prototype/delivery_transport.py": "71a96b0310b1004946725e09b89178fdfde5ba7b0205cf1179f95b5da134bc9e",
+    "prototype/ledger.py": "5bdd63777480e26d56d89d00e4d0f7a7030668377ca164756f2752103cf04dc7",
+    "prototype/wire.py": "b2e95928c604c923ec549a74f599fd4a16fc4ccec5841474aabf64ec55de6d58",
+    "prototype/witness_transport.py": "7226ebcaaf994f155990e31f747bd8a5ea1625f4ab52ee67a2ccad8ed976983f",
+    "prototype/witnessed_ledger.py": "fe62b6e3f2a3e6f267316ea1e819fe3423b6bdfe6c54c7439c8411c506c51353",
+    "prototype/encrypted_ledger.py": "c1ac348a1657483efeaeb0eb4d43bae80b3990ce9b461f0a2b1533dd17ce32be",
+    "prototype/scheduled_ledger.py": "d8d4b2c32b5028066190845298f8e434fe5d6e262e5adad1c48d221be06511e0",
+    "prototype/dp_ledger.py": "35f0c336d549bf0145fd79bcb9b02416b0a729d60d990fc34e477b744887054b",
+    "fixed_work_model.py": "06b194302f777bec7977166869f6e83ee11daf83d7b2c1c302ae9bf013603860",
+    "prototype/delegated_ledger.py": "28cd13ef8d6b43f2ca1c9d273f3d32b92943278a0dbef2894eed1dc570cf3862",
+    "prototype/signed_ledger.py": "e777d588e232d0f6f42f3d935b8105ec8b17045ef3eb2cec516975f04a4cd22f",
+    "prototype/mixed_delivery_transport.py": "9127fe54d9bb7e396c4056f7db7de15f2f299d647bbb1e1cc77d23d5d1a4b491",
+    "prototype/mixed_delegated_ledger.py": "69b87ad162fe3d462fcb31baccb6919e82938a7e8e2b20ea570737b7e9dde7bc",
+    "prototype/histogram_ledger.py": "afac61ce7dbc8cfe01e6756a243eea389724d59c8f51bcd22b2c0c2d606c32e0",
+    "histogram_kernel.py": "9f369419e74020f2fc8e55fb74f5174d3d6c235e513b0bc6867064923f235831",
+    "prototype/witnessed_mixed_ledger.py": "9d58044454873d31648c0011c296b779d0d90f4449546c44fcb7d8d8b623aced",
+    "prototype/encrypted_mixed_ledger.py": "1a085da145bd7fd0ef95a411fbfa3d9b94132508e7a9210127daeb5d2aca5740",
+    "prototype/retention_wire.py": "38ce3865e3be049cb570225216ec8e8ae192617b7124f03b2cb51612bd56e22a",
+    "prototype/test_retention_recipient.py": "6f2df27a2a357d9d4f68f937bfc13ed851c6486a5814b5fdddae7c47792c35ed",
+    "prototype/test_witness_transport.py": "ee6c2a89477e045435b262f87adb8d3d33490a55cab27309708a366b8b3be922",
+    "prototype/test_encrypted_ledger.py": "bbcc428ddbd8bbcc9e8ffad6358e6936a0403fcc6c9900f4d8e1c836eac3f466",
+    "prototype/test_delegated_ledger.py": "1cee9d8febe72898d14c995a7ac93476889a2f2ae75129aa86d776f473c4c35f",
+    "prototype/test_signed_ledger.py": "c28e0f8fc365b5ff61e49343f2f1d433ae369c403f849efdb6ddb9c65745aa50",
+    "prototype/test_mixed_delegated_ledger.py": "9babf15f2c9584ed6ebd3d040376d81fb61ce1e97a2e71ea1cad4c377ecbd616",
+    "prototype/test_encrypted_mixed_ledger.py": "d2c87ea063425d266d2238758ebc0c5f1de74057fff4bdf2ebff0c6eed4a2589",
+    "prototype/test_witnessed_mixed_ledger.py": "0d764a9322f15488d1fed5a91f2019ec01296ffb63504b9693e20eb13111b06e",
+    "prototype/test_retention_sender.py": "9311d56d525cd28e963d44ced9e8ffc784c78366f56b8e130820159f145369d1",
+    "prototype/test_retention_wire.py": "0a14471278b94db57c5a83096bb1714f5e5e73632b4bf68961dfaad7c261f3a0",
+    "prototype/retention_sender.py": "1f55f6d9a68614bb03883b460c52b6cea0dfbe0ac3811ed2e3e3d5af4623dbb6",
+    "prototype/retention_recipient.py": "562e3ed9404b3ea4a8d94cb73abb863949eff92931f73d4d71cca8bb253b148d",
+    "prototype/witnessed_recipient.py": "64060786a6bfa383302f1c999648aa6323fafdd34b620e70b923b95037b68cad",
+    "prototype/mixed_delivery_terminal.py": "67b759be033cb2f3ce26db2caaa7afc816f1b7f723934fb22445d434ab137acc",
+    "prototype/delivery_terminal.py": "29203cf6a3fa8fce2062cb8a987d61f8a131814ad50f287d0eaf21dad422d2b2",
+    "prototype/retention_archive.py": "c727898455e30af80257ec307157173e109c5c9dad9b66dab404a5ca4ed943b7",
+    "prototype/p2_scenario.py": "8e276dbb9c0ca10282e31e63807612c0997b5e174efaf62c173e5078c3d60f94",
+    "prototype/contribution_scenario.py": "b7556cacd6d8dea98d8c7a1fff19c3785c8fe9ec82c17c5a1fe3f440c5c4065f",
+    "prototype/contribution_ingestion.py": "799a6dc88451de81b1eaddd02a0b44b9d80d859c43a0266b7c1cc46c392d51f4",
+    "prototype/contribution_delivery.py": "146cfa730da07e2be09d2c81192c42f9928ce6556a03dc82be525be3f3459f88"
+  },
+  "source_paths_relative_to": "delivery root",
+  "actual_process_crash_scenarios": [
+    {
+      "operation": "admit",
+      "point": "after_v2_ticket_write"
+    },
+    {
+      "operation": "admit",
+      "point": "after_witness_accept"
+    },
+    {
+      "operation": "admit",
+      "point": "after_v2_admission_commit"
+    },
+    {
+      "operation": "prepare",
+      "point": "after_witness_accept"
+    },
+    {
+      "operation": "restore",
+      "point": "after_recovery_delete"
+    },
+    {
+      "operation": "restore",
+      "point": "before_recovery_commit"
+    }
+  ],
+  "crash_scenario_count": 6,
+  "scenario_report": "contribution_scenario_results.json",
+  "scenario_report_sha256": "db7bc80726f9c06e530ad61461ba7acefbaedcd85e2a5243cee829f8309efed5",
+  "python": "3.9.6",
+  "cryptography": "49.0.0",
+  "scope": "Compiled synthetic user records through full loopback mTLS workflow; additional local combined-profile terminal/retirement/archive/recovery audit and actual process cuts. No real identity/classifier or production observation guarantee."
+}

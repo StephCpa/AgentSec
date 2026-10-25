@@ -1,0 +1,71 @@
+{
+  "profile": "witnessed-mixed-retention-sender-v2",
+  "authenticated_profile": "mtls-mixed-retention-sender-v2",
+  "status": "sender_integrated_with_actual_v2_recipient_in_separate_recipient_suite",
+  "implementation": "retention_sender.py",
+  "tests": "test_retention_sender.py",
+  "report": "retention_sender_test_results.json",
+  "storage": {
+    "v2_routes": "Immutable trusted context; exact 8-byte big-endian high/confirmed/retired frontiers; prefix roots, latest encrypted receiver retirement checkpoint evidence and revocation.",
+    "v2_requests": "Permanent mapping (context_hash,request_key) to operation, requested TTL and assigned derived delivery ID.",
+    "v2_outbox": "Exactly one row per existing L3 delivery ticket; immutable canonical descriptor, unsigned seq, state and purpose-separated encrypted envelope/control/fact/receipt.",
+    "v2_retire_offers": "Encrypted immutable signed offers keyed by context/base/target. Sender archives and request mappings retained, no global storage bound.",
+    "schema": "Exact built-in v2 table definitions checked at open/recovery; no implicit legacy migration. Full state remains subject to generic 16 MiB witness image cap."
+  },
+  "invariants": [
+    "Within one sender-authority transaction, resolve or bind stable admission key before allocating sequence; L3 ticket, request mapping, descriptor, outbox and route high-water commit together.",
+    "Fresh admission and public admission retry both preserve current root/credential/key, recipient, publication, profile and route-revocation checks. Exact retry never renews original expiry; changed operation/TTL conflicts.",
+    "Old already-admitted envelope preparation follows original ticket lifetime after root/credential revocation, while route revocation blocks transmission preparation. Post-expiry terminal control can reconcile old work even after route/root revocation.",
+    "Complete result is read from the existing COMMITTED authenticated-encrypted operation and bound to original descriptor/ticket; signed envelope stored before return. No new sampling or accounting reset.",
+    "Only exact previously prepared signed body can support confirmation. Duplicate fact accepted; any different fact, including another valid signed first-event time, conflicts.",
+    "Confirmation facts and contiguous prefix advancement persist together before retirement signing is admitted. Offer target cannot exceed authoritative confirmed frontier.",
+    "Retirement response is verified against stored offer or signed checkpoint query and sender archive; receiver high-water cannot exceed sender admissions. Latest signed request/reply evidence persists with retired frontier/root.",
+    "Recovery validates v2 schema, coverage, canonical descriptor, original encrypted result/evidence, confirmed/retired roots and signed checkpoint before local recovery commit."
+  ],
+  "ordering": "ReferenceWitness/authorized TLS witness CAS accepts full next image before local anchor/local commit, and before methods return wire bytes. Unknown authority outcome fences stale copies until exact recovery.",
+  "unsigned_sequences": "Fixed 8-byte big-endian BLOB with typeof/length constraints; byte ordering is numeric ordering. Allocation at 2^64-1 rejects rather than wraps. Boundary fixture did not generate or audit 2^64-1 historical operations.",
+  "authority_assumptions": "Reference witness and TLS service must be linearizable and nonrollback. Same-host test services do not prove independent production failure domains. All signing keys/inputs synthetic. API is trusted internal driver, not public authenticated management endpoint.",
+  "validation": {
+    "test_methods": 25,
+    "actual_process_crash_scenarios": 23,
+    "crash_operations": [
+      "admission",
+      "envelope preparation",
+      "terminal-control preparation",
+      "fact confirmation",
+      "retirement offer",
+      "retirement checkpoint",
+      "recovery"
+    ],
+    "crash_transport": "Reference witness process cuts only; separate TLS success fixture does not establish TLS crash-cut coverage.",
+    "authenticated_witness_requests": 204,
+    "observed_witness_tls_versions": [
+      "TLSv1.2"
+    ],
+    "mixed_fixture": "Signed encrypted shared-account B4 N3 histogram and count jobs, complete original results, sender admission/preparation/evidence integration.",
+    "receiver_evidence": "This sender suite uses synthetic signed receiver facts/checkpoints. Separate retention_recipient_test_results.json validates actual recipient transactions and loopback result/control/retirement transport.",
+    "races": [
+      "same request maps to one identity",
+      "distinct requests get contiguous sequences",
+      "competing local clones: at most one witness CAS commits"
+    ],
+    "negative_controls": [
+      "invalid authoritative prefix image rejected before recovery commit",
+      "injected validly signed but wrong stored terminal binding rejected",
+      "full uint64 allocator exhaustion simulated at boundary only"
+    ]
+  },
+  "next_gates": [
+    "Scalable authority/history storage and bounded aggregate resources; receiver current-image admission implemented",
+    "Production audit access, scalable archive retrieval, availability and retention governance",
+    "Independent COSE/CDDL interoperability and parser review",
+    "Cross-host authority fault tests, identity/key lifecycle and production nonrollback evidence",
+    "Complete P2 workflow, strong baselines and full public-observation refinement; broader P3-P6 goals"
+  ],
+  "recipient_integration": {
+    "contract": "retention_recipient_contract.json",
+    "report": "retention_recipient_test_results.json"
+  },
+  "recipient_capacity_contract": "retention_capacity_contract.json",
+  "archive_contract": "retention_archive_contract.json"
+}

@@ -1,0 +1,24 @@
+test_actual_process_cuts_have_no_half_pair (__main__.ContributionTests) ... ok
+test_concurrent_ingestion_same_alias_has_one_immutable_winner (__main__.ContributionTests) ... ok
+test_direct_import_and_duplicate_immutable_bindings_rejected (__main__.ContributionTests) ... ok
+test_duplicates_order_and_ineligible_records (__main__.ContributionTests) ... ok
+test_exhaustive_user_removal_is_one_slot_one_bucket (__main__.ContributionTests) ... ok
+test_invalid_private_inputs_have_no_identity_in_error (__main__.ContributionTests) ... ok
+test_legacy_profile_cannot_open_contribution_database (__main__.ContributionTests) ... ok
+test_lineage_cannot_rebind_to_fresh_budget_in_same_tenant (__main__.ContributionTests) ... ok
+test_maximum_compiler_shape_and_bucket_boundary (__main__.ContributionTests) ... ok
+test_mid_write_exception_rolls_back_both_views (__main__.ContributionTests) ... ok
+test_multiple_snapshots_reuse_same_roster_and_accounts (__main__.ContributionTests) ... ok
+test_negative_controls_replacement_aliases_and_joint_release (__main__.ContributionTests) ... ok
+test_orphan_admin_insert_detected_and_unsigned_provenance_rejected (__main__.ContributionTests) ... ok
+test_pair_ciphertext_and_receipt_do_not_contain_private_identity (__main__.ContributionTests) ... ok
+test_restore_rejects_authority_image_with_inconsistent_pair (__main__.ContributionTests) ... ok
+test_roster_tampering_fenced_and_exact_restored (__main__.ContributionTests) ... ok
+test_signed_mixed_operations_charge_same_domain_and_ancestors (__main__.ContributionTests) ... ok
+test_unknown_user_rejection_does_not_install_partial_pair (__main__.ContributionTests) ... ok
+test_witness_reply_loss_restores_pair_without_recompilation (__main__.ContributionTests) ... ok
+
+----------------------------------------------------------------------
+Ran 19 tests in 3.609s
+
+OK

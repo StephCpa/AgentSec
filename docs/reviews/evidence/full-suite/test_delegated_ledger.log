@@ -1,0 +1,27 @@
+test_account_rebinding_and_leaf_binding (__main__.DelegationTests) ... ok
+test_ancestor_key_expiry_caps_ticket_lifetime (__main__.DelegationTests) ... ok
+test_ancestor_key_revocation_after_l1_withholds_without_refund (__main__.DelegationTests) ... ok
+test_ancestor_revocation_before_l1_refunds_all_caps (__main__.DelegationTests) ... ok
+test_concurrent_sibling_operations_cannot_overspend_shared_caps (__main__.DelegationTests) ... ok
+test_credential_id_cannot_be_reissued_with_fresh_cap (__main__.DelegationTests) ... ok
+test_direct_service_cannot_bypass_delegated_root_or_new_l3 (__main__.DelegationTests) ... ok
+test_existing_ticket_survives_ancestor_revocation_new_l3_fails (__main__.DelegationTests) ... ok
+test_forked_children_do_not_duplicate_parent_budget (__main__.DelegationTests) ... ok
+test_parent_hash_issuer_and_signature_domain_substitution (__main__.DelegationTests) ... ok
+test_revocation_before_first_use_is_durable (__main__.DelegationTests) ... ok
+test_root_with_existing_operations_cannot_switch_authorization_mode (__main__.DelegationTests) ... ok
+test_same_action_fresh_proof_does_not_recharge_caps (__main__.DelegationTests) ... ok
+test_saved_chain_vectors_match_exact_parent_digests (__main__.DelegationTests) ... ok
+test_scope_widening_and_empty_scope (__main__.DelegationTests) ... ok
+test_shared_intermediate_cap_blocks_more_than_global_budget (__main__.DelegationTests) ... ok
+test_three_chain_registration_crash_cuts (__main__.DelegationTests) ... ok
+test_time_depth_and_cumulative_cap_widening (__main__.DelegationTests) ... ok
+test_two_level_delegation_executes_and_charges_every_ancestor (__main__.DelegationTests) ... ok
+test_unsigned_and_direct_profile_cannot_bypass_chain (__main__.DelegationTests) ... ok
+test_valid_sibling_parent_cannot_be_spliced_into_chain (__main__.DelegationTests) ... ok
+test_wrong_root_authority_is_not_trusted_from_chain (__main__.DelegationTests) ... ok
+
+----------------------------------------------------------------------
+Ran 22 tests in 0.960s
+
+OK

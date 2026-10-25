@@ -1,0 +1,116 @@
+test_child_cannot_squat_another_root_grant (test_review_regressions.CredentialNamespaceTests) ... FAIL
+test_same_name_from_different_issuers_and_grant_isolated (test_review_regressions.CredentialNamespaceTests) ... FAIL
+test_wrong_audience_is_rejected (test_review_regressions.ResponseContractTests) ... FAIL
+test_journal_sequence_is_sqlite_bounded (test_review_regressions.ResponseContractTests) ... FAIL
+test_real_delivery_trace_includes_all_ancestor_key_expiries (test_review_regressions.AdapterExpiryTests) ... 
+======================================================================
+ERROR: test_real_delivery_trace_includes_all_ancestor_key_expiries (test_review_regressions.AdapterExpiryTests) (kid=b'authority')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/var/folders/g_/n2fwzyln011fg1vfd8t623t80000gn/T/tmphysinrhy/repo/outputs/agent-cryptography-design-20261025/prototype/public_trace_adapter.py", line 267, in check
+    try:self.consume(record)
+  File "/private/var/folders/g_/n2fwzyln011fg1vfd8t623t80000gn/T/tmphysinrhy/repo/outputs/agent-cryptography-design-20261025/prototype/public_trace_adapter.py", line 261, in consume
+    elif kind=='DELIVERY':self._delivery(record)
+  File "/private/var/folders/g_/n2fwzyln011fg1vfd8t623t80000gn/T/tmphysinrhy/repo/outputs/agent-cryptography-design-20261025/prototype/public_trace_adapter.py", line 222, in _delivery
+    require(body['descriptor']==expected,'DELIVERY_ACTION_OR_TICKET_BINDING')
+  File "/private/var/folders/g_/n2fwzyln011fg1vfd8t623t80000gn/T/tmphysinrhy/repo/outputs/agent-cryptography-design-20261025/prototype/public_trace_adapter.py", line 25, in require
+    if not condition:raise ViewMismatch(reason)
+public_trace_adapter.ViewMismatch: DELIVERY_ACTION_OR_TICKET_BINDING
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/private/var/folders/g_/n2fwzyln011fg1vfd8t623t80000gn/T/tmphysinrhy/repo/tests/test_review_regressions.py", line 255, in test_real_delivery_trace_includes_all_ancestor_key_expiries
+    result=adapter.check(records)
+  File "/private/var/folders/g_/n2fwzyln011fg1vfd8t623t80000gn/T/tmphysinrhy/repo/outputs/agent-cryptography-design-20261025/prototype/public_trace_adapter.py", line 269, in check
+    raise ViewMismatch('record '+str(index)+': '+str(exc)) from exc
+public_trace_adapter.ViewMismatch: record 87: DELIVERY_ACTION_OR_TICKET_BINDING
+
+======================================================================
+ERROR: test_real_delivery_trace_includes_all_ancestor_key_expiries (test_review_regressions.AdapterExpiryTests) (kid=b'manager')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/var/folders/g_/n2fwzyln011fg1vfd8t623t80000gn/T/tmphysinrhy/repo/outputs/agent-cryptography-design-20261025/prototype/public_trace_adapter.py", line 267, in check
+    try:self.consume(record)
+  File "/private/var/folders/g_/n2fwzyln011fg1vfd8t623t80000gn/T/tmphysinrhy/repo/outputs/agent-cryptography-design-20261025/prototype/public_trace_adapter.py", line 261, in consume
+    elif kind=='DELIVERY':self._delivery(record)
+  File "/private/var/folders/g_/n2fwzyln011fg1vfd8t623t80000gn/T/tmphysinrhy/repo/outputs/agent-cryptography-design-20261025/prototype/public_trace_adapter.py", line 222, in _delivery
+    require(body['descriptor']==expected,'DELIVERY_ACTION_OR_TICKET_BINDING')
+  File "/private/var/folders/g_/n2fwzyln011fg1vfd8t623t80000gn/T/tmphysinrhy/repo/outputs/agent-cryptography-design-20261025/prototype/public_trace_adapter.py", line 25, in require
+    if not condition:raise ViewMismatch(reason)
+public_trace_adapter.ViewMismatch: DELIVERY_ACTION_OR_TICKET_BINDING
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/private/var/folders/g_/n2fwzyln011fg1vfd8t623t80000gn/T/tmphysinrhy/repo/tests/test_review_regressions.py", line 255, in test_real_delivery_trace_includes_all_ancestor_key_expiries
+    result=adapter.check(records)
+  File "/private/var/folders/g_/n2fwzyln011fg1vfd8t623t80000gn/T/tmphysinrhy/repo/outputs/agent-cryptography-design-20261025/prototype/public_trace_adapter.py", line 269, in check
+    raise ViewMismatch('record '+str(index)+': '+str(exc)) from exc
+public_trace_adapter.ViewMismatch: record 87: DELIVERY_ACTION_OR_TICKET_BINDING
+
+======================================================================
+ERROR: test_real_delivery_trace_includes_all_ancestor_key_expiries (test_review_regressions.AdapterExpiryTests) (kid=b'worker')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/var/folders/g_/n2fwzyln011fg1vfd8t623t80000gn/T/tmphysinrhy/repo/outputs/agent-cryptography-design-20261025/prototype/public_trace_adapter.py", line 267, in check
+    try:self.consume(record)
+  File "/private/var/folders/g_/n2fwzyln011fg1vfd8t623t80000gn/T/tmphysinrhy/repo/outputs/agent-cryptography-design-20261025/prototype/public_trace_adapter.py", line 261, in consume
+    elif kind=='DELIVERY':self._delivery(record)
+  File "/private/var/folders/g_/n2fwzyln011fg1vfd8t623t80000gn/T/tmphysinrhy/repo/outputs/agent-cryptography-design-20261025/prototype/public_trace_adapter.py", line 222, in _delivery
+    require(body['descriptor']==expected,'DELIVERY_ACTION_OR_TICKET_BINDING')
+  File "/private/var/folders/g_/n2fwzyln011fg1vfd8t623t80000gn/T/tmphysinrhy/repo/outputs/agent-cryptography-design-20261025/prototype/public_trace_adapter.py", line 25, in require
+    if not condition:raise ViewMismatch(reason)
+public_trace_adapter.ViewMismatch: DELIVERY_ACTION_OR_TICKET_BINDING
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/private/var/folders/g_/n2fwzyln011fg1vfd8t623t80000gn/T/tmphysinrhy/repo/tests/test_review_regressions.py", line 255, in test_real_delivery_trace_includes_all_ancestor_key_expiries
+    result=adapter.check(records)
+  File "/private/var/folders/g_/n2fwzyln011fg1vfd8t623t80000gn/T/tmphysinrhy/repo/outputs/agent-cryptography-design-20261025/prototype/public_trace_adapter.py", line 269, in check
+    raise ViewMismatch('record '+str(index)+': '+str(exc)) from exc
+public_trace_adapter.ViewMismatch: record 87: DELIVERY_ACTION_OR_TICKET_BINDING
+
+======================================================================
+FAIL: test_child_cannot_squat_another_root_grant (test_review_regressions.CredentialNamespaceTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/var/folders/g_/n2fwzyln011fg1vfd8t623t80000gn/T/tmphysinrhy/repo/tests/test_review_regressions.py", line 81, in test_child_cannot_squat_another_root_grant
+    self.assertEqual(self.submit(b,'b','victim_root')['status'],'RECORDED')
+AssertionError: 'REJECTED' != 'RECORDED'
+- REJECTED
++ RECORDED
+
+
+======================================================================
+FAIL: test_same_name_from_different_issuers_and_grant_isolated (test_review_regressions.CredentialNamespaceTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/var/folders/g_/n2fwzyln011fg1vfd8t623t80000gn/T/tmphysinrhy/repo/tests/test_review_regressions.py", line 104, in test_same_name_from_different_issuers_and_grant_isolated
+    self.assertEqual(self.submit(a)['status'],'RECORDED')
+AssertionError: 'REJECTED' != 'RECORDED'
+- REJECTED
++ RECORDED
+
+
+======================================================================
+FAIL: test_wrong_audience_is_rejected (test_review_regressions.ResponseContractTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/var/folders/g_/n2fwzyln011fg1vfd8t623t80000gn/T/tmphysinrhy/repo/tests/test_review_regressions.py", line 118, in test_wrong_audience_is_rejected
+    self.check_response('CHALLENGE',dict(challenge=b'C'*32,challenge_expiry=160,audience='other-gateway-v1'))
+AssertionError: Rejected not raised
+
+======================================================================
+FAIL: test_journal_sequence_is_sqlite_bounded (test_review_regressions.ResponseContractTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/var/folders/g_/n2fwzyln011fg1vfd8t623t80000gn/T/tmphysinrhy/repo/tests/test_review_regressions.py", line 120, in test_journal_sequence_is_sqlite_bounded
+    with self.assertRaises(Rejected):self.check_response('REJECTED',{},2**63)
+AssertionError: Rejected not raised
+
+----------------------------------------------------------------------
+Ran 5 tests in 2.121s
+
+FAILED (failures=4, errors=3)

@@ -1,0 +1,27 @@
+{
+  "test_methods": 31,
+  "crash_cuts": 11,
+  "completed_crash_cuts": [
+    "before_delivery_commit",
+    "after_delivery_commit",
+    "before_emit_commit",
+    "after_emit_commit",
+    "before_reserve_commit",
+    "after_reserve_commit",
+    "before_claim_commit",
+    "after_claim_commit",
+    "after_result_write",
+    "before_result_commit",
+    "after_result_commit"
+  ],
+  "python_version": "3.9.6 (default, Apr 30 2025, 02:07:17) \n[Clang 17.0.0 (clang-1700.0.13.5)]",
+  "sqlite_version": "3.43.2",
+  "source_sha256": {
+    "ledger.py": "5bdd63777480e26d56d89d00e4d0f7a7030668377ca164756f2752103cf04dc7",
+    "test_ledger.py": "d44c082f517a09080790183bf8a9a5a8960d14160ed1c644bf2b284970e77ae7"
+  },
+  "failures": [],
+  "errors": [],
+  "passed": true,
+  "scope": "SQLite transaction consistency with synthetic values, not cryptographic or DP validation"
+}

@@ -1,0 +1,24 @@
+test_actual_accepted_and_closed_facts_survive_recipient_cleanup (__main__.ArchiveTests) ... ok
+test_authority_change_during_read_prevents_return (__main__.ArchiveTests) ... ok
+test_checkpoint_challenge_route_and_signature_are_pinned (__main__.ArchiveTests) ... ok
+test_export_is_read_only_and_does_not_open_results (__main__.ArchiveTests) ... ok
+test_forged_last_fact_rejected_without_advancing_verifier (__main__.ArchiveTests) ... ok
+test_invalid_limits_schema_counts_and_sequence_overflow (__main__.ArchiveTests) ... ok
+test_local_archive_corruption_and_missing_facts_fail_closed (__main__.ArchiveTests) ... ok
+test_many_retirements_paginate_to_exact_middle_fact (__main__.ArchiveTests) ... ok
+test_maximal_field_page_size (__main__.ArchiveTests) ... ok
+test_missing_duplicate_and_reordered_pages_reject (__main__.ArchiveTests) ... ok
+test_no_empty_checkpoint_or_post_completion_extension (__main__.ArchiveTests) ... ok
+test_old_checkpoint_remains_historical_after_new_retirement (__main__.ArchiveTests) ... ok
+test_pages_cannot_switch_checkpoints (__main__.ArchiveTests) ... ok
+test_partial_pages_never_release_selected_fact (__main__.ArchiveTests) ... ok
+test_process_exit_during_archive_read_has_no_state_effect (__main__.ArchiveTests) ... ok
+test_revocation_does_not_erase_privileged_historical_evidence (__main__.ArchiveTests) ... ok
+test_sender_must_persist_retirement_checkpoint_before_export (__main__.ArchiveTests) ... ok
+test_stale_sender_requires_restore_before_archive_export (__main__.ArchiveTests) ... ok
+test_tampered_early_page_cannot_become_an_authenticated_result (__main__.ArchiveTests) ... ok
+
+----------------------------------------------------------------------
+Ran 19 tests in 8.447s
+
+OK

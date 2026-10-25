@@ -134,7 +134,7 @@ class AtomicPublicationTests(unittest.TestCase):
         self.assertEqual(self.l.audit(),[])
 
     def test_poststart_credential_revoke_withholds_without_refund(self):
-        register(self.l,'c',False);tick(self.l);self.l.revoke_credential('t','workergrant');finish(self.l)
+        register(self.l,'c',False);tick(self.l);self.l.revoke_credential('t','workergrant',root_id='root',kind='delegation',issuer_kid=b'manager');finish(self.l)
         self.assertEqual(self.decisions()[0]['kind'],'WITHHELD')
         self.assertEqual(self.l.op('t','c')['state'],'COMMITTED')
         self.assertEqual(self.l.db.execute("SELECT spent FROM accounts WHERE id='domain:epsilon'").fetchone()[0],E)
@@ -179,7 +179,7 @@ class AtomicPublicationTests(unittest.TestCase):
 
     def test_admitted_output_uses_existing_recipient_evidence_and_no_new_l3(self):
         self.ready_count();tick(self.l);decision=self.decisions()[0]
-        self.l.revoke_credential('t','workergrant')
+        self.l.revoke_credential('t','workergrant',root_id='root',kind='delegation',issuer_kid=b'manager')
         env=self.l.prepare_envelope('t',decision['delivery_id'],self.s)
         w=ReferenceWitness(self.root/'rw');i=RetentionRecipient.create(self.root/'inbox',context=self.c,vault=recipient_vault(),clock=lambda:100,witness=w)
         try:

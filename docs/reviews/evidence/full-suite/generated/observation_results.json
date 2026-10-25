@@ -1,0 +1,513 @@
+{
+  "scope": "Two constant-output operations, 9 hidden completion schedules, 4 fixed public control schedules; complete terminating traces without clocks.",
+  "findings": [
+    "READY versus PENDING reveals hidden runtime even when outputs are identical.",
+    "Ordering result messages alone does not hide interleaving with unrelated control acknowledgments.",
+    "Serializing all observable responses behind a batch barrier removes these two leaks in this finite toy model only."
+  ],
+  "readiness_counterexample": [
+    {
+      "hidden_completion": 1,
+      "trace": [
+        "ACCEPTED",
+        "READY",
+        "RESULT:0"
+      ]
+    },
+    {
+      "hidden_completion": 2,
+      "trace": [
+        "ACCEPTED",
+        "PENDING",
+        "RESULT:0"
+      ]
+    }
+  ],
+  "batch_cases": [
+    {
+      "mode": "immediate_ack",
+      "public_control_step": 0,
+      "hidden_schedules": 9,
+      "distinct_observable_traces": 1,
+      "examples": [
+        {
+          "trace": [
+            "BATCH_ACCEPTED",
+            "CONTROL_ACK",
+            "A:0",
+            "B:0"
+          ],
+          "hidden_schedules": [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              3,
+              1
+            ],
+            [
+              3,
+              2
+            ],
+            [
+              3,
+              3
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "serialized_barrier",
+      "public_control_step": 0,
+      "hidden_schedules": 9,
+      "distinct_observable_traces": 1,
+      "examples": [
+        {
+          "trace": [
+            "BATCH_ACCEPTED",
+            "A:0",
+            "B:0",
+            "CONTROL_ACK"
+          ],
+          "hidden_schedules": [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              3,
+              1
+            ],
+            [
+              3,
+              2
+            ],
+            [
+              3,
+              3
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "immediate_ack",
+      "public_control_step": 1,
+      "hidden_schedules": 9,
+      "distinct_observable_traces": 1,
+      "examples": [
+        {
+          "trace": [
+            "BATCH_ACCEPTED",
+            "CONTROL_ACK",
+            "A:0",
+            "B:0"
+          ],
+          "hidden_schedules": [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              3,
+              1
+            ],
+            [
+              3,
+              2
+            ],
+            [
+              3,
+              3
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "serialized_barrier",
+      "public_control_step": 1,
+      "hidden_schedules": 9,
+      "distinct_observable_traces": 1,
+      "examples": [
+        {
+          "trace": [
+            "BATCH_ACCEPTED",
+            "A:0",
+            "B:0",
+            "CONTROL_ACK"
+          ],
+          "hidden_schedules": [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              3,
+              1
+            ],
+            [
+              3,
+              2
+            ],
+            [
+              3,
+              3
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "immediate_ack",
+      "public_control_step": 2,
+      "hidden_schedules": 9,
+      "distinct_observable_traces": 3,
+      "examples": [
+        {
+          "trace": [
+            "BATCH_ACCEPTED",
+            "A:0",
+            "B:0",
+            "CONTROL_ACK"
+          ],
+          "hidden_schedules": [
+            [
+              1,
+              1
+            ]
+          ]
+        },
+        {
+          "trace": [
+            "BATCH_ACCEPTED",
+            "A:0",
+            "CONTROL_ACK",
+            "B:0"
+          ],
+          "hidden_schedules": [
+            [
+              1,
+              2
+            ],
+            [
+              1,
+              3
+            ]
+          ]
+        },
+        {
+          "trace": [
+            "BATCH_ACCEPTED",
+            "CONTROL_ACK",
+            "A:0",
+            "B:0"
+          ],
+          "hidden_schedules": [
+            [
+              2,
+              1
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              3,
+              1
+            ],
+            [
+              3,
+              2
+            ],
+            [
+              3,
+              3
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "serialized_barrier",
+      "public_control_step": 2,
+      "hidden_schedules": 9,
+      "distinct_observable_traces": 1,
+      "examples": [
+        {
+          "trace": [
+            "BATCH_ACCEPTED",
+            "A:0",
+            "B:0",
+            "CONTROL_ACK"
+          ],
+          "hidden_schedules": [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              3,
+              1
+            ],
+            [
+              3,
+              2
+            ],
+            [
+              3,
+              3
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "immediate_ack",
+      "public_control_step": 3,
+      "hidden_schedules": 9,
+      "distinct_observable_traces": 3,
+      "examples": [
+        {
+          "trace": [
+            "BATCH_ACCEPTED",
+            "A:0",
+            "B:0",
+            "CONTROL_ACK"
+          ],
+          "hidden_schedules": [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        {
+          "trace": [
+            "BATCH_ACCEPTED",
+            "A:0",
+            "CONTROL_ACK",
+            "B:0"
+          ],
+          "hidden_schedules": [
+            [
+              1,
+              3
+            ],
+            [
+              2,
+              3
+            ]
+          ]
+        },
+        {
+          "trace": [
+            "BATCH_ACCEPTED",
+            "CONTROL_ACK",
+            "A:0",
+            "B:0"
+          ],
+          "hidden_schedules": [
+            [
+              3,
+              1
+            ],
+            [
+              3,
+              2
+            ],
+            [
+              3,
+              3
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "serialized_barrier",
+      "public_control_step": 3,
+      "hidden_schedules": 9,
+      "distinct_observable_traces": 1,
+      "examples": [
+        {
+          "trace": [
+            "BATCH_ACCEPTED",
+            "A:0",
+            "B:0",
+            "CONTROL_ACK"
+          ],
+          "hidden_schedules": [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              3,
+              1
+            ],
+            [
+              3,
+              2
+            ],
+            [
+              3,
+              3
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "excluded": [
+    "physical timing",
+    "nontermination",
+    "data-dependent failures",
+    "revocation scheduling",
+    "expiry scheduling",
+    "variable DP outputs",
+    "adaptive query parameters",
+    "actual network",
+    "production implementation"
+  ],
+  "proof_status": "counterexample evidence and finite relational check; no full-system DP proof",
+  "source_sha256": "51d867ef88f2452dc2e5c55ec8cb31f07e78427f341dcb226a3b0b320aa63a4f"
+}

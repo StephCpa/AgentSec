@@ -1,0 +1,20 @@
+test_exact_ancestor_expiry_blocks_publication (test_review_regressions.AdapterExpiryTests) ... ok
+test_real_delivery_trace_includes_all_ancestor_key_expiries (test_review_regressions.AdapterExpiryTests) ... ok
+test_child_cannot_squat_another_root_grant (test_review_regressions.CredentialNamespaceTests) ... ok
+test_other_root_with_independent_authority_cannot_be_squatted (test_review_regressions.CredentialNamespaceTests) ... ok
+test_same_name_from_different_issuers_and_grant_isolated (test_review_regressions.CredentialNamespaceTests) ... ok
+test_journal_sequence_is_sqlite_bounded (test_review_regressions.ResponseContractTests) ... ok
+test_wrong_audience_is_rejected (test_review_regressions.ResponseContractTests) ... ok
+test_signed_conformance_vectors (test_review_regressions.ResponseVectorTests) ... ok
+test_cross_root_identical_leaf_names_and_scoped_pre_revocation (test_review_regressions.ScopedRevocationTests) ... ok
+test_historical_identity_tampering_is_detected (test_review_regressions.ScopedRevocationTests) ... ok
+test_issuer_scoped_tombstone_does_not_revoke_other_issuer (test_review_regressions.ScopedRevocationTests) ... ok
+test_legacy_namespace_schema_is_rejected_without_migration (test_review_regressions.ScopedRevocationTests) ... ok
+test_new_issuer_key_does_not_reset_shared_ancestor_budget (test_review_regressions.ScopedRevocationTests) ... ok
+test_restore_preserves_scoped_revocations_chains_and_accounts (test_review_regressions.ScopedRevocationTests) ... ok
+test_same_identity_cannot_replace_content (test_review_regressions.ScopedRevocationTests) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 3.505s
+
+OK

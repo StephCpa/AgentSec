@@ -226,7 +226,7 @@ class MixedTerminalTests(unittest.TestCase):
         with patch.object(self.sender,'exchange',side_effect=AssertionError('send after restore')):self.sender.deliver(self.l,'t','d')
 
     def test_authority_revocation_does_not_block_result_free_original_reconciliation(self):
-        self.ticket();self.l.revoke_credential('t','root');self.now=160
+        self.ticket();self.l.revoke_credential('t','root',root_id='root',kind='grant',issuer_kid=b'authority');self.now=160
         self.assertEqual(self.sender.reconcile(self.l,'t','d'),'CLOSED')
         self.assertFalse(self.inbox_rows());self.assertEqual(self.l.audit(),[])
 

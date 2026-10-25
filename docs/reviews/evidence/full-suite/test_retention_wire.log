@@ -1,0 +1,33 @@
+test_authenticated_malformed_payloads_still_rejected (__main__.RetentionWireTests) ... ok
+test_changed_fact_time_outcome_or_binding_changes_commitment (__main__.RetentionWireTests) ... ok
+test_checkpoint_cannot_claim_unapplied_target_or_inconsistent_root (__main__.RetentionWireTests) ... ok
+test_checkpoint_request_does_not_authorize_deletion (__main__.RetentionWireTests) ... ok
+test_context_closed_fields_and_namespace_separation (__main__.RetentionWireTests) ... ok
+test_cross_epoch_and_authority_offer_rejected_even_same_keys (__main__.RetentionWireTests) ... ok
+test_deterministic_vectors_match_saved_fixture (__main__.RetentionWireTests) ... ok
+test_duplicate_and_stale_offers_cannot_mutate_again (__main__.RetentionWireTests) ... ok
+test_event_time_and_outcome_boundaries (__main__.RetentionWireTests) ... ok
+test_every_immutable_context_field_changes_identity (__main__.RetentionWireTests) ... ok
+test_fact_closed_fields_and_derived_id (__main__.RetentionWireTests) ... ok
+test_final_receipt_cannot_answer_other_sequence_or_query_kind (__main__.RetentionWireTests) ... ok
+test_frame_and_canonical_encoding_fail_closed (__main__.RetentionWireTests) ... ok
+test_fresh_request_binding_and_nested_offer_authentication (__main__.RetentionWireTests) ... ok
+test_full_live_window_blocks_invalid_checkpoint (__main__.RetentionWireTests) ... ok
+test_lost_ack_later_checkpoint_requires_sender_archive (__main__.RetentionWireTests) ... ok
+test_maximum_field_frame_sizes (__main__.RetentionWireTests) ... ok
+test_maximum_sequence_is_not_wrapped_or_reassigned (__main__.RetentionWireTests) ... ok
+test_offer_interval_and_base_commitment_constraints (__main__.RetentionWireTests) ... ok
+test_partial_prefix_retirement_preserves_tail_and_high (__main__.RetentionWireTests) ... ok
+test_receiver_live_state_is_exact_and_contiguous (__main__.RetentionWireTests) ... ok
+test_retired_query_returns_no_reconstructed_outcome_or_time (__main__.RetentionWireTests) ... ok
+test_retry_receipts_normalize_to_identical_fact_and_root (__main__.RetentionWireTests) ... ok
+test_signature_alone_does_not_prove_sender_persistence (__main__.RetentionWireTests) ... ok
+test_signature_domain_and_kid_are_mandatory (__main__.RetentionWireTests) ... ok
+test_signature_each_byte_mutation_rejected (__main__.RetentionWireTests) ... ok
+test_signed_end_to_end_retirement_transition (__main__.RetentionWireTests) ... ok
+test_unrelated_key_and_wrong_role_rejected (__main__.RetentionWireTests) ... ok
+
+----------------------------------------------------------------------
+Ran 28 tests in 0.095s
+
+OK

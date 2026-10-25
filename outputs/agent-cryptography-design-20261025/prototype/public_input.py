@@ -50,7 +50,7 @@ def validate_public_response_body(status,body):
             if body:raise Rejected('GW_RESPONSE_BODY')
         elif status=='CHALLENGE':
             if set(body)!={'challenge','challenge_expiry','audience'} or type(body['challenge']) is not bytes or len(body['challenge'])!=32 or not uint(body['challenge_expiry']) or body['challenge_expiry']>2**62:raise Rejected('GW_RESPONSE_BODY')
-            identifier(body['audience'])
+            if body['audience']!='mixed-gateway-v1':raise Rejected('GW_RESPONSE_BODY')
         elif status=='RECORDED':
             if set(body)!={'operation','sequence'} or not uint(body['sequence'],1):raise Rejected('GW_RESPONSE_BODY')
             identifier(body['operation'])

@@ -1,0 +1,127 @@
+{
+  "profile": "witness-rpc-v1",
+  "ledger_profile": "mtls-witnessed-delegated-count-v1",
+  "status": "loopback-reference; synthetic-ledger-inputs; no-production-deployment",
+  "implementation": "witness_transport.py",
+  "schema": "witness_rpc_v1.cddl",
+  "schema_validation": "Runtime closed-field parser tested; no independent CDDL validation or protocol interoperability",
+  "bootstrap_trust": [
+    "Fixed CA, expected server hostname, client certificate/private key and witness Ed25519 public key/kid supplied out of band",
+    "Deployment namespace fixed by injected StateVault deployment_id",
+    "Certificate fingerprints and per-namespace roles provisioned offline; no grant/revoke RPC",
+    "Witness signer and TLS private keys are distinct; neither is the storage master key"
+  ],
+  "transport": {
+    "listen": "127.0.0.1 ephemeral port only",
+    "mutual_authentication": true,
+    "minimum_configured_version": "TLSv1.2",
+    "observed_versions": [
+      "TLSv1.2"
+    ],
+    "observed_ssl_library": "LibreSSL 2.8.3",
+    "server_hostname_verified": true,
+    "default_system_roots_loaded": false,
+    "frame": "WRP1 || uint32be(metadata_length) || uint32be(body_length) || metadata || raw_body",
+    "max_metadata_bytes": 8192,
+    "max_body_bytes": 16777216,
+    "frames_per_connection": 1,
+    "client_deadline": "Monotonic absolute deadline across connect, TLS handshake, send and receive; remaining time applied before each blocking network call",
+    "timeout_semantics": "Timeout is an unknown commit outcome, not server cancellation; SQLite lock wait and computation may outlast transport deadline",
+    "resource_limits": "Bounded frame allocation and per-connection network deadlines; no bounded worker pool, rate limiting or total service execution budget"
+  },
+  "roles": {
+    "admin": [
+      "bootstrap",
+      "cas",
+      "head",
+      "image"
+    ],
+    "writer": [
+      "cas",
+      "head",
+      "image"
+    ],
+    "restorer": [
+      "head",
+      "image"
+    ],
+    "observer": [
+      "head"
+    ]
+  },
+  "authorization": {
+    "principal": "SHA256 of TLS-verified DER leaf certificate",
+    "scope": "exact fixed deployment namespace",
+    "write_check": "Current grant and revocation checked inside the same BEGIN IMMEDIATE transaction as bootstrap/CAS, before historical retry lookup",
+    "read_check": "Permission and head/image read share one SQLite read transaction",
+    "revocation_order": "Revocation committed before authorization snapshot denies; an already authorized transaction can finish first. No retroactive erasure of returned data",
+    "certificate_rotation": "New certificate means new fingerprint and explicit new grant; no automatic migration",
+    "certificate_trust_limit": "Local grant revocation supported; no general CA CRL/OCSP lifecycle"
+  },
+  "requests": {
+    "metadata": "Restricted deterministic CBOR from wire.py; exact field set per method",
+    "challenge": "Fresh OS-random 32 bytes for each call, including retries",
+    "body_binding": "body_size and SHA256(raw body); head request body must be empty",
+    "cas": "Expected old sequence/digest plus independent random 128-bit request_id; exact same logical retry retains request_id/body/base but gets fresh challenge",
+    "body_validation": "Witness treats image as bounded opaque bytes; ledger recovery validates canonical full-state structure and contents"
+  },
+  "responses": {
+    "signature": "COSE_Sign1 with mandatory tag 18, protected alg -19 and pinned kid, empty unprotected map, Ed25519 signature",
+    "external_aad": [
+      "agent-action-system",
+      1,
+      "WitnessResponse",
+      "Ed25519-SHA256-CBOR-v1"
+    ],
+    "signed_binding": [
+      "profile",
+      "service",
+      "method",
+      "namespace",
+      "challenge",
+      "SHA256(exact request metadata bytes)",
+      "TLS requester certificate fingerprint",
+      "status",
+      "result",
+      "response body_size",
+      "SHA256(response body bytes)"
+    ],
+    "verification": "Pinned signer and kid, closed field set, exact request context, fresh challenge and requester; successful write seq/digest must match requested state; head image must hash to signed digest",
+    "freshness_limit": "Proves a response belongs to this outstanding request under the honest signer assumption; does not stop a compromised witness signing stale or equivocal heads",
+    "rejection": "Only allowlisted signed error codes. Invalid framing/TLS/unexpected server failures close connection. No raw exceptions or unauthenticated success"
+  },
+  "recovery_rules": [
+    "No TLS, signer, authorization or protocol failure permits plaintext fallback",
+    "A CAS may have committed even if response is absent, late, malformed or unverifiable",
+    "Local tentative rollback is not a witness rollback and does not restore spent/held authority",
+    "Reconcile authenticated current head and recover the accepted exact state before divergent replica resumes",
+    "Unavailable authenticated witness blocks progress; never bootstrap from an old local balance"
+  ],
+  "witness_assumptions": [
+    "Accepted history does not roll back",
+    "Linearizable CAS and full image durability",
+    "Trusted signer, CA/bootstrap and permission store",
+    "Independent fault domain required for production; two local SQLite files do not establish it"
+  ],
+  "evidence": {
+    "report": "witness_transport_test_results.json",
+    "test_methods": 19,
+    "network_calls": 332,
+    "passed": true,
+    "actual_process_death_tests_in_this_suite": 0,
+    "existing_recovery_process_cut_suite": "witnessed_test_results.json"
+  },
+  "remaining": [
+    "Production CA/key custody, rotation, revocation and workload identities",
+    "Independent nonrollback witness deployment and replica consistency",
+    "Bounded server resources and lock-free or short-lock remote commit architecture",
+    "Incremental authenticated recovery log and performance evaluation",
+    "Agent recipient/outbox/network publication protocol",
+    "Full external observation privacy proof",
+    "Independent parser/CDDL/COSE review and interop"
+  ],
+  "references": [
+    "https://docs.python.org/3.9/library/ssl.html",
+    "https://cryptography.io/en/49.0.0/x509/tutorial/"
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "profile": "delegated-count-aes256-gcm-siv-v1",
+  "status": "synthetic-reference-implementation-not-reviewed-production-protocol",
+  "implementation": "encrypted_ledger.py",
+  "primitive_library": "cryptography==49.0.0",
+  "aead": "AES-256-GCM-SIV",
+  "key_source": "Trusted bootstrap outside database; 32 high-entropy secret bytes and pinned public 16-byte deployment_id",
+  "key_derivation": {
+    "algorithm": "HKDF-SHA256",
+    "length_bytes": 32,
+    "salt": "deployment_id",
+    "info_cbor_array": [
+      "agent-state-vault",
+      1,
+      "purpose"
+    ],
+    "purposes": [
+      "encryption",
+      "result-binding",
+      "database-key-check"
+    ]
+  },
+  "envelope": {
+    "magic_ascii": "ACV1",
+    "version_uint32_big_endian": 1,
+    "nonce_bytes": 12,
+    "nonce_source": "OS secrets.token_bytes per encryption; do not intentionally reuse",
+    "tag_bytes": 16,
+    "layout": "magic || version || nonce || ciphertext || tag",
+    "max_plaintext_bytes": 65536,
+    "overhead_bytes": 36
+  },
+  "context_cbor_array": [
+    "agent-state-vault",
+    1,
+    "deployment_id_bytes",
+    "kind",
+    "identity_array"
+  ],
+  "aead_aad": "8-byte magic/version header || context_cbor",
+  "records": {
+    "seed": {
+      "identity": [
+        "tenant",
+        "operation_id",
+        "internal_json_action_sha256_hex"
+      ],
+      "plaintext": "32 bytes",
+      "ciphertext_envelope_bytes": 68
+    },
+    "result": {
+      "identity": [
+        "tenant",
+        "operation_id",
+        "internal_json_action_sha256_hex"
+      ],
+      "plaintext": "uint64 big endian count",
+      "ciphertext_envelope_bytes": 44
+    },
+    "snapshot": {
+      "identity": [
+        "tenant",
+        "domain_id",
+        "snapshot_id"
+      ],
+      "plaintext": "N bytes, each 0 or 1; N is public capacity 1..65535",
+      "ciphertext_envelope_bytes": "N+36"
+    },
+    "job-state": {
+      "identity": [
+        "tenant",
+        "operation_id",
+        "internal_json_action_sha256_hex",
+        "domain_id",
+        "queue_seq",
+        "work",
+        "pc"
+      ],
+      "plaintext": "struct >I4B: count_value, alive0, alive1, g0, g1",
+      "ciphertext_envelope_bytes": 44
+    }
+  },
+  "result_binding": {
+    "kind": "result-binding",
+    "identity": [
+      "tenant",
+      "operation_id",
+      "internal_json_action_sha256_hex"
+    ],
+    "format": "hmac-v1: || lowercase_hex(HMAC-SHA256(binding_key, context_cbor || result_8_bytes))",
+    "verification": "constant-time compare after authenticated result decryption",
+    "semantics": "internal contextual binding; no public verifier and no bearer authority"
+  },
+  "database_key_check": "lowercase_hex(HMAC-SHA256(database-key-check key, CBOR([database-key-check,1,deployment_id])))",
+  "failure": "Reject before returning plaintext; rollback current business transaction; never refund STARTED, replace committed seed, or invent a default snapshot/result",
+  "migration": "fresh databases only; missing metadata or wrong profile/key fails closed",
+  "online_key_rotation": false,
+  "exposed_metadata": [
+    "public IDs",
+    "signed credential links",
+    "action parameters",
+    "budget accounts",
+    "operation states",
+    "queue order",
+    "logical slots",
+    "record sizes",
+    "access patterns"
+  ],
+  "outside_claim": [
+    "KMS/HSM integration",
+    "production key generation and custody",
+    "whole-ledger authenticity",
+    "rollback prevention",
+    "memory/swap/log erasure",
+    "network authentication",
+    "physical timing confidentiality",
+    "independent cryptographic review"
+  ],
+  "schedule": "work=N+82, pc=0 admission without private input; pc>=1 executes kernel after durable L1"
+}

@@ -1,0 +1,63 @@
+{
+  "implementation": "encrypted_mixed_ledger.py",
+  "profile": "signed-mixed-aes256-gcm-siv-v1",
+  "status": "synthetic signed mixed encrypted prototype; not a production service",
+  "cryptography": "Reuse StateVault: AES-256-GCM-SIV; HKDF-SHA256 purpose separation; HMAC-SHA256 contextual result binding",
+  "key_custody": "32-byte master key and 16-byte deployment ID supplied outside database; single key version; no KMS/rotation/memory erasure",
+  "envelope": "ACV1 || uint32be(1) || nonce[12] || ciphertext || tag[16]; 36-byte overhead",
+  "widths": {
+    "count_seed": 32,
+    "histogram_tape": "10B bytes, maximum 640",
+    "snapshot": "N categorical bytes; count values 0/1, histogram values 0..B",
+    "count_result": 8,
+    "histogram_result": "8B bytes, maximum 512",
+    "count_private_state": "8 bytes: >I4B",
+    "histogram_private_state": "12B bytes: per-bucket >I4BI = count:u32,alive0:u8,alive1:u8,g0:u8,g1:u8,output:u32; maximum 768"
+  },
+  "shape_binding": [
+    "mechanism",
+    "public N",
+    "public B",
+    "K=40",
+    "codec",
+    "catalog ID",
+    "ordered catalog digest"
+  ],
+  "aad": {
+    "fields": "mixed-seed / mixed-result plus tenant, operation ID, internal action digest, domain, accountant and complete public shape",
+    "snapshot": "mixed-snapshot plus tenant, domain, snapshot ID, accountant and public shape; distinguishes count/histogram and catalog order",
+    "private_state": "mixed-job-state plus operation identity/shape, queue sequence, exact public work and pc"
+  },
+  "checks": [
+    "Internal action bytes hash must match persisted digest before secret use",
+    "Catalog JSON canonical order/labels and SHA-256 match public digest",
+    "Exact plaintext width and value ranges revalidated after successful AEAD authentication",
+    "Result must match contextual HMAC; bare hash/token substitution rejected",
+    "Legacy clear accumulator columns retain only public defaults",
+    "Storage profile and key-check revalidated each transaction; old/plain services and wrong deployment/key reject"
+  ],
+  "atomicity": "AEAD seals before SQL write; entire result, all domain/ancestor charges and final private checkpoint remain in scheduler transaction",
+  "private_progress": "Full tape L1 commits before snapshot read; later ticks keep exact tape; no partial output release; corruption never triggers reseed/refund/empty-state fallback",
+  "verification": {
+    "report": "encrypted_mixed_test_results.json",
+    "test_methods": 21,
+    "actual_process_crash_scenarios": 6,
+    "B64_case": "N=1; seed/result/state ciphertext lengths 676/548/804; 5249 ticks; replay matches kernel",
+    "N65535_case": "B=4; snapshot ciphertext 65571; full snapshot decode and L1 admission verified; full 262465-tick job not run",
+    "wal_and_hot_journal": "Synthetic tape, master-key and categorical-snapshot sentinel absence checked; not a memory-erasure proof",
+    "whole_database_rollback_negative_control": "Consistent pre-L1 database copy reopens and audits after a later completed job; rollback remains undetected"
+  },
+  "remaining": [
+    "Authoritative nonrollback witness for full mixed schema",
+    "Authenticated vector result and terminal delivery",
+    "Production key custody/rotation and identity provenance",
+    "Trusted contribution preprocessing, assignment-rule provenance and lineage",
+    "Physical timing/access-pattern/privacy proof and independent interoperability",
+    "No old database migration or secure erasure guarantee"
+  ],
+  "witness_extension": {
+    "implementation": "witnessed_mixed_ledger.py",
+    "contract": "witnessed_mixed_contract.json",
+    "scope": "Separate full-state and mTLS witness profiles now fence local rollback; witness nonrollback remains an assumption. Base encrypted profile still cannot detect whole-database rollback."
+  }
+}

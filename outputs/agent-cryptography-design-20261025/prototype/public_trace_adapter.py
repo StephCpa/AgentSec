@@ -74,7 +74,7 @@ class PublicTraceAdapter:
             job['publication']='ADMITTED' if allowed else 'WITHHELD'
             if allowed:
                 context=root['context'];h=r.context_hash(context);seq=self.route_high.get(h,0)+1;self.route_high[h]=seq
-                job.update(context=context,route_seq=seq,issued_at=self.now,expires_at=min(self.now+root['ttl'],root['expires_at'],job['action']['deadline'],self.cfg['keys'][job['action']['kid']]['expires_at']))
+                job.update(context=context,route_seq=seq,issued_at=self.now,expires_at=min(self.now+root['ttl'],root['expires_at'],job['action']['deadline'],job['authorization_expiry'],self.cfg['keys'][job['action']['kid']]['expires_at']))
                 self.events.append(('JOURNAL','ADMITTED',job['id'],h.hex(),seq))
             else:self.events.append(('JOURNAL','WITHHELD',job['id']))
         self._drain()
@@ -93,13 +93,13 @@ class PublicTraceAdapter:
         costs={'domain:epsilon':E,'domain:delta':D};limits={};previous=None;previous_raw=None;expiry=root['expires_at'];seen=set();new_credentials={}
         for index,raw in enumerate(chain):
             c=parse_mixed_credential(raw);policy=c['policy'];issuer=keys.get(c['issuer_kid']);subject=keys.get(c['subject_kid'])
-            if issuer is None or subject is None or c['tenant']!=cfg['tenant'] or c['root']!=action['root'] or c['id'] in seen:raise Rejected('PUBLIC_DENIED')
-            seen.add(c['id'])
+            if issuer is None or subject is None or c['tenant']!=cfg['tenant'] or c['root']!=action['root'] or (c['tenant'],c['root'],c['kind'],c['issuer_kid'],c['id']) in seen:raise Rejected('PUBLIC_DENIED')
+            identity=(c['tenant'],c['root'],c['kind'],c['issuer_kid'],c['id']);seen.add(identity)
             kid,_=verify_sign1(raw,issuer['public_key'],'MixedGrant' if index==0 else 'MixedDelegation')
             if kid!=c['issuer_kid'] or issuer['actor']!=c['issuer'] or subject['actor']!=c['subject'] or subject['role']!='instance':raise Rejected('PUBLIC_DENIED')
             if any(k.get('revoked',False) or not k['not_before']<=self.now<k['expires_at'] for k in (issuer,subject)):raise Rejected('PUBLIC_DENIED')
             if not c['not_before']<=self.now<c['expires_at']:raise Rejected('PUBLIC_DENIED')
-            if c['id'] in self.credentials and self.credentials[c['id']]!=raw:raise Rejected('PUBLIC_DENIED')
+            if identity in self.credentials and self.credentials[identity]!=raw:raise Rejected('PUBLIC_DENIED')
             if index==0:
                 if (c['kind']!='grant' or c['id']!=action['root'] or c['depth']!=0 or c['parent_digest']!=b'' or kid!=root['authority'] or issuer['role']!='root' or c['subject']!=root['actor'] or c['expires_at']>root['expires_at'] or not set(policy['recipients'])<={root['recipient']} or c['epsilon_cap']>cfg['epsilon_limit'] or c['delta_cap']>cfg['delta_limit']):raise Rejected('PUBLIC_DENIED')
             else:
@@ -111,7 +111,7 @@ class PublicTraceAdapter:
             digest=hashlib.sha256(raw).hexdigest()
             for name,cost in [('epsilon',E),('delta',D)]:
                 account='credential:'+digest+':'+name;costs[account]=cost;limits[account]=c[name+'_cap']
-            expiry=min(expiry,c['expires_at'],issuer['expires_at'],subject['expires_at']);previous=c;previous_raw=raw;new_credentials[c['id']]=raw
+            expiry=min(expiry,c['expires_at'],issuer['expires_at'],subject['expires_at']);previous=c;previous_raw=raw;new_credentials[identity]=raw
         policy=previous['policy']
         if (action['leaf_digest']!=hashlib.sha256(previous_raw).digest() or previous['subject']!=action['actor'] or previous['subject_kid']!=action['kid'] or action['not_before']<previous['not_before'] or action['deadline']>previous['expires_at'] or action['snapshot'] not in policy['snapshots'] or action['recipient'] not in policy['recipients'] or action['mechanism'] not in policy['mechanisms'] or action['operation_kind'] not in policy['operations']):raise Rejected('PUBLIC_DENIED')
         if action['operation_kind']=='histogram' and policy['catalogs'].get(action['catalog'])!=action['catalog_digest']:raise Rejected('PUBLIC_DENIED')

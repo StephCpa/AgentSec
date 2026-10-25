@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "test_methods": 17,
+  "source_sha256": {
+    "test_public_transcript.py": "0c24188a1f27be7c786a006b5cf3f5ef578021e414d60322e82c2a777fa87411",
+    "public_transcript_model.py": "b7359c606065a3ef63efc56c2d7ea1158a72f0eee99523eb4a7f702134e6644e",
+    "fixed_work_model.py": "06b194302f777bec7977166869f6e83ee11daf83d7b2c1c302ae9bf013603860"
+  },
+  "scope": "Public protocol simulator semantic tests, not a live service or runtime refinement."
+}

@@ -1,0 +1,128 @@
+{
+  "status": "integrated_P2_reference_demo_passed_full_stage_acceptance_open",
+  "implementation": "p2_scenario.py",
+  "test": "test_p2_scenario.py",
+  "test_report": "p2_scenario_test_results.json",
+  "scenario_report": "p2_scenario_results.json",
+  "scenario_report_sha256": "0a52ebd9f739ff9cd60a7839ffd34e868ff7ad8e7d374a32275d00f31563f4be",
+  "requirements": [
+    {
+      "id": "P2-01",
+      "requirement": "用户授权与两级委托",
+      "event": "user_authorization",
+      "evidence_scope": "Actual root signature plus manager→worker→distinct leaf/other chains; fixture-managed synthetic identities, not user identity provisioning.",
+      "status": "passed_in_reference_scenario"
+    },
+    {
+      "id": "P2-02",
+      "requirement": "两个分析角色共享账户并发查询",
+      "event": "concurrent_shared_admission",
+      "evidence_scope": "Two synchronized concurrent clients, actual count/histogram registration, shared domain/root/intermediate caps. Deterministic Python role drivers, not live LLMs.",
+      "status": "passed_in_reference_scenario"
+    },
+    {
+      "id": "P2-03",
+      "requirement": "跨任务额度守恒",
+      "event": "shared_cap_blocks_third_query",
+      "evidence_scope": "Two operations reserve shared 2-unit ancestor caps; signed third operation is BUDGET_EXHAUSTED despite remaining domain capacity.",
+      "status": "passed_in_reference_scenario"
+    },
+    {
+      "id": "P2-04",
+      "requirement": "提交后回复丢失与固定结果重试",
+      "event": "committed_reply_loss_and_retry",
+      "evidence_scope": "Fault injected after tick local/authority commit; close/reopen sender and retry exact tick ID. Seed/result and accounts unchanged; each operation creates randomness once.",
+      "status": "passed_in_reference_scenario"
+    },
+    {
+      "id": "P2-05",
+      "requirement": "提交完成后才交付",
+      "event": "committed_outputs_then_delivery_admission",
+      "evidence_scope": "Actual L3 tickets after full committed/publication states; full 32-byte histogram and 8-byte count results persisted before mTLS send.",
+      "status": "passed_in_reference_scenario"
+    },
+    {
+      "id": "P2-06",
+      "requirement": "撤销阻止新的领取准入",
+      "event": "revocation_blocks_new_delivery",
+      "evidence_scope": "Shared intermediate credential revoked after original L3 admissions. New request rejected; original finite-lifetime tickets remain recoverable under declared semantics.",
+      "status": "passed_in_reference_scenario"
+    },
+    {
+      "id": "P2-07",
+      "requirement": "原结果交付与丢失接收回复重试",
+      "event": "original_results_delivered",
+      "evidence_scope": "Actual recipient commit then socket reply loss. Original envelope retry after revocation keeps original acceptance time; both outputs confirmed.",
+      "status": "passed_in_reference_scenario"
+    },
+    {
+      "id": "P2-08",
+      "requirement": "写作角色只用已获准结果",
+      "event": "writer_uses_only_authenticated_outputs",
+      "evidence_scope": "Pure adapter verifies exact delivery request/receiver receipt and expected operation set; rejects missing/forged/cross-operation/terminal-only evidence. No raw snapshot argument; no OS or LLM isolation guarantee.",
+      "status": "passed_in_reference_scenario"
+    },
+    {
+      "id": "P2-09",
+      "requirement": "审计核对消费与输出",
+      "event": "audit_matches_consumption_and_output",
+      "evidence_scope": "Actual sender/receiver audits; 16 charge rows and 10 domain/ancestor accounts agree with two operations; receiver GC floor 2 and archived fact verified.",
+      "status": "passed_in_reference_scenario"
+    }
+  ],
+  "validation": {
+    "test_methods": 8,
+    "network_requests": {
+      "sender_witness": 908,
+      "receiver_witness": 10,
+      "delivery": 4
+    },
+    "observed_tls_versions": [
+      "TLSv1.2"
+    ],
+    "budget": {
+      "domain_epsilon_spent": 1400000,
+      "domain_delta_spent": 16777216,
+      "shared_ancestor_units": 2,
+      "charged_operations": 2,
+      "charge_rows": 16,
+      "checked_accounts": 10
+    },
+    "randomness_generation_calls": {
+      "analysis_count": 1,
+      "analysis_hist": 1
+    },
+    "faults": [
+      "Committed scheduler API reply lost after authority/local commit; same request retry after reopen",
+      "Recipient ACK socket reply lost after actual receiver commit"
+    ],
+    "actual_process_death_in_this_suite": false,
+    "concurrency": "Two signed role clients start registration at a barrier; strong ledger serialization resolves transactions. Execution uses existing public deterministic scheduler.",
+    "same_budget_utility_evaluation": false,
+    "performance_benchmark": false
+  },
+  "writer_boundary": {
+    "inputs": [
+      "trusted immutable context",
+      "exact signed delivery requests and receiver accepted receipts",
+      "trusted expected operation IDs"
+    ],
+    "output": "Structured records and deterministic report text derived only from authenticated full result envelopes.",
+    "not_claimed": [
+      "raw-data isolation from malicious code or host",
+      "prompt injection resistance of an LLM",
+      "new consent or permission to re-deliver",
+      "receipt proof of physical delivery/read or downstream exactly-once effects"
+    ]
+  },
+  "remaining": [
+    "Actual LLM/tool API and enforced process/container identity boundary",
+    "Real identity/classifier and global privacy-domain lineage; fixed-roster contribution pipeline is now integrated in separate combined reference scenario",
+    "Public Agent-facing observation protocol including pre-L3 withheld/cancel and cross-route ordering",
+    "Production key/identity/authority lifecycle and independent nonrollback recovery",
+    "Independent interop/security review and full formal refinement",
+    "B0-B4 correctly composed baselines, same-budget utility and performance measurements",
+    "P5 hidden authorization and P6 TEE/MPC extension work"
+  ],
+  "combined_contribution_workflow": "contribution_delivery_contract.json; original scenario default remains synthetic prebounded snapshot fixture"
+}

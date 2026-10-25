@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "test_methods": 23,
+  "crash_cut_count": 3,
+  "actual_process_crash_cuts": [
+    "after_proof_consumption",
+    "before_reserve_commit",
+    "after_reserve_commit"
+  ],
+  "short_parser_inputs": 65536,
+  "signature_mutations": 64,
+  "cryptography_version": "49.0.0",
+  "python_version": "3.9.6 (default, Apr 30 2025, 02:07:17) \n[Clang 17.0.0 (clang-1700.0.13.5)]",
+  "sqlite_version": "3.43.2",
+  "source_sha256": {
+    "wire.py": "b2e95928c604c923ec549a74f599fd4a16fc4ccec5841474aabf64ec55de6d58",
+    "signed_ledger.py": "e777d588e232d0f6f42f3d935b8105ec8b17045ef3eb2cec516975f04a4cd22f",
+    "test_signed_ledger.py": "c28e0f8fc365b5ff61e49343f2f1d433ae369c403f849efdb6ddb9c65745aa50",
+    "ledger.py": "5bdd63777480e26d56d89d00e4d0f7a7030668377ca164756f2752103cf04dc7",
+    "scheduled_ledger.py": "d8d4b2c32b5028066190845298f8e434fe5d6e262e5adad1c48d221be06511e0",
+    "dp_ledger.py": "35f0c336d549bf0145fd79bcb9b02416b0a729d60d990fc34e477b744887054b",
+    "count_direct_v1.cddl": "75f0e4427d8c8c3e342809e00214f39158a8b536fd98cab1ee55e6f0ab9c0d8c",
+    "wire_vectors.json": "690e64be4278fa69f56c67a89bc19a48b9ddbf30de39b300d2e85562954a019b"
+  },
+  "failures": [],
+  "errors": [],
+  "scope": "Bounded CBOR/COSE direct-root count profile and transactional replay; no workload attestation, delegation or public transport authentication"
+}

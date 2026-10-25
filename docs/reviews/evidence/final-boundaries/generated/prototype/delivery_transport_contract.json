@@ -1,0 +1,163 @@
+{
+  "profile": "count-delivery-v1",
+  "ledger_profile": "mtls-count-delivery-outbox-v1",
+  "implementation": "delivery_transport.py",
+  "status": "synthetic fixed-count push prototype; loopback network; not full publication protocol",
+  "entrypoint": "Trusted driver calls admit_delivery only after inherited ordered RELEASE qualification. No untrusted fetch/readiness/status RPC.",
+  "identities": {
+    "deployment": "fixed by StateVault bootstrap",
+    "route": "immutable (tenant, recipient, gateway, session) plus both TLS certificate fingerprints and separately configured application signing keys/kids",
+    "session": "durable logical delivery session, not a TLS session or connection ID; reconnect retains the original route",
+    "management": "trusted in-process registration/revocation; no public management API, credential rotation or workload attestation",
+    "transport": "mTLS fixed CA and expected server hostname; exact server certificate pin checked BEFORE any application/result bytes; receiver matches verified client certificate fingerprint to configured gateway",
+    "application_key_id_limit_bytes": 32
+  },
+  "outbox": {
+    "registration": "on_delivery_admitted hook creates QUEUED outbox row in same witnessed L3 transaction as ticket; rejection/crash commits neither or both",
+    "prepare": "verify live route, original ticket expiry, earliest unacknowledged route sequence, result binding and gateway signing key; persist encrypted immutable COSE envelope, READY state and handoff admission before network send",
+    "encryption": "StateVault AEAD kind delivery-envelope with identity (tenant, delivery_id); signed acknowledgements and request evidence encrypted with kind delivery-ack",
+    "authority": "full route/outbox/receipt tables included in authoritative witness images and exact recovery",
+    "states": [
+      "QUEUED",
+      "READY",
+      "ACKED"
+    ],
+    "retry": "same signed envelope and result, fresh 32-byte attempt challenge; no new mechanism run, budget charge, L3 admission or expiry extension",
+    "ack": "verify pinned recipient signer/kid, signature domain, current attempt challenge/request digest, envelope hash, identity and historical acceptance time; persist ACKED and receipt in witnessed transaction",
+    "ack_after_expiry": "Historical valid ACK may be persisted after original expiry; this does not authorize another result transmission"
+  },
+  "envelope": {
+    "type": "CountDelivery",
+    "format": "restricted deterministic CBOR inside tagged COSE_Sign1 Ed25519 alg -19",
+    "fields": [
+      "profile",
+      "deployment",
+      "tenant",
+      "recipient",
+      "gateway",
+      "session",
+      "sender_cert",
+      "receiver_cert",
+      "delivery",
+      "operation",
+      "seq",
+      "issued_at",
+      "expires_at",
+      "result[8]"
+    ],
+    "external_aad": [
+      "agent-action-system",
+      1,
+      "CountDelivery",
+      "Ed25519-SHA256-CBOR-v1"
+    ],
+    "gateway_claim": "Gateway attests original ticket/result binding; recipient trusts gateway, not an independently verified ledger execution proof"
+  },
+  "acknowledgement": {
+    "type": "CountDeliveryAck",
+    "fields": [
+      "profile",
+      "deployment",
+      "tenant",
+      "delivery",
+      "seq",
+      "SHA256(exact signed envelope bytes)",
+      "attempt challenge",
+      "SHA256(exact attempt metadata bytes)",
+      "receiver_cert",
+      "accepted_at"
+    ],
+    "external_aad": [
+      "agent-action-system",
+      1,
+      "CountDeliveryAck",
+      "Ed25519-SHA256-CBOR-v1"
+    ],
+    "meaning": "Configured recipient claims durable inbox acceptance; not evidence of downstream business effects, human reading, or honest storage by a malicious recipient"
+  },
+  "recipient": {
+    "storage": "separate SQLite inbox, separately injected StateVault key, fixed route/profile check; envelope encrypted before SQL write",
+    "uniqueness": "one record per delivery_id and sequence within the fixed deployment/route inbox; not once per operation across multiple lawful tickets",
+    "transaction": "BEGIN IMMEDIATE; clock floor; exact-duplicate check or first-insert expiry and next-sequence check; commit before ACK signature/send",
+    "duplicates": "only byte-identical envelope can reuse record; fresh challenge yields fresh signed ACK carrying original accepted_at; no second insertion",
+    "clock": "trusted integer time; rollback rejected; floor persists on business rejection; accepted_at is sampled inside the receipt transaction, not a physical commit deadline",
+    "assumptions": [
+      "honest cooperating recipient",
+      "durable nonrollback inbox and retained dedup records",
+      "trusted time",
+      "private key custody"
+    ],
+    "excluded": "No protection against recipient restoring a stale inbox, deleting dedup tombstones, lying in ACK, or repeating downstream business effects"
+  },
+  "ordering": {
+    "implemented": "FIFO within one fixed route; sender cannot attempt later unacknowledged sequence; recipient rejects unseen sequence gaps",
+    "expired_head": "Fail closed; no automatic gap skip, reset or lifetime extension. Later tickets remain blocked",
+    "remaining": "signed terminal/withheld events, authenticated gap reconciliation, cross-route protection-domain publication, safe GC and complete network observation refinement"
+  },
+  "revocation": {
+    "authority": "new L3 checks current root/chain; already admitted original ticket may finish until its original expiry",
+    "transport_route": "revoked route blocks future preparation including old tickets; already prepared/in-flight bytes are not recalled",
+    "credential_expiry": "TLS library enforces certificate validity; no CA lifecycle/OCSP/CRL system"
+  },
+  "failure_matrix": {
+    "before_l3_commit": "no ticket/outbox or authoritative committed pair requiring recovery",
+    "before_outbox_commit": "no usable send envelope is returned",
+    "witness_accepts_outbox_local_fails": "recover exact READY envelope before send",
+    "after_outbox_commit_before_send": "retry original envelope within ticket lifetime",
+    "before_inbox_commit": "no record; retry original envelope",
+    "after_inbox_commit_ack_lost": "exact retry returns same acceptance fact; one inbox record",
+    "after_ack_received_before_sender_commit": "outbox may remain READY; same-envelope retry safe under inbox assumptions",
+    "witness_accepts_ack_local_fails": "recover ACKED state; no new network send",
+    "expired_unknown_outcome": "no result retransmission; historical ACK can be stored if already held; receipt-only reconciliation still missing"
+  },
+  "network": {
+    "bind": "127.0.0.1 ephemeral port only; server closed after tests",
+    "frame": "DLV1 || uint32be(size) || packet",
+    "max_packet_bytes": 8192,
+    "deadline": "monotonic client deadline across connect/handshake/write/read; server network deadline 5 seconds; no cancellation guarantee for in-progress DB work",
+    "observed_tls_versions": [
+      "TLSv1.2"
+    ],
+    "ssl_library": "LibreSSL 2.8.3",
+    "limitations": [
+      "unbounded aggregate worker concurrency/rate remains",
+      "witness calls still hold local ledger locks",
+      "network timing, lengths, reconnections and fault patterns lack joint privacy proof",
+      "no end-to-end HPKE ciphertext through untrusted intermediaries"
+    ]
+  },
+  "evidence": {
+    "report": "delivery_transport_test_results.json",
+    "passed": true,
+    "test_methods": 25,
+    "delivery_network_calls": 25,
+    "actual_process_crash_cuts": [
+      "before_inbox_commit",
+      "after_inbox_commit",
+      "before_ack_commit",
+      "after_ack_commit",
+      "before_delivery_commit",
+      "after_delivery_commit",
+      "before_outbox_commit",
+      "after_outbox_commit"
+    ],
+    "scope": "All ledger rows synthetic; ephemeral test CA/keys; process death is not power-loss or multi-host failover validation"
+  },
+  "remaining": [
+    "Complete ordered public observation protocol, terminal gap events and non-disclosing status/error strategy",
+    "Recipient receipt-only reconciliation after expiry and durable application effects protocol",
+    "Production identity enrollment, certificate/signing-key rotation and recipient inbox recovery",
+    "Independent CDDL/COSE interoperability and parser review",
+    "Load/resource limits and incremental witness architecture",
+    "Full end-to-end privacy/security proof and histogram integration"
+  ],
+  "references": [
+    "https://docs.python.org/3.9/library/ssl.html",
+    "https://www.sqlite.org/atomiccommit.html"
+  ],
+  "terminal_extension": {
+    "profile": "mtls-count-delivery-terminal-v1",
+    "contract": "delivery_terminal_contract.json",
+    "scope": "Separate fresh-profile extension supplies result-free post-expiry ACCEPTED/CLOSED barrier; base profile remains fail-closed at expired head"
+  }
+}

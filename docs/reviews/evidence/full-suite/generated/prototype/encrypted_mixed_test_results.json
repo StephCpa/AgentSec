@@ -1,0 +1,55 @@
+{
+  "passed": true,
+  "test_methods": 21,
+  "actual_process_crash_scenarios": [
+    {
+      "point": "after_scheduled_claim",
+      "preceding_pc": 0
+    },
+    {
+      "point": "before_tick_commit",
+      "preceding_pc": 1
+    },
+    {
+      "point": "after_work_step",
+      "preceding_pc": 84
+    },
+    {
+      "point": "after_scheduled_result_write",
+      "preceding_pc": 336
+    },
+    {
+      "point": "after_account_settle",
+      "preceding_pc": 336
+    },
+    {
+      "point": "after_tick_commit",
+      "preceding_pc": 336
+    }
+  ],
+  "crash_scenario_count": 6,
+  "whole_database_rollback_negative_control": "Old consistent database reopens and audits successfully; external witness still required",
+  "source_sha256": {
+    "encrypted_mixed_ledger.py": "1a085da145bd7fd0ef95a411fbfa3d9b94132508e7a9210127daeb5d2aca5740",
+    "test_encrypted_mixed_ledger.py": "d2c87ea063425d266d2238758ebc0c5f1de74057fff4bdf2ebff0c6eed4a2589",
+    "encrypted_ledger.py": "c1ac348a1657483efeaeb0eb4d43bae80b3990ce9b461f0a2b1533dd17ce32be",
+    "mixed_delegated_ledger.py": "69b87ad162fe3d462fcb31baccb6919e82938a7e8e2b20ea570737b7e9dde7bc",
+    "test_mixed_delegated_ledger.py": "9babf15f2c9584ed6ebd3d040376d81fb61ce1e97a2e71ea1cad4c377ecbd616",
+    "histogram_ledger.py": "afac61ce7dbc8cfe01e6756a243eea389724d59c8f51bcd22b2c0c2d606c32e0",
+    "delegated_ledger.py": "28cd13ef8d6b43f2ca1c9d273f3d32b92943278a0dbef2894eed1dc570cf3862",
+    "signed_ledger.py": "e777d588e232d0f6f42f3d935b8105ec8b17045ef3eb2cec516975f04a4cd22f",
+    "scheduled_ledger.py": "d8d4b2c32b5028066190845298f8e434fe5d6e262e5adad1c48d221be06511e0",
+    "dp_ledger.py": "35f0c336d549bf0145fd79bcb9b02416b0a729d60d990fc34e477b744887054b",
+    "ledger.py": "5bdd63777480e26d56d89d00e4d0f7a7030668377ca164756f2752103cf04dc7",
+    "wire.py": "b2e95928c604c923ec549a74f599fd4a16fc4ccec5841474aabf64ec55de6d58",
+    "../histogram_kernel.py": "9f369419e74020f2fc8e55fb74f5174d3d6c235e513b0bc6867064923f235831",
+    "../fixed_work_model.py": "06b194302f777bec7977166869f6e83ee11daf83d7b2c1c302ae9bf013603860",
+    "requirements-crypto.txt": "b1cf9fa6f606d1486e0e1294f0c8715991e9e79cc16f536be2c78ff60192ef4f"
+  },
+  "python_version": "3.9.6 (default, Apr 30 2025, 02:07:17) \n[Clang 17.0.0 (clang-1700.0.13.5)]",
+  "sqlite_version": "3.43.2",
+  "cryptography_version": "49.0.0",
+  "failures": [],
+  "errors": [],
+  "scope": "AEAD fixed-public-width fields for signed mixed count/histogram; no authoritative witness, KMS/rotation or authenticated vector network"
+}

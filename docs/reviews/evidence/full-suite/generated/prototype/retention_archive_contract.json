@@ -1,0 +1,96 @@
+{
+  "profile": "mixed-retention-archive-v2",
+  "status": "privileged_read_only_archive_and_streaming_checkpoint_verification_prototype",
+  "implementation": "retention_archive.py",
+  "tests": "test_retention_archive.py",
+  "report": "retention_archive_test_results.json",
+  "schema": "retention_archive_v2.cddl",
+  "purpose": "Recover the exact canonical ACCEPTED/CLOSED fact and original event time after receiver logical retirement. Does not retrieve result plaintext or manufacture a new receiver event.",
+  "trust_boundary": [
+    "Trusted caller pins full immutable context, exact receiver checkpoint request/reply and selected sequence independently of untrusted archive pages.",
+    "Receiver checkpoint signatures and original request binding are verified using existing retention-v2 domain/keys. Historical checkpoint is not proof of current freshness; a fresh authenticated challenge is required when freshness is needed.",
+    "Pages are canonical but UNSIGNED. Correctness is established only by complete contiguous hashing from context genesis through checkpoint.floor, matching its authenticated root under the existing hash commitment assumptions.",
+    "Archive export is privileged internal audit access. It is not exposed to the untrusted Agent and has no public authentication/authorization/network endpoint. Metadata remains sensitive.",
+    "Service honesty, authority nonrollback and cryptographic assumptions remain conditional. This is not a new proof of correct DP computation or trustworthy original disclosure."
+  ],
+  "page": {
+    "fields": [
+      "profile",
+      "context_hash",
+      "checkpoint_hash",
+      "first",
+      "base_root",
+      "facts"
+    ],
+    "checkpoint_binding": "SHA256(CBOR([\"retention-archive-checkpoint\",2,exact_request,exact_reply]))",
+    "maximum_facts": 16,
+    "maximum_encoded_bytes": 8192,
+    "canonical": "Existing restricted CBOR; unknown fields, route/epoch/checkpoint mismatch, malformed limits and overflow reject.",
+    "maximum_field_fixture_bytes": 6376,
+    "facts": "Original canonical retention facts only; no challenge-dependent receipt bytes, original result/envelope plaintext, operation decryption or new signature."
+  },
+  "sender_read": [
+    "Require no active caller transaction; begin SQLite write-exclusion transaction without modifying data.",
+    "Check trusted storage profile and current sender authority image. Validate receiver checkpoint, require requested interval within durably recorded retired<=confirmed frontier and receiver high<=sender admitted high.",
+    "Recompute archived root at checkpoint floor and compare; compute preceding root; fetch exact consecutive bounded rows and decrypt/validate only their canonical facts.",
+    "Encode bounded page; check authority again before leaving transaction. Authority advancement during read aborts. Roll back read transaction on success/error; no clock advance, accounting update, CAS, signing or result access.",
+    "Allow privileged historical read after route revocation. This never grants new disclosure or transfer permission."
+  ],
+  "verifier": [
+    "Start at sequence 1 and context genesis; pin target<=checkpoint.floor.",
+    "Require exact cursor/base-root, checkpoint hash and consecutive valid canonical facts; no skip, duplicate, reordering, overrun or post-completion extension.",
+    "Stage each page locally before updating state; malformed page or final root mismatch leaves previous cursor unchanged.",
+    "Earlier pages remain tentative until final root validation. result() rejects incomplete streams, even if the selected fact was in an earlier page. processed_prefix_length is progress, not authenticated output.",
+    "Keep only current root/cursor and selected fact plus one bounded page. After verifier state loss or an accepted tampered intermediate page, restart from genesis using the pinned checkpoint; no persisted resumable verifier state is implemented.",
+    "When complete, return original canonical fact bytes. Never relabel RETIRED as CLOSED, infer absence, refund privacy spend or recreate result delivery."
+  ],
+  "cost_and_availability": "Page and verifier working set are bounded. Exporter full-state freshness checks and repeated prefix scans are not bounded by page size; complete traversal can have quadratic aggregate scan cost. Sender archive remains inside existing 16 MiB image cap and all history is retained. No scalable index, external archive replication, availability SLA or global storage bound.",
+  "validation": {
+    "passed": true,
+    "test_methods": 19,
+    "actual_process_exit_cuts": [
+      "after_archive_roots",
+      "before_archive_fence",
+      "after_archive_read"
+    ],
+    "crash_scenario_count": 3,
+    "metrics": {
+      "real_archived_facts": 35,
+      "pages": 5,
+      "page_bytes": [
+        2691,
+        2691,
+        2691,
+        2696,
+        2699
+      ],
+      "selected_sequence": 17,
+      "maximum_fact_bytes": 383,
+      "maximum_field_page_bytes": 6376,
+      "maximum_field_fixture": "codec only; not a full uint64 history"
+    },
+    "coverage": [
+      "actual accepted and closed facts after recipient rows removed",
+      "35 actual retirements recovered in five pages with selected sequence 17",
+      "no result/clock/authority mutation during export",
+      "incomplete, missing, duplicated, reordered or altered page fails closed",
+      "checkpoint challenge/signature/context and cross-checkpoint page substitution",
+      "old checkpoint remains historical after later retirement",
+      "sender retirement confirmation required",
+      "route revocation retains privileged archive read",
+      "stale source requires exact restore",
+      "authority advances during read abort return",
+      "local corruption and missing attested archive rows rejected",
+      "frame/count/sequence limits and read transaction conflict"
+    ],
+    "scope": "Reference-authority read-path tests and real sender/recipient DB operations; no archive network transport or TLS fault matrix. Largest field page is a codec fixture, not a full uint64 history or workload benchmark."
+  },
+  "remaining": [
+    "Authenticated privileged audit API and deployment access policy",
+    "Scalable authenticated archive index, retention tiers and independent archive replication",
+    "Archive availability/disaster recovery and lifecycle/key governance",
+    "Durable verifier resume protocol if needed",
+    "Independent CDDL/COSE/parser interoperability review",
+    "Complete P2/baselines, public-observation refinement, production nonrollback and broader P3-P6 goals"
+  ]
+}

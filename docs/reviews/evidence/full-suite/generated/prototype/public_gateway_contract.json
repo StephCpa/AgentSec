@@ -1,0 +1,122 @@
+{
+  "profile": "agent-public-gateway-v1",
+  "status": "reference_public_gateway_verified_complete_observation_refinement_open",
+  "implementations": [
+    "PublicGatewayLedger",
+    "TLSPublicGatewayLedger",
+    "PublicGatewayTLSService",
+    "PublicGatewayClient"
+  ],
+  "sources": [
+    "public_gateway.py",
+    "public_gateway_transport.py",
+    "public_input.py"
+  ],
+  "wire_contract": "public_gateway_v1.cddl",
+  "test_report": "public_gateway_test_results.json",
+  "fresh_database_only": true,
+  "trust_boundary": "Only certificate-bound signed framed methods are public. Immutable enrollment, real identity provenance, scheduler, key custody, storage/authority maintenance and arbitrary Python/SQL remain trusted. Synthetic reference, no process isolation claim.",
+  "authentication": {
+    "request": "COSE Ed25519 AgentPublicRequestV1 with exact deployment, tenant, domain, actor, kid, request_id, method/payload and bounded creation window.",
+    "transport": "Mutual TLS plus immutable SHA256 client certificate enrollment; client checks pinned server certificate before application data and verifies each response with its preconfigured signing key.",
+    "response": "Separate AgentPublicResponseV1 signature binds complete request hash, deployment, per-domain journal sequence, status and bounded body.",
+    "authorization": "Explicit immutable per-key/domain rights; POLL/cancel additionally bind original action actor; root revoke binds root actor. FINAL is an explicit domain-observer right.",
+    "new_request_window": "0 < expiry-issued <=60 and issued <= trusted transaction time < expiry.",
+    "retry": "Recheck active key/enrollment and actual certificate. Same tenant+key+request_id and byte-identical original request returns exact committed response after original creation expiry; no new proof consumption or effect.",
+    "conflict": "Same request_id with changed method/payload/domain/raw signature receives generic REJECTED, sequence 0; original record stays immutable.",
+    "revocation": "Current key or enrollment revocation blocks even cached response access."
+  },
+  "methods": {
+    "CHALLENGE": "Issue original stored action-proof challenge with nonce and expiry; issuance and signed response journal commit together.",
+    "SUBMIT": "Verify inner mixed action, delegation chain and challenge proof; reserve operation/shared caps and original job; return RECORDED plus public operation sequence. No L1 sample.",
+    "CONTROL": "Immediate cancel, root revoke, persistent pause or resume, with explicit actor/right check. No work quantum or decrypted private operation/result is read. Ack records control application, not absence of previously authorized effects.",
+    "POLL": "Owner-scoped public operation sequence, UNPUBLISHED/ADMITTED/WITHHELD and UNFINALIZED/WITHHELD/ACCEPTED/CLOSED from durable public decisions/final events. Never readiness, progress, seed, partial result or full result.",
+    "FINAL": "Explicit domain-observer right, contiguous pages of <=16 finalized operation/outcome records. Client cursor is stateless; exact request retry preserves original page even if the frontier later advances."
+  },
+  "transaction": {
+    "outer": "One authoritative guard and clock, then authenticated request lookup.",
+    "effect": "Dedicated savepoint; a narrowly scoped transaction join permits existing challenge/admission primitives to participate without nested BEGIN or intermediate witness commit.",
+    "denial": "Selected pre-private execution public policy errors roll back dispatch effects and persist one generic signed denial. This includes budget denial without consumed proof.",
+    "success": "Effect, inner proof/challenge use, public control event, signed response and journal row enter one witness image and local commit.",
+    "unknown_failure": "Whole business transition aborts; no normal REJECTED or success fabricated. Lost witness receipt freezes until exact recovery.",
+    "trusted_scheduler": "Public controls are separate from private work advancement. New profile trusted advance accepts noop only; persistent public pause suppresses work while logical slots continue."
+  },
+  "state": {
+    "gw_meta": "Immutable gateway signer identity and TLS pin.",
+    "gw_domains": "Per-domain persisted public pause state.",
+    "gw_principals": "Immutable certificate/rights binding plus revocation bit.",
+    "gw_requests": "Contiguous tenant/domain sequence, unique tenant+key+request_id, original signed request, peer certificate, exact signed response and internal effect link."
+  },
+  "recovery": [
+    "Restore original authoritative image and validate signatures, request/response binding and contiguous request journal.",
+    "Every accepted action, challenge and consumed proof must have journal coverage. Every non-noop control event must have a matching successful public control record.",
+    "Pause state must equal the latest successful public pause/resume command; an empty journal cannot hide control-only effects.",
+    "Historical poll publication/final claims cannot contradict immutable decisions; final pages must match contiguous final records.",
+    "Existing contribution, publication, final-prefix and retention audits still run before recovery commit.",
+    "Return saved responses without redispatch, fresh challenge, resampling, republishing, renewed tickets or refunded spent budget."
+  ],
+  "verification": {
+    "test_methods": 23,
+    "signature_byte_mutations": 64,
+    "actual_process_crash_count": 9,
+    "actual_process_crash_scenarios": [
+      "after_public_effect",
+      "after_public_journal_write",
+      "before_witness_accept",
+      "after_witness_accept",
+      "after_local_anchor_write",
+      "after_public_request_commit",
+      "cancel:after_public_effect",
+      "cancel:after_public_journal_write",
+      "cancel:after_witness_accept"
+    ],
+    "network": {
+      "requests": {
+        "witness": 916,
+        "public": 11,
+        "receiver_witness": 4,
+        "delivery": 1
+      },
+      "rejected_server_pin_attempts": 1,
+      "tls_versions": [
+        "TLSv1.2"
+      ],
+      "scope": "Actual loopback mTLS public challenge/submit/poll/cancel/final calls, socket response loss, authenticated witness, fresh replica exact response recovery. Trusted local scheduler plus full histogram result over separate mTLS recipient and authenticated recipient witness, followed by signed public final page. All services share one host/CA and synthetic keys."
+    },
+    "coverage": [
+      "Atomic submission and exact replay after expiry",
+      "Concurrent duplicate requests and same-ID conflicts",
+      "Wrong actor/certificate/deployment/signature/window and signature domain",
+      "Identical public poll bodies before and during private execution",
+      "Cancel refund before L1 versus spending after L1 with same ACK body shape",
+      "Pause/resume/root revoke and precise fresh-replica recovery",
+      "Signed final page pagination and exact historical page retry",
+      "Authority-ahead recovery and stale old-replica rejection",
+      "Deleted control-only journal, missing effect coverage, unsigned response, unjournaled pause and premature poll claim rejected",
+      "Actual public response socket loss followed by full histogram delivery over mTLS recipient and separate authenticated witness"
+    ]
+  },
+  "error_boundary": {
+    "implemented": "Pure five-method payload/inner schema validation, corrected explicit public-policy denials, generic auth/window/conflict errors, strict response vocabulary before signing and on client verification, public-only polls and signed final pages.",
+    "incomplete": "Unknown/internal/integrity failures and invalid internal response shapes still abort or close connections. Data-dependent abort/reject behavior remains observable; health, overload, timeouts, connection patterns, lengths and timing are not proven simulatable.",
+    "consequence": "OBS-4 remains partial. These passing tests do not establish complete observation DP or refine every simulator trace."
+  },
+  "open": [
+    "OBS-4 exhaustive external error and availability mapping with adversarial negative controls",
+    "OBS-6 physical CPU/DB/transport observations and fault-model correspondence",
+    "OBS-7 independent arbitrary adaptive/concurrent cryptographic refinement",
+    "Independent CDDL/COSE interop and parser/security audit",
+    "Production workload identity, process isolation, key lifecycle, nonrollback authorities and cross-host failures",
+    "Scalable journal retention/aggregate admission; current public history is retained in full",
+    "Real identity/classifier/global lineage, strong P4 baselines and fair utility/performance, P5 and P6"
+  ],
+  "public_gateway_reference_implemented": true,
+  "public_final_pages_signed": true,
+  "public_journal_exact_recovery_verified": true,
+  "complete_error_mapping": false,
+  "cddl_independently_validated": false,
+  "independent_interoperability": false,
+  "complete_observation_privacy": false,
+  "production_ready": false,
+  "observation_extension": "public_observation_contract.json: 32 conditional equal-output runtime traces, 96 directed neighbor comparisons and actual mTLS private-failure negative controls. Not a full privacy/refinement proof."
+}

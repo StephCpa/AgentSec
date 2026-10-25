@@ -1,0 +1,8 @@
+{
+  "commit": "8a35b4bfb42009e8a309db44ef120e3a86bcb52d",
+  "purpose": "Expected failures on the original implementation, using new regressions. F1: two failures; F2: two failures; D1: authority/manager/worker expiry subcases fail while long-lived and leaf expiry controls pass.",
+  "executed_test_methods": 5,
+  "failures": 4,
+  "subcase_errors": 3,
+  "expected_failure_signature_confirmed": true
+}

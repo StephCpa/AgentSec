@@ -147,7 +147,7 @@ class MixedWitnessTests(unittest.TestCase):
 
     def test_revocations_used_proofs_and_rejected_attempt_clock_survive_restore(self):
         chain=chain_fixture(self.l);raw,proof=packet(self.l,chain);old=self.root/'old';backup(self.l.db,old)
-        self.l.register_delegated(raw,proof,chain);self.l.revoke_credential('t','workergrant');self.l.clock=lambda:200
+        self.l.register_delegated(raw,proof,chain);self.l.revoke_credential('t','workergrant',root_id='root',kind='delegation',issuer_kid=b'manager');self.l.clock=lambda:200
         self.reject('INVALID_COMMAND',lambda:self.l.advance('t','domain','bad',0,{'kind':'invalid'}))
         stale=self.clone(old)
         try:
@@ -161,7 +161,7 @@ class MixedWitnessTests(unittest.TestCase):
 
     def test_local_result_ticket_and_handoff_record_restore_with_original_vector(self):
         register(self.l);finish(self.l);self.l.admit_delivery('t','a','reader','d','g','s')
-        old=self.root/'old';backup(self.l.db,old);result=self.l.emit('t','d','reader','g','s');self.l.revoke_credential('t','root')
+        old=self.root/'old';backup(self.l.db,old);result=self.l.emit('t','d','reader','g','s');self.l.revoke_credential('t','root',root_id='root',kind='grant',issuer_kid=b'authority')
         stale=self.clone(old)
         try:
             self.reject('WITNESS_RECOVERY_REQUIRED',lambda:stale.emit('t','d','reader','g','s'))

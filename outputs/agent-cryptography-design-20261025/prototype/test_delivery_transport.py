@@ -172,7 +172,7 @@ class DeliveryTests(unittest.TestCase):
         self.assertEqual(len(self.inbox_rows()),1);self.assertEqual(self.l.audit(),[])
 
     def test_revocation_preserves_only_original_ticket_recovery(self):
-        t=self.ticket();self.l.revoke_credential('t','root')
+        t=self.ticket();self.l.revoke_credential('t','root',root_id='root',kind='grant',issuer_kid=b'authority')
         self.reject('ACTION_OR_KEY_INACTIVE',lambda:self.ticket('new'))
         self.sender.deliver(self.l,'t','d');self.assertEqual(len(self.inbox_rows()),1)
         self.assertEqual(self.l.db.execute('SELECT expires_at FROM deliveries').fetchone()[0],t['expires_at'])

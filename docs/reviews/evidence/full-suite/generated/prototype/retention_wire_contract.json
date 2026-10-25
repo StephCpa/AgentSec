@@ -1,0 +1,63 @@
+{
+  "profile": "mixed-retention-v2",
+  "status": "signed_wire_and_pure_guard_prototype",
+  "storage_gc": true,
+  "transport_integration": true,
+  "source": "retention_wire.py",
+  "schema": "retention_v2.cddl",
+  "vectors": "retention_vectors.json",
+  "tests": "retention_wire_test_results.json",
+  "trust_boundary": "Trusted configuration fixes the entire context. Trusted receiver establishes final facts; trusted sender signs offers only after durable authority confirmation. Parsers prove message authenticity and structural/relational validity, not database persistence, computation correctness, external effects or nonrollback.",
+  "context_policy": "All context fields immutable for the route incarnation. Key/certificate/window changes require a separately authorized incarnation transition retaining historical evidence; this module provides no rotation/reset/migration.",
+  "identity_and_commitments": "Exact domain-separated CBOR hash preimages specified in retention_v2.cddl. No v1 coercion. Sequence uint64, never wrap; future SQLite storage must use a lossless unsigned representation rather than signed INTEGER for >2^63-1.",
+  "descriptor_boundary": "Complete v2 descriptor/evidence reconstruction in retention_delivery.py; actual L3/COMMITTED binding in retention_sender.py; authoritative unique first-event transaction in retention_recipient.py. Codec signatures alone do not establish computation correctness or persistence.",
+  "objects": {
+    "RetentionQueryV2": "sender-signed FINAL, RETIRED or CHECKPOINT request; FINAL/RETIRED positive derived ID, CHECKPOINT sequence zero/empty ID",
+    "RetentionFinalReceiptV2": "receiver-signed immutable fact bytes plus fresh request challenge/hash",
+    "RetentionOfferV2": "sender-signed base/root and contiguous target/root within public window",
+    "RetentionAttemptV2": "sender-signed fresh challenge and exact signed offer bytes, both signatures verified",
+    "RetentionCheckpointV2": "receiver-signed checkpoint bound to attempt/query; RETIRE_ACK, CHECKPOINT or RETIRED"
+  },
+  "pure_guard": "retirement_transition validates current live interval, current root/base, target present and exact prefix root, then returns next (floor,root,high,live) without changing input. Caller must fence stale replicas and persist deletion/frontier atomically at receiver authority before signing.",
+  "sender_reconciliation": "reconcile_checkpoint requires authenticated reply, nondecreasing floor no greater than caller supplied durable confirmed frontier, and exact root from sender archive. Caller must load these from authoritative state, never from untrusted request data.",
+  "retry": "Fresh signed attempt can wrap same stored offer. Already-applied/stale offer must not mutate state again; service may return current authenticated checkpoint. Later root is verified against retained sender history, not inferred from old offer.",
+  "recovery": "Wire module supplies no persistence. Authority accepted/local lost, CAS races, sender confirmation and archive durability remain transaction integration gates.",
+  "bounds": {
+    "frame_bytes": 8192,
+    "window": 65535,
+    "sequence_max": "2^64-1",
+    "time_max": "2^62",
+    "ticket_lifetime_max": 60,
+    "key_id_bytes": [
+      1,
+      32
+    ],
+    "scope": "Message field bounds only; no complete state-image M+W*L proof."
+  },
+  "validation": {
+    "test_methods": 28,
+    "signature_byte_mutations": 64,
+    "golden_vectors": "Deterministic synthetic same-implementation regression, not independent interoperability. Test private seeds are public fixtures.",
+    "negative_control": "Trusted sender key holder can sign an offer without a database; signature verification accepts it. Actual authority-first signing policy is enforced by RetentionSender, not by the codec.",
+    "actual_process_crash_scenarios": 0,
+    "network_requests": 0,
+    "independent_cddl_validation": false
+  },
+  "remaining": [
+    "Scalable authority/history storage and bounded aggregate resources; receiver current-image admission implemented",
+    "Production audit access, scalable archive retrieval, availability and retention governance",
+    "Independent COSE/CDDL interoperability and parser review",
+    "Cross-host authority fault tests, identity/key lifecycle and production nonrollback evidence",
+    "Complete P2 workflow, strong baselines and full public-observation refinement; broader P3-P6 goals"
+  ],
+  "durable_sender_integration": {
+    "contract": "retention_sender_contract.json",
+    "authoritative_confirmation_before_offer": true,
+    "signed_receiver_checkpoint_archived": true,
+    "receiver_implementation": true
+  },
+  "integration_scope": "Pure codec remains separate. Actual authority-first sender/recipient persistence, logical prefix GC and loopback mTLS are implemented in retention_sender.py / retention_recipient.py; not production readiness.",
+  "recipient_contract": "retention_recipient_contract.json",
+  "recipient_capacity_contract": "retention_capacity_contract.json",
+  "archive_contract": "retention_archive_contract.json"
+}
