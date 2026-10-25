@@ -1,0 +1,49 @@
+; Restricted canonical CBOR + tagged COSE_Sign1, Ed25519 alg -19.
+; Bytewise encoded map-key order, no bool/null/float; see wire.py.
+; AAD: ["agent-action-system",1,"MixedDelivery" or "MixedDeliveryAck",
+;       "Ed25519-SHA256-CBOR-v1"]. These definitions describe payloads.
+; Runtime enforces UTF-8 byte lengths, exact shape and catalog digest, time,
+; pinned identities, all cross-field bindings, and inbox sequence/idempotency.
+; Not independently checked with a CDDL engine or another COSE implementation.
+text-id = tstr ; 1..128 UTF-8 bytes
+hash32 = bstr .size 32
+profile = "mixed-delivery-v1"
+sequence = 1..4611686018427387903
+time = 0..4611686018427387904
+route = (
+  "deployment": tstr, ; trusted 16-byte deployment ID as 32 lowercase hex chars
+  "tenant": text-id, "recipient": text-id,
+  "gateway": text-id, "session": text-id,
+  "sender_cert": hash32, "receiver_cert": hash32
+)
+shape = (
+  "action_digest": hash32, ; SHA-256 of canonical INTERNAL action JSON
+  "domain": text-id, "snapshot": text-id,
+  "accountant": "approx_dp_fixed_cost_v1_candidate",
+  "mechanism": "bounded_geometric_count_v1_candidate" / "bounded_geometric_histogram_v1_candidate",
+  "capacity": 1..65535, "bucket_count": 1..64, "k": 40,
+  "codec": "uint64be_count_v1" / "uint64be_public_bucket_order_v1",
+  "catalog": tstr, "catalog_digest": bstr, "labels": [*64 tstr]
+)
+; Count: B=1, count codec, catalog="", digest=h'', labels=[].
+; Histogram: unique ordered labels, each 1..64 UTF-8 bytes, len(labels)=B;
+; digest=SHA256(canonical UTF-8 JSON labels, ensure_ascii=False), catalog nonempty.
+; result exactly 8*B bytes, uint64be per component, all values in [0,N].
+; Sum need not be <=N. No partial vectors and no new samples on retransmission.
+envelope = {
+  "profile": profile, route, shape,
+  "delivery": text-id, "operation": text-id, "seq": sequence,
+  "issued_at": time, "expires_at": time, "result": bstr
+}
+; 0 < expires_at-issued_at <=60; first receipt strictly before expires_at.
+attempt = {"profile": profile, "challenge": hash32, "envelope": bstr}
+ack = {
+  "profile": profile, "deployment": tstr, "tenant": text-id,
+  "delivery": text-id, "seq": sequence,
+  "envelope_hash": hash32, "challenge": hash32,
+  "request_hash": hash32, "receiver_cert": hash32, "accepted_at": time
+}
+; Fresh challenge/request binding; historical ACK accepted_at retains FIRST
+; inbox acceptance. ACK may be recorded after expiry, without new disclosure.
+; DLV1 + uint32be length + payload, max 8192 bytes. Maximum valid field-size
+; fixture is 6680 bytes for a request, including 64 labels/512-byte vector.

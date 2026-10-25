@@ -1,0 +1,42 @@
+; Restricted count delegation profile. This is not the full object family.
+; Reuse count_direct_v1.cddl's deterministic CBOR limits, id, kid, limited-uint.
+; All maps closed. Unknown fields rejected. Set arrays sorted, unique, <=32 items.
+; A chain has 1..8 credentials and <=65536 bytes in aggregate.
+count-delegated-action = {
+ "profile": "count-delegated-v1",
+ "tenant": id, "operation": id, "root": id, "actor": id, "kid": kid,
+ "domain": id, "snapshot": id, "recipient": id,
+ "mechanism": "bounded_geometric_count_v1_candidate",
+ "accountant": "approx_dp_fixed_cost_v1_candidate",
+ "epsilon_max": 700000, "delta_max": 8388608,
+ "not_before": limited-uint, "deadline": limited-uint,
+ "leaf_digest": bstr .size 32
+}
+count-delegated-proof = {
+ "profile": "count-delegated-v1", "action_digest": bstr .size 32,
+ "audience": "count-gateway-v1", "challenge": bstr .size 32,
+ "challenge_expiry": limited-uint, "proof_id": bstr .size 16
+}
+count-credential = {
+ "profile": "count-chain-v1", "kind": "grant" / "delegation",
+ "id": id, "tenant": id, "root": id,
+ "issuer": id, "issuer_kid": kid, "subject": id, "subject_kid": kid,
+ "parent_digest": bstr .size 0 / bstr .size 32,
+ "depth": 0..7, "max_depth": 0..7,
+ "not_before": limited-uint, "expires_at": limited-uint,
+ "epsilon_cap": limited-uint, "delta_cap": limited-uint,
+ "policy": {
+   "domain": id, "snapshots": [* id], "recipients": [* id],
+   "mechanisms": [* id], "operations": [* id],
+   "accountant": "approx_dp_fixed_cost_v1_candidate",
+   "accounts": {"epsilon": tstr, "delta": tstr}
+ }
+}
+; COSE protected headers remain {1:-19,4:kid}; unprotected headers {}.
+; external_aad object_type is "Grant", "Delegation", or "CountActionProof".
+; Parent/leaf digests are SHA-256 of the ENTIRE canonical COSE Sign1 bytes.
+; Root authority is pinned by tenant/root_id, never learned from submitted chain.
+; Each child issuer and key equal parent subject and key; depth increments by one;
+; scope sets, windows, max_depth and cumulative caps only narrow.
+; Domain/account bindings are invariant. Empty scope is denial, not wildcard.
+; Every admitted operation charges the global account AND every ancestor cap.

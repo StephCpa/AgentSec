@@ -1,0 +1,111 @@
+{
+  "status": "combined_contribution_retention_reference_workflow_passed_full_P2_open",
+  "profiles": [
+    "witnessed-contribution-retention-v2",
+    "mtls-contribution-retention-v2"
+  ],
+  "implementation": [
+    "contribution_delivery.py",
+    "contribution_scenario.py"
+  ],
+  "test_report": "contribution_delivery_test_results.json",
+  "scenario_report": "contribution_scenario_results.json",
+  "scenario_report_sha256": "8553653a855eb0362351786c4029578e76bbb171c6cbfa09882522b6e59e588b",
+  "integration": {
+    "source": "Synthetic stable user tokens and preclassified records, including duplicate, multi-bucket and ineligible records. No real raw-data classifier.",
+    "pipeline": [
+      "fixed-roster contribution compiler",
+      "atomic encrypted count/histogram snapshot pair and batch provenance",
+      "independent authenticated sender authority",
+      "two-level signed delegated concurrent analysis clients",
+      "shared domain and all-ancestor accounting",
+      "durable full randomness and unique committed outputs",
+      "retention-v2 L3 and signed full-result envelope",
+      "authenticated recipient with independent authority",
+      "pure authenticated-evidence writer adapter",
+      "recipient logical GC and authenticated historical archive verification"
+    ],
+    "fresh_database": "New exact storage profiles; no migration or downgrade to either separate parent profile.",
+    "combined_schema": "Contribution and v2 delivery tables included in same witnessed image before bootstrap.",
+    "recovery_audits": "Both contribution pair/roster audit and retention-v2 evidence/frontier audit execute before recovery commit. Negative tests deliberately create authority-accepted inconsistent states to ensure neither audit is skipped.",
+    "tls": "Requires actual TLSWitnessClient; no ReferenceWitness fallback for authenticated profile.",
+    "writer": "No raw records/roster/snapshot argument; signed accepted envelopes and pinned operation set only; Python adapter has no enforced OS isolation."
+  },
+  "validation": {
+    "test_methods": 10,
+    "baseline_P2_regression_test_methods": 8,
+    "baseline_P2_rerun": true,
+    "network_requests": {
+      "sender_witness": 912,
+      "receiver_witness": 10,
+      "delivery": 4
+    },
+    "observed_tls_versions": [
+      "TLSv1.2"
+    ],
+    "randomness_generation_calls": {
+      "analysis_hist": 1,
+      "analysis_count": 1
+    },
+    "budget": {
+      "domain_epsilon_spent": 1400000,
+      "domain_delta_spent": 16777216,
+      "shared_ancestor_units": 2,
+      "charged_operations": 2,
+      "charge_rows": 16,
+      "checked_accounts": 10
+    },
+    "actual_process_crash_scenarios": [
+      {
+        "operation": "admit",
+        "point": "after_v2_ticket_write"
+      },
+      {
+        "operation": "admit",
+        "point": "after_witness_accept"
+      },
+      {
+        "operation": "admit",
+        "point": "after_v2_admission_commit"
+      },
+      {
+        "operation": "prepare",
+        "point": "after_witness_accept"
+      },
+      {
+        "operation": "restore",
+        "point": "after_recovery_delete"
+      },
+      {
+        "operation": "restore",
+        "point": "before_recovery_commit"
+      }
+    ],
+    "process_crash_scope": "Six local reference-authority subprocess exits in combined profile; distinct from loopback workflow reply-loss injections. Not power-loss or cross-host fault-domain testing.",
+    "ingestion_interruption": "After actual authenticated witness CAS receipt, before local commit; old replica fenced, original pair restored without compiler rerun. This is not a dropped RPC response.",
+    "scheduler_interruption": "After local and authority result commit, API reply lost; same request retry after reopen retains seed, output and account state.",
+    "recipient_interruption": "Actual receiver transaction commits then socket ACK dropped; same envelope retry after credential revocation preserves first acceptance.",
+    "extra_local_cases": [
+      "expired terminal reconciliation reads no result/snapshot and gives no refund",
+      "accepted/closed terminal facts retire and verify through archive",
+      "fresh replica restore keeps source pair, random tape, outputs and retirement evidence",
+      "recovery rejects a bad contribution pair even when v2 delivery audit passes",
+      "recovery rejects bad v2 root even when source audit passes"
+    ],
+    "maximum_dimensions": "Full workflow B4 N3 only; existing compiler B64 N65535 and wire-width tests are separate evidence.",
+    "performance_benchmark": false,
+    "same_budget_utility_evaluation": false
+  },
+  "remaining": [
+    "Real identity resolution, upstream classifier and global lineage authority",
+    "Process/container identity and actual LLM/tool isolation",
+    "Private ingestion observations and complete public output/control protocol",
+    "Production authority nonrollback, key lifecycle and cross-host fault domains",
+    "Scalable authenticated history/resource admission and independent interoperability",
+    "Full cryptographic/refinement/observation proofs",
+    "Correctly composed strong baselines and P4 utility/performance",
+    "P5 hidden authorization and P6 reduced-trust backend"
+  ],
+  "production_acceptance": false,
+  "full_end_to_end_user_DP": false
+}

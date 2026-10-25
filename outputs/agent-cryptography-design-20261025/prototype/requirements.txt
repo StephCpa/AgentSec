@@ -1,0 +1,2 @@
+# Version used by the recorded verification environment.
+cryptography==49.0.0

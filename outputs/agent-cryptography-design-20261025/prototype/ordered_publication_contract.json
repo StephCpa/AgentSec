@@ -1,0 +1,122 @@
+{
+  "profile": "domain-ordered-publication-reference-v1",
+  "status": "OBS-3_internal_gate_and_final_prefix_verified_external_gateway_open",
+  "implementations": [
+    "OrderedPublicationSender",
+    "TLSOrderedPublicationSender"
+  ],
+  "source": "ordered_publication.py",
+  "test_report": "ordered_publication_test_results.json",
+  "fresh_database_only": true,
+  "state": {
+    "decisions": "Inherited pub_decisions ordered by tenant/domain job sequence.",
+    "final_events": "Primary key (tenant,domain_id,seq), outcome WITHHELD/ACCEPTED/CLOSED, original delivery pointer; whole-image witness covers this table.",
+    "frontier": "F = max(final_events.seq) or zero, with audited exact contiguous maximal terminal prefix. No independently mutable counter."
+  },
+  "invariants": [
+    "Every final event matches its original decision and either WITHHELD or a verified retained signed recipient fact.",
+    "Final events are the maximal contiguous terminal prefix, with no skipped, missing, extra or altered outcome.",
+    "Preparing new result bytes or first terminal control requires decision.seq = F+1 in the same guarded transaction, before result access. Per-route FIFO is also retained.",
+    "Receipt verification, immutable fact/ACK, route confirmed prefix and all newly consecutive final events commit in one witness/local transaction.",
+    "Leading WITHHELD events advance in their original atomic publication transaction. WITHHELD behind unresolved admission waits.",
+    "Timeout, revocation and missing ACK never fabricate a final outcome or release later routes. Later tickets may expire while waiting and cannot be renewed.",
+    "Independent protection domains have distinct frontiers; existing privacy-domain binding and disjoint-population assumptions remain.",
+    "Recovery validates publication, contribution, retained signed evidence and exact final-event coverage before commit; no resampling/reconfirmation/republication."
+  ],
+  "transitions": {
+    "publish": "Append immutable decisions then drain terminal prefix within advance transaction.",
+    "prepare": "Existing result/terminal transaction invokes overridden first_pending before payload creation; permits only F+1.",
+    "confirm": "Existing pre-commit hook drains the domain prefix after signed fact verification and route update; duplicate confirmation preserves existing prefix.",
+    "withheld": "No outbox, receipt or new result required; final event may wait behind earlier admitted ticket.",
+    "permanent_loss": "Remain blocked, while control transactions and disjoint domains can proceed. No liveness guarantee without earlier final evidence."
+  },
+  "ordering_scope": "New result preparation and canonical final-event order. Does not impose total arrival order on delayed duplicate packets already sent. Full external observation semantics require the future gateway.",
+  "audit_argument": "Inductive reference-state argument: empty prefix initially; publication/confirmation drain only the next terminal decision; preparation checks next sequence under the authority fence; recovery requires exact maximal prefix and rejects later prepared/control/terminal state behind unresolved decisions. This is not independent formal cryptographic refinement.",
+  "verification": {
+    "test_methods": 19,
+    "actual_process_crash_count": 9,
+    "actual_process_crash_scenarios": [
+      {
+        "operation": "confirm_withheld_drain",
+        "point": "before_final_event_write"
+      },
+      {
+        "operation": "confirm_withheld_drain",
+        "point": "after_final_event_write"
+      },
+      {
+        "operation": "confirm_withheld_drain",
+        "point": "before_v2_confirmation_commit"
+      },
+      {
+        "operation": "confirm_withheld_drain",
+        "point": "after_witness_accept"
+      },
+      {
+        "operation": "confirm_withheld_drain",
+        "point": "after_local_anchor_write"
+      },
+      {
+        "operation": "confirm_withheld_drain",
+        "point": "after_v2_confirmation_commit"
+      },
+      {
+        "operation": "leading_withheld_publication",
+        "point": "after_final_event_write"
+      },
+      {
+        "operation": "leading_withheld_publication",
+        "point": "after_witness_accept"
+      },
+      {
+        "operation": "leading_withheld_publication",
+        "point": "after_tick_commit"
+      }
+    ],
+    "network": {
+      "requests": {
+        "sender_witness": 902,
+        "receiver1_witness": 5,
+        "receiver2_witness": 3,
+        "delivery1": 2,
+        "delivery2": 1
+      },
+      "tls_versions": [
+        "TLSv1.2"
+      ],
+      "scope": "Two distinct recipient contexts/services and three authority services over authenticated loopback; histogram then count with actual first ACK socket loss. Shared host/CA and synthetic application keys, not independent infrastructure."
+    },
+    "additional": [
+      "Mixed histogram/count across distinct recipients",
+      "Real lost ACK socket then blocked second route",
+      "Exact replay and expired first outcome ACCEPTED/CLOSED",
+      "WITHHELD before/after unresolved delivery",
+      "Concurrent independent database connections for confirm and preparation",
+      "Distinct disjoint-population privacy domain remains usable",
+      "Public pause/control journal remains usable while delivery blocked",
+      "Forged or missing final prefix recovery rejected",
+      "Negative control bypassing the trusted order method detected by audit"
+    ]
+  },
+  "assumptions": [
+    "Trusted Python implementation, bootstrap, signing keys and database access. Explicit base-class calls or arbitrary code are not an untrusted interface.",
+    "Independent authority remains linearizable and nonrollback; local reference and loopback TLS tests do not prove this in production.",
+    "Cooperative recipient enforces existing first-outcome and immutable ticket contracts.",
+    "Reference tests use synthetic identities, data, keys and a shared host/CA; different service ports are not independent fault domains."
+  ],
+  "remaining": [
+    "OBS-1 authenticated public request/control/response gateway and idempotent public journal",
+    "OBS-4 exhaustive errors, health, timeout, poll and recovery mapping",
+    "OBS-5 external gateway journal/cursor recovery; final prefix recovery now verified",
+    "OBS-6 actual CPU/DB/transport observation refinement",
+    "OBS-7 independent arbitrary-adversary/concurrency proof",
+    "Signed interoperable public final-feed codec, pagination and client retry",
+    "Production identity/key/authority lifecycle, cross-host recovery and process isolation",
+    "Fair strong baselines, utility/performance, P5 hidden authorization and P6 reduced-trust backend"
+  ],
+  "public_gateway": false,
+  "signed_public_final_feed": false,
+  "complete_observation_proof": false,
+  "total_storage_bound": false,
+  "production_ready": false
+}

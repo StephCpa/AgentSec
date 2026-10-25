@@ -1,0 +1,32 @@
+; Reference schema only; no independent CDDL validation or interop.
+; Same bounded DLV1 framing and mutual TLS as count_delivery_v1.cddl.
+; Control and receipt never contain the original result or signed result envelope.
+request = {"profile": "count-delivery-terminal-v1", "challenge": bstr .size 32, "terminal": bstr .cbor control}
+control = #6.18([bstr .cbor protected, {}, bstr .cbor control-payload, bstr .size 64])
+protected = {1: -19, 4: bstr}
+control-payload = {
+  "profile": "count-delivery-terminal-v1",
+  "deployment": tstr .regexp "[0-9a-f]{32}",
+  "tenant": id, "recipient": id, "gateway": id, "session": id,
+  "sender_cert": bstr .size 32, "receiver_cert": bstr .size 32,
+  "delivery": id, "operation": id, "seq": 1..4611686018427387903,
+  "issued_at": 0..4611686018427387903, "expires_at": 1..4611686018427387904,
+  "envelope_hash": empty / hash
+}
+receipt = #6.18([bstr .cbor protected, {}, bstr .cbor receipt-payload, bstr .size 64])
+receipt-payload = {
+  "profile": "count-delivery-terminal-v1",
+  "deployment": tstr .regexp "[0-9a-f]{32}", "tenant": id, "delivery": id,
+  "seq": 1..4611686018427387903, "terminal_hash": hash,
+  "envelope_hash": empty / hash, "challenge": hash, "request_hash": hash,
+  "receiver_cert": hash, "outcome": "ACCEPTED" / "CLOSED", "event_at": 0..4611686018427387904
+}
+hash = bstr .size 32
+empty = bstr .size 0
+id = tstr .size (1..128)
+; Semantic constraints: exact route and TLS identities; sender and recipient pins;
+; expiry-issue in 1..60; control is permitted only at/after original expiry;
+; empty envelope_hash only when sender never prepared an envelope;
+; ACCEPTED requires 32-byte envelope hash and issue<=event_at<expiry;
+; CLOSED requires event_at>=expiry; request/challenge/control hash must match.
+; External_aad types: CountDeliveryTerminal and CountDeliveryTerminalAck.

@@ -1,0 +1,14 @@
+{
+  "date": "2026-10-25",
+  "scope": "Initial repository upload; historical reports retained.",
+  "verified_manifest_sources": 119,
+  "rerun_suite": "test_public_transcript.py",
+  "rerun_test_methods": 17,
+  "rerun_passed": true,
+  "draft_not_validated": "outputs/agent-cryptography-design-20261025/prototype/public_trace_adapter.py",
+  "page_export_blocks": 582,
+  "excluded": [
+    "page_v27_sync_pending.json",
+    "caches and runtime files"
+  ]
+}

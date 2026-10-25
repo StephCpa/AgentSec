@@ -1,0 +1,71 @@
+; Complete v2 evidence codec, reference schema only; no independent CDDL validation.
+; Every descriptor, signed message and complete attempt is <=8192 bytes.
+; Shared deterministic restricted CBOR and COSE tag18 profile from wire.py.
+; Sender/receiver keys and kid MUST match externally trusted retention context.
+hash = bstr .size 32
+kid = bstr .size (1..32)
+empty = bstr .size 0
+seq = 1..18446744073709551615
+time = 0..4611686018427387904
+id = tstr ; enforce UTF-8 encoded byte length 1..128, not locale normalization
+profile = "mixed-delivery-v2"
+common = ("profile": profile, "context_hash": hash)
+delivery-id = tstr .regexp "[0-9a-f]{64}"
+protected = {1: -19, 4: kid}
+cose<payload> = #6.18([bstr .cbor protected, {}, bstr .cbor payload, bstr .size 64])
+descriptor = {
+  common, "seq": seq, "delivery": delivery-id, "operation": id,
+  "issued_at": time, "expires_at": time,
+  "action_digest": hash, "domain": id, "snapshot": id,
+  "accountant": "approx_dp_fixed_cost_v1_candidate",
+  "mechanism": "bounded_geometric_count_v1_candidate" / "bounded_geometric_histogram_v1_candidate",
+  "capacity": 1..65535, "bucket_count": 1..64, "k": 40,
+  "codec": "uint64be_count_v1" / "uint64be_public_bucket_order_v1",
+  "catalog": tstr, "catalog_digest": bstr, "labels": [*64 tstr]
+}
+; Exact shape semantics as validated in mixed_delivery_transport.py:
+; count B=1, count codec, empty catalog/digest/labels;
+; histogram B unique ordered labels of 1..64 UTF-8 bytes, catalog 1..128 bytes,
+; catalog digest SHA256(canonical UTF-8 JSON labels, ensure_ascii=False).
+; expires-issued in 1..60. ID derived from immutable retention context and seq.
+; Action digest is canonical INTERNAL admitted action JSON hash in existing jobs.
+; Full v2 L3 admission and independent computation proof are NOT provided here.
+envelope-payload = {common, "descriptor": bstr .cbor descriptor, "result": bstr}
+envelope = cose<envelope-payload> ; sender, RetentionDeliveryEnvelopeV2
+; Result is exactly 8*B bytes, unsigned big-endian uint64 components <=capacity.
+; No partial vector, no sum<=N constraint; independently clipped bucket sum may exceed N.
+control-payload = {common, "descriptor": bstr .cbor descriptor, "envelope_hash": empty / hash}
+control = cose<control-payload> ; sender, RetentionDeliveryTerminalV2
+; No result or original envelope in control. Empty hash only for unprepared close.
+attempt-payload = {
+  common, "kind": "DELIVERY" / "TERMINAL", "body": bstr, "challenge": hash
+}
+attempt = cose<attempt-payload> ; sender, RetentionDeliveryAttemptV2
+; DELIVERY body is full signed envelope; TERMINAL body is full signed control.
+; Verify both outer and inner signatures under their distinct domains.
+normalized-fact = {
+  "profile": "mixed-retention-v2", "context_hash": hash,
+  "seq": seq, "delivery": delivery-id,
+  "action_digest": hash, "descriptor_hash": hash,
+  "issued_at": time, "expires_at": time,
+  "outcome": "ACCEPTED" / "CLOSED", "event_at": time,
+  "envelope_hash": empty / hash
+}
+; Descriptor commitment = SHA256(CBOR(["retention-delivery-descriptor",2,descriptor-bytes])).
+; ACCEPTED fact derived from complete verified envelope: hash exact signed envelope;
+; event in [issued,expires). CLOSED derives from verified control and event>=expires.
+; Revalidate stored evidence: reconstruct the entire fact and require exact byte equality.
+receipt-payload = {
+  common, "fact": bstr .cbor normalized-fact,
+  "challenge": hash, "request_hash": hash
+}
+receipt = cose<receipt-payload> ; receiver, RetentionDeliveryReceiptV2
+; Bind SHA256(exact signed attempt) and challenge. Fact must match attempt's exact
+; descriptor/action/time/ID/envelope bindings. DELIVERY permits ACCEPTED only;
+; TERMINAL can reconcile an existing ACCEPTED or CLOSED fact. An ACCEPTED terminal
+; response requires a nonempty original envelope hash matching the existing fact.
+; Same immutable fact yields same retention prefix under retries or final queries.
+; This schema alone does not establish first-event uniqueness or authoritative
+; persistence. Receiver must lock/check current state and establish/commit first
+; event before reply; terminal admission separately checks current time>=expiry.
+; Future sender/receiver authority transactions enforce those rules.

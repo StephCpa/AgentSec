@@ -1,0 +1,139 @@
+{
+  "passed": true,
+  "scenario": "P2 contribution ingestion through authenticated retention-v2 delivery",
+  "roles": "Two signed concurrent Python analysis drivers and pure writer adapter; no live LLM or OS isolation claim.",
+  "events": [
+    {
+      "stage": "user_authorization",
+      "root": "root",
+      "delegation_depth": 2,
+      "analysis_subjects": [
+        "leaf",
+        "other"
+      ],
+      "shared_ancestor_cost_units": 2
+    },
+    {
+      "stage": "concurrent_shared_admission",
+      "registered": [
+        {
+          "operation": "analysis_hist",
+          "subject": "leaf"
+        },
+        {
+          "operation": "analysis_count",
+          "subject": "other"
+        }
+      ],
+      "operation_count": 2
+    },
+    {
+      "stage": "shared_cap_blocks_third_query",
+      "error": "BUDGET_EXHAUSTED"
+    },
+    {
+      "stage": "committed_reply_loss_and_retry",
+      "logical_tick": 170,
+      "fixed_seed_and_result": true,
+      "no_recharge": true
+    },
+    {
+      "stage": "committed_outputs_then_delivery_admission",
+      "tickets": 2,
+      "randomness_draws": {
+        "analysis_hist": 1,
+        "analysis_count": 1
+      }
+    },
+    {
+      "stage": "revocation_blocks_new_delivery",
+      "error": "ACTION_OR_KEY_INACTIVE",
+      "old_admitted_tickets_retained": true
+    },
+    {
+      "stage": "original_results_delivered",
+      "accepted": 2,
+      "lost_receipt_retry_preserved_first_time": true
+    },
+    {
+      "stage": "writer_uses_only_authenticated_outputs",
+      "input_count": 2,
+      "raw_snapshot_arguments": 0
+    },
+    {
+      "stage": "audit_matches_consumption_and_output",
+      "charged_operations": 2,
+      "charge_rows": 16,
+      "checked_accounts": 10,
+      "receiver_retired_floor": 2
+    }
+  ],
+  "network_requests": {
+    "sender_witness": 912,
+    "receiver_witness": 10,
+    "delivery": 4
+  },
+  "observed_tls_versions": [
+    "TLSv1.2"
+  ],
+  "randomness_draws": {
+    "analysis_hist": 1,
+    "analysis_count": 1
+  },
+  "committed_reply_loss_tick": 170,
+  "writer": {
+    "records": [
+      {
+        "operation": "analysis_hist",
+        "delivery": "65a8626c127ee827a13783036dbaaab6812f3b29fd407a0208886485d31dd67a",
+        "seq": 1,
+        "values": [
+          1,
+          1,
+          3,
+          0
+        ],
+        "event_at": 100,
+        "descriptor_hash": "883c6b5fb5d1e6b792c6dcfcede45cb24ac555a7afdc318e25e4c7a577b5cff7"
+      },
+      {
+        "operation": "analysis_count",
+        "delivery": "6a4140663259cc2df83412343036a7501b51c21c8784352eb7a86a641f15eafc",
+        "seq": 2,
+        "values": [
+          3
+        ],
+        "event_at": 100,
+        "descriptor_hash": "71ecae6ed7dcb8a3c635a3a310e88e1b56adb91177f497e91f20a188c0d55de5"
+      }
+    ],
+    "report_text": "已授权统计报告（合成演示）\nanalysis_hist: [1, 1, 3, 0]\nanalysis_count: [3]",
+    "input_policy": "Authenticated accepted envelopes only; no raw snapshot input."
+  },
+  "budget": {
+    "domain_epsilon_spent": 1400000,
+    "domain_delta_spent": 16777216,
+    "shared_ancestor_units": 2,
+    "charged_operations": 2,
+    "charge_rows": 16,
+    "checked_accounts": 10
+  },
+  "full_p2_production_acceptance": false,
+  "public_observation_proof": false,
+  "strong_baselines": false,
+  "trust": "Synthetic stable identity tokens and preclassified records, actual fixed-roster compiler, paired witnessed ingestion, shared signed mixed operations and loopback authenticated delivery. Upstream real-user resolution/classifier and global lineage are trusted and unimplemented; independent authority files/services share one host. No complete public observation or production guarantee.",
+  "contribution": {
+    "rule": "fixed-roster-min-positive-bucket-v1",
+    "storage_profile": "mtls-contribution-retention-v2",
+    "capacity": 3,
+    "buckets": 4,
+    "paired_snapshots_verified": true,
+    "duplicate_records_clipped": true,
+    "private_roster_encrypted": true,
+    "witness_acceptance_local_rollback": true,
+    "stale_replica_fenced": true,
+    "exact_pair_restored_without_recompile": true,
+    "direct_import_disabled": true,
+    "ingestion_loss": "Injected after authenticated witness CAS receipt, before local commit; not a dropped network reply or process death."
+  }
+}

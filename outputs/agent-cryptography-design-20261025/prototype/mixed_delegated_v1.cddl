@@ -1,0 +1,66 @@
+; Candidate closed mixed count/histogram delegation profile.
+; Deterministic bytewise map ordering, max CBOR 65536 bytes, depth <=8,
+; per-container <=128 items; no bool/null/floats/indefinite values.
+; CDDL is a contract, not independently validated interoperability evidence.
+id = tstr .regexp "[A-Za-z0-9_-]{1,64}"
+kid = bstr .size (1..32)
+limited-uint = 0..4611686018427387904
+count-mechanism = "bounded_geometric_count_v1_candidate"
+histogram-mechanism = "bounded_geometric_histogram_v1_candidate"
+accountant = "approx_dp_fixed_cost_v1_candidate"
+common-action = (
+ "profile": "mixed-delegated-v1",
+ "tenant": id, "operation": id, "root": id, "actor": id, "kid": kid,
+ "domain": id, "snapshot": id, "recipient": id,
+ "accountant": accountant, "epsilon_max": 700000, "delta_max": 8388608,
+ "not_before": limited-uint, "deadline": limited-uint,
+ "leaf_digest": bstr .size 32, "capacity": 1..65535, "k": 40
+)
+mixed-count-action = {
+ common-action,
+ "operation_kind": "count", "mechanism": count-mechanism,
+ "codec": "uint64be_count_v1"
+}
+mixed-histogram-action = {
+ common-action,
+ "operation_kind": "histogram", "mechanism": histogram-mechanism,
+ "codec": "uint64be_public_bucket_order_v1",
+ "catalog": id, "catalog_digest": bstr .size 32, "bucket_count": 1..64
+}
+mixed-action = mixed-count-action / mixed-histogram-action
+mixed-proof = {
+ "profile": "mixed-delegated-v1", "action_digest": bstr .size 32,
+ "audience": "mixed-gateway-v1", "challenge": bstr .size 32,
+ "challenge_expiry": limited-uint, "proof_id": bstr .size 16
+}
+mixed-credential = {
+ "profile": "mixed-chain-v1", "kind": "grant" / "delegation",
+ "id": id, "tenant": id, "root": id,
+ "issuer": id, "issuer_kid": kid, "subject": id, "subject_kid": kid,
+ "parent_digest": bstr .size 0 / bstr .size 32,
+ "depth": 0..7, "max_depth": 0..7,
+ "not_before": limited-uint, "expires_at": limited-uint,
+ "epsilon_cap": limited-uint, "delta_cap": limited-uint,
+ "policy": {
+  "domain": id, "snapshots": [* id], "recipients": [* id],
+  "mechanisms": [* (count-mechanism / histogram-mechanism)],
+  "operations": [* ("count" / "histogram")],
+  "catalogs": {* id => bstr .size 32},
+  "accountant": accountant, "accounts": {"epsilon": tstr, "delta": tstr}
+ }
+}
+; Policy arrays sorted/unique and <=32; catalogs <=32 entries.
+; Child catalogs form a subset of parent id/digest pairs: digest cannot change.
+; Empty scope is denial, not wildcard. Snapshot/mechanism/operation/recipient
+; membership all apply; histogram additionally requires exact catalog digest.
+; Capacity/B/digest are checked against the immutable public service registry.
+; Classification-rule provenance and user contribution preprocessing unresolved.
+; COSE Sign1 tag18, protected {1:-19,4:kid}, unprotected {}.
+; Signature AAD = CBOR(["agent-action-system",1,object_type,
+;                       "Ed25519-SHA256-CBOR-v1"])
+; object_type = MixedGrant / MixedDelegation / MixedActionProof, distinct from count.
+; Parent and leaf digests cover complete COSE wire bytes.
+; Chain 1..8 credentials, aggregate <=65536 bytes; authority pinned out of band.
+; Bind issuer->parent subject, key, root, tenant, time/depth bounds, immutable IDs.
+; All original domain AND every ancestor epsilon/delta cap charged atomically.
+; No implicit old-profile migration; same action retry needs fresh challenge proof.

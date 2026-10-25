@@ -1,0 +1,83 @@
+{
+  "profile": "count-delivery-terminal-v1",
+  "ledger_profile": "mtls-count-delivery-terminal-v1",
+  "implementation": "delivery_terminal.py",
+  "schema": "count_delivery_terminal_v1.cddl",
+  "scope": "Result-free post-expiry reconciliation of already-admitted fixed-route L3 tickets; not public readiness query, no full publication privacy proof",
+  "storage_compatibility": "Separate ledger and recipient profile; fresh database only; base and terminal profiles reject each other; no migration",
+  "objects": {
+    "control": "COSE Ed25519 CountDeliveryTerminal; exact deployment/tenant/recipient/gateway/session/certificates, ticket/operation/sequence/original time window and envelope hash; no result or result envelope",
+    "envelope_hash": "SHA256 of exact immutable signed result envelope if prepared; empty bytes if no envelope was prepared. Never SHA256 of low-entropy raw count",
+    "request": "profile, fresh 32-byte challenge, signed control",
+    "receipt": "COSE Ed25519 CountDeliveryTerminalAck; binds request digest, challenge, control digest, envelope hash, deployment/tenant/ticket/sequence/recipient certificate, outcome and original event_at",
+    "signature_domain": "existing protocol/version/suite external_aad with separate control and receipt object types"
+  },
+  "sender_protocol": [
+    "Trusted driver selects earliest unresolved fixed-route ticket",
+    "Check authenticated route is active, signer matches, and trusted sampled time is at or after original expiry",
+    "Create one immutable encrypted signed control and commit PREPARED under witness before returning network bytes",
+    "Send control over existing mutual TLS/hostname/certificate-pin transport with fresh challenge; send no count or result envelope",
+    "Verify pinned recipient signature, all context/digest/challenge bindings and event-time constraints",
+    "Persist encrypted request/receipt and CONFIRMED outcome under witness; only then remove this sequence from pending head selection"
+  ],
+  "recipient_protocol": [
+    "Verify TLS gateway certificate, control signer/domain/closed schema and fixed route",
+    "BEGIN IMMEDIATE shared with ordinary result insertion",
+    "Observe monotonic trusted time; reject before expiry while retaining clock floor",
+    "If matching inbox record exists, validate full original envelope hash and all ticket metadata, return ACCEPTED at its original accepted_at without changing inbox",
+    "If matching CLOSED tombstone exists, require identical control and return original closed_at",
+    "Otherwise require exact next sequence and durably insert encrypted CLOSED tombstone",
+    "Commit before signing/sending terminal receipt; retain tombstone to reject late results and same-sequence replacement"
+  ],
+  "atomicity_argument": "Ordinary insertion and closure acquire the same SQLite write transaction. Earlier accepted transaction can finish even if real time passes expiry; close waits and returns ACCEPTED. If close commits first, a future insertion is rejected by persistent ID/sequence fence. A transient absent read is never sufficient to advance the sender.",
+  "clock_semantics": "accepted_at is the trusted time sampled in the earlier receipt transaction, not a wall-clock commit/arrival deadline. closed_at is sampled in closure transaction at/after expiry. Committed floor rejects subsequent clock rollback.",
+  "outcomes": {
+    "ACCEPTED": "existing exact count envelope already persisted; event_at in original [issued_at,expires_at); maps to effective ACKED",
+    "CLOSED": "no inbox record at atomic closure, persistent fence installed; event_at>=expires_at; maps to effective CLOSED",
+    "ABSENT": "not a valid outcome",
+    "conflicts": "Different signed outcome or changed event_at cannot rewrite confirmed state; later ordinary ACK contradicting CLOSED is rejected"
+  },
+  "state_representation": "Original delivery_outbox retains QUEUED/READY/ACKED and immutable envelope evidence. Separate delivery_terminal stores PREPARED/CONFIRMED, control, receipt and outcome. delivery_status and joined pending selection derive finality; raw outbox.state alone is not a complete terminal-state view.",
+  "retry_and_recovery": {
+    "lost_control_reply": "Retry identical control with fresh challenge; recipient returns original immutable outcome/time",
+    "sender_crash_before_prepare_commit": "No control returned; retry after recovery",
+    "recipient_close_committed_reply_lost": "One durable tombstone; no result retransmission",
+    "receipt_committed_at_witness_local_lost": "Restore same confirmed receipt; no new network send needed",
+    "late_ordinary_ack": "May coexist only with ACCEPTED at identical original event time; cannot override CLOSED. Both arrival orders and audit enforce consistency.",
+    "budget": "No refund, no new mechanism run, no new L3, no lifetime extension or free replacement operation"
+  },
+  "authorization": "Root/chain revocation does not prohibit result-free reconciliation of original admitted ticket; current transport route revocation and TLS credential failure still block network use. This is not a fallback for revoked credentials.",
+  "metadata_boundary": "Control reveals route/ticket/order/time/hash-presence metadata and receipt reveals ACCEPTED/CLOSED. No result bytes is not zero information; no joint network-observation DP proof is claimed.",
+  "assumptions": [
+    "honest cooperating recipient and gateway",
+    "durable nonrollback inbox and closure tombstones",
+    "trusted monotonic time",
+    "stable configured CA/certificate/signing identities",
+    "linearizable nonrollback witness for sender state"
+  ],
+  "evidence": {
+    "report": "delivery_terminal_test_results.json",
+    "test_methods": 23,
+    "network_calls": 31,
+    "actual_process_crash_cuts": [
+      "before_inbox_terminal_commit",
+      "after_inbox_terminal_commit",
+      "before_terminal_prepare_commit",
+      "after_terminal_prepare_commit",
+      "before_terminal_receipt_commit",
+      "after_terminal_receipt_commit"
+    ],
+    "passed": true,
+    "observed_tls_versions": [
+      "TLSv1.2"
+    ]
+  },
+  "remaining": [
+    "Cross-route privacy-domain ordering and complete external observation proof",
+    "Termination for operations withheld before L3 admission, cancellation and mixed recipient policies",
+    "Recipient disaster recovery, nonrollback evidence and tombstone retention/GC",
+    "Production CA/key lifecycle, revoked-route recovery and bounded server resources",
+    "Independent CDDL/COSE interoperability, mechanism review, histogram and strong-baseline evaluation"
+  ],
+  "mixed_extension": "mixed_terminal_contract.json"
+}

@@ -1,0 +1,34 @@
+; Direct-root count subprofile only. Not the full Action/Delegation specification.
+; Additional rules: RFC 8949 section 4.2.1 bytewise deterministic encoding;
+; max 65536 bytes, depth 8, container items 128; reject all unknown fields,
+; bool/null/floats, indefinite items, other tags, duplicate keys and trailing data.
+; The single tag 18 below is mandatory, encoded as 0xd2.
+id = tstr .regexp "[A-Za-z0-9_-]{1,64}"
+kid = bstr .size (1..32)
+limited-uint = 0..4611686018427387904
+count-action = {
+  "profile": "count-direct-v1",
+  "tenant": id, "operation": id, "root": id, "actor": id, "kid": kid,
+  "domain": id, "snapshot": id, "recipient": id,
+  "mechanism": "bounded_geometric_count_v1_candidate",
+  "accountant": "approx_dp_fixed_cost_v1_candidate",
+  "epsilon_max": 700000, "delta_max": 8388608,
+  "not_before": limited-uint, "deadline": limited-uint
+}
+; Require not_before < deadline. Admission/L1/new L3 use [not_before,deadline).
+count-proof = {
+  "profile": "count-direct-v1", "action_digest": bstr .size 32,
+  "audience": "count-gateway-v1", "challenge": bstr .size 32,
+  "challenge_expiry": limited-uint, "proof_id": bstr .size 16
+}
+headers = {1: -19, 4: kid}
+count-proof-sign1 = #6.18([
+  protected: bstr .cbor headers,
+  unprotected: {},
+  payload: bstr .cbor count-proof,
+  signature: bstr .size 64
+])
+; external_aad = encoded ["agent-action-system",1,"CountActionProof",
+;                        "Ed25519-SHA256-CBOR-v1"]
+; Sig_structure = ["Signature1", protected, external_aad, payload]
+; action_digest = SHA-256(exact deterministic count-action bytes).

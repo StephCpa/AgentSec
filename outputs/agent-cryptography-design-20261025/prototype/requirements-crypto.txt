@@ -1,0 +1,2 @@
+# Version used by signed_test_results.json; not a production security endorsement.
+cryptography==49.0.0

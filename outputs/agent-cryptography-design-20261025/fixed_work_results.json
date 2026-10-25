@@ -1,0 +1,198 @@
+{
+  "status": "passed",
+  "scope": "Exact ideal-bit distributions; synthetic padded count; finite logical scheduler. No production timing or ledger integration.",
+  "mechanism": {
+    "id": "bounded_geometric_count_v1_candidate",
+    "epsilon_exact": "ln(2)",
+    "delta_exact": "2^(-(K+1))",
+    "K40_delta": "1/2199023255552",
+    "fixed_random_bits": "2K",
+    "fixed_logical_steps": "N+2K+1",
+    "accountant": "separate approximate-DP epsilon/delta pair; NOT ordinary finite RDP"
+  },
+  "analytic_checks": {
+    "K_values": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64
+    ],
+    "raw_directed_privacy_checks": 128,
+    "clipped_directed_privacy_checks": 12734
+  },
+  "kernel_enumerated_cases": 832,
+  "scheduler": {
+    "public_schedules": 108,
+    "evaluated_runs": 110592,
+    "directed_joint_trace_dp_checks": 864,
+    "nonadaptive_shape_checks": 90,
+    "control_ack_immediate": true,
+    "two_query_delta_bound": "1/4",
+    "max_observed_hockey_delta": "21/256",
+    "max_delta_by_mode": {
+      "ack": "21/256",
+      "revoke": "21/256",
+      "cancel": "21/256",
+      "expire": "21/256",
+      "pause": "21/256",
+      "adaptive_cancel": "21/256"
+    }
+  },
+  "negative_controls": {
+    "secret_dependent_work": [
+      {
+        "mode": "skip_zero_rows",
+        "public_control_tick": 0,
+        "adjacent_inputs": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "metadata_traces": [
+          [
+            [
+              0,
+              "SCHEDULE",
+              0
+            ],
+            [
+              0,
+              "CONTROL_ACK",
+              "ack"
+            ],
+            [
+              2,
+              "SCHEDULE",
+              1
+            ],
+            [
+              9,
+              "RESULT",
+              0
+            ],
+            [
+              11,
+              "RESULT",
+              1
+            ]
+          ],
+          [
+            [
+              0,
+              "SCHEDULE",
+              0
+            ],
+            [
+              0,
+              "CONTROL_ACK",
+              "ack"
+            ],
+            [
+              2,
+              "SCHEDULE",
+              1
+            ],
+            [
+              11,
+              "RESULT",
+              0
+            ],
+            [
+              13,
+              "RESULT",
+              1
+            ]
+          ]
+        ]
+      }
+    ],
+    "finite_rdp_claim": {
+      "K": 2,
+      "N": 5,
+      "counts": [
+        2,
+        3
+      ],
+      "event": "output=0",
+      "P": "1/8",
+      "Q": "0",
+      "conclusion": "infinite directed Renyi divergence for every alpha>1"
+    },
+    "pure_dp_truncation": "rejected by positive exact hockey-stick divergence"
+  },
+  "excluded": [
+    "physical clocks/cache/power/network traces",
+    "real cryptographic RNG",
+    "private-length input padding and identity dedup implementation",
+    "durable scheduler, crash recovery and database integration",
+    "production accountant and mixed-profile composition",
+    "histogram implementation",
+    "arbitrary adaptive concurrent interaction proof"
+  ],
+  "source_sha256": "06b194302f777bec7977166869f6e83ee11daf83d7b2c1c302ae9bf013603860"
+}

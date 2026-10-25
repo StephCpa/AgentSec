@@ -1,0 +1,57 @@
+; Candidate restricted public gateway contract, not independently validated.
+; PGW1 + uint32be byte length + one COSE Sign1; 1..8192 bytes per frame.
+; Deterministic CBOR: depth <=8, each container <=128 items; no bool/null/float.
+; COSE tag18, protected {1:-19,4:kid}, unprotected {}.
+; AAD: ["agent-action-system",1,"AgentPublicRequestV1" /
+;       "AgentPublicResponseV1","Ed25519-SHA256-CBOR-v1"].
+id = tstr .regexp "[A-Za-z0-9_-]{1,64}"
+kid = bstr .size (1..32)
+clock = 0..4611686018427387903
+common-request = (
+ "profile": "agent-public-gateway-v1", "deployment": bstr .size 16,
+ "tenant": id, "domain": id, "kid": kid, "actor": id,
+ "request_id": bstr .size 16, "issued_at": clock, "expires_at": clock
+)
+public-request =
+ { common-request, "method": "CHALLENGE", "payload": {} } /
+ { common-request, "method": "SUBMIT", "payload": {
+   "action": bstr, "proof": bstr, "chain": [1*8 bstr] } } /
+ { common-request, "method": "POLL", "payload": {"operation": id} } /
+ { common-request, "method": "FINAL", "payload": {"cursor": 0..9223372036854775807, "limit": 1..16} } /
+ { common-request, "method": "CONTROL", "payload": control }
+control = {"kind": "pause" / "resume"} /
+          {"kind": "cancel", "operation": id} /
+          {"kind": "revoke", "root": id}
+common-response = (
+ "profile": "agent-public-gateway-v1", "deployment": bstr .size 16,
+ "request_hash": bstr .size 32, "sequence": uint
+)
+public-response =
+ { common-response, "status": "REJECTED", "body": {} } /
+ { common-response, "status": "CHALLENGE", "body": {
+   "challenge": bstr .size 32, "challenge_expiry": 0..4611686018427387904,
+   "audience": "mixed-gateway-v1" } } /
+ { common-response, "status": "RECORDED", "body": {
+   "operation": id, "sequence": uint } } /
+ { common-response, "status": "CONTROL_RECORDED", "body": control } /
+ { common-response, "status": "POLL", "body": {
+   "operation": id, "sequence": uint,
+   "publication": "UNPUBLISHED" / "ADMITTED" / "WITHHELD",
+   "final": "UNFINALIZED" / "WITHHELD" / "ACCEPTED" / "CLOSED" } } /
+ { common-response, "status": "FINAL", "body": {
+   "cursor": uint, "events": [*16 {
+    "sequence": uint, "operation": id,
+    "outcome": "WITHHELD" / "ACCEPTED" / "CLOSED" }] } }
+; Request window 0 < expires_at-issued_at <=60. New IDs require live window.
+; Committed exact retry reauthenticates current key/enrollment/certificate,
+; then returns byte-identical historical response even after creation expiry.
+; Tenant+key+request_id is immutable across methods and domains. Conflict rejects.
+; sequence=0 denotes nonjournaled authentication/window/conflict rejection.
+; Positive sequence is contiguous within tenant/domain across authenticated
+; requests, including durable policy denials. It is not a scheduler progress PC.
+; Request and response signatures use distinct domains from action proofs and
+; delivery evidence. SUBMIT still verifies its inner action/chain/challenge proof.
+; FINAL cursor refers to domain final-event sequence, not request sequence.
+; Authorization requires explicit enrolled method/control right. POLL/cancel
+; additionally require original action actor; root revoke requires root actor.
+; Unknown internal errors close the connection; no observation-privacy claim.

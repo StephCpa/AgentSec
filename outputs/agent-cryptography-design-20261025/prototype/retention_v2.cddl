@@ -1,0 +1,81 @@
+; Reference schema for retention_wire.py, not independently CDDL-validated.
+; Every externally supplied complete message/fact is 1..8192 bytes.
+; Shared restricted CBOR: definite, shortest, bytewise encoded-key map order;
+; no bool/null/float/unknown fields. Mandatory COSE tag18, empty unprotected map.
+; COSE external_aad = ["agent-action-system",1,object-name,
+;                      "Ed25519-SHA256-CBOR-v1"]. Names listed below.
+hash = bstr .size 32
+id = tstr .regexp "[A-Za-z0-9_-]{1,64}"
+kid = bstr .size (1..32)
+seq = 1..18446744073709551615
+frontier = 0..18446744073709551615
+time = 0..4611686018427387904
+empty = bstr .size 0
+profile = "mixed-retention-v2"
+common = ("profile": profile, "context_hash": hash)
+context = {
+  "profile": profile, "deployment": bstr .size 16,
+  "tenant": id, "recipient": id, "gateway": id, "session": id,
+  "epoch": bstr .size 16,
+  "sender_authority": bstr .size 16, "receiver_authority": bstr .size 16,
+  "sender_key": hash, "receiver_key": hash,
+  "sender_kid": kid, "receiver_kid": kid,
+  "sender_cert": hash, "receiver_cert": hash, "window": 1..65535
+}
+protected = {1: -19, 4: kid}
+cose<payload> = #6.18([bstr .cbor protected, {}, bstr .cbor payload, bstr .size 64])
+delivery-id = tstr .regexp "[0-9a-f]{64}"
+final-fact = {
+  common, "seq": seq, "delivery": delivery-id,
+  "action_digest": hash, "descriptor_hash": hash,
+  "issued_at": time, "expires_at": time,
+  "outcome": "ACCEPTED" / "CLOSED", "event_at": time,
+  "envelope_hash": empty / hash
+}
+; Delivery ID = lowercase hex SHA256(CBOR(["retention-delivery-id",2,context-hash,seq])).
+; Context hash = SHA256(CBOR(["retention-context",2,context])).
+; Genesis = SHA256(CBOR(["retention-prefix-genesis",2,context-hash])).
+; Step = SHA256(CBOR(["retention-prefix-step",2,previous-root,final-fact-bytes])).
+; final-fact-bytes is the canonical byte string, not an embedded map in the step.
+; expiry-issue in 1..60; ACCEPTED requires issue<=event<expiry and 32-byte envelope hash;
+; CLOSED requires event>=expiry and empty or 32-byte envelope hash.
+; descriptor_hash is a trusted upstream immutable descriptor commitment; this
+; codec does not implement v2 result delivery or verify the full action computation.
+query-payload = {
+  common, "kind": "FINAL" / "RETIRED" / "CHECKPOINT",
+  "seq": frontier, "delivery": delivery-id / "", "challenge": hash
+}
+query = cose<query-payload> ; sender, RetentionQueryV2
+; CHECKPOINT uses seq=0 and delivery="". FINAL/RETIRED use positive derived identity.
+final-receipt-payload = {
+  common, "fact": bstr .cbor final-fact, "challenge": hash, "request_hash": hash
+}
+final-receipt = cose<final-receipt-payload> ; receiver, RetentionFinalReceiptV2
+; Request must be a verified FINAL query for the same seq/context. Fresh challenge
+; and SHA256 of exact signed query bytes bound. Only fact bytes enter history root.
+offer-payload = {
+  common, "base": frontier, "base_root": hash,
+  "target": seq, "target_root": hash
+}
+offer = cose<offer-payload> ; sender, RetentionOfferV2
+; 0<=base<target; target-base<=window; base=0 requires route-bound genesis.
+; Caller MUST enforce target<=sender durable confirmed frontier BEFORE signing.
+retire-attempt-payload = {
+  common, "offer": bstr .cbor offer, "challenge": hash
+}
+retire-attempt = cose<retire-attempt-payload> ; sender, RetentionAttemptV2
+; Both outer attempt and inner offer require sender signature verification.
+checkpoint-payload = {
+  common, "status": "RETIRE_ACK" / "CHECKPOINT" / "RETIRED",
+  "floor": frontier, "root": hash, "high": frontier,
+  "challenge": hash, "request_hash": hash
+}
+checkpoint = cose<checkpoint-payload> ; receiver, RetentionCheckpointV2
+; 0<=floor<=high; high-floor<=window. floor=0 requires genesis.
+; RETIRE_ACK binds exact signed attempt and floor>=offer.target. Equal target
+; requires equal target_root. A later checkpoint root MUST be matched to sender
+; archive and floor<=durable sender confirmation before sender trusts progress.
+; CHECKPOINT/RETIRED bind corresponding signed query. RETIRED requires query.seq<=floor.
+; No outcome/time in a checkpoint; no recovered first-event assertion after GC.
+; Context, key pin, protected kid and signing direction must all match config.
+; This schema describes no authority database, transaction, transport or GC API.

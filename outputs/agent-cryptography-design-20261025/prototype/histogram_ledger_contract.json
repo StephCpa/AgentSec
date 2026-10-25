@@ -1,0 +1,89 @@
+{
+  "profile": "synthetic-mixed-count-histogram-v1",
+  "implementation": "histogram_ledger.py",
+  "tests": "histogram_ledger_test_results.json",
+  "status": "synthetic trusted plaintext prototype; not production cryptography",
+  "shared_accounts": {
+    "domain_registry": "count_histogram_registry_v1_candidate",
+    "accountant": "approx_dp_fixed_cost_v1_candidate",
+    "cost_per_count_or_histogram": {
+      "epsilon_micro": 700000,
+      "delta_q64": 8388608
+    },
+    "new_catalog_snapshot_or_actor_creates_accounts": false,
+    "cost_multiplied_by_bucket_count": false,
+    "signed_ancestor_caps_for_histogram": false
+  },
+  "catalog": {
+    "labels": "public ordered unique UTF-8 labels, 1..64 bytes each, 1..64 buckets",
+    "digest": "SHA-256 of canonical JSON ordered labels, with UTF-8/ensure_ascii=False",
+    "mutability": "insert-only IDs; repeated IDs reject; no management API",
+    "snapshot_binding": "tenant, domain, snapshot ID -> one catalog ID; count rejects histogram-tagged snapshots",
+    "missing": "trusted per-user contribution preprocessing, assignment-rule version provenance and domain lineage"
+  },
+  "action_binding": [
+    "tenant",
+    "operation ID",
+    "root",
+    "recipient",
+    "domain",
+    "snapshot",
+    "mechanism",
+    "accountant",
+    "catalog ID",
+    "catalog digest",
+    "bucket count B",
+    "capacity N",
+    "K=40",
+    "uint64be_public_bucket_order_v1",
+    "registered epsilon/delta costs"
+  ],
+  "admission": {
+    "costs": "both dimensions and job inserted atomically in reservation transaction",
+    "L1": "one independent committed tick persists STARTED plus full 10B-byte random tape before any private read",
+    "B_max_random_bytes": 640,
+    "retry": "same operation/action and same tick request return original registration without new sample or charge"
+  },
+  "scheduler": {
+    "histogram_steps": "1+B(N+81)",
+    "count_steps": "N+82",
+    "policy": "one shared domain round-robin queue; ordered publication can hold later completed count behind earlier long histogram",
+    "state": "counts[B], alive[B][2], g[B][2], outputs[B], persisted in private_state BLOB as plaintext canonical JSON",
+    "completion": "only final bucket store atomically commits 8B-byte vector, result binding, all charges, final job state and publication eligibility",
+    "cancel": "RESERVED refunds; STARTED burns; both retain full public dummy-slot work",
+    "revoke_expire": "before L1 refunds; after L1 no refund or new tape, full computation can finish but publication withheld"
+  },
+  "delivery": {
+    "current": "internal existing L3 ticket and emit support complete vector bytes",
+    "authenticated_vector_network": false,
+    "count_transport_profile_compatible": false,
+    "receipt_proves_external_business_effect": false
+  },
+  "storage": {
+    "encryption": false,
+    "rollback_protection": false,
+    "legacy_migration": false,
+    "profile_mixing": "new storage profile mutually rejects count services; no implicit conversion"
+  },
+  "verification": {
+    "test_methods": 20,
+    "actual_process_crash_scenarios": 11,
+    "max_bucket_case": "B=64,N=1,640-byte tape,512-byte result,5249 ticks",
+    "budget_race": "8 simultaneous requests across 2 roots/actors and count/histogram; one budget unit; exactly 1 winner",
+    "history_case": "count spends, later catalog/snapshot installed, histogram spends remaining same budget, third request rejected",
+    "previous_ten_suites_rerun": true
+  },
+  "remaining": [
+    "Signed histogram action and delegated policy/cap enforcement",
+    "AEAD-bound variable-width tapes, vector states and results",
+    "Authoritative witness images and rollback recovery for new tables",
+    "Authenticated vector delivery and terminal protocol",
+    "Trusted contribution preprocessing and source lineage",
+    "Full observable trace proof, physical timing, production key/identity management, strong-baseline evaluation"
+  ],
+  "signed_extension": {
+    "implementation": "mixed_delegated_ledger.py",
+    "contract": "mixed_delegated_contract.json",
+    "scope": "Separate signed delegated profile now supports both mechanisms and all-ancestor caps; this unsigned base profile remains unchanged"
+  }
+}

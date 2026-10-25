@@ -1,0 +1,53 @@
+; Reference schema only; no independent CDDL validation or interop.
+; Same bounded DLV1 framing and mutual TLS as mixed_delivery_v1.cddl.
+; Control and receipt never contain the original result or signed result envelope.
+request = {"profile": "mixed-delivery-terminal-v1", "challenge": bstr .size 32, "terminal": bstr .cbor control}
+control = #6.18([bstr .cbor protected, {}, bstr .cbor control-payload, bstr .size 64])
+protected = {1: -19, 4: bstr}
+control-payload = {
+  shape,
+  "profile": "mixed-delivery-terminal-v1",
+  "deployment": tstr .regexp "[0-9a-f]{32}",
+  "tenant": id, "recipient": id, "gateway": id, "session": id,
+  "sender_cert": bstr .size 32, "receiver_cert": bstr .size 32,
+  "delivery": id, "operation": id, "seq": 1..4611686018427387903,
+  "issued_at": 0..4611686018427387903, "expires_at": 1..4611686018427387904,
+  "envelope_hash": empty / hash
+}
+receipt = #6.18([bstr .cbor protected, {}, bstr .cbor receipt-payload, bstr .size 64])
+receipt-payload = {
+  "profile": "mixed-delivery-terminal-v1",
+  "deployment": tstr .regexp "[0-9a-f]{32}", "tenant": id, "delivery": id,
+  "seq": 1..4611686018427387903, "terminal_hash": hash,
+  "envelope_hash": empty / hash, "challenge": hash, "request_hash": hash,
+  "receiver_cert": hash, "outcome": "ACCEPTED" / "CLOSED", "event_at": 0..4611686018427387904
+}
+hash = bstr .size 32
+empty = bstr .size 0
+id = tstr .size (1..128)
+; Semantic constraints: exact route and TLS identities; sender and recipient pins;
+; expiry-issue in 1..60; control is permitted only at/after original expiry;
+; empty envelope_hash only when sender never prepared an envelope;
+; ACCEPTED requires 32-byte envelope hash and issue<=event_at<expiry;
+; CLOSED requires event_at>=expiry; request/challenge/control hash must match.
+; External_aad types: CountDeliveryTerminal and CountDeliveryTerminalAck.
+
+shape = (
+  "action_digest": hash, ; SHA-256 of canonical INTERNAL action JSON
+  "domain": id, "snapshot": id,
+  "accountant": "approx_dp_fixed_cost_v1_candidate",
+  "mechanism": "bounded_geometric_count_v1_candidate" / "bounded_geometric_histogram_v1_candidate",
+  "capacity": 1..65535, "bucket_count": 1..64, "k": 40,
+  "codec": "uint64be_count_v1" / "uint64be_public_bucket_order_v1",
+  "catalog": tstr, "catalog_digest": bstr, "labels": [*64 tstr]
+)
+
+; Count descriptor: B=1, count codec, empty catalog/digest/labels.
+; Histogram descriptor: unique ordered labels (1..64 UTF-8 bytes each),
+; B labels; SHA256(canonical UTF-8 JSON labels, ensure_ascii=False) digest.
+; Shape and original internal action digest must match original MixedDelivery
+; when it exists. No result/envelope field in terminal payloads.
+; AAD object names: MixedDeliveryTerminal / MixedDeliveryTerminalAck.
+; Accepted receipt and ordinary ACK MUST agree on the first acceptance time,
+; regardless of arrival order; CLOSED cannot coexist with ordinary acceptance.
+; Maximum-field fixture request 6226 bytes, under the 8192-byte frame limit.

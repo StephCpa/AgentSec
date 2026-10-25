@@ -1,0 +1,163 @@
+{
+  "profile": "mixed-receiver-retention-v2-candidate",
+  "status": "passed",
+  "exhaustive_cases": [
+    {
+      "status": "passed",
+      "operations": 1,
+      "window": 1,
+      "states": 161,
+      "edges": 638,
+      "fully_retired_states": 120,
+      "maximum_live_records": 1,
+      "retired_queries": 120
+    },
+    {
+      "status": "passed",
+      "operations": 2,
+      "window": 1,
+      "states": 1057,
+      "edges": 4714,
+      "fully_retired_states": 240,
+      "maximum_live_records": 1,
+      "retired_queries": 1256
+    },
+    {
+      "status": "passed",
+      "operations": 2,
+      "window": 2,
+      "states": 2529,
+      "edges": 12046,
+      "fully_retired_states": 852,
+      "maximum_live_records": 2,
+      "retired_queries": 2988
+    },
+    {
+      "status": "passed",
+      "operations": 3,
+      "window": 1,
+      "states": 2849,
+      "edges": 12866,
+      "fully_retired_states": 480,
+      "maximum_live_records": 1,
+      "retired_queries": 5320
+    }
+  ],
+  "weakening_counterexamples": [
+    {
+      "status": "counterexample",
+      "mutation": "retire_without_offer",
+      "error": "RETIRED_BEFORE_SENDER_DURABLE_CONFIRMATION",
+      "states": 6,
+      "edges": 7,
+      "trace": [
+        "receiver finalizes (1, 1, 'A', 'event-1') / local committed",
+        "receiver retires through 1 / local committed"
+      ]
+    },
+    {
+      "status": "counterexample",
+      "mutation": "volatile_ack_offer",
+      "error": "RETIRED_BEFORE_SENDER_DURABLE_CONFIRMATION",
+      "states": 23,
+      "edges": 38,
+      "trace": [
+        "receiver finalizes (1, 1, 'A', 'event-1') / local committed",
+        "emit receipt for sequence 1",
+        "sign retire offer 1",
+        "receiver retires through 1 / local committed"
+      ]
+    },
+    {
+      "status": "counterexample",
+      "mutation": "free_text_id",
+      "error": "REBOUND_FORGOTTEN_DELIVERY_ID",
+      "states": 46,
+      "edges": 99,
+      "trace": [
+        "receiver finalizes (1, 1, 'A', 'event-1') / local committed",
+        "emit receipt for sequence 1",
+        "sender confirms sequence 1 / local committed",
+        "sign retire offer 1",
+        "receiver retires through 1 / local committed",
+        "receiver finalizes (2, 1, 'A', 'event-2') / local committed"
+      ]
+    },
+    {
+      "status": "counterexample",
+      "mutation": "forget_next",
+      "error": "LOST_NEXT_SEQUENCE",
+      "states": 27,
+      "edges": 54,
+      "trace": [
+        "receiver finalizes (1, 1, 'A', 'event-1') / local committed",
+        "emit receipt for sequence 1",
+        "sender confirms sequence 1 / local committed",
+        "sign retire offer 1",
+        "receiver retires through 1 / local committed"
+      ]
+    },
+    {
+      "status": "counterexample",
+      "mutation": "delete_before_floor",
+      "error": "LOST_OR_REWRITTEN_LIVE_HISTORY",
+      "states": 27,
+      "edges": 54,
+      "trace": [
+        "receiver finalizes (1, 1, 'A', 'event-1') / local committed",
+        "emit receipt for sequence 1",
+        "sender confirms sequence 1 / local committed",
+        "sign retire offer 1",
+        "receiver retires through 1 / local committed"
+      ]
+    },
+    {
+      "status": "counterexample",
+      "mutation": "omit_local_fence",
+      "error": "LOST_NEXT_SEQUENCE",
+      "states": 6,
+      "edges": 8,
+      "trace": [
+        "receiver finalizes (1, 1, 'A', 'event-1') / local commit lost",
+        "receiver finalizes (1, 1, 'A', 'event-2') / local committed"
+      ]
+    },
+    {
+      "status": "counterexample",
+      "mutation": "omit_window",
+      "error": "LIVE_WINDOW_EXCEEDED",
+      "states": 5,
+      "edges": 6,
+      "trace": [
+        "receiver finalizes (1, 1, 'A', 'event-1') / local committed",
+        "receiver finalizes (2, 2, 'A', 'event-2') / local committed"
+      ]
+    }
+  ],
+  "recovery_examples": {
+    "lost_receipt_not_retired": true,
+    "authority_only_record_has_safe_drain": true,
+    "retired_is_not_closed": true,
+    "full_history_not_reconstructed_from_commitment": true
+  },
+  "constructive_operations": 1000,
+  "constructive_final_live_records": 0,
+  "assumptions": [
+    "ideal unforgeable messages",
+    "collision-free transcript commitment abstraction",
+    "trusted sender signs offers only after authoritative confirmation",
+    "linearizable nonrollback sender/receiver authorities",
+    "finite fixed route and operation bound in enumeration",
+    "fault-free fair continuation for drain example"
+  ],
+  "exclusions": [
+    "production DB/crypto/network implementation",
+    "arbitrary physical timing/DP observation proof",
+    "indefinite liveness under outages or adversarial noncooperation",
+    "bounded total audit archive or witness commit history",
+    "existing v1 compatibility or migration",
+    "exact old-outcome recovery after retirement without an archive"
+  ],
+  "proof_status": "finite safety exploration plus explicit induction obligations and counterexamples, not complete deployed protocol proof",
+  "source_sha256": "69ec29731d0ae2ef4ce06c59a34372587722acd79744994252eee050699ac87c"
+}

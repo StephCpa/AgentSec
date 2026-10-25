@@ -1,0 +1,28 @@
+; Reference schema, no independent CDDL validation or cross-implementation test.
+; DLV1 || uint32be(length) || packet; 1..8192 bytes, one request per mTLS connection.
+; All maps closed, deterministic CBOR; COSE mandatory tag 18, Ed25519 alg -19.
+; request envelope and reply ACK have distinct external_aad object types.
+packet-request = {"profile": "count-delivery-v1", "challenge": bstr .size 32, "envelope": bstr .cbor delivery}
+delivery = #6.18([bstr .cbor {1: -19, 4: bstr}, {}, bstr .cbor delivery-payload, bstr .size 64])
+delivery-payload = {
+  "profile": "count-delivery-v1",
+  "deployment": tstr .regexp "[0-9a-f]{32}",
+  "tenant": id, "recipient": id, "gateway": id, "session": id,
+  "sender_cert": bstr .size 32, "receiver_cert": bstr .size 32,
+  "delivery": id, "operation": id, "seq": 1..4611686018427387903,
+  "issued_at": 0..4611686018427387903, "expires_at": 1..4611686018427387904,
+  "result": bstr .size 8
+}
+packet-ack = #6.18([bstr .cbor {1: -19, 4: bstr}, {}, bstr .cbor ack-payload, bstr .size 64])
+ack-payload = {
+  "profile": "count-delivery-v1",
+  "deployment": tstr .regexp "[0-9a-f]{32}", "tenant": id, "delivery": id,
+  "seq": 1..4611686018427387903, "envelope_hash": bstr .size 32,
+  "challenge": bstr .size 32, "request_hash": bstr .size 32,
+  "receiver_cert": bstr .size 32, "accepted_at": 0..4611686018427387903
+}
+id = tstr .size (1..128)
+; Runtime IDs are constrained by UTF-8 BYTE length <=128.
+; Runtime checks fixed deployment/route, role keys/kids, certificate pins,
+; issue<=accept<expiry and expiry-issue<=60, expected sequence, full request
+; digest and challenge, original envelope hash, stored result/ticket binding.
