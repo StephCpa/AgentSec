@@ -1,0 +1,35 @@
+{
+  "profile": "private-work-recovery-v1",
+  "status": "bounded-executable-correspondence",
+  "extends": "public-request-recovery-v1",
+  "public_inputs": ["public configuration", "signed public requests", "approved-output oracle", "signing resource", "monotone public clock", "data-independent cut schedule", "exact tick request identity"],
+  "private_diagnostic_inputs_not_given_to_generator": ["synthetic dataset", "synthetic random tape", "decrypted durable accumulator", "decrypted committed result", "temporary child event log"],
+  "scope": {
+    "active_operations": 1,
+    "capacity": 3,
+    "datasets": "all 8 binary datasets",
+    "mechanisms": ["count", "histogram with 4 buckets"],
+    "approved_outputs": [1, [1, 0, 0, 0]],
+    "cut_phases": ["L1", "first row", "first noise bit", "first histogram bucket completion", "final result"],
+    "cuts_per_execution": 1,
+    "recovery": "fresh sender file from authoritative witness image",
+    "retry": "same original tick request ID and expected logical tick",
+    "clock": "constant 100 in the experiment; expired cut commands rejected by the profile"
+  },
+  "durable_cuts": ["after_witness_accept", "after_local_anchor_write", "response_drop"],
+  "r10_obligations": [
+    "all physical sample attempts are logged separately from committed L1 calls",
+    "a precommit discarded tape may differ from the tape chosen on retry",
+    "private snapshot access starts only after a previously durable L1",
+    "a committed tape is preserved on restore and exact retry",
+    "durable private state and result match the fixed-work kernel prefix at the public program counter",
+    "a committed tick retry stutters logical state although its guarded transaction adds one witness CAS"
+  ],
+  "observations": {
+    "TICK_UNAVAILABLE": "trusted coordinator receives no result after an explicit process exit; no invented network status code",
+    "RECOVER": "coordinator recovery completion; generated logical state stutters",
+    "TICK_RETRY": "same logical tick identity; advances only if the original tick was not durable"
+  },
+  "excluded": ["unplanned or data-dependent faults", "arbitrary concurrency", "physical timing and memory observations", "entropy source quality", "recipient or recovery process crashes", "witness rollback", "power loss", "full differential privacy or cryptographic reduction"],
+  "shared_kernel_caveat": "R10 shares CountJob and HistogramJob with existing models; it checks encrypted ledger integration, not independent correctness of the primitive algorithms."
+}

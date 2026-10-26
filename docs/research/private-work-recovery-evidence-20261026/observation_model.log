@@ -1,0 +1,70 @@
+{
+  "readiness_counterexample": [
+    {
+      "hidden_completion": 1,
+      "trace": [
+        "ACCEPTED",
+        "READY",
+        "RESULT:0"
+      ]
+    },
+    {
+      "hidden_completion": 2,
+      "trace": [
+        "ACCEPTED",
+        "PENDING",
+        "RESULT:0"
+      ]
+    }
+  ],
+  "batch_cases": [
+    {
+      "mode": "immediate_ack",
+      "public_control_step": 0,
+      "hidden_schedules": 9,
+      "distinct_observable_traces": 1
+    },
+    {
+      "mode": "serialized_barrier",
+      "public_control_step": 0,
+      "hidden_schedules": 9,
+      "distinct_observable_traces": 1
+    },
+    {
+      "mode": "immediate_ack",
+      "public_control_step": 1,
+      "hidden_schedules": 9,
+      "distinct_observable_traces": 1
+    },
+    {
+      "mode": "serialized_barrier",
+      "public_control_step": 1,
+      "hidden_schedules": 9,
+      "distinct_observable_traces": 1
+    },
+    {
+      "mode": "immediate_ack",
+      "public_control_step": 2,
+      "hidden_schedules": 9,
+      "distinct_observable_traces": 3
+    },
+    {
+      "mode": "serialized_barrier",
+      "public_control_step": 2,
+      "hidden_schedules": 9,
+      "distinct_observable_traces": 1
+    },
+    {
+      "mode": "immediate_ack",
+      "public_control_step": 3,
+      "hidden_schedules": 9,
+      "distinct_observable_traces": 3
+    },
+    {
+      "mode": "serialized_barrier",
+      "public_control_step": 3,
+      "hidden_schedules": 9,
+      "distinct_observable_traces": 1
+    }
+  ]
+}

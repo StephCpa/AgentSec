@@ -88,3 +88,10 @@ python3 outputs/agent-cryptography-design-20261025/prototype/image_serialization
 python3 outputs/agent-cryptography-design-20261025/prototype/public_recovery_trace.py --output /tmp/agentsec-public-recovery-new
 python3 scripts/replay_public_recovery.py /tmp/agentsec-public-recovery-new --output /tmp/agentsec-public-recovery-replay-new.json
 ```
+
+[私有计算槽中断与恢复对应](docs/research/2026-10-26-private-work-recovery.md)进一步检查 L1 采样、私有累加器、最终结算和精确槽重试。新增 R10 将物理采样尝试与已提交 L1 分开记录，并核对恢复后的随机带及内核前缀；公开生成器不读取这些私有诊断。缓存槽重试保留原逻辑状态，但仍增加一次见证 CAS。
+
+```sh
+python3 outputs/agent-cryptography-design-20261025/prototype/private_recovery_trace.py --output /tmp/agentsec-private-recovery-new
+python3 scripts/replay_private_recovery.py /tmp/agentsec-private-recovery-new --output /tmp/agentsec-private-recovery-replay-new.json
+```

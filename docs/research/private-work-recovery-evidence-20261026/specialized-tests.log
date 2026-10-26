@@ -1,0 +1,15 @@
+test_conditioned_neighbors_have_identical_public_trace (test_private_recovery_trace.PrivateRecoveryTests) ... ok
+test_cut_reachability_and_exact_retry_are_enforced (test_private_recovery_trace.PrivateRecoveryTests) ... ok
+test_partial_settlement_and_publication_rollback (test_private_recovery_trace.PrivateRecoveryTests) ... ok
+test_private_prefixes_survive_pre_and_postcommit_cuts (test_private_recovery_trace.PrivateRecoveryTests) ... ok
+test_private_read_before_durable_l1_is_detected (test_private_recovery_trace.PrivateRecoveryTests) ... ok
+test_replay_uses_public_commands_only (test_private_recovery_trace.PrivateRecoveryTests) ... ok
+test_sampling_attempts_are_distinct_from_committed_l1 (test_private_recovery_trace.PrivateRecoveryTests) ... ok
+test_validly_resealed_accumulator_mutation_is_detected (test_private_recovery_trace.PrivateRecoveryTests) ... ok
+test_validly_resealed_replacement_tape_is_detected (test_private_recovery_trace.PrivateRecoveryTests) ... ok
+test_wrong_commit_classification_is_detected (test_private_recovery_trace.PrivateRecoveryTests) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 63.901s
+
+OK

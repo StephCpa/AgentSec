@@ -1,0 +1,24 @@
+test_adaptive_cancel_uses_only_already_committed_published_result (__main__.ScheduledTests) ... ok
+test_cancel_after_start_burns_both_dimensions (__main__.ScheduledTests) ... ok
+test_cancel_before_start_refunds_but_keeps_public_slot_work (__main__.ScheduledTests) ... ok
+test_concurrent_distinct_ticks_have_one_cas_winner (__main__.ScheduledTests) ... ok
+test_concurrent_same_tick_request_is_idempotent (__main__.ScheduledTests) ... ok
+test_delivery_gate_and_preexisting_finite_ticket_semantics (__main__.ScheduledTests) ... ok
+test_direct_execution_and_control_bypasses_rejected (__main__.ScheduledTests) ... ok
+test_expiry_before_start_refunds_and_after_start_withholds (__main__.ScheduledTests) ... ok
+test_invalid_control_rolls_back_entire_tick (__main__.ScheduledTests) ... ok
+test_new_dynamic_job_joins_queue_without_reset (__main__.ScheduledTests) ... ok
+test_partial_work_survives_restart_with_same_seed_and_accumulator (__main__.ScheduledTests) ... ok
+test_pause_ack_is_immediate_and_does_not_move_work (__main__.ScheduledTests) ... ok
+test_private_read_requires_seed_committed_by_an_earlier_transaction (__main__.ScheduledTests) ... ok
+test_relational_public_journal_ignores_private_rows (__main__.ScheduledTests) ... ok
+test_reservation_registers_queue_once_atomically (__main__.ScheduledTests) ... ok
+test_retry_does_not_advance_twice_and_changed_request_conflicts (__main__.ScheduledTests) ... ok
+test_revocation_midwork_blocks_release_without_new_sample (__main__.ScheduledTests) ... ok
+test_round_robin_order_and_exact_kernel_output (__main__.ScheduledTests) ... ok
+test_ten_actual_process_crash_cuts (__main__.ScheduledTests) ... ok
+
+----------------------------------------------------------------------
+Ran 19 tests in 1.966s
+
+OK

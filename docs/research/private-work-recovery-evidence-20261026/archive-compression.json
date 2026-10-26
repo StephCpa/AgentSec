@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "method": "gzip to xz, byte-for-byte decompressed equality",
+  "uncompressed_bytes": 125264520,
+  "uncompressed_sha256": "fe2458162281a20a519b8903a1f7941171c0d8b074cdc3941c8b0f377f54b700",
+  "original_gzip_bytes": 16532838,
+  "original_gzip_sha256": "8c613336c691a97ae893696c35317a458e40d92374b818fac582d542235b3d8a",
+  "xz_bytes": 63768,
+  "xz_sha256": "a43a31064b878c231e5cb8510b892cbd725a2f6bc97abd2259327ce018ef0183",
+  "scope": "Lossless archival packaging only; no change to witness protocol, runtime, experiments or approved outputs."
+}
