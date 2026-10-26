@@ -1,0 +1,34 @@
+{
+  "base_commit": "3bd175496fae4d39a156d3b2f8161b9ac2f2d065",
+  "depends_on_pr": 4,
+  "profile": "restricted-public-failure-boundaries-v1",
+  "runtime_protocol_changed": false,
+  "baseline_test_failures": 7,
+  "new_regression_test_methods": 8,
+  "repository_test_methods": 57,
+  "public_transcript_test_methods": 17,
+  "constructive_cases": 200,
+  "offline_replay_cases": 200,
+  "stepwise_cases": 200,
+  "state_boundaries": 35136,
+  "files_sha256": {
+    "baseline-probe.json": "ceec585a417f479aff931960e3008de23000e432a57303a3db45f9a3d0aab2cc",
+    "baseline-tests.log": "4f9c040ab4937f898f9f3e4477bec7585d6c3c875fc6f40cccf3d4d71384af7d",
+    "baseline.json": "f76651aee85cb7e7316d9377addbf6ba39eaf9c6528eabe547c677937bb90325",
+    "checker-before-after.json": "289b250ee12e98927935b61ef008a228c546d46d6e3e715d27f55791fd09b89e",
+    "comparison.json": "5319bfcce9590273c54fca850eb2ca06cb1ff2dcfe50dcc483c01873e8ec51cc",
+    "constructive/inputs-and-expected.json.gz": "f0a1febbf3c07ea7772f9ee055e9601fe2b0cd3987d3353c82a8dc3e8cadf6c8",
+    "constructive/replay.json": "4e7ea09e0181d7dcfa25ab72b203f6c6db4fb0f161e1a500219ce45fa1470f4f",
+    "constructive/summary.json": "c7d4f15039c657866d5234cba3d8666c6905c27f0126f4c71384ab52ee62cca4",
+    "review_regressions.log": "d42acb9c819be4422fd01dca6751110b8b8e7210455d27dfd6ff9af317637bd0",
+    "run.json": "0f7bcd49128d2ef9ce909a1b331a1328ec3fd03252fef7ee7d7768c598149c6b",
+    "stepwise/checkpoints.json.gz": "e69f94fe00c335d79f861e80eb2daa09597a52220ae2e548ccc47c953f299e62",
+    "stepwise/summary.json": "3ebf3d54a696d102834c0928b9ede07f83385ca96d532cc4085c2d52a1b5c79b",
+    "test_public_transcript.log": "fb40628be5e3fc80634393d058eaafbea81a00cc0d4e3c4d94a5b00dfa434b27"
+  },
+  "support_source_sha256": {
+    "tests/test_public_failure_boundaries.py": "f70353ec9b3c23bba6b9df0ed6e6cf59c35cf5e62209ddc1c2006fd083295e0c",
+    "docs/research/public-failure-boundary-contract.json": "e039fb407f2339bed52d67491ff2d366abb4d491219445089b9be5a9a4f9d721",
+    "scripts/replay_constructive.py": "f864d0253256b7446396fc01ce8fea8e4eb2a7500073664456417906a93641c3"
+  }
+}

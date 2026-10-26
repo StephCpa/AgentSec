@@ -11,7 +11,7 @@ from ledger import Rejected
 from wire import verify_sign1
 from public_gateway import parse_request, response, PROFILE, RESPONSE_TYPE, REQUEST_TYPE
 from public_input import validate_public_response_body
-from public_trace_adapter import PublicTraceAdapter, ViewMismatch, require
+from public_trace_adapter import PublicTraceAdapter, ViewMismatch, require,require_public_call_frame,MODEL_PUBLIC_DENIALS
 import retention_delivery as d
 import retention_wire as r
 
@@ -49,6 +49,7 @@ class PublicSimulator:
 
     def _public(self,command):
         m=self.state;cfg=m.cfg;raw=bytes.fromhex(command['request']);peer=bytes.fromhex(command['peer'])
+        require_public_call_frame(raw,peer)
         coin=bytes.fromhex(command['challenge_coin'])
         require(len(coin) in (0,32),'PUBLIC_COIN_SHAPE')
         try:
@@ -70,8 +71,10 @@ class PublicSimulator:
         try:
             # Only this explicit coin is offered; no observed response body exists.
             status,body=m._dispatch(obj,principal['rights'],{'challenge':coin})
-        except Rejected:
-            m.__dict__=before;status,body='REJECTED',{}
+        except Rejected as exc:
+            m.__dict__=before
+            if str(exc) not in MODEL_PUBLIC_DENIALS:raise
+            status,body='REJECTED',{}
         require(len(m.jobs)<=2,'RESTRICTED_OPERATION_BOUND')
         m.journal_seq+=1
         reply=self._gateway_reply(raw,status,body,m.journal_seq)

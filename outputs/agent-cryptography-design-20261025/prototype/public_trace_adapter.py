@@ -10,7 +10,7 @@ import json
 
 from ledger import Rejected
 from wire import decode,verify_sign1
-from public_gateway import parse_request,response
+from public_gateway import parse_request,response,MAX_FRAME,PUBLIC_DENIALS
 from public_input import validate_public_payload
 from mixed_delegated_ledger import parse_mixed_action,parse_mixed_proof,parse_mixed_credential,COUNT,HISTOGRAM,CODEC,COUNT_CODEC
 from dp_ledger import PROFILE as ACCOUNTANT,EPSILON_COST as E,DELTA_COST as D
@@ -23,6 +23,17 @@ class ViewMismatch(ValueError):pass
 
 def require(condition,reason):
     if not condition:raise ViewMismatch(reason)
+
+
+# PUBLIC_DENIED represents this model's explicitly predicted public policy
+# branches. Other exceptions inherit the real gateway's closed denial taxonomy.
+MODEL_PUBLIC_DENIALS=frozenset(PUBLIC_DENIALS)|{'PUBLIC_DENIED'}
+
+
+def require_public_call_frame(raw,peer):
+    # The runtime rejects these before entering authentication or dispatch;
+    # there is no ordinary signed response to reproduce in this profile.
+    require(type(raw) is bytes and len(raw)<=MAX_FRAME and type(peer) is bytes and len(peer)==32,'PUBLIC_CALL_FRAME')
 
 
 class PublicTraceAdapter:
@@ -177,7 +188,8 @@ class PublicTraceAdapter:
 
     def _public(self,record):
         require(record['response']!='CONNECTION_CLOSED','UNEXPLAINED_CONNECTION_FAILURE')
-        raw=bytes.fromhex(record['request']);reply=bytes.fromhex(record['response'])
+        raw=bytes.fromhex(record['request']);reply=bytes.fromhex(record['response']);peer=bytes.fromhex(record['peer'])
+        require_public_call_frame(raw,peer)
         out=response(reply,raw,self.cfg['gateway_key'],self.cfg['gateway_kid'],self.cfg['deployment'])
         obj=None
         try:
@@ -196,8 +208,10 @@ class PublicTraceAdapter:
         # Transaction rollback must also hold in the independent public model.
         before=deepcopy(self.__dict__)
         try:status,body=self._dispatch(obj,principal['rights'],out['body'])
-        except Rejected:
-            self.__dict__=before;status,body='REJECTED',{}
+        except Rejected as exc:
+            self.__dict__=before
+            if str(exc) not in MODEL_PUBLIC_DENIALS:raise
+            status,body='REJECTED',{}
         self.journal_seq+=1
         require((out['status'],out['body'],out['sequence'])==(status,body,self.journal_seq),'PUBLIC_RESPONSE_MISMATCH')
         self.cache[request_key]=(raw,reply)

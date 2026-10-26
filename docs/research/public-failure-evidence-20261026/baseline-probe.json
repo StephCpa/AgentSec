@@ -1,0 +1,17 @@
+[
+  {
+    "case": "short_peer",
+    "real": "ABORT:GW_FRAME",
+    "candidate": "SIGNED_RESPONSE"
+  },
+  {
+    "case": "oversized_request",
+    "real": "ABORT:GW_FRAME",
+    "candidate": "SIGNED_RESPONSE"
+  },
+  {
+    "case": "proof_wrong_domain",
+    "real": "SIGNED_RESPONSE",
+    "candidate": "SIGNED_RESPONSE"
+  }
+]
