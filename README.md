@@ -81,3 +81,10 @@ python3 outputs/agent-cryptography-design-20261025/prototype/compression_experim
 ```sh
 python3 outputs/agent-cryptography-design-20261025/prototype/image_serialization_experiment.py --output /tmp/agentsec-row-reuse-cost-new.json
 ```
+
+[公开请求进程退出与恢复对应](docs/research/2026-10-26-public-request-recovery.md)增加独立故障模拟器和 R9：416 次实际进程退出、新副本恢复及归档重放通过，核对不可用事件后的日志、预算与精确重试。切点由与数据无关的环境计划指定；仍不覆盖 TICK/接收端/恢复中断、任意并发或完整网络观察。
+
+```sh
+python3 outputs/agent-cryptography-design-20261025/prototype/public_recovery_trace.py --output /tmp/agentsec-public-recovery-new
+python3 scripts/replay_public_recovery.py /tmp/agentsec-public-recovery-new --output /tmp/agentsec-public-recovery-replay-new.json
+```

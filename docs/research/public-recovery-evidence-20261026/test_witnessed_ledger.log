@@ -1,0 +1,24 @@
+test_compare_and_store_is_monotonic_and_exact_retry_is_idempotent (__main__.WitnessTests) ... ok
+test_missing_namespace_is_never_automatically_initialized (__main__.WitnessTests) ... ok
+test_two_connections_cannot_accept_divergent_successors (__main__.WitnessTests) ... ok
+test_counterexample_encryption_alone_accepts_old_state_and_new_noise (__main__.RecoveryTests) ... ok
+test_existing_ticket_and_emit_record_survive_recovery (__main__.RecoveryTests) ... ok
+test_four_commit_and_three_recovery_process_death_cuts (__main__.RecoveryTests) ... ok
+test_head_change_during_recovery_rolls_back_partial_restore (__main__.RecoveryTests) ... ok
+test_invalid_witness_receipt_never_commits_local_success (__main__.RecoveryTests) ... ok
+test_local_state_edit_with_unchanged_anchor_is_detected (__main__.RecoveryTests) ... ok
+test_missing_or_unavailable_witness_blocks_all_mutating_admission (__main__.RecoveryTests) ... ok
+test_no_unwitnessed_service_can_open_witnessed_storage (__main__.RecoveryTests) ... ok
+test_recovery_refuses_corrupt_image_and_incompatible_schema (__main__.RecoveryTests) ... ok
+test_restoring_both_stores_is_outside_the_witness_assumption (__main__.RecoveryTests) ... ok
+test_result_accepted_only_by_witness_is_restored_not_recomputed (__main__.RecoveryTests) ... ok
+test_revocations_replay_tombstones_and_clock_floor_are_recovered (__main__.RecoveryTests) ... ok
+test_stale_snapshot_is_fenced_then_restores_exact_seed_result_and_spend (__main__.RecoveryTests) ... ok
+test_two_cloned_writers_past_precheck_have_one_cas_winner (__main__.RecoveryTests) ... ok
+test_witness_accept_then_lost_reply_requires_recovery_without_resampling (__main__.RecoveryTests) ... ok
+test_witness_images_store_ciphertext_not_private_seed_or_master_key (__main__.RecoveryTests) ... ok
+
+----------------------------------------------------------------------
+Ran 19 tests in 3.701s
+
+OK

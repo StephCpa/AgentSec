@@ -1,0 +1,108 @@
+{
+  "profile": "public-request-recovery-v1",
+  "status": "finite constructive candidate with actual process cuts; not full refinement acceptance",
+  "fault_input": "Explicit cut chosen before the call, independent of private data. The generator never infers durability from a real response, exception or witness image.",
+  "commands": {
+    "PUBLIC_CUT": [
+      "kind",
+      "at",
+      "request",
+      "peer",
+      "challenge_coin",
+      "cut"
+    ],
+    "RECOVER": [
+      "kind",
+      "at"
+    ],
+    "other": "Existing PUBLIC, TICK, SEND and CONFIRM commands; allowed only when no recovery is pending."
+  },
+  "observations": {
+    "PUBLIC_UNAVAILABLE": [
+      "kind",
+      "at",
+      "request",
+      "peer"
+    ],
+    "RECOVER": [
+      "kind",
+      "at"
+    ],
+    "qualification": "Caller gets no response after a test subprocess exits. This is not a new signed gateway status or an implemented TLS error response. Cut name, process diagnostics and witness/image hashes are not part of the caller event. RECOVER is an explicit trusted-coordinator event."
+  },
+  "cuts": {
+    "after_public_effect": {
+      "witness_commit": false,
+      "local_commit": false
+    },
+    "after_public_journal_write": {
+      "witness_commit": false,
+      "local_commit": false
+    },
+    "before_witness_accept": {
+      "witness_commit": false,
+      "local_commit": false
+    },
+    "after_witness_accept": {
+      "witness_commit": true,
+      "local_commit": false
+    },
+    "after_local_anchor_write": {
+      "witness_commit": true,
+      "local_commit": false
+    },
+    "response_drop": {
+      "witness_commit": true,
+      "local_commit": true
+    }
+  },
+  "simulation": {
+    "before_commit": "Construct candidate logical effects/reply from public input then discard state changes. No response event is emitted.",
+    "after_commit": "Retain authoritative logical effects/cache generated from public input. Emit only unavailability, never the latent reply.",
+    "recovery": "Stutter on authoritative logical state; advance external public clock and clear availability gate. Model receives no recovered database or response.",
+    "retry": "Use existing live authentication and exact cached-request semantics; an already committed response can be returned after the request creation window expires.",
+    "signing": "Ideal role-scoped signing resource with synthetic test keys. Candidate construction may invoke it for a latent reply that the real process did not reach; signer call counts are diagnostic, not claimed public service observations.",
+    "cut_reachability": "New-dispatch cuts require the modeled call to create a new journal entry. Cached requests and early authentication/expiry denials reject these cuts with CUT_NOT_REACHED, without mutating model state."
+  },
+  "R9": {
+    "after_exit": [
+      "Child exits at injected point with code 93",
+      "Witness sequence advances exactly once iff cut is after witness commit",
+      "Witness raw image matches its digest; precommit witness head is unchanged",
+      "Local anchor and raw image remain old except response_drop, where both are committed",
+      "Existing current-state guard rejects the stale local replica when witness is ahead"
+    ],
+    "after_restore": [
+      "Fresh sender replica is byte-identical to authoritative image and passes audit",
+      "Recovery leaves witness head and image unchanged",
+      "R1-R8 again match generated authoritative logical state"
+    ],
+    "relation_boundary": "At an unavailable event the local replica may be stale: check R9, defer local R1-R8 until restore. Every other completed event checks R1-R8; RECOVER adds R9. Diagnostic full-image hashes are never generator inputs."
+  },
+  "matrix": {
+    "plans": [
+      "challenge",
+      "submit",
+      "histogram_submit",
+      "cancel_before_l1",
+      "cancel_after_l1",
+      "denied_poll",
+      "expired_submit",
+      "exact_retry",
+      "final_page"
+    ],
+    "datasets": "All 8 binary datasets for fixed N=3; approved result fixed to 1 (histogram [1,0,0,0]). Not a sampling-distribution experiment.",
+    "cut_plan_groups": 52,
+    "cases": 416,
+    "exception": "exact_retry uses only before_witness_accept, after_witness_accept, after_local_anchor_write and response_drop; cached requests bypass new-dispatch effect/journal hooks.",
+    "expired_submit": "Retry at 161 after a request creation window ending at 160. The action's own validity remains sufficient. If first commit exists, return original RECORDED; otherwise return unjournaled REJECTED without a mechanism invocation."
+  },
+  "not_covered": [
+    "Crashes during TICK/L1 private sampling, recipient acceptance, confirmation or recovery itself",
+    "Arbitrary request interleavings/concurrency, live identity changes, retirement and general induction",
+    "Public availability/error behavior for unplanned or private-data-dependent failures",
+    "Actual network closure/status/timing refinement or physical resource observations",
+    "Cross-host/power-loss faults, enforced process isolation from caller and nonrollback witness infrastructure",
+    "Full DP or cryptographic simulation proof and independent interoperability"
+  ]
+}

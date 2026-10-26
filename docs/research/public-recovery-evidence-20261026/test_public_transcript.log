@@ -1,0 +1,22 @@
+test_K2_adaptive_and_network_traces_meet_separate_bound (__main__.TranscriptTests) ... ok
+test_K40_public_work_matches_existing_count_and_histogram_shapes (__main__.TranscriptTests) ... ok
+test_adaptive_query_reads_only_already_received_result (__main__.TranscriptTests) ... ok
+test_count_and_histogram_distributions_are_normalized_and_private (__main__.TranscriptTests) ... ok
+test_invalid_public_configuration_and_wrong_draw_binding (__main__.TranscriptTests) ... ok
+test_later_withheld_waits_for_earlier_delivery_but_control_does_not (__main__.TranscriptTests) ... ok
+test_normal_simulator_has_no_raw_input_access (__main__.TranscriptTests) ... ok
+test_pause_does_not_delay_control_ack (__main__.TranscriptTests) ... ok
+test_permanent_loss_never_fabricates_completion (__main__.TranscriptTests) ... ok
+test_poll_never_returns_private_execution_state (__main__.TranscriptTests) ... ok
+test_post_start_cancel_never_refunds_and_keeps_work (__main__.TranscriptTests) ... ok
+test_pre_start_cancel_refunds_but_keeps_public_work (__main__.TranscriptTests) ... ok
+test_required_global_gate_preserves_final_order_under_reordering (__main__.TranscriptTests) ... ok
+test_retry_reuses_output_and_original_acceptance_time (__main__.TranscriptTests) ... ok
+test_revocation_blocks_later_admission_preserves_old_ticket (__main__.TranscriptTests) ... ok
+test_same_route_remains_fifo (__main__.TranscriptTests) ... ok
+test_weaker_per_route_comparison_reorders_raw_arrivals (__main__.TranscriptTests) ... ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 0.016s
+
+OK
