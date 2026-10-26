@@ -1,0 +1,35 @@
+test_acceptance_transaction_wins_before_concurrent_close (__main__.MixedTerminalTests) ... ok
+test_actual_process_death_recipient_terminal_barrier (__main__.MixedTerminalTests) ... ok
+test_actual_process_death_terminal_prepare_and_receipt_boundaries (__main__.MixedTerminalTests) ... ok
+test_authority_revocation_does_not_block_result_free_original_reconciliation (__main__.MixedTerminalTests) ... ok
+test_closed_tombstone_blocks_resigned_future_lifetime_and_id_reuse (__main__.MixedTerminalTests) ... ok
+test_closed_transaction_wins_and_fences_waiting_vector_acceptance (__main__.MixedTerminalTests) ... ok
+test_concurrent_close_requests_create_one_tombstone (__main__.MixedTerminalTests) ... ok
+test_conflicting_signed_receipts_do_not_rewrite_final_outcome (__main__.MixedTerminalTests) ... ok
+test_early_recipient_rejection_preserves_monotonic_floor (__main__.MixedTerminalTests) ... ok
+test_existing_received_result_cannot_be_declared_never_prepared_or_changed (__main__.MixedTerminalTests) ... ok
+test_late_conflicting_ordinary_ack_cannot_override_closed_state (__main__.MixedTerminalTests) ... ok
+test_lost_delivery_ack_reconciles_after_expiry_without_retransmitting_result (__main__.MixedTerminalTests) ... ok
+test_maximum_public_descriptor_has_no_result_and_fits_frame (__main__.MixedTerminalTests) ... ok
+test_mixed_descriptor_and_result_free_closed_schema_checked (__main__.MixedTerminalTests) ... ok
+test_no_close_before_expiry_at_either_endpoint (__main__.MixedTerminalTests) ... ok
+test_no_skip_ahead_or_credential_bypass (__main__.MixedTerminalTests) ... ok
+test_old_count_terminal_profile_and_signature_domain_cannot_close_mixed (__main__.MixedTerminalTests) ... ok
+test_ordinary_ack_then_terminal_must_keep_same_first_acceptance_time (__main__.MixedTerminalTests) ... ok
+test_prepared_but_unsent_expires_to_closed_and_fences_late_arrival (__main__.MixedTerminalTests) ... ok
+test_profile_downgrade_rejected (__main__.MixedTerminalTests) ... ok
+test_receipt_tampering_and_impossible_outcomes_rejected (__main__.MixedTerminalTests) ... ok
+test_receiver_tombstone_rollback_negative_control_changes_first_closure (__main__.MixedTerminalTests) ... ok
+test_terminal_ack_loss_is_idempotent_and_retains_first_closure_time (__main__.MixedTerminalTests) ... ok
+test_terminal_replay_context_signature_and_schema_checks (__main__.MixedTerminalTests) ... ok
+test_terminal_then_ordinary_ack_must_keep_same_first_acceptance_time (__main__.MixedTerminalTests) ... ok
+test_unprepared_expired_ticket_closes_without_result_and_next_can_deliver (__main__.MixedTerminalTests) ... ok
+test_unprepared_vector_closes_without_opening_result_then_count_can_deliver (__main__.MixedTerminalTests) ... ok
+test_witness_accepted_terminal_control_and_receipt_process_death (__main__.MixedTerminalTests) ... ok
+test_witness_accepted_terminal_receipt_local_failure_recovers_without_requery (__main__.MixedTerminalTests) ... ok
+test_witness_restore_preserves_closed_fence_and_next_sequence (__main__.MixedTerminalTests) ... ok
+
+----------------------------------------------------------------------
+Ran 30 tests in 9.292s
+
+OK

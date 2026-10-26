@@ -1,0 +1,1866 @@
+{
+  "profile": "canonical-row-reuse-cost-v1",
+  "passed": true,
+  "reference_commit": "06005e36cec9040fb35eaa9d03858c75ac0be0e7",
+  "python": "3.9.6 (default, Apr 30 2025, 02:07:17) \n[Clang 17.0.0 (clang-1700.0.13.5)]",
+  "platform": "macOS-15.7.3-arm64-arm-64bit",
+  "cryptography": "49.0.0",
+  "sqlite": "3.43.2",
+  "openssl": "LibreSSL 2.8.3",
+  "timer": "Image build uses process_time_ns; execution uses perf_counter_ns. Sequential local ReferenceWitness, no TLS. 3 alternating query pairs per workload, nearest-rank median; 16 alternating same-snapshot CPU pairs on the final optimized run.",
+  "scope": "Reference algorithm preserved in experiment only. Query pairs use same public schedule/data/approved output with fresh encrypted state; sizes, CAS count, generated public transcript and R1-R8 final relation must agree. Same-snapshot serializer comparison requires exact bytes.",
+  "source_sha256": {
+    "mixed_delegated_ledger.py": "69b87ad162fe3d462fcb31baccb6919e82938a7e8e2b20ea570737b7e9dde7bc",
+    "delivery_relation_trace.py": "10e55d80a4d5938d292173de40d8b44faff29e97fa8dddd65ba2fd13bc6613a1",
+    "stepwise_trace.py": "a935cf823650abbf944366094e9aa8ecc187149e0d7df7f56094131ea9f5a4d4",
+    "public_observation.py": "53e21db6e2f507832d1a75c0c0578b2ed1aaa3b5c221a9ee6e86dc23dfa562ee",
+    "test_atomic_publication.py": "7830e50f432618dd845e82e30fa18b564771074419ac2b9843537666a101aa9b",
+    "mixed_delivery_terminal.py": "67b759be033cb2f3ce26db2caaa7afc816f1b7f723934fb22445d434ab137acc",
+    "ordered_publication.py": "09deb84392ba054d4541295561865a501004ce09f2d04edca2fd3bd3d9954be1",
+    "retention_sender.py": "1f55f6d9a68614bb03883b460c52b6cea0dfbe0ac3811ed2e3e3d5af4623dbb6",
+    "test_scheduled_ledger.py": "9de478264c7d94f1473e8aa24201e96984bc1339d1208125c9ade41814e8c285",
+    "test_p2_scenario.py": "1fd37412477e3a8063348e42a79ee1c2ee89bdff9602e4419fd43a0518f7afad",
+    "histogram_ledger.py": "afac61ce7dbc8cfe01e6756a243eea389724d59c8f51bcd22b2c0c2d606c32e0",
+    "contribution_delivery.py": "146cfa730da07e2be09d2c81192c42f9928ce6556a03dc82be525be3f3459f88",
+    "public_gateway.py": "b1bf08b7159f96aafc3e28f05496307d120bba688e50e9f460db6a3349b64de0",
+    "test_contribution_ingestion.py": "6ebb147f72824a0b1cee8ed169cb26e628b53322f48c2e3b04684f1d3b5ff9b9",
+    "test_retention_delivery.py": "1bee89816723bc7b54dd501643a340a465c7cdb17a421d8717c61ac2f25e2cd6",
+    "test_dp_ledger.py": "41c936fbd1cf5f5c3eb5d2cd4b99f8601d425355a8f0d8b17e67b1f0e7f3c291",
+    "encrypted_ledger.py": "c1ac348a1657483efeaeb0eb4d43bae80b3990ce9b461f0a2b1533dd17ce32be",
+    "test_retention_wire.py": "0a14471278b94db57c5a83096bb1714f5e5e73632b4bf68961dfaad7c261f3a0",
+    "retention_archive.py": "c727898455e30af80257ec307157173e109c5c9dad9b66dab404a5ca4ed943b7",
+    "delivery_state_relation.py": "6f40d4fe0d04f2ba2f589ecd0203637f617c62c0de2ef3dffae06d4f2aabb150",
+    "test_witness_transport.py": "499d758ce0b39ad3bfa1bc4c015032d520d73984b15bf377f08ed2b753f0ddf6",
+    "public_trace_adapter.py": "5901831f51fabb08c661c59878e3a1d613b68e470963caad4738a28f2badeb3e",
+    "test_mixed_delivery_transport.py": "8bd848285ee32a68d3cd06bf32f892ed747e4b7cf2ff3f264022776fcb87781d",
+    "encrypted_mixed_ledger.py": "1a085da145bd7fd0ef95a411fbfa3d9b94132508e7a9210127daeb5d2aca5740",
+    "test_delegated_ledger.py": "1cee9d8febe72898d14c995a7ac93476889a2f2ae75129aa86d776f473c4c35f",
+    "test_ordered_publication.py": "693bea9acc98d2de0472644484760bbb46a88a13b14b69c0d76e76485449033f",
+    "p2_scenario.py": "8e276dbb9c0ca10282e31e63807612c0997b5e174efaf62c173e5078c3d60f94",
+    "public_simulator.py": "33cabb2ddc928da88d94f3592b205abd4e7293ec8c5a4d9cc722721369dc64cc",
+    "test_delivery_transport.py": "1a8eebe3e8650f2c6a2d6649bdc041bcd3da49742490dd68ec8a2ed45f861b2d",
+    "ledger.py": "5bdd63777480e26d56d89d00e4d0f7a7030668377ca164756f2752103cf04dc7",
+    "test_witnessed_mixed_ledger.py": "0d764a9322f15488d1fed5a91f2019ec01296ffb63504b9693e20eb13111b06e",
+    "witnessed_ledger.py": "39b2ca031af6d286831dad81ee0406d29cdda61a571d9ac2b71f3d5c4c1f3a07",
+    "persistence_experiment.py": "01b818b6eb476fabef6da5555537fc8e87940f4b9ae2ab6f6eda054f31f2ab0a",
+    "delivery_terminal.py": "29203cf6a3fa8fce2062cb8a987d61f8a131814ad50f287d0eaf21dad422d2b2",
+    "public_input.py": "f037317ea9f7bf4a0997f6f061206dfd7746bd0fba1432e3f5061517ffbc0e01",
+    "test_mixed_delivery_terminal.py": "eec723c9ed969d088fd634a2191be83e261bdbd5282e8ceb88dcc73b5fa22aff",
+    "delivery_transport.py": "71a96b0310b1004946725e09b89178fdfde5ba7b0205cf1179f95b5da134bc9e",
+    "wire.py": "b2e95928c604c923ec549a74f599fd4a16fc4ccec5841474aabf64ec55de6d58",
+    "state_relation.py": "314162686d626f2c7e3c4120dc2a5ab808edf84e4c6ea06af793483e1edfc20c",
+    "dp_ledger.py": "35f0c336d549bf0145fd79bcb9b02416b0a729d60d990fc34e477b744887054b",
+    "delegated_ledger.py": "28cd13ef8d6b43f2ca1c9d273f3d32b92943278a0dbef2894eed1dc570cf3862",
+    "witness_compression.py": "531b11ae1047fec08b0114afb55a76471ca73b601844729dc1024de8b8011746",
+    "witnessed_recipient.py": "64060786a6bfa383302f1c999648aa6323fafdd34b620e70b923b95037b68cad",
+    "retention_recipient.py": "562e3ed9404b3ea4a8d94cb73abb863949eff92931f73d4d71cca8bb253b148d",
+    "contribution_ingestion.py": "799a6dc88451de81b1eaddd02a0b44b9d80d859c43a0266b7c1cc46c392d51f4",
+    "compression_experiment.py": "c94587b2230bd94b4f2f779636190f14a491f097772176c98f2235367152b239",
+    "mixed_delivery_transport.py": "9127fe54d9bb7e396c4056f7db7de15f2f299d647bbb1e1cc77d23d5d1a4b491",
+    "test_mixed_delegated_ledger.py": "9babf15f2c9584ed6ebd3d040376d81fb61ce1e97a2e71ea1cad4c377ecbd616",
+    "contribution_scenario.py": "b7556cacd6d8dea98d8c7a1fff19c3785c8fe9ec82c17c5a1fe3f440c5c4065f",
+    "test_retention_archive.py": "bd088478e062544b5ad1ee2f48ebd9ff60e69d06d144b8c93d117c275a3fc8c3",
+    "restricted_trace.py": "86acc8f872b0dbc39236d455217c26e877c4e55f4e2e4fe34ec63e89efa6b43b",
+    "test_witnessed_ledger.py": "73a4202b220fec643dbb88ae74449bbe307ed4e5997ff643592d7f2803e62cfc",
+    "witnessed_mixed_ledger.py": "9d58044454873d31648c0011c296b779d0d90f4449546c44fcb7d8d8b623aced",
+    "test_witnessed_recipient.py": "d1c464fe282303cfa5446ce9e01823c81bab2a6063118299bc2e1b0226b2b7b9",
+    "test_retention_sender.py": "9311d56d525cd28e963d44ced9e8ffc784c78366f56b8e130820159f145369d1",
+    "test_contribution_delivery.py": "3017c1f5c89f82018b7acdeca28f1c84129baa4745ec31d0f4047633183f814a",
+    "test_public_gateway.py": "bbaa068581cdd755882aa5db1b0a917f703f0c24692a128ac84253d055efaed0",
+    "signed_ledger.py": "e777d588e232d0f6f42f3d935b8105ec8b17045ef3eb2cec516975f04a4cd22f",
+    "witness_transport.py": "c567b581d2486fea2d1fc61f59cd68a1a00ac04b41546d5a195a9296d47012f3",
+    "atomic_publication.py": "32d5a012fcd3cb309de999666161c4af023faaefd6ed675bdb445558fc4e42cc",
+    "image_serialization_experiment.py": "4e467ca82b335cd417c74bde90f8dcea9c9c9e6694e9faea3413e300c6829e0f",
+    "scheduled_ledger.py": "d8d4b2c32b5028066190845298f8e434fe5d6e262e5adad1c48d221be06511e0",
+    "test_histogram_ledger.py": "d065b1af66187adf2c81a818994900887005c2e1f5713e9f0bbf5e5c34176797",
+    "test_public_observation.py": "2d600354949d3686950e4a40732e01df18b80e564aa3bc909a01aac2b159d959",
+    "public_gateway_transport.py": "7a6f6f49ce114337dca729b7b242a7e4366cf635043b65ea4f391326a52fe63b",
+    "retention_wire.py": "38ce3865e3be049cb570225216ec8e8ae192617b7124f03b2cb51612bd56e22a",
+    "test_ledger.py": "d44c082f517a09080790183bf8a9a5a8960d14160ed1c644bf2b284970e77ae7",
+    "constructive_trace.py": "91d6b4e43260d0a30a05889e9c9068c27c5b33b9c817f0e61d8514bce769a8a2",
+    "test_encrypted_ledger.py": "bbcc428ddbd8bbcc9e8ffad6358e6936a0403fcc6c9900f4d8e1c836eac3f466",
+    "test_retention_recipient.py": "6f2df27a2a357d9d4f68f937bfc13ed851c6486a5814b5fdddae7c47792c35ed",
+    "test_delivery_terminal.py": "1d8cc3d14e566f579ff038b960ac70cb5de9006e4e9b06dce878191c4750d137",
+    "retention_delivery.py": "35dd17fa0d0d50aa34674239fe68a128b1865421ef8e371145abb996e00d0d46",
+    "test_encrypted_mixed_ledger.py": "d2c87ea063425d266d2238758ebc0c5f1de74057fff4bdf2ebff0c6eed4a2589",
+    "test_signed_ledger.py": "c28e0f8fc365b5ff61e49343f2f1d433ae369c403f849efdb6ddb9c65745aa50"
+  },
+  "cases": [
+    {
+      "kind": "count",
+      "poll_every": 0,
+      "runs": [
+        {
+          "repetition": 0,
+          "order": [
+            "reference",
+            "row_reuse"
+          ],
+          "measurements": [
+            {
+              "kind": "count",
+              "poll_every": 0,
+              "encoder": "reference",
+              "logical_slots": 85,
+              "polls": 0,
+              "execution_ms": 286.678167,
+              "image_builds": 170,
+              "image_build_cpu_ms": 178.082,
+              "image_build_bytes": 8977221,
+              "cas_commits": 85,
+              "cas_body_bytes": 4500238,
+              "transcript_hash": "a14747983a1192e7f8fe4df6921208de2b86fadfe7de5a1ebddf9402a285a7ed",
+              "relation": {
+                "R1": "b8ddd152fd27d646918adaf44288737158f3a610ac106aba62560be7d171784a",
+                "R2": "b6dd53a8df0cb67ec870511b4597cc90314e8c957372c8fbd2d77805a9ea8e99",
+                "R3": "42f03eadf64bdffec8cd912176e565e28ee995be436cb4dd8d28525438a478c6",
+                "R4": "e2f81c1e053e52986389bf66852ee299ff7a85f44eb3075b159efa785eca2d15",
+                "R5": "9174d3ccfdbf8500e9aaa1b3d08373d33e6dafa245bbbbad47febab0f9568231",
+                "R6": "8d392c7efac9e1f95831ef4a2bbf461a21b95b8416bcf4c6f89c0aa0f54127a1",
+                "R7": "f0a7d7b6e5ceee054bcc0ac1f418063ffc75cbc0dae87f2b6d6d6f9155228a8c",
+                "R8": "222110fcf0b3f401dc185678eec2df39a4a2d2139812baa0ff92999a1d09f680"
+              }
+            },
+            {
+              "kind": "count",
+              "poll_every": 0,
+              "encoder": "row_reuse",
+              "logical_slots": 85,
+              "polls": 0,
+              "execution_ms": 259.755875,
+              "image_builds": 170,
+              "image_build_cpu_ms": 141.696,
+              "image_build_bytes": 8977221,
+              "cas_commits": 85,
+              "cas_body_bytes": 4500238,
+              "transcript_hash": "a14747983a1192e7f8fe4df6921208de2b86fadfe7de5a1ebddf9402a285a7ed",
+              "relation": {
+                "R1": "b8ddd152fd27d646918adaf44288737158f3a610ac106aba62560be7d171784a",
+                "R2": "b6dd53a8df0cb67ec870511b4597cc90314e8c957372c8fbd2d77805a9ea8e99",
+                "R3": "42f03eadf64bdffec8cd912176e565e28ee995be436cb4dd8d28525438a478c6",
+                "R4": "e2f81c1e053e52986389bf66852ee299ff7a85f44eb3075b159efa785eca2d15",
+                "R5": "9174d3ccfdbf8500e9aaa1b3d08373d33e6dafa245bbbbad47febab0f9568231",
+                "R6": "8d392c7efac9e1f95831ef4a2bbf461a21b95b8416bcf4c6f89c0aa0f54127a1",
+                "R7": "f0a7d7b6e5ceee054bcc0ac1f418063ffc75cbc0dae87f2b6d6d6f9155228a8c",
+                "R8": "222110fcf0b3f401dc185678eec2df39a4a2d2139812baa0ff92999a1d09f680"
+              }
+            }
+          ]
+        },
+        {
+          "repetition": 1,
+          "order": [
+            "row_reuse",
+            "reference"
+          ],
+          "measurements": [
+            {
+              "kind": "count",
+              "poll_every": 0,
+              "encoder": "row_reuse",
+              "logical_slots": 85,
+              "polls": 0,
+              "execution_ms": 244.575167,
+              "image_builds": 170,
+              "image_build_cpu_ms": 141.723,
+              "image_build_bytes": 8977221,
+              "cas_commits": 85,
+              "cas_body_bytes": 4500238,
+              "transcript_hash": "a14747983a1192e7f8fe4df6921208de2b86fadfe7de5a1ebddf9402a285a7ed",
+              "relation": {
+                "R1": "b8ddd152fd27d646918adaf44288737158f3a610ac106aba62560be7d171784a",
+                "R2": "b6dd53a8df0cb67ec870511b4597cc90314e8c957372c8fbd2d77805a9ea8e99",
+                "R3": "42f03eadf64bdffec8cd912176e565e28ee995be436cb4dd8d28525438a478c6",
+                "R4": "e2f81c1e053e52986389bf66852ee299ff7a85f44eb3075b159efa785eca2d15",
+                "R5": "9174d3ccfdbf8500e9aaa1b3d08373d33e6dafa245bbbbad47febab0f9568231",
+                "R6": "8d392c7efac9e1f95831ef4a2bbf461a21b95b8416bcf4c6f89c0aa0f54127a1",
+                "R7": "f0a7d7b6e5ceee054bcc0ac1f418063ffc75cbc0dae87f2b6d6d6f9155228a8c",
+                "R8": "222110fcf0b3f401dc185678eec2df39a4a2d2139812baa0ff92999a1d09f680"
+              }
+            },
+            {
+              "kind": "count",
+              "poll_every": 0,
+              "encoder": "reference",
+              "logical_slots": 85,
+              "polls": 0,
+              "execution_ms": 274.802209,
+              "image_builds": 170,
+              "image_build_cpu_ms": 169.16,
+              "image_build_bytes": 8977221,
+              "cas_commits": 85,
+              "cas_body_bytes": 4500238,
+              "transcript_hash": "a14747983a1192e7f8fe4df6921208de2b86fadfe7de5a1ebddf9402a285a7ed",
+              "relation": {
+                "R1": "b8ddd152fd27d646918adaf44288737158f3a610ac106aba62560be7d171784a",
+                "R2": "b6dd53a8df0cb67ec870511b4597cc90314e8c957372c8fbd2d77805a9ea8e99",
+                "R3": "42f03eadf64bdffec8cd912176e565e28ee995be436cb4dd8d28525438a478c6",
+                "R4": "e2f81c1e053e52986389bf66852ee299ff7a85f44eb3075b159efa785eca2d15",
+                "R5": "9174d3ccfdbf8500e9aaa1b3d08373d33e6dafa245bbbbad47febab0f9568231",
+                "R6": "8d392c7efac9e1f95831ef4a2bbf461a21b95b8416bcf4c6f89c0aa0f54127a1",
+                "R7": "f0a7d7b6e5ceee054bcc0ac1f418063ffc75cbc0dae87f2b6d6d6f9155228a8c",
+                "R8": "222110fcf0b3f401dc185678eec2df39a4a2d2139812baa0ff92999a1d09f680"
+              }
+            }
+          ]
+        },
+        {
+          "repetition": 2,
+          "order": [
+            "reference",
+            "row_reuse"
+          ],
+          "measurements": [
+            {
+              "kind": "count",
+              "poll_every": 0,
+              "encoder": "reference",
+              "logical_slots": 85,
+              "polls": 0,
+              "execution_ms": 266.842708,
+              "image_builds": 170,
+              "image_build_cpu_ms": 167.298,
+              "image_build_bytes": 8977221,
+              "cas_commits": 85,
+              "cas_body_bytes": 4500238,
+              "transcript_hash": "a14747983a1192e7f8fe4df6921208de2b86fadfe7de5a1ebddf9402a285a7ed",
+              "relation": {
+                "R1": "b8ddd152fd27d646918adaf44288737158f3a610ac106aba62560be7d171784a",
+                "R2": "b6dd53a8df0cb67ec870511b4597cc90314e8c957372c8fbd2d77805a9ea8e99",
+                "R3": "42f03eadf64bdffec8cd912176e565e28ee995be436cb4dd8d28525438a478c6",
+                "R4": "e2f81c1e053e52986389bf66852ee299ff7a85f44eb3075b159efa785eca2d15",
+                "R5": "9174d3ccfdbf8500e9aaa1b3d08373d33e6dafa245bbbbad47febab0f9568231",
+                "R6": "8d392c7efac9e1f95831ef4a2bbf461a21b95b8416bcf4c6f89c0aa0f54127a1",
+                "R7": "f0a7d7b6e5ceee054bcc0ac1f418063ffc75cbc0dae87f2b6d6d6f9155228a8c",
+                "R8": "222110fcf0b3f401dc185678eec2df39a4a2d2139812baa0ff92999a1d09f680"
+              }
+            },
+            {
+              "kind": "count",
+              "poll_every": 0,
+              "encoder": "row_reuse",
+              "logical_slots": 85,
+              "polls": 0,
+              "execution_ms": 250.039875,
+              "image_builds": 170,
+              "image_build_cpu_ms": 143.543,
+              "image_build_bytes": 8977221,
+              "cas_commits": 85,
+              "cas_body_bytes": 4500238,
+              "transcript_hash": "a14747983a1192e7f8fe4df6921208de2b86fadfe7de5a1ebddf9402a285a7ed",
+              "relation": {
+                "R1": "b8ddd152fd27d646918adaf44288737158f3a610ac106aba62560be7d171784a",
+                "R2": "b6dd53a8df0cb67ec870511b4597cc90314e8c957372c8fbd2d77805a9ea8e99",
+                "R3": "42f03eadf64bdffec8cd912176e565e28ee995be436cb4dd8d28525438a478c6",
+                "R4": "e2f81c1e053e52986389bf66852ee299ff7a85f44eb3075b159efa785eca2d15",
+                "R5": "9174d3ccfdbf8500e9aaa1b3d08373d33e6dafa245bbbbad47febab0f9568231",
+                "R6": "8d392c7efac9e1f95831ef4a2bbf461a21b95b8416bcf4c6f89c0aa0f54127a1",
+                "R7": "f0a7d7b6e5ceee054bcc0ac1f418063ffc75cbc0dae87f2b6d6d6f9155228a8c",
+                "R8": "222110fcf0b3f401dc185678eec2df39a4a2d2139812baa0ff92999a1d09f680"
+              },
+              "restored_image_checks": 4,
+              "paired_snapshot": {
+                "image_bytes": 70777,
+                "image_hash": "7b2f41d350434db1cb62086ed8fcdefc376f6d00376dddd05518a4a8a126890a",
+                "order": [
+                  [
+                    "reference",
+                    "row_reuse"
+                  ],
+                  [
+                    "row_reuse",
+                    "reference"
+                  ],
+                  [
+                    "reference",
+                    "row_reuse"
+                  ],
+                  [
+                    "row_reuse",
+                    "reference"
+                  ],
+                  [
+                    "reference",
+                    "row_reuse"
+                  ],
+                  [
+                    "row_reuse",
+                    "reference"
+                  ],
+                  [
+                    "reference",
+                    "row_reuse"
+                  ],
+                  [
+                    "row_reuse",
+                    "reference"
+                  ],
+                  [
+                    "reference",
+                    "row_reuse"
+                  ],
+                  [
+                    "row_reuse",
+                    "reference"
+                  ],
+                  [
+                    "reference",
+                    "row_reuse"
+                  ],
+                  [
+                    "row_reuse",
+                    "reference"
+                  ],
+                  [
+                    "reference",
+                    "row_reuse"
+                  ],
+                  [
+                    "row_reuse",
+                    "reference"
+                  ],
+                  [
+                    "reference",
+                    "row_reuse"
+                  ],
+                  [
+                    "row_reuse",
+                    "reference"
+                  ]
+                ],
+                "cpu": {
+                  "reference": {
+                    "samples": 16,
+                    "values_ms": [
+                      1.734,
+                      1.742,
+                      1.715,
+                      1.701,
+                      1.637,
+                      1.661,
+                      1.708,
+                      1.649,
+                      1.642,
+                      1.69,
+                      1.694,
+                      1.721,
+                      1.671,
+                      1.694,
+                      1.709,
+                      1.687
+                    ],
+                    "p50_ms": 1.694,
+                    "p95_ms": 1.742
+                  },
+                  "row_reuse": {
+                    "samples": 16,
+                    "values_ms": [
+                      1.559,
+                      1.502,
+                      1.571,
+                      1.432,
+                      1.421,
+                      1.434,
+                      1.422,
+                      1.458,
+                      1.434,
+                      1.488,
+                      1.438,
+                      1.434,
+                      1.452,
+                      1.434,
+                      1.46,
+                      1.403
+                    ],
+                    "p50_ms": 1.434,
+                    "p95_ms": 1.571
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "count",
+      "poll_every": 1,
+      "runs": [
+        {
+          "repetition": 0,
+          "order": [
+            "reference",
+            "row_reuse"
+          ],
+          "measurements": [
+            {
+              "kind": "count",
+              "poll_every": 1,
+              "encoder": "reference",
+              "logical_slots": 85,
+              "polls": 85,
+              "execution_ms": 774.22625,
+              "image_builds": 340,
+              "image_build_cpu_ms": 498.439,
+              "image_build_bytes": 37413152,
+              "cas_commits": 170,
+              "cas_body_bytes": 18775721,
+              "transcript_hash": "a8fc445d7e10df5664f5047f0931a02a3734e8de83b01605017b1a2d78d22b89",
+              "relation": {
+                "R1": "db8fb6538f7f8aba76cfefbbb43049f85d92e9c1a5adcb8eadd592292fa6f35d",
+                "R2": "b6dd53a8df0cb67ec870511b4597cc90314e8c957372c8fbd2d77805a9ea8e99",
+                "R3": "42f03eadf64bdffec8cd912176e565e28ee995be436cb4dd8d28525438a478c6",
+                "R4": "e2f81c1e053e52986389bf66852ee299ff7a85f44eb3075b159efa785eca2d15",
+                "R5": "9174d3ccfdbf8500e9aaa1b3d08373d33e6dafa245bbbbad47febab0f9568231",
+                "R6": "8d392c7efac9e1f95831ef4a2bbf461a21b95b8416bcf4c6f89c0aa0f54127a1",
+                "R7": "4ebde86b6412ab1e6eebd474564b7f142ff4a37f0683337f8009b07827caf916",
+                "R8": "222110fcf0b3f401dc185678eec2df39a4a2d2139812baa0ff92999a1d09f680"
+              }
+            },
+            {
+              "kind": "count",
+              "poll_every": 1,
+              "encoder": "row_reuse",
+              "logical_slots": 85,
+              "polls": 85,
+              "execution_ms": 690.13325,
+              "image_builds": 340,
+              "image_build_cpu_ms": 402.776,
+              "image_build_bytes": 37413152,
+              "cas_commits": 170,
+              "cas_body_bytes": 18775721,
+              "transcript_hash": "a8fc445d7e10df5664f5047f0931a02a3734e8de83b01605017b1a2d78d22b89",
+              "relation": {
+                "R1": "db8fb6538f7f8aba76cfefbbb43049f85d92e9c1a5adcb8eadd592292fa6f35d",
+                "R2": "b6dd53a8df0cb67ec870511b4597cc90314e8c957372c8fbd2d77805a9ea8e99",
+                "R3": "42f03eadf64bdffec8cd912176e565e28ee995be436cb4dd8d28525438a478c6",
+                "R4": "e2f81c1e053e52986389bf66852ee299ff7a85f44eb3075b159efa785eca2d15",
+                "R5": "9174d3ccfdbf8500e9aaa1b3d08373d33e6dafa245bbbbad47febab0f9568231",
+                "R6": "8d392c7efac9e1f95831ef4a2bbf461a21b95b8416bcf4c6f89c0aa0f54127a1",
+                "R7": "4ebde86b6412ab1e6eebd474564b7f142ff4a37f0683337f8009b07827caf916",
+                "R8": "222110fcf0b3f401dc185678eec2df39a4a2d2139812baa0ff92999a1d09f680"
+              }
+            }
+          ]
+        },
+        {
+          "repetition": 1,
+          "order": [
+            "row_reuse",
+            "reference"
+          ],
+          "measurements": [
+            {
+              "kind": "count",
+              "poll_every": 1,
+              "encoder": "row_reuse",
+              "logical_slots": 85,
+              "polls": 85,
+              "execution_ms": 651.96475,
+              "image_builds": 340,
+              "image_build_cpu_ms": 389.748,
+              "image_build_bytes": 37413152,
+              "cas_commits": 170,
+              "cas_body_bytes": 18775721,
+              "transcript_hash": "a8fc445d7e10df5664f5047f0931a02a3734e8de83b01605017b1a2d78d22b89",
+              "relation": {
+                "R1": "db8fb6538f7f8aba76cfefbbb43049f85d92e9c1a5adcb8eadd592292fa6f35d",
+                "R2": "b6dd53a8df0cb67ec870511b4597cc90314e8c957372c8fbd2d77805a9ea8e99",
+                "R3": "42f03eadf64bdffec8cd912176e565e28ee995be436cb4dd8d28525438a478c6",
+                "R4": "e2f81c1e053e52986389bf66852ee299ff7a85f44eb3075b159efa785eca2d15",
+                "R5": "9174d3ccfdbf8500e9aaa1b3d08373d33e6dafa245bbbbad47febab0f9568231",
+                "R6": "8d392c7efac9e1f95831ef4a2bbf461a21b95b8416bcf4c6f89c0aa0f54127a1",
+                "R7": "4ebde86b6412ab1e6eebd474564b7f142ff4a37f0683337f8009b07827caf916",
+                "R8": "222110fcf0b3f401dc185678eec2df39a4a2d2139812baa0ff92999a1d09f680"
+              }
+            },
+            {
+              "kind": "count",
+              "poll_every": 1,
+              "encoder": "reference",
+              "logical_slots": 85,
+              "polls": 85,
+              "execution_ms": 769.908666,
+              "image_builds": 340,
+              "image_build_cpu_ms": 498.321,
+              "image_build_bytes": 37413152,
+              "cas_commits": 170,
+              "cas_body_bytes": 18775721,
+              "transcript_hash": "a8fc445d7e10df5664f5047f0931a02a3734e8de83b01605017b1a2d78d22b89",
+              "relation": {
+                "R1": "db8fb6538f7f8aba76cfefbbb43049f85d92e9c1a5adcb8eadd592292fa6f35d",
+                "R2": "b6dd53a8df0cb67ec870511b4597cc90314e8c957372c8fbd2d77805a9ea8e99",
+                "R3": "42f03eadf64bdffec8cd912176e565e28ee995be436cb4dd8d28525438a478c6",
+                "R4": "e2f81c1e053e52986389bf66852ee299ff7a85f44eb3075b159efa785eca2d15",
+                "R5": "9174d3ccfdbf8500e9aaa1b3d08373d33e6dafa245bbbbad47febab0f9568231",
+                "R6": "8d392c7efac9e1f95831ef4a2bbf461a21b95b8416bcf4c6f89c0aa0f54127a1",
+                "R7": "4ebde86b6412ab1e6eebd474564b7f142ff4a37f0683337f8009b07827caf916",
+                "R8": "222110fcf0b3f401dc185678eec2df39a4a2d2139812baa0ff92999a1d09f680"
+              }
+            }
+          ]
+        },
+        {
+          "repetition": 2,
+          "order": [
+            "reference",
+            "row_reuse"
+          ],
+          "measurements": [
+            {
+              "kind": "count",
+              "poll_every": 1,
+              "encoder": "reference",
+              "logical_slots": 85,
+              "polls": 85,
+              "execution_ms": 795.160542,
+              "image_builds": 340,
+              "image_build_cpu_ms": 512.294,
+              "image_build_bytes": 37413152,
+              "cas_commits": 170,
+              "cas_body_bytes": 18775721,
+              "transcript_hash": "a8fc445d7e10df5664f5047f0931a02a3734e8de83b01605017b1a2d78d22b89",
+              "relation": {
+                "R1": "db8fb6538f7f8aba76cfefbbb43049f85d92e9c1a5adcb8eadd592292fa6f35d",
+                "R2": "b6dd53a8df0cb67ec870511b4597cc90314e8c957372c8fbd2d77805a9ea8e99",
+                "R3": "42f03eadf64bdffec8cd912176e565e28ee995be436cb4dd8d28525438a478c6",
+                "R4": "e2f81c1e053e52986389bf66852ee299ff7a85f44eb3075b159efa785eca2d15",
+                "R5": "9174d3ccfdbf8500e9aaa1b3d08373d33e6dafa245bbbbad47febab0f9568231",
+                "R6": "8d392c7efac9e1f95831ef4a2bbf461a21b95b8416bcf4c6f89c0aa0f54127a1",
+                "R7": "4ebde86b6412ab1e6eebd474564b7f142ff4a37f0683337f8009b07827caf916",
+                "R8": "222110fcf0b3f401dc185678eec2df39a4a2d2139812baa0ff92999a1d09f680"
+              }
+            },
+            {
+              "kind": "count",
+              "poll_every": 1,
+              "encoder": "row_reuse",
+              "logical_slots": 85,
+              "polls": 85,
+              "execution_ms": 641.997208,
+              "image_builds": 340,
+              "image_build_cpu_ms": 388.763,
+              "image_build_bytes": 37413152,
+              "cas_commits": 170,
+              "cas_body_bytes": 18775721,
+              "transcript_hash": "a8fc445d7e10df5664f5047f0931a02a3734e8de83b01605017b1a2d78d22b89",
+              "relation": {
+                "R1": "db8fb6538f7f8aba76cfefbbb43049f85d92e9c1a5adcb8eadd592292fa6f35d",
+                "R2": "b6dd53a8df0cb67ec870511b4597cc90314e8c957372c8fbd2d77805a9ea8e99",
+                "R3": "42f03eadf64bdffec8cd912176e565e28ee995be436cb4dd8d28525438a478c6",
+                "R4": "e2f81c1e053e52986389bf66852ee299ff7a85f44eb3075b159efa785eca2d15",
+                "R5": "9174d3ccfdbf8500e9aaa1b3d08373d33e6dafa245bbbbad47febab0f9568231",
+                "R6": "8d392c7efac9e1f95831ef4a2bbf461a21b95b8416bcf4c6f89c0aa0f54127a1",
+                "R7": "4ebde86b6412ab1e6eebd474564b7f142ff4a37f0683337f8009b07827caf916",
+                "R8": "222110fcf0b3f401dc185678eec2df39a4a2d2139812baa0ff92999a1d09f680"
+              },
+              "restored_image_checks": 4,
+              "paired_snapshot": {
+                "image_bytes": 185812,
+                "image_hash": "cd9f507bf3a603364517d509cb8e8f9636943d0a1746e4656de7d675f6cc823e",
+                "order": [
+                  [
+                    "reference",
+                    "row_reuse"
+                  ],
+                  [
+                    "row_reuse",
+                    "reference"
+                  ],
+                  [
+                    "reference",
+                    "row_reuse"
+                  ],
+                  [
+                    "row_reuse",
+                    "reference"
+                  ],
+                  [
+                    "reference",
+                    "row_reuse"
+                  ],
+                  [
+                    "row_reuse",
+                    "reference"
+                  ],
+                  [
+                    "reference",
+                    "row_reuse"
+                  ],
+                  [
+                    "row_reuse",
+                    "reference"
+                  ],
+                  [
+                    "reference",
+                    "row_reuse"
+                  ],
+                  [
+                    "row_reuse",
+                    "reference"
+                  ],
+                  [
+                    "reference",
+                    "row_reuse"
+                  ],
+                  [
+                    "row_reuse",
+                    "reference"
+                  ],
+                  [
+                    "reference",
+                    "row_reuse"
+                  ],
+                  [
+                    "row_reuse",
+                    "reference"
+                  ],
+                  [
+                    "reference",
+                    "row_reuse"
+                  ],
+                  [
+                    "row_reuse",
+                    "reference"
+                  ]
+                ],
+                "cpu": {
+                  "reference": {
+                    "samples": 16,
+                    "values_ms": [
+                      5.499,
+                      3.319,
+                      2.7,
+                      2.614,
+                      2.64,
+                      2.619,
+                      2.607,
+                      2.594,
+                      2.606,
+                      2.605,
+                      2.605,
+                      2.609,
+                      2.603,
+                      2.504,
+                      2.595,
+                      2.636
+                    ],
+                    "p50_ms": 2.607,
+                    "p95_ms": 5.499
+                  },
+                  "row_reuse": {
+                    "samples": 16,
+                    "values_ms": [
+                      4.7,
+                      4.46,
+                      2.096,
+                      2.025,
+                      2.078,
+                      2.074,
+                      2.147,
+                      2.06,
+                      2.113,
+                      2.071,
+                      2.189,
+                      2.129,
+                      2.203,
+                      2.04,
+                      2.102,
+                      2.092
+                    ],
+                    "p50_ms": 2.096,
+                    "p95_ms": 4.7
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "count",
+      "poll_every": 8,
+      "runs": [
+        {
+          "repetition": 0,
+          "order": [
+            "reference",
+            "row_reuse"
+          ],
+          "measurements": [
+            {
+              "kind": "count",
+              "poll_every": 8,
+              "encoder": "reference",
+              "logical_slots": 85,
+              "polls": 10,
+              "execution_ms": 322.362959,
+              "image_builds": 190,
+              "image_build_cpu_ms": 200.78,
+              "image_build_bytes": 11283514,
+              "cas_commits": 95,
+              "cas_body_bytes": 5660141,
+              "transcript_hash": "ef60ca0a0549e839439e876c32ba7ff444824530d122c53e1c5a01bc33954d88",
+              "relation": {
+                "R1": "5ff922ada7d98f0cbc9fad6d06a5dc16d23c022d7728e1756a7c07f17a93d8e9",
+                "R2": "b6dd53a8df0cb67ec870511b4597cc90314e8c957372c8fbd2d77805a9ea8e99",
+                "R3": "42f03eadf64bdffec8cd912176e565e28ee995be436cb4dd8d28525438a478c6",
+                "R4": "e2f81c1e053e52986389bf66852ee299ff7a85f44eb3075b159efa785eca2d15",
+                "R5": "9174d3ccfdbf8500e9aaa1b3d08373d33e6dafa245bbbbad47febab0f9568231",
+                "R6": "8d392c7efac9e1f95831ef4a2bbf461a21b95b8416bcf4c6f89c0aa0f54127a1",
+                "R7": "6d76f4f436257f23c1584db9457e9fc3708f2309bf2f6b843e6fd29dad68d563",
+                "R8": "222110fcf0b3f401dc185678eec2df39a4a2d2139812baa0ff92999a1d09f680"
+              }
+            },
+            {
+              "kind": "count",
+              "poll_every": 8,
+              "encoder": "row_reuse",
+              "logical_slots": 85,
+              "polls": 10,
+              "execution_ms": 296.862583,
+              "image_builds": 190,
+              "image_build_cpu_ms": 167.028,
+              "image_build_bytes": 11283514,
+              "cas_commits": 95,
+              "cas_body_bytes": 5660141,
+              "transcript_hash": "ef60ca0a0549e839439e876c32ba7ff444824530d122c53e1c5a01bc33954d88",
+              "relation": {
+                "R1": "5ff922ada7d98f0cbc9fad6d06a5dc16d23c022d7728e1756a7c07f17a93d8e9",
+                "R2": "b6dd53a8df0cb67ec870511b4597cc90314e8c957372c8fbd2d77805a9ea8e99",
+                "R3": "42f03eadf64bdffec8cd912176e565e28ee995be436cb4dd8d28525438a478c6",
+                "R4": "e2f81c1e053e52986389bf66852ee299ff7a85f44eb3075b159efa785eca2d15",
+                "R5": "9174d3ccfdbf8500e9aaa1b3d08373d33e6dafa245bbbbad47febab0f9568231",
+                "R6": "8d392c7efac9e1f95831ef4a2bbf461a21b95b8416bcf4c6f89c0aa0f54127a1",
+                "R7": "6d76f4f436257f23c1584db9457e9fc3708f2309bf2f6b843e6fd29dad68d563",
+                "R8": "222110fcf0b3f401dc185678eec2df39a4a2d2139812baa0ff92999a1d09f680"
+              }
+            }
+          ]
+        },
+        {
+          "repetition": 1,
+          "order": [
+            "row_reuse",
+            "reference"
+          ],
+          "measurements": [
+            {
+              "kind": "count",
+              "poll_every": 8,
+              "encoder": "row_reuse",
+              "logical_slots": 85,
+              "polls": 10,
+              "execution_ms": 327.079542,
+              "image_builds": 190,
+              "image_build_cpu_ms": 171.884,
+              "image_build_bytes": 11283514,
+              "cas_commits": 95,
+              "cas_body_bytes": 5660141,
+              "transcript_hash": "ef60ca0a0549e839439e876c32ba7ff444824530d122c53e1c5a01bc33954d88",
+              "relation": {
+                "R1": "5ff922ada7d98f0cbc9fad6d06a5dc16d23c022d7728e1756a7c07f17a93d8e9",
+                "R2": "b6dd53a8df0cb67ec870511b4597cc90314e8c957372c8fbd2d77805a9ea8e99",
+                "R3": "42f03eadf64bdffec8cd912176e565e28ee995be436cb4dd8d28525438a478c6",
+                "R4": "e2f81c1e053e52986389bf66852ee299ff7a85f44eb3075b159efa785eca2d15",
+                "R5": "9174d3ccfdbf8500e9aaa1b3d08373d33e6dafa245bbbbad47febab0f9568231",
+                "R6": "8d392c7efac9e1f95831ef4a2bbf461a21b95b8416bcf4c6f89c0aa0f54127a1",
+                "R7": "6d76f4f436257f23c1584db9457e9fc3708f2309bf2f6b843e6fd29dad68d563",
+                "R8": "222110fcf0b3f401dc185678eec2df39a4a2d2139812baa0ff92999a1d09f680"
+              }
+            },
+            {
+              "kind": "count",
+              "poll_every": 8,
+              "encoder": "reference",
+              "logical_slots": 85,
+              "polls": 10,
+              "execution_ms": 318.54475,
+              "image_builds": 190,
+              "image_build_cpu_ms": 200.933,
+              "image_build_bytes": 11283514,
+              "cas_commits": 95,
+              "cas_body_bytes": 5660141,
+              "transcript_hash": "ef60ca0a0549e839439e876c32ba7ff444824530d122c53e1c5a01bc33954d88",
+              "relation": {
+                "R1": "5ff922ada7d98f0cbc9fad6d06a5dc16d23c022d7728e1756a7c07f17a93d8e9",
+                "R2": "b6dd53a8df0cb67ec870511b4597cc90314e8c957372c8fbd2d77805a9ea8e99",
+                "R3": "42f03eadf64bdffec8cd912176e565e28ee995be436cb4dd8d28525438a478c6",
+                "R4": "e2f81c1e053e52986389bf66852ee299ff7a85f44eb3075b159efa785eca2d15",
+                "R5": "9174d3ccfdbf8500e9aaa1b3d08373d33e6dafa245bbbbad47febab0f9568231",
+                "R6": "8d392c7efac9e1f95831ef4a2bbf461a21b95b8416bcf4c6f89c0aa0f54127a1",
+                "R7": "6d76f4f436257f23c1584db9457e9fc3708f2309bf2f6b843e6fd29dad68d563",
+                "R8": "222110fcf0b3f401dc185678eec2df39a4a2d2139812baa0ff92999a1d09f680"
+              }
+            }
+          ]
+        },
+        {
+          "repetition": 2,
+          "order": [
+            "reference",
+            "row_reuse"
+          ],
+          "measurements": [
+            {
+              "kind": "count",
+              "poll_every": 8,
+              "encoder": "reference",
+              "logical_slots": 85,
+              "polls": 10,
+              "execution_ms": 323.131708,
+              "image_builds": 190,
+              "image_build_cpu_ms": 199.839,
+              "image_build_bytes": 11283514,
+              "cas_commits": 95,
+              "cas_body_bytes": 5660141,
+              "transcript_hash": "ef60ca0a0549e839439e876c32ba7ff444824530d122c53e1c5a01bc33954d88",
+              "relation": {
+                "R1": "5ff922ada7d98f0cbc9fad6d06a5dc16d23c022d7728e1756a7c07f17a93d8e9",
+                "R2": "b6dd53a8df0cb67ec870511b4597cc90314e8c957372c8fbd2d77805a9ea8e99",
+                "R3": "42f03eadf64bdffec8cd912176e565e28ee995be436cb4dd8d28525438a478c6",
+                "R4": "e2f81c1e053e52986389bf66852ee299ff7a85f44eb3075b159efa785eca2d15",
+                "R5": "9174d3ccfdbf8500e9aaa1b3d08373d33e6dafa245bbbbad47febab0f9568231",
+                "R6": "8d392c7efac9e1f95831ef4a2bbf461a21b95b8416bcf4c6f89c0aa0f54127a1",
+                "R7": "6d76f4f436257f23c1584db9457e9fc3708f2309bf2f6b843e6fd29dad68d563",
+                "R8": "222110fcf0b3f401dc185678eec2df39a4a2d2139812baa0ff92999a1d09f680"
+              }
+            },
+            {
+              "kind": "count",
+              "poll_every": 8,
+              "encoder": "row_reuse",
+              "logical_slots": 85,
+              "polls": 10,
+              "execution_ms": 287.326458,
+              "image_builds": 190,
+              "image_build_cpu_ms": 168.143,
+              "image_build_bytes": 11283514,
+              "cas_commits": 95,
+              "cas_body_bytes": 5660141,
+              "transcript_hash": "ef60ca0a0549e839439e876c32ba7ff444824530d122c53e1c5a01bc33954d88",
+              "relation": {
+                "R1": "5ff922ada7d98f0cbc9fad6d06a5dc16d23c022d7728e1756a7c07f17a93d8e9",
+                "R2": "b6dd53a8df0cb67ec870511b4597cc90314e8c957372c8fbd2d77805a9ea8e99",
+                "R3": "42f03eadf64bdffec8cd912176e565e28ee995be436cb4dd8d28525438a478c6",
+                "R4": "e2f81c1e053e52986389bf66852ee299ff7a85f44eb3075b159efa785eca2d15",
+                "R5": "9174d3ccfdbf8500e9aaa1b3d08373d33e6dafa245bbbbad47febab0f9568231",
+                "R6": "8d392c7efac9e1f95831ef4a2bbf461a21b95b8416bcf4c6f89c0aa0f54127a1",
+                "R7": "6d76f4f436257f23c1584db9457e9fc3708f2309bf2f6b843e6fd29dad68d563",
+                "R8": "222110fcf0b3f401dc185678eec2df39a4a2d2139812baa0ff92999a1d09f680"
+              },
+              "restored_image_checks": 4,
+              "paired_snapshot": {
+                "image_bytes": 84290,
+                "image_hash": "eb387748f6c062d9c0d4a1919e707d6a0732f9c5f550e7782789f9afb3ae0d76",
+                "order": [
+                  [
+                    "reference",
+                    "row_reuse"
+                  ],
+                  [
+                    "row_reuse",
+                    "reference"
+                  ],
+                  [
+                    "reference",
+                    "row_reuse"
+                  ],
+                  [
+                    "row_reuse",
+                    "reference"
+                  ],
+                  [
+                    "reference",
+                    "row_reuse"
+                  ],
+                  [
+                    "row_reuse",
+                    "reference"
+                  ],
+                  [
+                    "reference",
+                    "row_reuse"
+                  ],
+                  [
+                    "row_reuse",
+                    "reference"
+                  ],
+                  [
+                    "reference",
+                    "row_reuse"
+                  ],
+                  [
+                    "row_reuse",
+                    "reference"
+                  ],
+                  [
+                    "reference",
+                    "row_reuse"
+                  ],
+                  [
+                    "row_reuse",
+                    "reference"
+                  ],
+                  [
+                    "reference",
+                    "row_reuse"
+                  ],
+                  [
+                    "row_reuse",
+                    "reference"
+                  ],
+                  [
+                    "reference",
+                    "row_reuse"
+                  ],
+                  [
+                    "row_reuse",
+                    "reference"
+                  ]
+                ],
+                "cpu": {
+                  "reference": {
+                    "samples": 16,
+                    "values_ms": [
+                      1.845,
+                      1.845,
+                      1.74,
+                      1.854,
+                      1.797,
+                      1.796,
+                      1.847,
+                      1.804,
+                      1.81,
+                      1.814,
+                      1.867,
+                      1.823,
+                      1.795,
+                      1.794,
+                      1.866,
+                      1.721
+                    ],
+                    "p50_ms": 1.81,
+                    "p95_ms": 1.867
+                  },
+                  "row_reuse": {
+                    "samples": 16,
+                    "values_ms": [
+                      1.562,
+                      1.57,
+                      1.47,
+                      1.46,
+                      1.52,
+                      1.535,
+                      1.574,
+                      1.527,
+                      1.54,
+                      1.541,
+                      1.466,
+                      1.591,
+                      1.511,
+                      1.533,
+                      1.413,
+                      1.515
+                    ],
+                    "p50_ms": 1.527,
+                    "p95_ms": 1.591
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "histogram",
+      "poll_every": 0,
+      "runs": [
+        {
+          "repetition": 0,
+          "order": [
+            "reference",
+            "row_reuse"
+          ],
+          "measurements": [
+            {
+              "kind": "histogram",
+              "poll_every": 0,
+              "encoder": "reference",
+              "logical_slots": 337,
+              "polls": 0,
+              "execution_ms": 1844.115125,
+              "image_builds": 674,
+              "image_build_cpu_ms": 1404.974,
+              "image_build_bytes": 57250295,
+              "cas_commits": 337,
+              "cas_body_bytes": 28668480,
+              "transcript_hash": "f22ba5942f809b25233506e088b13eea707a2ee10ada27cd697e273e93ead00c",
+              "relation": {
+                "R1": "5b8899c7c8c821dbe924b97e74c6d998b23c05aceaf26f568431c68ebaef95a1",
+                "R2": "951706a678290615d79ca1548761e7e545976c15697b95622f40f1fe9eafba25",
+                "R3": "9ca7a6febbfdc00d83e50310c2ee1357e0ab4863b37c58dc4f2c0af7ad633e2c",
+                "R4": "4d8704596479ec7ed69dac5b2b1585aaad5be2f80cd46a5c1cf2c4e52a31ea24",
+                "R5": "9526d50143faad3aa80405fcf181b56d343393f1b58596ee9faf9be9aa1b7b35",
+                "R6": "53486fb91ad61ca747606fa959b9a2d6c47a2de2fe1404d5c1959464d30bdc26",
+                "R7": "bcfdb520f3eb1357996f169aefa76cd3f7f0f5e05234770a63f902bd28eeca24",
+                "R8": "222110fcf0b3f401dc185678eec2df39a4a2d2139812baa0ff92999a1d09f680"
+              }
+            },
+            {
+              "kind": "histogram",
+              "poll_every": 0,
+              "encoder": "row_reuse",
+              "logical_slots": 337,
+              "polls": 0,
+              "execution_ms": 1568.567125,
+              "image_builds": 674,
+              "image_build_cpu_ms": 1100.722,
+              "image_build_bytes": 57250295,
+              "cas_commits": 337,
+              "cas_body_bytes": 28668480,
+              "transcript_hash": "f22ba5942f809b25233506e088b13eea707a2ee10ada27cd697e273e93ead00c",
+              "relation": {
+                "R1": "5b8899c7c8c821dbe924b97e74c6d998b23c05aceaf26f568431c68ebaef95a1",
+                "R2": "951706a678290615d79ca1548761e7e545976c15697b95622f40f1fe9eafba25",
+                "R3": "9ca7a6febbfdc00d83e50310c2ee1357e0ab4863b37c58dc4f2c0af7ad633e2c",
+                "R4": "4d8704596479ec7ed69dac5b2b1585aaad5be2f80cd46a5c1cf2c4e52a31ea24",
+                "R5": "9526d50143faad3aa80405fcf181b56d343393f1b58596ee9faf9be9aa1b7b35",
+                "R6": "53486fb91ad61ca747606fa959b9a2d6c47a2de2fe1404d5c1959464d30bdc26",
+                "R7": "bcfdb520f3eb1357996f169aefa76cd3f7f0f5e05234770a63f902bd28eeca24",
+                "R8": "222110fcf0b3f401dc185678eec2df39a4a2d2139812baa0ff92999a1d09f680"
+              }
+            }
+          ]
+        },
+        {
+          "repetition": 1,
+          "order": [
+            "row_reuse",
+            "reference"
+          ],
+          "measurements": [
+            {
+              "kind": "histogram",
+              "poll_every": 0,
+              "encoder": "row_reuse",
+              "logical_slots": 337,
+              "polls": 0,
+              "execution_ms": 1589.398708,
+              "image_builds": 674,
+              "image_build_cpu_ms": 1090.344,
+              "image_build_bytes": 57250295,
+              "cas_commits": 337,
+              "cas_body_bytes": 28668480,
+              "transcript_hash": "f22ba5942f809b25233506e088b13eea707a2ee10ada27cd697e273e93ead00c",
+              "relation": {
+                "R1": "5b8899c7c8c821dbe924b97e74c6d998b23c05aceaf26f568431c68ebaef95a1",
+                "R2": "951706a678290615d79ca1548761e7e545976c15697b95622f40f1fe9eafba25",
+                "R3": "9ca7a6febbfdc00d83e50310c2ee1357e0ab4863b37c58dc4f2c0af7ad633e2c",
+                "R4": "4d8704596479ec7ed69dac5b2b1585aaad5be2f80cd46a5c1cf2c4e52a31ea24",
+                "R5": "9526d50143faad3aa80405fcf181b56d343393f1b58596ee9faf9be9aa1b7b35",
+                "R6": "53486fb91ad61ca747606fa959b9a2d6c47a2de2fe1404d5c1959464d30bdc26",
+                "R7": "bcfdb520f3eb1357996f169aefa76cd3f7f0f5e05234770a63f902bd28eeca24",
+                "R8": "222110fcf0b3f401dc185678eec2df39a4a2d2139812baa0ff92999a1d09f680"
+              }
+            },
+            {
+              "kind": "histogram",
+              "poll_every": 0,
+              "encoder": "reference",
+              "logical_slots": 337,
+              "polls": 0,
+              "execution_ms": 1849.66025,
+              "image_builds": 674,
+              "image_build_cpu_ms": 1405.757,
+              "image_build_bytes": 57250295,
+              "cas_commits": 337,
+              "cas_body_bytes": 28668480,
+              "transcript_hash": "f22ba5942f809b25233506e088b13eea707a2ee10ada27cd697e273e93ead00c",
+              "relation": {
+                "R1": "5b8899c7c8c821dbe924b97e74c6d998b23c05aceaf26f568431c68ebaef95a1",
+                "R2": "951706a678290615d79ca1548761e7e545976c15697b95622f40f1fe9eafba25",
+                "R3": "9ca7a6febbfdc00d83e50310c2ee1357e0ab4863b37c58dc4f2c0af7ad633e2c",
+                "R4": "4d8704596479ec7ed69dac5b2b1585aaad5be2f80cd46a5c1cf2c4e52a31ea24",
+                "R5": "9526d50143faad3aa80405fcf181b56d343393f1b58596ee9faf9be9aa1b7b35",
+                "R6": "53486fb91ad61ca747606fa959b9a2d6c47a2de2fe1404d5c1959464d30bdc26",
+                "R7": "bcfdb520f3eb1357996f169aefa76cd3f7f0f5e05234770a63f902bd28eeca24",
+                "R8": "222110fcf0b3f401dc185678eec2df39a4a2d2139812baa0ff92999a1d09f680"
+              }
+            }
+          ]
+        },
+        {
+          "repetition": 2,
+          "order": [
+            "reference",
+            "row_reuse"
+          ],
+          "measurements": [
+            {
+              "kind": "histogram",
+              "poll_every": 0,
+              "encoder": "reference",
+              "logical_slots": 337,
+              "polls": 0,
+              "execution_ms": 2276.578833,
+              "image_builds": 674,
+              "image_build_cpu_ms": 1545.689,
+              "image_build_bytes": 57250295,
+              "cas_commits": 337,
+              "cas_body_bytes": 28668480,
+              "transcript_hash": "f22ba5942f809b25233506e088b13eea707a2ee10ada27cd697e273e93ead00c",
+              "relation": {
+                "R1": "5b8899c7c8c821dbe924b97e74c6d998b23c05aceaf26f568431c68ebaef95a1",
+                "R2": "951706a678290615d79ca1548761e7e545976c15697b95622f40f1fe9eafba25",
+                "R3": "9ca7a6febbfdc00d83e50310c2ee1357e0ab4863b37c58dc4f2c0af7ad633e2c",
+                "R4": "4d8704596479ec7ed69dac5b2b1585aaad5be2f80cd46a5c1cf2c4e52a31ea24",
+                "R5": "9526d50143faad3aa80405fcf181b56d343393f1b58596ee9faf9be9aa1b7b35",
+                "R6": "53486fb91ad61ca747606fa959b9a2d6c47a2de2fe1404d5c1959464d30bdc26",
+                "R7": "bcfdb520f3eb1357996f169aefa76cd3f7f0f5e05234770a63f902bd28eeca24",
+                "R8": "222110fcf0b3f401dc185678eec2df39a4a2d2139812baa0ff92999a1d09f680"
+              }
+            },
+            {
+              "kind": "histogram",
+              "poll_every": 0,
+              "encoder": "row_reuse",
+              "logical_slots": 337,
+              "polls": 0,
+              "execution_ms": 1568.301083,
+              "image_builds": 674,
+              "image_build_cpu_ms": 1101.069,
+              "image_build_bytes": 57250295,
+              "cas_commits": 337,
+              "cas_body_bytes": 28668480,
+              "transcript_hash": "f22ba5942f809b25233506e088b13eea707a2ee10ada27cd697e273e93ead00c",
+              "relation": {
+                "R1": "5b8899c7c8c821dbe924b97e74c6d998b23c05aceaf26f568431c68ebaef95a1",
+                "R2": "951706a678290615d79ca1548761e7e545976c15697b95622f40f1fe9eafba25",
+                "R3": "9ca7a6febbfdc00d83e50310c2ee1357e0ab4863b37c58dc4f2c0af7ad633e2c",
+                "R4": "4d8704596479ec7ed69dac5b2b1585aaad5be2f80cd46a5c1cf2c4e52a31ea24",
+                "R5": "9526d50143faad3aa80405fcf181b56d343393f1b58596ee9faf9be9aa1b7b35",
+                "R6": "53486fb91ad61ca747606fa959b9a2d6c47a2de2fe1404d5c1959464d30bdc26",
+                "R7": "bcfdb520f3eb1357996f169aefa76cd3f7f0f5e05234770a63f902bd28eeca24",
+                "R8": "222110fcf0b3f401dc185678eec2df39a4a2d2139812baa0ff92999a1d09f680"
+              },
+              "restored_image_checks": 4,
+              "paired_snapshot": {
+                "image_bytes": 135248,
+                "image_hash": "afe44f0243e9e8320e3cd8550924249772744915f4a91bb168df2e280ef383f4",
+                "order": [
+                  [
+                    "reference",
+                    "row_reuse"
+                  ],
+                  [
+                    "row_reuse",
+                    "reference"
+                  ],
+                  [
+                    "reference",
+                    "row_reuse"
+                  ],
+                  [
+                    "row_reuse",
+                    "reference"
+                  ],
+                  [
+                    "reference",
+                    "row_reuse"
+                  ],
+                  [
+                    "row_reuse",
+                    "reference"
+                  ],
+                  [
+                    "reference",
+                    "row_reuse"
+                  ],
+                  [
+                    "row_reuse",
+                    "reference"
+                  ],
+                  [
+                    "reference",
+                    "row_reuse"
+                  ],
+                  [
+                    "row_reuse",
+                    "reference"
+                  ],
+                  [
+                    "reference",
+                    "row_reuse"
+                  ],
+                  [
+                    "row_reuse",
+                    "reference"
+                  ],
+                  [
+                    "reference",
+                    "row_reuse"
+                  ],
+                  [
+                    "row_reuse",
+                    "reference"
+                  ],
+                  [
+                    "reference",
+                    "row_reuse"
+                  ],
+                  [
+                    "row_reuse",
+                    "reference"
+                  ]
+                ],
+                "cpu": {
+                  "reference": {
+                    "samples": 16,
+                    "values_ms": [
+                      3.853,
+                      3.706,
+                      3.789,
+                      3.784,
+                      3.761,
+                      3.887,
+                      3.703,
+                      3.828,
+                      3.661,
+                      3.87,
+                      3.673,
+                      3.796,
+                      4.398,
+                      3.652,
+                      3.693,
+                      3.758
+                    ],
+                    "p50_ms": 3.761,
+                    "p95_ms": 4.398
+                  },
+                  "row_reuse": {
+                    "samples": 16,
+                    "values_ms": [
+                      3.114,
+                      3.146,
+                      3.116,
+                      3.149,
+                      2.998,
+                      3.01,
+                      3.09,
+                      2.981,
+                      2.976,
+                      3.016,
+                      2.927,
+                      3.112,
+                      3.023,
+                      3.156,
+                      2.976,
+                      2.986
+                    ],
+                    "p50_ms": 3.016,
+                    "p95_ms": 3.156
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "histogram",
+      "poll_every": 1,
+      "runs": [
+        {
+          "repetition": 0,
+          "order": [
+            "reference",
+            "row_reuse"
+          ],
+          "measurements": [
+            {
+              "kind": "histogram",
+              "poll_every": 1,
+              "encoder": "reference",
+              "logical_slots": 337,
+              "polls": 337,
+              "execution_ms": 7082.926208,
+              "image_builds": 1348,
+              "image_build_cpu_ms": 5486.47,
+              "image_build_bytes": 421754678,
+              "cas_commits": 674,
+              "cas_body_bytes": 211148997,
+              "transcript_hash": "f8ec38b4b253782487578e5492eeefe9a64a4273b7f1c5fb62e92c336b6d3f5c",
+              "relation": {
+                "R1": "0405c5c64f754dbb31b02f7fe40f603f4b60f6881242eb8695a4dff0f65e580a",
+                "R2": "951706a678290615d79ca1548761e7e545976c15697b95622f40f1fe9eafba25",
+                "R3": "9ca7a6febbfdc00d83e50310c2ee1357e0ab4863b37c58dc4f2c0af7ad633e2c",
+                "R4": "4d8704596479ec7ed69dac5b2b1585aaad5be2f80cd46a5c1cf2c4e52a31ea24",
+                "R5": "9526d50143faad3aa80405fcf181b56d343393f1b58596ee9faf9be9aa1b7b35",
+                "R6": "53486fb91ad61ca747606fa959b9a2d6c47a2de2fe1404d5c1959464d30bdc26",
+                "R7": "77a364b0ba649f0c4fe721431d8f488335650dfbaa5693f5b3c9dde5fde75f7f",
+                "R8": "222110fcf0b3f401dc185678eec2df39a4a2d2139812baa0ff92999a1d09f680"
+              }
+            },
+            {
+              "kind": "histogram",
+              "poll_every": 1,
+              "encoder": "row_reuse",
+              "logical_slots": 337,
+              "polls": 337,
+              "execution_ms": 5504.699333,
+              "image_builds": 1348,
+              "image_build_cpu_ms": 4004.323,
+              "image_build_bytes": 421754678,
+              "cas_commits": 674,
+              "cas_body_bytes": 211148997,
+              "transcript_hash": "f8ec38b4b253782487578e5492eeefe9a64a4273b7f1c5fb62e92c336b6d3f5c",
+              "relation": {
+                "R1": "0405c5c64f754dbb31b02f7fe40f603f4b60f6881242eb8695a4dff0f65e580a",
+                "R2": "951706a678290615d79ca1548761e7e545976c15697b95622f40f1fe9eafba25",
+                "R3": "9ca7a6febbfdc00d83e50310c2ee1357e0ab4863b37c58dc4f2c0af7ad633e2c",
+                "R4": "4d8704596479ec7ed69dac5b2b1585aaad5be2f80cd46a5c1cf2c4e52a31ea24",
+                "R5": "9526d50143faad3aa80405fcf181b56d343393f1b58596ee9faf9be9aa1b7b35",
+                "R6": "53486fb91ad61ca747606fa959b9a2d6c47a2de2fe1404d5c1959464d30bdc26",
+                "R7": "77a364b0ba649f0c4fe721431d8f488335650dfbaa5693f5b3c9dde5fde75f7f",
+                "R8": "222110fcf0b3f401dc185678eec2df39a4a2d2139812baa0ff92999a1d09f680"
+              }
+            }
+          ]
+        },
+        {
+          "repetition": 1,
+          "order": [
+            "row_reuse",
+            "reference"
+          ],
+          "measurements": [
+            {
+              "kind": "histogram",
+              "poll_every": 1,
+              "encoder": "row_reuse",
+              "logical_slots": 337,
+              "polls": 337,
+              "execution_ms": 5488.467458,
+              "image_builds": 1348,
+              "image_build_cpu_ms": 4026.618,
+              "image_build_bytes": 421754678,
+              "cas_commits": 674,
+              "cas_body_bytes": 211148997,
+              "transcript_hash": "f8ec38b4b253782487578e5492eeefe9a64a4273b7f1c5fb62e92c336b6d3f5c",
+              "relation": {
+                "R1": "0405c5c64f754dbb31b02f7fe40f603f4b60f6881242eb8695a4dff0f65e580a",
+                "R2": "951706a678290615d79ca1548761e7e545976c15697b95622f40f1fe9eafba25",
+                "R3": "9ca7a6febbfdc00d83e50310c2ee1357e0ab4863b37c58dc4f2c0af7ad633e2c",
+                "R4": "4d8704596479ec7ed69dac5b2b1585aaad5be2f80cd46a5c1cf2c4e52a31ea24",
+                "R5": "9526d50143faad3aa80405fcf181b56d343393f1b58596ee9faf9be9aa1b7b35",
+                "R6": "53486fb91ad61ca747606fa959b9a2d6c47a2de2fe1404d5c1959464d30bdc26",
+                "R7": "77a364b0ba649f0c4fe721431d8f488335650dfbaa5693f5b3c9dde5fde75f7f",
+                "R8": "222110fcf0b3f401dc185678eec2df39a4a2d2139812baa0ff92999a1d09f680"
+              }
+            },
+            {
+              "kind": "histogram",
+              "poll_every": 1,
+              "encoder": "reference",
+              "logical_slots": 337,
+              "polls": 337,
+              "execution_ms": 7351.923292,
+              "image_builds": 1348,
+              "image_build_cpu_ms": 5590.574,
+              "image_build_bytes": 421754678,
+              "cas_commits": 674,
+              "cas_body_bytes": 211148997,
+              "transcript_hash": "f8ec38b4b253782487578e5492eeefe9a64a4273b7f1c5fb62e92c336b6d3f5c",
+              "relation": {
+                "R1": "0405c5c64f754dbb31b02f7fe40f603f4b60f6881242eb8695a4dff0f65e580a",
+                "R2": "951706a678290615d79ca1548761e7e545976c15697b95622f40f1fe9eafba25",
+                "R3": "9ca7a6febbfdc00d83e50310c2ee1357e0ab4863b37c58dc4f2c0af7ad633e2c",
+                "R4": "4d8704596479ec7ed69dac5b2b1585aaad5be2f80cd46a5c1cf2c4e52a31ea24",
+                "R5": "9526d50143faad3aa80405fcf181b56d343393f1b58596ee9faf9be9aa1b7b35",
+                "R6": "53486fb91ad61ca747606fa959b9a2d6c47a2de2fe1404d5c1959464d30bdc26",
+                "R7": "77a364b0ba649f0c4fe721431d8f488335650dfbaa5693f5b3c9dde5fde75f7f",
+                "R8": "222110fcf0b3f401dc185678eec2df39a4a2d2139812baa0ff92999a1d09f680"
+              }
+            }
+          ]
+        },
+        {
+          "repetition": 2,
+          "order": [
+            "reference",
+            "row_reuse"
+          ],
+          "measurements": [
+            {
+              "kind": "histogram",
+              "poll_every": 1,
+              "encoder": "reference",
+              "logical_slots": 337,
+              "polls": 337,
+              "execution_ms": 7206.7285,
+              "image_builds": 1348,
+              "image_build_cpu_ms": 5566.496,
+              "image_build_bytes": 421754678,
+              "cas_commits": 674,
+              "cas_body_bytes": 211148997,
+              "transcript_hash": "f8ec38b4b253782487578e5492eeefe9a64a4273b7f1c5fb62e92c336b6d3f5c",
+              "relation": {
+                "R1": "0405c5c64f754dbb31b02f7fe40f603f4b60f6881242eb8695a4dff0f65e580a",
+                "R2": "951706a678290615d79ca1548761e7e545976c15697b95622f40f1fe9eafba25",
+                "R3": "9ca7a6febbfdc00d83e50310c2ee1357e0ab4863b37c58dc4f2c0af7ad633e2c",
+                "R4": "4d8704596479ec7ed69dac5b2b1585aaad5be2f80cd46a5c1cf2c4e52a31ea24",
+                "R5": "9526d50143faad3aa80405fcf181b56d343393f1b58596ee9faf9be9aa1b7b35",
+                "R6": "53486fb91ad61ca747606fa959b9a2d6c47a2de2fe1404d5c1959464d30bdc26",
+                "R7": "77a364b0ba649f0c4fe721431d8f488335650dfbaa5693f5b3c9dde5fde75f7f",
+                "R8": "222110fcf0b3f401dc185678eec2df39a4a2d2139812baa0ff92999a1d09f680"
+              }
+            },
+            {
+              "kind": "histogram",
+              "poll_every": 1,
+              "encoder": "row_reuse",
+              "logical_slots": 337,
+              "polls": 337,
+              "execution_ms": 5592.057542,
+              "image_builds": 1348,
+              "image_build_cpu_ms": 4035.86,
+              "image_build_bytes": 421754678,
+              "cas_commits": 674,
+              "cas_body_bytes": 211148997,
+              "transcript_hash": "f8ec38b4b253782487578e5492eeefe9a64a4273b7f1c5fb62e92c336b6d3f5c",
+              "relation": {
+                "R1": "0405c5c64f754dbb31b02f7fe40f603f4b60f6881242eb8695a4dff0f65e580a",
+                "R2": "951706a678290615d79ca1548761e7e545976c15697b95622f40f1fe9eafba25",
+                "R3": "9ca7a6febbfdc00d83e50310c2ee1357e0ab4863b37c58dc4f2c0af7ad633e2c",
+                "R4": "4d8704596479ec7ed69dac5b2b1585aaad5be2f80cd46a5c1cf2c4e52a31ea24",
+                "R5": "9526d50143faad3aa80405fcf181b56d343393f1b58596ee9faf9be9aa1b7b35",
+                "R6": "53486fb91ad61ca747606fa959b9a2d6c47a2de2fe1404d5c1959464d30bdc26",
+                "R7": "77a364b0ba649f0c4fe721431d8f488335650dfbaa5693f5b3c9dde5fde75f7f",
+                "R8": "222110fcf0b3f401dc185678eec2df39a4a2d2139812baa0ff92999a1d09f680"
+              },
+              "restored_image_checks": 4,
+              "paired_snapshot": {
+                "image_bytes": 591899,
+                "image_hash": "f46a4395fb50ff3a26939a438647170fda8fb5be14230a8e4eb4f379035a6e70",
+                "order": [
+                  [
+                    "reference",
+                    "row_reuse"
+                  ],
+                  [
+                    "row_reuse",
+                    "reference"
+                  ],
+                  [
+                    "reference",
+                    "row_reuse"
+                  ],
+                  [
+                    "row_reuse",
+                    "reference"
+                  ],
+                  [
+                    "reference",
+                    "row_reuse"
+                  ],
+                  [
+                    "row_reuse",
+                    "reference"
+                  ],
+                  [
+                    "reference",
+                    "row_reuse"
+                  ],
+                  [
+                    "row_reuse",
+                    "reference"
+                  ],
+                  [
+                    "reference",
+                    "row_reuse"
+                  ],
+                  [
+                    "row_reuse",
+                    "reference"
+                  ],
+                  [
+                    "reference",
+                    "row_reuse"
+                  ],
+                  [
+                    "row_reuse",
+                    "reference"
+                  ],
+                  [
+                    "reference",
+                    "row_reuse"
+                  ],
+                  [
+                    "row_reuse",
+                    "reference"
+                  ],
+                  [
+                    "reference",
+                    "row_reuse"
+                  ],
+                  [
+                    "row_reuse",
+                    "reference"
+                  ]
+                ],
+                "cpu": {
+                  "reference": {
+                    "samples": 16,
+                    "values_ms": [
+                      8.47,
+                      7.679,
+                      7.681,
+                      7.702,
+                      7.424,
+                      7.331,
+                      7.372,
+                      7.52,
+                      10.111,
+                      7.612,
+                      7.754,
+                      7.508,
+                      7.697,
+                      7.577,
+                      8.033,
+                      7.332
+                    ],
+                    "p50_ms": 7.612,
+                    "p95_ms": 10.111
+                  },
+                  "row_reuse": {
+                    "samples": 16,
+                    "values_ms": [
+                      6.104,
+                      5.791,
+                      5.782,
+                      5.704,
+                      6.247,
+                      5.654,
+                      5.693,
+                      5.571,
+                      6.17,
+                      5.923,
+                      5.678,
+                      5.63,
+                      5.626,
+                      5.583,
+                      5.685,
+                      5.684
+                    ],
+                    "p50_ms": 5.685,
+                    "p95_ms": 6.247
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "histogram",
+      "poll_every": 8,
+      "runs": [
+        {
+          "repetition": 0,
+          "order": [
+            "reference",
+            "row_reuse"
+          ],
+          "measurements": [
+            {
+              "kind": "histogram",
+              "poll_every": 8,
+              "encoder": "reference",
+              "logical_slots": 337,
+              "polls": 42,
+              "execution_ms": 2482.86,
+              "image_builds": 758,
+              "image_build_cpu_ms": 1844.794,
+              "image_build_bytes": 85584986,
+              "cas_commits": 379,
+              "cas_body_bytes": 42864235,
+              "transcript_hash": "49c3ec3da8f99b105a378be9e954a92171d84bbb92b516df1b5038ef48bda3b8",
+              "relation": {
+                "R1": "4d73880d5d7f540b7b78408445f02597fc7f6bb2d9e9b26903203c3cd53de19a",
+                "R2": "951706a678290615d79ca1548761e7e545976c15697b95622f40f1fe9eafba25",
+                "R3": "9ca7a6febbfdc00d83e50310c2ee1357e0ab4863b37c58dc4f2c0af7ad633e2c",
+                "R4": "4d8704596479ec7ed69dac5b2b1585aaad5be2f80cd46a5c1cf2c4e52a31ea24",
+                "R5": "9526d50143faad3aa80405fcf181b56d343393f1b58596ee9faf9be9aa1b7b35",
+                "R6": "53486fb91ad61ca747606fa959b9a2d6c47a2de2fe1404d5c1959464d30bdc26",
+                "R7": "93e892fc308560add71fbace195d7c52dbfc508681af46e46bbfbcb621403917",
+                "R8": "222110fcf0b3f401dc185678eec2df39a4a2d2139812baa0ff92999a1d09f680"
+              }
+            },
+            {
+              "kind": "histogram",
+              "poll_every": 8,
+              "encoder": "row_reuse",
+              "logical_slots": 337,
+              "polls": 42,
+              "execution_ms": 1968.108042,
+              "image_builds": 758,
+              "image_build_cpu_ms": 1379.2,
+              "image_build_bytes": 85584986,
+              "cas_commits": 379,
+              "cas_body_bytes": 42864235,
+              "transcript_hash": "49c3ec3da8f99b105a378be9e954a92171d84bbb92b516df1b5038ef48bda3b8",
+              "relation": {
+                "R1": "4d73880d5d7f540b7b78408445f02597fc7f6bb2d9e9b26903203c3cd53de19a",
+                "R2": "951706a678290615d79ca1548761e7e545976c15697b95622f40f1fe9eafba25",
+                "R3": "9ca7a6febbfdc00d83e50310c2ee1357e0ab4863b37c58dc4f2c0af7ad633e2c",
+                "R4": "4d8704596479ec7ed69dac5b2b1585aaad5be2f80cd46a5c1cf2c4e52a31ea24",
+                "R5": "9526d50143faad3aa80405fcf181b56d343393f1b58596ee9faf9be9aa1b7b35",
+                "R6": "53486fb91ad61ca747606fa959b9a2d6c47a2de2fe1404d5c1959464d30bdc26",
+                "R7": "93e892fc308560add71fbace195d7c52dbfc508681af46e46bbfbcb621403917",
+                "R8": "222110fcf0b3f401dc185678eec2df39a4a2d2139812baa0ff92999a1d09f680"
+              }
+            }
+          ]
+        },
+        {
+          "repetition": 1,
+          "order": [
+            "row_reuse",
+            "reference"
+          ],
+          "measurements": [
+            {
+              "kind": "histogram",
+              "poll_every": 8,
+              "encoder": "row_reuse",
+              "logical_slots": 337,
+              "polls": 42,
+              "execution_ms": 2189.181875,
+              "image_builds": 758,
+              "image_build_cpu_ms": 1438.542,
+              "image_build_bytes": 85584986,
+              "cas_commits": 379,
+              "cas_body_bytes": 42864235,
+              "transcript_hash": "49c3ec3da8f99b105a378be9e954a92171d84bbb92b516df1b5038ef48bda3b8",
+              "relation": {
+                "R1": "4d73880d5d7f540b7b78408445f02597fc7f6bb2d9e9b26903203c3cd53de19a",
+                "R2": "951706a678290615d79ca1548761e7e545976c15697b95622f40f1fe9eafba25",
+                "R3": "9ca7a6febbfdc00d83e50310c2ee1357e0ab4863b37c58dc4f2c0af7ad633e2c",
+                "R4": "4d8704596479ec7ed69dac5b2b1585aaad5be2f80cd46a5c1cf2c4e52a31ea24",
+                "R5": "9526d50143faad3aa80405fcf181b56d343393f1b58596ee9faf9be9aa1b7b35",
+                "R6": "53486fb91ad61ca747606fa959b9a2d6c47a2de2fe1404d5c1959464d30bdc26",
+                "R7": "93e892fc308560add71fbace195d7c52dbfc508681af46e46bbfbcb621403917",
+                "R8": "222110fcf0b3f401dc185678eec2df39a4a2d2139812baa0ff92999a1d09f680"
+              }
+            },
+            {
+              "kind": "histogram",
+              "poll_every": 8,
+              "encoder": "reference",
+              "logical_slots": 337,
+              "polls": 42,
+              "execution_ms": 2433.019875,
+              "image_builds": 758,
+              "image_build_cpu_ms": 1827.161,
+              "image_build_bytes": 85584986,
+              "cas_commits": 379,
+              "cas_body_bytes": 42864235,
+              "transcript_hash": "49c3ec3da8f99b105a378be9e954a92171d84bbb92b516df1b5038ef48bda3b8",
+              "relation": {
+                "R1": "4d73880d5d7f540b7b78408445f02597fc7f6bb2d9e9b26903203c3cd53de19a",
+                "R2": "951706a678290615d79ca1548761e7e545976c15697b95622f40f1fe9eafba25",
+                "R3": "9ca7a6febbfdc00d83e50310c2ee1357e0ab4863b37c58dc4f2c0af7ad633e2c",
+                "R4": "4d8704596479ec7ed69dac5b2b1585aaad5be2f80cd46a5c1cf2c4e52a31ea24",
+                "R5": "9526d50143faad3aa80405fcf181b56d343393f1b58596ee9faf9be9aa1b7b35",
+                "R6": "53486fb91ad61ca747606fa959b9a2d6c47a2de2fe1404d5c1959464d30bdc26",
+                "R7": "93e892fc308560add71fbace195d7c52dbfc508681af46e46bbfbcb621403917",
+                "R8": "222110fcf0b3f401dc185678eec2df39a4a2d2139812baa0ff92999a1d09f680"
+              }
+            }
+          ]
+        },
+        {
+          "repetition": 2,
+          "order": [
+            "reference",
+            "row_reuse"
+          ],
+          "measurements": [
+            {
+              "kind": "histogram",
+              "poll_every": 8,
+              "encoder": "reference",
+              "logical_slots": 337,
+              "polls": 42,
+              "execution_ms": 2461.069334,
+              "image_builds": 758,
+              "image_build_cpu_ms": 1826.391,
+              "image_build_bytes": 85584986,
+              "cas_commits": 379,
+              "cas_body_bytes": 42864235,
+              "transcript_hash": "49c3ec3da8f99b105a378be9e954a92171d84bbb92b516df1b5038ef48bda3b8",
+              "relation": {
+                "R1": "4d73880d5d7f540b7b78408445f02597fc7f6bb2d9e9b26903203c3cd53de19a",
+                "R2": "951706a678290615d79ca1548761e7e545976c15697b95622f40f1fe9eafba25",
+                "R3": "9ca7a6febbfdc00d83e50310c2ee1357e0ab4863b37c58dc4f2c0af7ad633e2c",
+                "R4": "4d8704596479ec7ed69dac5b2b1585aaad5be2f80cd46a5c1cf2c4e52a31ea24",
+                "R5": "9526d50143faad3aa80405fcf181b56d343393f1b58596ee9faf9be9aa1b7b35",
+                "R6": "53486fb91ad61ca747606fa959b9a2d6c47a2de2fe1404d5c1959464d30bdc26",
+                "R7": "93e892fc308560add71fbace195d7c52dbfc508681af46e46bbfbcb621403917",
+                "R8": "222110fcf0b3f401dc185678eec2df39a4a2d2139812baa0ff92999a1d09f680"
+              }
+            },
+            {
+              "kind": "histogram",
+              "poll_every": 8,
+              "encoder": "row_reuse",
+              "logical_slots": 337,
+              "polls": 42,
+              "execution_ms": 1980.936458,
+              "image_builds": 758,
+              "image_build_cpu_ms": 1397.19,
+              "image_build_bytes": 85584986,
+              "cas_commits": 379,
+              "cas_body_bytes": 42864235,
+              "transcript_hash": "49c3ec3da8f99b105a378be9e954a92171d84bbb92b516df1b5038ef48bda3b8",
+              "relation": {
+                "R1": "4d73880d5d7f540b7b78408445f02597fc7f6bb2d9e9b26903203c3cd53de19a",
+                "R2": "951706a678290615d79ca1548761e7e545976c15697b95622f40f1fe9eafba25",
+                "R3": "9ca7a6febbfdc00d83e50310c2ee1357e0ab4863b37c58dc4f2c0af7ad633e2c",
+                "R4": "4d8704596479ec7ed69dac5b2b1585aaad5be2f80cd46a5c1cf2c4e52a31ea24",
+                "R5": "9526d50143faad3aa80405fcf181b56d343393f1b58596ee9faf9be9aa1b7b35",
+                "R6": "53486fb91ad61ca747606fa959b9a2d6c47a2de2fe1404d5c1959464d30bdc26",
+                "R7": "93e892fc308560add71fbace195d7c52dbfc508681af46e46bbfbcb621403917",
+                "R8": "222110fcf0b3f401dc185678eec2df39a4a2d2139812baa0ff92999a1d09f680"
+              },
+              "restored_image_checks": 4,
+              "paired_snapshot": {
+                "image_bytes": 192067,
+                "image_hash": "fc01d44a52d2c3f51115052b722c74d3a4cd88f08737ea7a46ff398507ed5b1b",
+                "order": [
+                  [
+                    "reference",
+                    "row_reuse"
+                  ],
+                  [
+                    "row_reuse",
+                    "reference"
+                  ],
+                  [
+                    "reference",
+                    "row_reuse"
+                  ],
+                  [
+                    "row_reuse",
+                    "reference"
+                  ],
+                  [
+                    "reference",
+                    "row_reuse"
+                  ],
+                  [
+                    "row_reuse",
+                    "reference"
+                  ],
+                  [
+                    "reference",
+                    "row_reuse"
+                  ],
+                  [
+                    "row_reuse",
+                    "reference"
+                  ],
+                  [
+                    "reference",
+                    "row_reuse"
+                  ],
+                  [
+                    "row_reuse",
+                    "reference"
+                  ],
+                  [
+                    "reference",
+                    "row_reuse"
+                  ],
+                  [
+                    "row_reuse",
+                    "reference"
+                  ],
+                  [
+                    "reference",
+                    "row_reuse"
+                  ],
+                  [
+                    "row_reuse",
+                    "reference"
+                  ],
+                  [
+                    "reference",
+                    "row_reuse"
+                  ],
+                  [
+                    "row_reuse",
+                    "reference"
+                  ]
+                ],
+                "cpu": {
+                  "reference": {
+                    "samples": 16,
+                    "values_ms": [
+                      4.27,
+                      4.155,
+                      4.185,
+                      4.257,
+                      4.146,
+                      4.198,
+                      4.089,
+                      4.152,
+                      4.164,
+                      4.302,
+                      6.922,
+                      5.758,
+                      4.607,
+                      4.17,
+                      4.492,
+                      4.228
+                    ],
+                    "p50_ms": 4.198,
+                    "p95_ms": 6.922
+                  },
+                  "row_reuse": {
+                    "samples": 16,
+                    "values_ms": [
+                      3.4,
+                      3.318,
+                      3.387,
+                      3.366,
+                      3.305,
+                      3.308,
+                      3.296,
+                      3.312,
+                      3.311,
+                      3.65,
+                      3.488,
+                      3.421,
+                      3.444,
+                      3.275,
+                      3.374,
+                      3.458
+                    ],
+                    "p50_ms": 3.366,
+                    "p95_ms": 3.65
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

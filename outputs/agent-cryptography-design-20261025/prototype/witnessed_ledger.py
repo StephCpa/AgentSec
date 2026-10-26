@@ -188,9 +188,16 @@ class WitnessedLedger(EncryptedLedger):
     def state_image(self):
         objects,tables=self.schema();rows={}
         for name,columns in tables.items():
-            values=[[pack_cell(v) for v in row] for row in self.db.execute('SELECT * FROM '+quote_identifier(name))]
-            rows[name]=sorted(values,key=canonical)
-        image=canonical({'format':'agent-ledger-image-v1','schema':objects,'columns':tables,'rows':rows})
+            # Reuse each canonical row's sort key as its final JSON bytes. This
+            # is local to this image build: every call still reads every table.
+            values=[canonical([pack_cell(v) for v in row])
+                    for row in self.db.execute('SELECT * FROM '+quote_identifier(name))]
+            rows[name]=b'['+b','.join(sorted(values))+b']'
+        # Match canonical(..., sort_keys=True) at both object levels. Nested
+        # strings/cells/schema are still encoded by the original JSON encoder.
+        image=(b'{"columns":'+canonical(tables)+b',"format":"agent-ledger-image-v1","rows":{'+
+               b','.join(canonical(name)+b':'+rows[name] for name in sorted(rows))+
+               b'},"schema":'+canonical(objects)+b'}')
         image_hash(image)
         return image
 
