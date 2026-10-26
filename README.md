@@ -75,3 +75,9 @@ python3 outputs/agent-cryptography-design-20261025/prototype/delivery_relation_t
 ```sh
 python3 outputs/agent-cryptography-design-20261025/prototype/compression_experiment.py --output /tmp/agentsec-compression-cost-new.json
 ```
+
+[镜像行编码复用](docs/research/2026-10-26-canonical-row-reuse.md)进一步消除单次状态镜像内的重复编码：六组本机对照中，快照构造 CPU 中位耗时降低约 15%–25%，查询执行阶段降低约 8%–24%；镜像字节、完整状态检查和 CAS 次数保持不变。
+
+```sh
+python3 outputs/agent-cryptography-design-20261025/prototype/image_serialization_experiment.py --output /tmp/agentsec-row-reuse-cost-new.json
+```

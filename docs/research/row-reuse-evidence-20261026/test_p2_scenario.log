@@ -1,0 +1,13 @@
+test_complete_reference_workflow_has_each_required_stage (__main__.P2ScenarioTests) ... ok
+test_scenario_reports_transport_and_limits_without_performance_claim (__main__.P2ScenarioTests) ... ok
+test_writer_rejects_changed_route_epoch (__main__.P2ScenarioTests) ... ok
+test_writer_rejects_missing_ack_or_added_raw_input (__main__.P2ScenarioTests) ... ok
+test_writer_rejects_modified_receipt_and_cross_operation_reply (__main__.P2ScenarioTests) ... ok
+test_writer_rejects_terminal_evidence_even_with_valid_accepted_fact (__main__.P2ScenarioTests) ... ok
+test_writer_rejects_unlisted_missing_or_duplicate_operations (__main__.P2ScenarioTests) ... ok
+test_writer_reproduces_only_authenticated_admitted_outputs (__main__.P2ScenarioTests) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 4.732s
+
+OK

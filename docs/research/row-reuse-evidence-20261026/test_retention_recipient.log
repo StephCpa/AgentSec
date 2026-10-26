@@ -1,0 +1,33 @@
+test_accept_close_race_establishes_exactly_one_first_event (__main__.RetentionRecipientTests) ... ok
+test_accept_then_terminal_and_close_then_late_accept (__main__.RetentionRecipientTests) ... ok
+test_authenticated_mixed_network_with_both_authorities_and_lost_replies (__main__.RetentionRecipientTests) ... ok
+test_capacity_exact_bound_admits_and_one_byte_less_rejects (__main__.RetentionRecipientTests) ... ok
+test_capacity_real_encryption_overhead_and_state_lifecycle (__main__.RetentionRecipientTests) ... ok
+test_capacity_recovery_open_rejects_incompatible_limit_without_mutation (__main__.RetentionRecipientTests) ... ok
+test_capacity_rejects_oversized_window_before_file_or_authority_write (__main__.RetentionRecipientTests) ... ok
+test_capacity_serializer_bound_saturates_maximum_admitted_window (__main__.RetentionRecipientTests) ... ok
+test_image_cap_failure_preserves_previous_head_without_reply (__main__.RetentionRecipientTests) ... ok
+test_invalid_authority_frontier_image_rejected_before_recovery_commit (__main__.RetentionRecipientTests) ... ok
+test_lost_acceptance_reply_reuses_original_time_and_ciphertext (__main__.RetentionRecipientTests) ... ok
+test_lost_retirement_ack_can_reconcile_via_authenticated_checkpoint_query (__main__.RetentionRecipientTests) ... ok
+test_lost_retirement_reply_retries_without_changing_floor_or_root (__main__.RetentionRecipientTests) ... ok
+test_missing_database_requires_explicit_restore_and_wrong_key_rejected (__main__.RetentionRecipientTests) ... ok
+test_old_replica_after_gc_cannot_resurrect_deleted_history (__main__.RetentionRecipientTests) ... ok
+test_old_smaller_offer_returns_current_checkpoint_only (__main__.RetentionRecipientTests) ... ok
+test_payload_conflict_cannot_change_first_event (__main__.RetentionRecipientTests) ... ok
+test_process_cuts_on_first_accept_and_close (__main__.RetentionRecipientTests) ... ok
+test_process_cuts_on_retirement_and_recovery (__main__.RetentionRecipientTests) ... ok
+test_real_mixed_sender_and_receiver_confirm_then_retire (__main__.RetentionRecipientTests) ... ok
+test_rejected_early_terminal_preserves_clock_floor (__main__.RetentionRecipientTests) ... ok
+test_repeated_real_sender_delivery_gc_keeps_current_live_rows_bounded (__main__.RetentionRecipientTests) ... ok
+test_retired_requests_never_recreate_fact_or_claim_closed (__main__.RetentionRecipientTests) ... ok
+test_rolling_back_both_authority_and_inbox_remains_negative_control (__main__.RetentionRecipientTests) ... ok
+test_sender_peer_and_signature_domains_checked_before_state_access (__main__.RetentionRecipientTests) ... ok
+test_unconfirmed_sender_cannot_produce_retirement_request (__main__.RetentionRecipientTests) ... ok
+test_window_full_rejects_new_event_until_prefix_retired (__main__.RetentionRecipientTests) ... ok
+test_wrong_root_and_stale_base_cannot_delete_live_tail (__main__.RetentionRecipientTests) ... ok
+
+----------------------------------------------------------------------
+Ran 28 tests in 13.251s
+
+OK

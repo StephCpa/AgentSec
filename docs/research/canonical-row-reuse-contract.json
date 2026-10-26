@@ -1,0 +1,44 @@
+{
+  "profile": "canonical-row-reuse-v1",
+  "reference_commit": "06005e36cec9040fb35eaa9d03858c75ac0be0e7",
+  "reference_path": "outputs/agent-cryptography-design-20261025/prototype/witnessed_ledger.py",
+  "reference_method": "WitnessedLedger.state_image",
+  "reference_oracle": "image_serialization_experiment.reference_state_image",
+  "reference_body_ast_sha256": "c72ba00465fe15a95d0ef9151c9b1fe4f5cfb6d3b4d1864ab4670406945a3f4b",
+  "change": "Reuse canonical row bytes as both sort keys and final row encodings within one image build. No cache survives a call.",
+  "equivalence_preconditions": [
+    "Same stable SQLite schema and row snapshot; original transaction guards retained",
+    "Unchanged deterministic canonical JSON function and pack_cell mapping",
+    "Storage cells supported by existing profile: null, int, text and bytes"
+  ],
+  "equivalence_argument": [
+    "Let C be canonical JSON bytes and R the sequence of packed rows for one table. Original output for that table is C(sorted(R,key=C)).",
+    "Array serialization is '[' + comma_join(C(r) for r in array) + ']'. Sorting encoded rows produces the same byte sequence as sorting rows by C, including equal keys.",
+    "The optimized table output '[' + comma_join(sorted(C(r) for r in R)) + ']' is therefore equal. Empty tables are included.",
+    "Table object keys are sorted as Python strings before canonical key encoding, exactly as JSON sort_keys; they are not sorted by escaped key bytes.",
+    "Top-level canonical key order is columns, format, rows, schema. Columns and schema still pass through C; the format literal is unchanged.",
+    "Thus final raw image bytes and image_hash match for every supported stable snapshot. Original raw-image length check and unsupported-cell rejection remain. This is a structural argument, not a machine-checked system proof."
+  ],
+  "unchanged": [
+    "agent-ledger-image-v1 format and domain-separated image hash",
+    "Full schema/table reads on each build; no cross-transaction or cross-connection cached state",
+    "Begin-transaction check of authoritative head and complete local image",
+    "Commit-transaction complete image, witness CAS and receipt validation",
+    "Logical work slots, public event sequence, CAS count and witness image payload size",
+    "Recovery schema equality, rebuilt-byte equality, foreign-key check, local audit and authoritative-head recheck",
+    "16 MiB uncompressed image limit"
+  ],
+  "measurement": {
+    "query_workloads": "count and histogram; poll cadence 0,1,8; same synthetic configuration and approved outputs",
+    "query_pairs": "3 sequential alternating encoder-order pairs per workload; fresh encrypted state each run; exact public transcript, R1-R8 final relation, counts and image byte totals compared",
+    "image_pairs": "16 alternating CPU timing pairs using the exact same final snapshot per workload",
+    "timers": "process_time_ns for image construction, perf_counter_ns for query execution; setup/delivery/audit/model checks excluded from query execution timer",
+    "scope": "Local in-process ReferenceWitness, not mTLS or production throughput. Repeated samples and raw observations retained; no CI timing threshold."
+  },
+  "remaining": [
+    "Full-image serialization/CAS cost and growing history still remain asymptotically unchanged",
+    "Fixed work segmentation, incremental persistence and recovery need separate designs and correspondence proofs",
+    "General public-observation refinement including arbitrary faults, concurrency, retirement and physical leakage",
+    "Fair strong baselines, real Agent isolation and independent nonrollback witness deployment"
+  ]
+}

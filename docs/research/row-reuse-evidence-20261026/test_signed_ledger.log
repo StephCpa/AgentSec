@@ -1,0 +1,28 @@
+test_all_short_inputs_fail_closed_or_round_trip (__main__.WireTests) ... ok
+test_cose_context_and_signature_tampering (__main__.WireTests) ... ok
+test_cose_exact_headers_tag_and_schema (__main__.WireTests) ... ok
+test_literal_deterministic_cbor_vectors (__main__.WireTests) ... ok
+test_reject_noncanonical_and_unsupported_encodings (__main__.WireTests) ... ok
+test_rfc8032_known_answer (__main__.WireTests) ... ok
+test_saved_golden_wire_vector (__main__.WireTests) ... ok
+test_action_expiry_before_l1_returns_both_dimensions (__main__.SignedTests) ... ok
+test_audit_reverifies_saved_signature_after_key_revocation (__main__.SignedTests) ... ok
+test_changed_wire_only_field_conflicts (__main__.SignedTests) ... ok
+test_concurrent_proof_replay_has_one_winner (__main__.SignedTests) ... ok
+test_deadline_bounds_ticket_and_blocks_new_l3 (__main__.SignedTests) ... ok
+test_failed_budget_does_not_consume_challenge (__main__.SignedTests) ... ok
+test_key_revocation_and_deadline_at_l1_l3 (__main__.SignedTests) ... ok
+test_proof_action_audience_expiry_and_key_binding (__main__.SignedTests) ... ok
+test_proof_id_reuse_with_fresh_nonce_is_rejected (__main__.SignedTests) ... ok
+test_replay_rejected_but_new_proof_retries_same_action_once (__main__.SignedTests) ... ok
+test_revoked_key_does_not_revoke_preexisting_l3_ticket (__main__.SignedTests) ... ok
+test_same_public_key_cannot_gain_another_role_or_actor (__main__.SignedTests) ... ok
+test_three_actual_admission_crash_cuts (__main__.SignedTests) ... ok
+test_unsigned_reserve_and_cost_change_rejected (__main__.SignedTests) ... ok
+test_verified_registration_execution_and_ack (__main__.SignedTests) ... ok
+test_wrong_role_key_or_signature_rejected (__main__.SignedTests) ... ok
+
+----------------------------------------------------------------------
+Ran 23 tests in 0.582s
+
+OK
