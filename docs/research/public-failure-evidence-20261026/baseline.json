@@ -1,0 +1,7 @@
+{
+  "base_commit": "3bd175496fae4d39a156d3b2f8161b9ac2f2d065",
+  "test": "tests/test_public_failure_boundaries.py",
+  "returncode": 1,
+  "expected_failure": true,
+  "scope": "Run new regression tests against both pre-fix model modules in an isolated copy; unchanged runtime."
+}

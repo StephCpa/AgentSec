@@ -1,0 +1,22 @@
+{
+  "baseline_commit": "3bd175496fae4d39a156d3b2f8161b9ac2f2d065",
+  "baseline_adapter_sha256": "4ab1194a76dadb066484bcf7aba6cce70661ccd460814ce34c7d0ed4fc828788",
+  "current_adapter_sha256": "5901831f51fabb08c661c59878e3a1d613b68e470963caad4738a28f2badeb3e",
+  "cases": [
+    {
+      "case": "oversized_request",
+      "before": "ACCEPTED_FABRICATED_SIGNED_REJECTION",
+      "after": "ViewMismatch:record 0: PUBLIC_CALL_FRAME"
+    },
+    {
+      "case": "short_peer",
+      "before": "ACCEPTED_FABRICATED_SIGNED_REJECTION",
+      "after": "ViewMismatch:record 0: PUBLIC_CALL_FRAME"
+    },
+    {
+      "case": "unknown_dispatch_rejected",
+      "before": "ACCEPTED_FABRICATED_SIGNED_REJECTION",
+      "after": "ViewMismatch:record 0: STORAGE_INTEGRITY"
+    }
+  ]
+}

@@ -53,7 +53,7 @@ python3 outputs/agent-cryptography-design-20261025/prototype/persistence_experim
 
 ```sh
 python3 outputs/agent-cryptography-design-20261025/prototype/constructive_trace.py --output /tmp/agentsec-constructed-new
-python3 scripts/replay_constructive.py docs/research/constructive-evidence-20261026 --output /tmp/agentsec-replay-new.json
+python3 scripts/replay_constructive.py docs/research/public-failure-evidence-20261026/constructive --output /tmp/agentsec-replay-new.json
 ```
 
 [逐步状态关系检查](docs/research/2026-10-26-stepwise-relation.md)继续把 R1–R4 转成可执行断言：每个已完成事件后分别比较请求/凭证、预留与支出、公开调度、发布决定和原始期限。该诊断读取真实账本的指定字段，读数不传给生成器；仍需完成一般归纳和故障模型扩展。
@@ -61,3 +61,5 @@ python3 scripts/replay_constructive.py docs/research/constructive-evidence-20261
 ```sh
 python3 outputs/agent-cryptography-design-20261025/prototype/stepwise_trace.py --output /tmp/agentsec-stepwise-new
 ```
+
+[公开失败边界修复](docs/research/2026-10-26-public-failure-boundaries.md)纠正了超长请求、错误长度证书指纹和未知分派错误被模型误转为正常拒绝的问题。当前重放入口使用针对修复后源码重新运行的证据；此前报告保留原源码绑定。

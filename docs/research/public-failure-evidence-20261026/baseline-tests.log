@@ -1,0 +1,67 @@
+test_bad_frame_cannot_bypass_validation_using_a_cached_identity (test_public_failure_boundaries.PublicFailureBoundaryTests) ... FAIL
+test_empty_and_exact_limit_frames_get_authentication_rejections (test_public_failure_boundaries.PublicFailureBoundaryTests) ... ok
+test_invalid_call_frame_has_no_signed_response_or_cache_entry (test_public_failure_boundaries.PublicFailureBoundaryTests) ... test_known_dispatch_denial_rolls_back_then_journals_rejection (test_public_failure_boundaries.PublicFailureBoundaryTests) ... ok
+test_payload_syntax_and_policy_denials_remain_journaled (test_public_failure_boundaries.PublicFailureBoundaryTests) ... ok
+test_unknown_rejected_failures_abort_and_rollback_predictive_effects (test_public_failure_boundaries.PublicFailureBoundaryTests) ... test_wrong_full_length_peer_and_request_signature_are_auth_denials (test_public_failure_boundaries.PublicFailureBoundaryTests) ... ok
+test_wrong_proof_signature_domain_rejects_without_consuming_challenge (test_public_failure_boundaries.PublicFailureBoundaryTests) ... ok
+
+======================================================================
+FAIL: test_bad_frame_cannot_bypass_validation_using_a_cached_identity (test_public_failure_boundaries.PublicFailureBoundaryTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/var/folders/g_/n2fwzyln011fg1vfd8t623t80000gn/T/agentsec-boundary-baseline-2gkrc05t/tests/test_public_failure_boundaries.py", line 175, in test_bad_frame_cannot_bypass_validation_using_a_cached_identity
+    h.sim.emit(h.command(raw, PEER[:-1]))
+AssertionError: ViewMismatch not raised
+
+======================================================================
+FAIL: test_invalid_call_frame_has_no_signed_response_or_cache_entry (test_public_failure_boundaries.PublicFailureBoundaryTests) (frame=8193, peer=32)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/var/folders/g_/n2fwzyln011fg1vfd8t623t80000gn/T/agentsec-boundary-baseline-2gkrc05t/tests/test_public_failure_boundaries.py", line 78, in test_invalid_call_frame_has_no_signed_response_or_cache_entry
+    h.sim.emit(h.command(raw, peer))
+AssertionError: ViewMismatch not raised
+
+======================================================================
+FAIL: test_invalid_call_frame_has_no_signed_response_or_cache_entry (test_public_failure_boundaries.PublicFailureBoundaryTests) (frame=276, peer=0)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/var/folders/g_/n2fwzyln011fg1vfd8t623t80000gn/T/agentsec-boundary-baseline-2gkrc05t/tests/test_public_failure_boundaries.py", line 78, in test_invalid_call_frame_has_no_signed_response_or_cache_entry
+    h.sim.emit(h.command(raw, peer))
+AssertionError: ViewMismatch not raised
+
+======================================================================
+FAIL: test_invalid_call_frame_has_no_signed_response_or_cache_entry (test_public_failure_boundaries.PublicFailureBoundaryTests) (frame=276, peer=31)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/var/folders/g_/n2fwzyln011fg1vfd8t623t80000gn/T/agentsec-boundary-baseline-2gkrc05t/tests/test_public_failure_boundaries.py", line 78, in test_invalid_call_frame_has_no_signed_response_or_cache_entry
+    h.sim.emit(h.command(raw, peer))
+AssertionError: ViewMismatch not raised
+
+======================================================================
+FAIL: test_invalid_call_frame_has_no_signed_response_or_cache_entry (test_public_failure_boundaries.PublicFailureBoundaryTests) (frame=276, peer=33)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/var/folders/g_/n2fwzyln011fg1vfd8t623t80000gn/T/agentsec-boundary-baseline-2gkrc05t/tests/test_public_failure_boundaries.py", line 78, in test_invalid_call_frame_has_no_signed_response_or_cache_entry
+    h.sim.emit(h.command(raw, peer))
+AssertionError: ViewMismatch not raised
+
+======================================================================
+FAIL: test_unknown_rejected_failures_abort_and_rollback_predictive_effects (test_public_failure_boundaries.PublicFailureBoundaryTests) (code='STORAGE_INTEGRITY')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/var/folders/g_/n2fwzyln011fg1vfd8t623t80000gn/T/agentsec-boundary-baseline-2gkrc05t/tests/test_public_failure_boundaries.py", line 141, in test_unknown_rejected_failures_abort_and_rollback_predictive_effects
+    action()
+AssertionError: ViewMismatch not raised
+
+======================================================================
+FAIL: test_unknown_rejected_failures_abort_and_rollback_predictive_effects (test_public_failure_boundaries.PublicFailureBoundaryTests) (code='UNEXPECTED_INTERNAL')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/var/folders/g_/n2fwzyln011fg1vfd8t623t80000gn/T/agentsec-boundary-baseline-2gkrc05t/tests/test_public_failure_boundaries.py", line 141, in test_unknown_rejected_failures_abort_and_rollback_predictive_effects
+    action()
+AssertionError: ViewMismatch not raised
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.725s
+
+FAILED (failures=7)

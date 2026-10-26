@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "constructive_cases": 200,
+  "stepwise_cases": 200,
+  "checkpoint_count": 35136,
+  "valid_trace_hashes_unchanged": true,
+  "selected_state_projection_hashes_unchanged": true,
+  "scope": "Current-source complete reruns plus archive cross-reference; historical artifacts retain old source bindings."
+}

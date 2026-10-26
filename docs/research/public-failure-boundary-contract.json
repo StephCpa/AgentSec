@@ -1,0 +1,17 @@
+{
+  "profile": "restricted-public-failure-boundaries-v1",
+  "baseline_commit": "3bd175496fae4d39a156d3b2f8161b9ac2f2d065",
+  "implementation_changes": ["prototype/public_trace_adapter.py", "prototype/public_simulator.py"],
+  "runtime_protocol_changed": false,
+  "call_frame": {
+    "max_request_bytes": 8192,
+    "peer_fingerprint_bytes": 32,
+    "invalid_runtime_behavior": "handle_public raises GW_FRAME before authentication and does not return a signed response.",
+    "invalid_model_behavior": "PUBLIC_CALL_FRAME rejects the generation/check; no normal signed rejection, new cache entry or generated record."
+  },
+  "dispatch_denials": "Only PUBLIC_DENIALS from the real public_gateway module, plus PUBLIC_DENIED for the model's explicitly predicted public policy branches, may become a normal sequenced REJECTED.",
+  "unknown_dispatch_rejected": "Restore speculative model state and fail generation/checking; never normalize an unknown Rejected into a signed response.",
+  "positive_controls": ["empty and exactly-at-limit malformed request frames receive authentication rejection sequence 0", "wrong but full-length peer and bad outer signature receive authentication rejection sequence 0", "bad payload syntax remains GW_PAYLOAD and is journaled", "wrong proof signature domain remains INVALID_SIGNATURE and is journaled without consuming the challenge", "known dispatch denial rolls back effects then records rejection", "valid exact retry after creation expiry returns original cached bytes"],
+  "negative_controls": ["oversized request", "peer lengths 0/31/33", "validly signed fabricated rejection for invalid call frame", "injected STORAGE_INTEGRITY or UNEXPECTED_INTERNAL after a speculative state change", "invalid frame attempting to reuse a cached identity"],
+  "limitations": "A rejected simulation does not specify or prove independence of connection failure, physical time or availability. The test compares local handler call semantics, not a new TLS/process-isolation or full-refinement claim."
+}
