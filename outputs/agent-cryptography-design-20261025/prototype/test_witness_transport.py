@@ -304,7 +304,7 @@ class TransportTests(unittest.TestCase):
 if __name__=='__main__':
     result=unittest.TextTestRunner(verbosity=2).run(unittest.defaultTestLoader.loadTestsFromTestCase(TransportTests))
     root=Path(__file__).resolve().parent
-    sources=('witness_transport.py','test_witness_transport.py','witnessed_ledger.py','encrypted_ledger.py','ledger.py',
+    sources=('witness_transport.py','witness_compression.py','test_witness_transport.py','witnessed_ledger.py','encrypted_ledger.py','ledger.py',
              'scheduled_ledger.py','dp_ledger.py','signed_ledger.py','delegated_ledger.py','wire.py',
              'test_encrypted_ledger.py','test_delegated_ledger.py','test_signed_ledger.py','../fixed_work_model.py','requirements-crypto.txt')
     report={'passed':result.wasSuccessful(),'test_methods':result.testsRun,'network_calls':NETWORK_CALLS,'tls_versions':sorted(TLS_VERSIONS),

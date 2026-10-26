@@ -135,6 +135,16 @@ def send_frame(sock,meta,body,deadline):
     sock.sendall(b'WRP1'+struct.pack('>II',len(meta),len(body))+meta+body)
 
 
+def frame_functions(mode):
+    # Explicit trusted bootstrap selection; no negotiation or fallback. Resolve
+    # raw functions at call time to preserve the existing fault-injection seam.
+    if type(mode) is str and mode=='raw':return send_frame,receive_frame
+    if type(mode) is str and mode=='deflate-v1':
+        from witness_compression import send_compressed_frame,receive_compressed_frame
+        return send_compressed_frame,receive_compressed_frame
+    raise ValueError('invalid witness frame mode')
+
+
 def tls_context(cafile,certfile,keyfile,server=False):
     context=ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER if server else ssl.PROTOCOL_TLS_CLIENT)
     context.minimum_version=ssl.TLSVersion.TLSv1_2
@@ -148,8 +158,9 @@ def tls_context(cafile,certfile,keyfile,server=False):
 
 class WitnessTLSService:
     def __init__(self,witness_path,*,cafile,certfile,keyfile,signing_key,kid=b'witness',timeout=5,
-                 fault=lambda point,request:None):
+                 fault=lambda point,request:None,frame_mode='raw'):
         if type(timeout) not in (int,float) or not 0<timeout<=30:raise ValueError('invalid timeout')
+        frame_functions(frame_mode);self.frame_mode=frame_mode
         self.path=str(witness_path);self.signing_key=signing_key;self.kid=kid;self.timeout=timeout;self.fault=fault
         self.context=tls_context(cafile,certfile,keyfile,True)
         outer=self
@@ -160,11 +171,12 @@ class WitnessTLSService:
                     self.request.settimeout(remaining(deadline))
                     with outer.context.wrap_socket(self.request,server_side=True) as channel:
                         peer=hashlib.sha256(channel.getpeercert(binary_form=True)).digest()
-                        raw,body=receive_frame(channel,deadline);request=parse_request(raw,body)
+                        send,receive=frame_functions(outer.frame_mode)
+                        raw,body=receive(channel,deadline);request=parse_request(raw,body)
                         outer.fault('before_dispatch',request)
                         meta,response_body=outer.dispatch(raw,body,request,peer)
                         outer.fault('after_dispatch',request)
-                        send_frame(channel,meta,response_body,deadline)
+                        send(channel,meta,response_body,deadline)
                 except (OSError,Rejected):
                     # Malformed frames/TLS failures close the connection; no raw
                     # internal exception or unauthenticated success is returned.
@@ -203,10 +215,11 @@ class WitnessTLSService:
 
 
 class TLSWitnessClient:
-    def __init__(self,*,port,cafile,certfile,keyfile,witness_public_key,kid=b'witness',server_hostname='localhost',timeout=5):
+    def __init__(self,*,port,cafile,certfile,keyfile,witness_public_key,kid=b'witness',server_hostname='localhost',timeout=5,frame_mode='raw'):
         if type(port) is not int or not 1<=port<=65535:raise ValueError('invalid port')
         if type(witness_public_key) is not bytes or len(witness_public_key)!=32:raise ValueError('invalid witness key')
         if type(timeout) not in (int,float) or not 0<timeout<=30:raise ValueError('invalid timeout')
+        frame_functions(frame_mode);self.frame_mode=frame_mode
         self.port=port;self.hostname=server_hostname;self.timeout=timeout;self.public_key=witness_public_key;self.kid=kid
         self.requester=certificate_fingerprint(certfile)
         self.context=tls_context(cafile,certfile,keyfile)
@@ -218,8 +231,9 @@ class TLSWitnessClient:
             sock.settimeout(remaining(deadline))
             with self.context.wrap_socket(sock,server_hostname=self.hostname) as channel:
                 self.last_tls_version=channel.version()
-                send_frame(channel,raw,body,deadline)
-                return receive_frame(channel,deadline)
+                send,receive=frame_functions(self.frame_mode)
+                send(channel,raw,body,deadline)
+                return receive(channel,deadline)
 
     def call(self,method,namespace,body=b'',**extra):
         request=dict(profile=PROFILE,service=SERVICE,method=method,namespace=namespace,challenge=secrets.token_bytes(32),
