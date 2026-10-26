@@ -48,3 +48,10 @@ PR #1 已合并。新的受限轨迹检查与成本实验见 [2026-10-26 研究�
 python3 outputs/agent-cryptography-design-20261025/prototype/restricted_trace.py --output /tmp/agentsec-traces-new
 python3 outputs/agent-cryptography-design-20261025/prototype/persistence_experiment.py --output /tmp/agentsec-cost-new.json
 ```
+
+进一步的[构造性模拟记录](docs/research/2026-10-26-constructive-simulation.md)增加从公开输入生成签名报文的候选模拟器：200 个有限案例逐字节匹配，包含首项输出 0–3 的自适应分支。它依赖显式签名资源，并共享部分转换规则，仍不是完整精化证明。
+
+```sh
+python3 outputs/agent-cryptography-design-20261025/prototype/constructive_trace.py --output /tmp/agentsec-constructed-new
+python3 scripts/replay_constructive.py docs/research/constructive-evidence-20261026 --output /tmp/agentsec-replay-new.json
+```
