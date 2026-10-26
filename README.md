@@ -63,3 +63,9 @@ python3 outputs/agent-cryptography-design-20261025/prototype/stepwise_trace.py -
 ```
 
 [公开失败边界修复](docs/research/2026-10-26-public-failure-boundaries.md)纠正了超长请求、错误长度证书指纹和未知分派错误被模型误转为正常拒绝的问题。当前重放入口使用针对修复后源码重新运行的证据；此前报告保留原源码绑定。
+
+[交付状态关系](docs/research/2026-10-26-delivery-state-relation.md)进一步检查已准备报文、接收首次事实、发送确认、路由确认根和全局最终前缀，并增加回执可见但尚未确认的执行路径。
+
+```sh
+python3 outputs/agent-cryptography-design-20261025/prototype/delivery_relation_trace.py --output /tmp/agentsec-delivery-relations-new
+```

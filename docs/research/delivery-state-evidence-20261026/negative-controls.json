@@ -1,0 +1,29 @@
+{
+  "scope": "Privileged synthetic test-side mutations; not an external attack or unmodified-runtime failure claim.",
+  "cases": [
+    {
+      "case": "changed_prepared_output",
+      "r1_r4": "passes selected projection",
+      "r5_r8": "rejects",
+      "relation": "R5.prepared"
+    },
+    {
+      "case": "changed_first_time",
+      "r1_r4": "passes selected projection",
+      "r5_r8": "rejects",
+      "relation": "R6.first_facts_and_evidence"
+    },
+    {
+      "case": "unrecorded_sender_confirmation",
+      "r1_r4": "passes selected projection",
+      "r5_r8": "rejects",
+      "relation": "R7.sender_states"
+    },
+    {
+      "case": "premature_final_row",
+      "r1_r4": "passes selected projection",
+      "r5_r8": "rejects",
+      "relation": "R8.durable_final_rows"
+    }
+  ]
+}

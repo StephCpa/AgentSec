@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "cases": 232,
+  "groups": 29,
+  "checkpoints": 41592,
+  "prior_cases_matched": 200,
+  "new_cases": 32,
+  "checks": [
+    "experiment and final test source hashes match current source",
+    "all archived trace and projection digests verified",
+    "checkpoint numbering and event kinds match records",
+    "eight masks per group share conditioned trace and projections",
+    "prior 200 trace hashes and R1-R4 projections unchanged"
+  ],
+  "prior_summary_sha256": "3ebf3d54a696d102834c0928b9ede07f83385ca96d532cc4085c2d52a1b5c79b",
+  "scope": "Archive integrity and prior-run cross-reference; actual SQLite relation checks occurred in the experiment."
+}

@@ -1,0 +1,32 @@
+{
+  "base_commit": "71b3fc71c8ddac0c120e1036f09ee8478bf50159",
+  "depends_on_pr": 5,
+  "base_ci_runs": [
+    "https://github.com/StephCpa/AgentSec/actions/runs/40315128911",
+    "https://github.com/StephCpa/AgentSec/actions/runs/40315107996"
+  ],
+  "base_ci_conclusion": "success",
+  "profile": "restricted-delivery-state-relation-v1",
+  "cases": 232,
+  "groups": 29,
+  "checkpoints": 41592,
+  "directed_neighbor_comparisons": 696,
+  "repository_test_methods": 70,
+  "new_relation_test_methods": 13,
+  "public_transcript_test_methods": 17,
+  "scope": "Selected R1-R8 projections at completed events; no retirement/crash/recovery or universal induction.",
+  "files_sha256": {
+    "comparison.json": "30b46fb27037fc3e9528f13e0293336295ea5b5c63997fbc707775fa4b488c99",
+    "experiment.log": "bfc7200daf0249dec63d531d0dd78cf71b719d9561eef2099247a49bc4c3811b",
+    "negative-controls.json": "e21e63ace59f3efe19ef1766ddc9b662f52da4258e2a9e95fc46a99481a9475f",
+    "review_regressions.log": "4999a90b56e46c862673b3a23edd8f8a92d33873e79988f018192d47b5f6b58c",
+    "run.json": "d17af4bdea90b0b8d8f2a6acaa496ec07441fdf6b4a6b5ca6bef742c63c9ea47",
+    "summary.json": "f4039c6f3fca0e6e74a19eade7d5c374a4df28c15c20af07142c5ac3a8b4942b",
+    "test_public_transcript.log": "595d85286cdd2d614d8b4f79b93b2bd5ddfdd4bc2050bbbf66da7ab50617c1f5",
+    "traces-and-checkpoints.json.gz": "658597a0125b870aeedfb7ae480d1cfcb99c81314b8d06586fe4c86a5a9971e7"
+  },
+  "support_source_sha256": {
+    "tests/test_delivery_state_relation.py": "164b2c162a8b94876adeebbb78dedc25d919201d46b1a1d13d8298b170fa7e6c",
+    "docs/research/delivery-state-relation-contract.json": "abd38e0fbbae0ae7a9b106af2a6d036b517d83251600a17d566ad3f1560ec847"
+  }
+}
