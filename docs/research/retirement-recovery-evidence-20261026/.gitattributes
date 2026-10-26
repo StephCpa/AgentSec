@@ -1,0 +1,4 @@
+*.json linguist-generated=true
+*.json.xz linguist-generated=true
+*.jsonl.xz linguist-generated=true
+*.log linguist-generated=true

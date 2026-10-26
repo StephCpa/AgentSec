@@ -1,0 +1,6 @@
+PASS cleanup cost count 1 jobs, batch 1 5 repetitions
+PASS cleanup cost count 2 jobs, batch 1 5 repetitions
+PASS cleanup cost count 2 jobs, batch 2 5 repetitions
+PASS cleanup cost histogram 1 jobs, batch 1 5 repetitions
+PASS cleanup cost histogram 2 jobs, batch 1 5 repetitions
+PASS cleanup cost histogram 2 jobs, batch 2 5 repetitions

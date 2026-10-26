@@ -1,10 +1,12 @@
-"""Test-side R5--R8 projections for the no-retirement public trace profile.
+"""Test-side R5--R8 projections, with strict no-retirement checks by default.
 
 Decrypts stored transport evidence, never private snapshots/work/seed/results.
 The generated logical history is the expectation; no database value is passed
 back to the simulator. initialized_contexts declares empty receivers from public
 trusted setup for recovery profiles. Default completed-event checks are unchanged.
 Successful boundary equality is not a general recovery proof.
+An explicit retirement model enables offer/checkpoint and live-window checks;
+omitting it retains the original strict no-retirement assertions.
 """
 from wire import decode
 from ledger import Rejected
@@ -13,7 +15,7 @@ import retention_delivery as d
 import retention_wire as r
 
 
-def assert_delivery_relation(runtime, simulator, *, initialized_contexts=()):
+def assert_delivery_relation(runtime, simulator, *, initialized_contexts=(), retirement=None):
     model = simulator.state
     tenant, domain = model.cfg['tenant'], model.cfg['domain']
     sender = runtime.l
@@ -34,9 +36,24 @@ def assert_delivery_relation(runtime, simulator, *, initialized_contexts=()):
     routes = {row['context_hash']: row for row in sender.db.execute('SELECT * FROM v2_routes WHERE tenant=?', (tenant,))}
     equal('R5.contexts', {h: (decode(row['context']), row['tenant'], row['recipient'], row['gateway'], row['session'], bool(row['revoked'])) for h, row in routes.items()},
           {h: (ctx, ctx['tenant'], ctx['recipient'], ctx['gateway'], ctx['session'], False) for h, ctx in contexts.items()})
-    equal('R5.no_retirement', {h: (int.from_bytes(row['retired'], 'big'), row['retired_root'], row['retirement_evidence']) for h, row in routes.items()},
-          {h: (0, r.genesis(ctx), None) for h, ctx in contexts.items()})
-    equal('R5.no_retirement_offers', sender.db.execute('SELECT count(*) FROM v2_retire_offers').fetchone()[0], 0)
+    if retirement is None:
+        equal('R5.no_retirement', {h: (int.from_bytes(row['retired'], 'big'), row['retired_root'], row['retirement_evidence']) for h, row in routes.items()},
+              {h: (0, r.genesis(ctx), None) for h, ctx in contexts.items()})
+        equal('R5.no_retirement_offers', sender.db.execute('SELECT count(*) FROM v2_retire_offers').fetchone()[0], 0)
+    else:
+        equal('R5.retirement_scope', set(retirement['sender']), set(contexts))
+        equal('R6.retirement_scope', set(retirement['receiver']), set(contexts))
+        actual_retired = {}
+        for h, row in routes.items():
+            evidence = None if row['retirement_evidence'] is None else decode(sender.vault.open('v2-retirement-checkpoint', (h,), row['retirement_evidence']))
+            actual_retired[h] = (int.from_bytes(row['retired'], 'big'), row['retired_root'], evidence)
+        equal('R5.retirement', actual_retired,
+              {h: (v['floor'], v['root'], v['evidence']) for h, v in retirement['sender'].items()})
+        actual_offers = {}
+        for row in sender.db.execute('SELECT * FROM v2_retire_offers'):
+            key = (row['context_hash'], int.from_bytes(row['base'], 'big'), int.from_bytes(row['target'], 'big'))
+            actual_offers[key] = sender.vault.open('v2-retire-offer', key, row['offer'])
+        equal('R5.retirement_offers', actual_offers, retirement['offers'])
 
     jobs = {(r.context_hash(job['context']), job['route_seq']): job for job in model.jobs if job['publication'] == 'ADMITTED'}
     expected_requests = {}
@@ -61,6 +78,12 @@ def assert_delivery_relation(runtime, simulator, *, initialized_contexts=()):
         raise StateRelationMismatch('R6.initial_context_scope')
     first_confirmations = {}
     for event in simulator.records:
+        if retirement is not None and event['kind'] == 'RETENTION_RECEIVE':
+            h = bytes.fromhex(event['context_hash'])
+            if h not in contexts:
+                raise StateRelationMismatch('R6.retention_context')
+            reached[h] = event['at']
+            continue
         if event['kind'] not in ('DELIVERY', 'CONFIRM'):
             continue
         request = bytes.fromhex(event['request'])
@@ -94,7 +117,10 @@ def assert_delivery_relation(runtime, simulator, *, initialized_contexts=()):
             raise StateRelationMismatch('R6.receiver_context_scope')
         h, ctx = matches[0]
         meta = inbox.db.execute('SELECT context,high,floor,root,observed,last_offer FROM v2_recipient_meta WHERE singleton=1').fetchone()
-        actual_receiver_meta[h] = (decode(meta['context']), int.from_bytes(meta['high'], 'big'), int.from_bytes(meta['floor'], 'big'), meta['root'], meta['observed'], meta['last_offer'])
+        last_offer = meta['last_offer']
+        if retirement is not None and last_offer is not None:
+            last_offer = inbox.vault.open('v2-recipient-last-offer', (h,), last_offer)
+        actual_receiver_meta[h] = (decode(meta['context']), int.from_bytes(meta['high'], 'big'), int.from_bytes(meta['floor'], 'big'), meta['root'], meta['observed'], last_offer)
         for row in inbox.db.execute('SELECT seq,id,fact,evidence FROM v2_recipient_live ORDER BY seq'):
             fact = opened(inbox, 'fact', row, 'R6.first_fact')
             evidence = opened(inbox, 'evidence', row, 'R6.first_evidence')
@@ -102,11 +128,17 @@ def assert_delivery_relation(runtime, simulator, *, initialized_contexts=()):
     expected_receiver = {}
     for key, fact in model.receiver.items():
         h, seq = key
+        if retirement is not None and seq <= retirement['receiver'][h]['floor']:
+            continue
         kind = 'DELIVERY' if r.parse_fact(fact, contexts[h])['outcome'] == 'ACCEPTED' else 'TERMINAL'
         expected_receiver[key] = (r.delivery_id(contexts[h], seq), fact, model.prepared[(key, kind)])
     equal('R6.first_facts_and_evidence', actual_receiver, expected_receiver)
-    equal('R6.receiver_metadata', actual_receiver_meta,
-          {h: (contexts[h], max((seq for hh, seq in model.receiver if hh == h), default=0), 0, r.genesis(contexts[h]), at, None) for h, at in reached.items()})
+    expected_receiver_meta = {}
+    for h, at in reached.items():
+        retired = dict(floor=0, root=r.genesis(contexts[h]), last_offer=None) if retirement is None else retirement['receiver'][h]
+        expected_receiver_meta[h] = (contexts[h], max((seq for hh, seq in model.receiver if hh == h), default=0),
+                                     retired['floor'], retired['root'], at, retired['last_offer'])
+    equal('R6.receiver_metadata', actual_receiver_meta, expected_receiver_meta)
 
     expected_states, actual_facts, expected_facts = {}, {}, {}
     for key, job in jobs.items():
