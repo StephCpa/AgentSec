@@ -1,0 +1,26 @@
+{
+  "base_commit": "ab303a30192a98464ee9844d1e3d16b55e3768b4",
+  "depends_on_pr": 2,
+  "profile": "constructive-restricted-public-v1",
+  "cases": 200,
+  "conditioned_groups": 25,
+  "directed_neighbor_comparisons": 600,
+  "observed_records": 34936,
+  "offline_replay_passed": true,
+  "repository_test_methods": 36,
+  "public_transcript_test_methods": 17,
+  "scope": "Finite conditional constructive correspondence using explicit synthetic signing resources; shared transition rules, not a complete simulation proof.",
+  "files_sha256": {
+    "inputs-and-expected.json.gz": "f0a1febbf3c07ea7772f9ee055e9601fe2b0cd3987d3353c82a8dc3e8cadf6c8",
+    "replay.json": "afecc38004a219d2c8b8b293f9234499116326edfbf3e2db38e4be811eba0985",
+    "review_regressions.log": "72c4767d9f70c202d0a3c6a13d9b73e6c4645f2a52ec7c5d27f8d3ecf2f0537d",
+    "run.json": "e85e9f23a38becc0e781f1a831820bef5a36a9f1cca2ff59c5286b61b39fcbf4",
+    "summary.json": "07daee771726730e3b9989caba1ffd2a8044ca0a97087b7a3872bea7316ad1a2",
+    "test_public_transcript.log": "fb40628be5e3fc80634393d058eaafbea81a00cc0d4e3c4d94a5b00dfa434b27"
+  },
+  "support_source_sha256": {
+    "scripts/replay_constructive.py": "f864d0253256b7446396fc01ce8fea8e4eb2a7500073664456417906a93641c3",
+    "tests/test_public_simulator.py": "67ff3be4389637656ccef58d317b20499ed9d838ad4156d34796390955eaf2d0",
+    "docs/research/constructive-simulation-contract.json": "4e9cfa5cf213f2fd7dd3d269e0fd6a3602c06a7c29051d0a4ddc9d739528e2a4"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "profile": "constructive-restricted-public-v1",
+  "extends": "restricted-public-trace-v1",
+  "status": "constructive_candidate_with_finite_correspondence_tests",
+  "implementation": "outputs/agent-cryptography-design-20261025/prototype/public_simulator.py",
+  "runtime_input_recorder": "outputs/agent-cryptography-design-20261025/prototype/constructive_trace.py",
+  "private_dataset_input": false,
+  "observed_response_input": false,
+  "shared_components": ["PublicTraceAdapter predictive transition rules", "Canonical public codecs and signature verification"],
+  "inputs": {
+    "config": "The previous explicit public registry, budget, mechanism and route configuration.",
+    "approved_outputs": "Operation-bound mechanism values, accessed at successful L1. Unused values need not be supplied for pre-L1 cancellation.",
+    "sign": "Explicit ideal signing callback, role-scoped to gateway/sender/receiver. Key setup and service coins must be independent of private data. Returned signatures are verified against configured keys, object domain and exact requested payload.",
+    "PUBLIC": ["at", "request", "peer", "challenge_coin"],
+    "TICK": ["at", "tick"],
+    "SEND": ["at", "operation", "delivery_kind", "challenge", "loss"],
+    "CONFIRM": ["at", "operation"]
+  },
+  "output": "The same PUBLIC/TICK/DELIVERY/CONFIRM observation alphabet as the previous checker, including generated signed gateway replies, delivery envelopes, terminal controls, attempts and visible receipts. ACK_LOST excludes the unobserved ACK bytes, and PACKET_LOST does not create receiver state.",
+  "input_provenance": "Recorder appends each input before the associated runtime invocation. Challenge coins and attempt challenges are fixed from public request/record indices; they are not extracted from observed responses. Commands may depend on prior approved public results, as in the adaptive fixture.",
+  "failure_behavior": "Unsupported commands/fields and invalid signing outputs fail the candidate with local state rollback; unexpected signing-service failures propagate, never becoming ordinary signed REJECTED. This is not a proof of the privacy of those failures.",
+  "restriction_notes": [
+    "SEND represents a fresh prepare/send for the current unconfirmed final frontier, not arbitrary late copies of already-confirmed packets.",
+    "One shared monotone logical clock is used in the experiment; production sender/receiver clock skew is not modeled.",
+    "The cryptographic suite is deterministic Ed25519 with fixed synthetic service keys in comparisons. Production signing oracles are an explicit assumption, not derived from public keys.",
+    "Witness traffic, disk activity, wall-clock timing and hidden lost-ACK bytes are outside the defined observed-message alphabet.",
+    "No crash/recovery/retirement, dynamic key/credential administration or resource-exhaustion simulation is added.",
+    "Only successful operations are bounded at two; the implementation still needs proof for all allowed inputs and resource limits in any claimed deployment profile."
+  ],
+  "proof_obligations": {
+    "constructive_messages": "Candidate implemented and exercised; does not take observed response bytes.",
+    "real_to_public_state_relation": "Defined in companion note, finite evidence only; general induction remains open.",
+    "ideal_resource_independence": "Open deployment assumption for keys, coins, clocks, loss, storage availability and scheduling.",
+    "full_distribution_and_adversaries": "Open; equal conditioned transcripts are not an exhaustive mechanism-distribution comparison.",
+    "independent_implementation": "Open; transition rules and public codecs are shared with the checker."
+  }
+}
