@@ -1,0 +1,3 @@
+*.json linguist-generated=true
+*.smt2 linguist-generated=true
+*.log linguist-generated=true

@@ -1,0 +1,17 @@
+; benchmark generated from python API
+(set-info :status unknown)
+(declare-fun authority_generation () Int)
+(declare-fun local_generation () Int)
+(declare-fun committed_images () (Array Int Int))
+(declare-fun local_image () Int)
+(assert
+ (let (($x469 (>= authority_generation 1)))
+(let ((?x389 (select committed_images local_generation)))
+(let (($x390 (= local_image ?x389)))
+(let (($x388 (<= local_generation authority_generation)))
+(let (($x387 (>= local_generation 0)))
+(let (($x386 (= local_generation (- 1))))
+(let (($x392 (or $x386 (and $x387 $x388 $x390))))
+(let (($x384 (>= authority_generation 0)))
+(and $x384 $x392 $x469))))))))))
+(check-sat)

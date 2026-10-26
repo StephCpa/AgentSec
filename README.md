@@ -151,3 +151,5 @@ python3 outputs/agent-cryptography-design-20261025/prototype/window_lifecycle_tr
 python3 scripts/replay_window_lifecycle.py /tmp/agentsec-window-new --output /tmp/agentsec-window-replay-new.json
 python3 scripts/window_pressure_cost.py --output /tmp/agentsec-window-pressure-new.json
 ```
+
+[窗口安全与副本身份归纳义务](docs/research/2026-10-26-retention-inductive-invariants.md)增加独立符号模型：23 项正向蕴含与 14 类故意错误反例通过，并导出、重放 74 份 SMT 查询。正向窗口查询覆盖协议允许的窗口和序号范围；小见证仅用于 SAT 检查，不收窄归纳查询。这些是两个抽象模型的局部结论，尚不是实际程序与完整公开视图的精化证明。安装、运行和边界说明见 [proofs/retention](proofs/retention/README.md)，独立 CI 作业不改变协议依赖。
