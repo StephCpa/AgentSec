@@ -18,6 +18,7 @@
   "fresh_operational_restores": 192,
   "directed_neighbor_comparisons": 576,
   "availability_events": ["PUBLIC_UNAVAILABLE", "TICK_UNAVAILABLE", "RETENTION_UNAVAILABLE"],
+  "availability_error": "WITNESS_RECOVERY_REQUIRED",
   "pending_fault_calls": ["PUBLIC", "TICK", "SEND to healthy receiver", "CONFIRM with a healthy sender", "RETENTION_QUERY"],
   "assumptions": [
     "A is confirmed before cleanup; B is on the second route and remains behind the shared FINAL gate.",

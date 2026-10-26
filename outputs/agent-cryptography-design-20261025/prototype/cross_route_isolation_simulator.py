@@ -55,6 +55,7 @@ class CrossRouteIsolationSimulator(RetirementRecoverySimulator):
             event = dict(kind='RETENTION_UNAVAILABLE', at=command['at'], route=command['route'], request=request.hex())
         # An availability failure is not a business rejection: no journal,
         # observed-time write, mechanism invocation or signing of a reply.
+        event['error'] = 'WITNESS_RECOVERY_REQUIRED'
         m.now = command['at']; self.records.append(event)
         return deepcopy(event)
 

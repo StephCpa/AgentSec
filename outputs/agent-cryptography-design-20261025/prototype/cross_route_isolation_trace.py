@@ -139,7 +139,7 @@ class CrossRouteIsolationRuntime(RetirementRecoveryRuntime):
         try: reply = self.l.handle_public(raw, peer, SERVER_KEY)
         except Rejected as exc:
             if str(exc) != 'WITNESS_RECOVERY_REQUIRED': raise
-            event['kind'] = 'PUBLIC_UNAVAILABLE'; self.records.append(event); return None
+            event.update(kind='PUBLIC_UNAVAILABLE', error=str(exc)); self.records.append(event); return None
         event.update(kind='PUBLIC', response=reply.hex()); self.records.append(event)
         return parse_reply(reply, raw)
 
@@ -149,7 +149,7 @@ class CrossRouteIsolationRuntime(RetirementRecoveryRuntime):
             with patch.object(self.l, 'operation_randomness', side_effect=self._randomness): tick(self.l)
         except Rejected as exc:
             if str(exc) != 'WITNESS_RECOVERY_REQUIRED': raise
-            self.records.append(dict(kind='TICK_UNAVAILABLE', at=self.now, tick=self.steps + 1)); return
+            self.records.append(dict(kind='TICK_UNAVAILABLE', at=self.now, tick=self.steps + 1, error=str(exc))); return
         self.steps += 1; self.records.append(dict(kind='TICK', at=self.now, tick=self.steps))
 
     def query_retention(self, kind, seq, route='root'):
@@ -159,7 +159,7 @@ class CrossRouteIsolationRuntime(RetirementRecoveryRuntime):
         event = dict(kind='RETENTION_QUERY', at=self.now, route=route, request=request.hex())
         try: ack = self.receivers[ctx['recipient']][0].accept(request, ctx['sender_cert'], self.k)
         except Rejected as exc:
-            if str(exc) == 'WITNESS_RECOVERY_REQUIRED': event['kind'] = 'RETENTION_UNAVAILABLE'
+            if str(exc) == 'WITNESS_RECOVERY_REQUIRED': event.update(kind='RETENTION_UNAVAILABLE', error=str(exc))
             else: event['reason'] = str(exc)
         else:
             event['response'] = ack.hex()

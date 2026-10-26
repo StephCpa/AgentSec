@@ -62,6 +62,9 @@ class CrossRouteIsolationTests(unittest.TestCase):
             self.assertEqual(sum(e['kind']=='PUBLIC_UNAVAILABLE' for e in x['expected_records']),2 if blocked else 0)
             self.assertEqual(sum(e['kind']=='TICK_UNAVAILABLE' for e in x['expected_records']),int(blocked))
             self.assertEqual(x['check']['facts']['b']['event_at'],120 if blocked else 115)
+            for event in x['expected_records']:
+                if event['kind'] in ('PUBLIC_UNAVAILABLE','TICK_UNAVAILABLE','RETENTION_UNAVAILABLE'):
+                    self.assertEqual(event['error'],'WITNESS_RECOVERY_REQUIRED')
 
     def test_receiver_query_distinguishes_staleness_from_business_denial(self):
         for (side,cut,workload,admission),x in self.cases.items():
