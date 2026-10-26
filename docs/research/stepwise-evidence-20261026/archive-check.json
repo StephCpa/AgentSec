@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "cases": 200,
+  "checkpoints": 35136,
+  "checks": [
+    "current source hashes match experiment and final test run",
+    "checkpoint sequence/kind/count match archived prior public input commands",
+    "all checkpoint hashes match experiment summaries",
+    "all generated trace hashes match prior constructive experiment"
+  ],
+  "prior_input_sha256": {
+    "summary.json": "07daee771726730e3b9989caba1ffd2a8044ca0a97087b7a3872bea7316ad1a2",
+    "inputs-and-expected.json.gz": "f0a1febbf3c07ea7772f9ee055e9601fe2b0cd3987d3353c82a8dc3e8cadf6c8"
+  },
+  "scope": "Archive integrity and cross-reference verification; actual state relations were checked in the separately executed experiment, not rerun by this archive check."
+}

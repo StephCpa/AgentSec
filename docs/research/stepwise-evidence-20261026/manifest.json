@@ -1,0 +1,31 @@
+{
+  "base_commit": "5b775ccb360ca03272618dfc9c79d6262c08172d",
+  "depends_on_pr": 3,
+  "base_ci_runs": [
+    "https://github.com/StephCpa/AgentSec/actions/runs/40310224581",
+    "https://github.com/StephCpa/AgentSec/actions/runs/40310185249"
+  ],
+  "base_ci_conclusion": "success",
+  "profile": "restricted-stepwise-state-relation-v1",
+  "cases": 200,
+  "conditioned_groups": 25,
+  "checkpoints": 35136,
+  "directed_neighbor_comparisons": 600,
+  "repository_test_methods": 49,
+  "new_state_relation_test_methods": 13,
+  "public_transcript_test_methods": 17,
+  "scope": "Finite R1-R4 relation checks at completed event boundaries; not a full induction or crash/recovery refinement.",
+  "files_sha256": {
+    "archive-check.json": "1d35fb40211e68ce0583f0388f03f865179ea4268073fc13cd5455311178375a",
+    "checkpoints.json.gz": "e69f94fe00c335d79f861e80eb2daa09597a52220ae2e548ccc47c953f299e62",
+    "experiment.log": "5c822c6ab42c4d12d499077ff99fb718edbf05424fd2cde2fccbc32d177a3186",
+    "review_regressions.log": "1bb52c76b4b56c613353ba961c9dbd6bc68700d519e9377ce3055c07eb35227f",
+    "run.json": "8a4339912581b6edc12156f51e6a0d05728094c7252c6ede53fcad22b813b6ef",
+    "summary.json": "f57d2ec49d908841dde85268198631b17e082b2b8e9664d24de37d1ca4e62516",
+    "test_public_transcript.log": "595d85286cdd2d614d8b4f79b93b2bd5ddfdd4bc2050bbbf66da7ab50617c1f5"
+  },
+  "support_source_sha256": {
+    "tests/test_state_relation.py": "2d673e12f38d0df649ba2294d42fc13e6b1ada80f2e43cfdb98ab53af2b8bb0d",
+    "docs/research/stepwise-relation-contract.json": "5bc88602b794bd8fd381357bdb69b3645365c0871ff55d8b0f97eebfaf201d3f"
+  }
+}
