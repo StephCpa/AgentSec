@@ -33,7 +33,7 @@ class PublicTraceAdapter:
         self.jobs=[];self.by_id={};self.tick=0;self.cursor=0;self.published=0;self.final=[];self.paused=False
         self.cache={};self.journal_seq=0;self.challenges={};self.proofs=set();self.credentials={}
         self.limits={'domain:epsilon':config['epsilon_limit'],'domain:delta':config['delta_limit']};self.used={}
-        self.route_high={};self.receiver={};self.receipts={};self.prepared={};self.draws=[];self.events=[];self.now=0
+        self.route_high={};self.receiver={};self.receipts={};self.prepared={};self.draws=[];self.mechanism_calls=[];self.events=[];self.now=0
 
     def _active(self,job):
         a=job['action'];root=self.cfg['roots'][a['root']]
@@ -54,7 +54,7 @@ class PublicTraceAdapter:
             job['allocated']=False
 
     def _advance(self,record):
-        require(record['tick']==self.tick+1,'TICK_GAP_OR_REPLAY')
+        require(type(record['tick']) is int and record['tick']==self.tick+1,'TICK_GAP_OR_REPLAY')
         self.tick+=1;self.events.append(('ROUND',self.tick))
         candidates=[j for j in self.jobs if j['pc']<j['work']]
         if candidates and not self.paused:
@@ -66,6 +66,7 @@ class PublicTraceAdapter:
                     value=self.oracle[job['id']];width=job['width']
                     require(type(value) is tuple and len(value)==width and all(type(x) is int and 0<=x<=self.cfg['capacity'] for x in value),'ORACLE_SHAPE')
                     job['value']=value;job['state']='STARTED';self.draws.append((job['id'],job['action']['operation_kind']))
+                    self.mechanism_calls.append(dict(operation=job['id'],action_sha256=hashlib.sha256(job['raw_action']).hexdigest(),l1_tick=self.tick,costs=deepcopy(job['costs'])))
             job['pc']+=1
             if job['pc']==job['work'] and job['state']=='STARTED':job['state']='COMMITTED'
         while self.published<len(self.jobs) and self.jobs[self.published]['pc']==self.jobs[self.published]['work']:
@@ -255,7 +256,11 @@ class PublicTraceAdapter:
 
     def consume(self,record):
         require(type(record) is dict and type(record.get('at')) is int and self.now<=record['at']<2**62,'PUBLIC_CLOCK')
-        self.now=record['at'];kind=record.get('kind')
+        kind=record.get('kind')
+        fields={'TICK':{'kind','at','tick'},'PUBLIC':{'kind','at','peer','request','response'},
+                'DELIVERY':{'kind','at','request','response'},'CONFIRM':{'kind','at','request','response'}}
+        require(type(kind) is str and kind in fields and set(record)==fields[kind],'EVENT_SCOPE')
+        self.now=record['at']
         if kind=='TICK':self._advance(record)
         elif kind=='PUBLIC':self._public(record)
         elif kind=='DELIVERY':self._delivery(record)
@@ -267,5 +272,5 @@ class PublicTraceAdapter:
             try:self.consume(record)
             except (Rejected,ViewMismatch,KeyError,TypeError,ValueError) as exc:
                 raise ViewMismatch('record '+str(index)+': '+str(exc)) from exc
-        return dict(accepted=True,records=len(records),logical_ticks=self.tick,draws=self.draws,final=deepcopy(self.final),journal_requests=self.journal_seq,
+        return dict(accepted=True,records=len(records),logical_ticks=self.tick,draws=self.draws,mechanism_calls=deepcopy(self.mechanism_calls),final=deepcopy(self.final),journal_requests=self.journal_seq,
                     abstract_events=deepcopy(self.events),pending=any(j['publication'] is None or (j['publication']=='ADMITTED' and j.get('confirmed') is None) for j in self.jobs))

@@ -1,0 +1,52 @@
+{
+  "profile": "restricted-public-trace-v1",
+  "status": "finite_executable_correspondence_not_general_refinement_proof",
+  "implementation": "outputs/agent-cryptography-design-20261025/prototype/public_trace_adapter.py",
+  "driver": "outputs/agent-cryptography-design-20261025/prototype/restricted_trace.py",
+  "scope": {
+    "tenant": "t",
+    "domain": "domain",
+    "N": 3,
+    "histogram_B": 4,
+    "K": 40,
+    "max_successful_operations_in_experiment": 2,
+    "datasets": "Eight subsets of a fixed synthetic three-user roster; each present user contributes to bucket one.",
+    "routes": "One or two immutable recipient contexts.",
+    "registry": "No key, credential or principal mutations during an episode; no pre-existing credential tombstones. Root revocation only through recorded public CONTROL.",
+    "transport": "Signed actual runtime calls to persistent gateway and recipient. Delivery loss/ACK loss explicitly selected by trusted driver. No new network or OS-isolation claim.",
+    "faults": "Packet loss, acknowledgement loss, indefinite pending, explicit monotone public clock. No crash/recovery/retirement events in this profile."
+  },
+  "observations": {
+    "PUBLIC": "Peer certificate identity, original signed request and original signed response; exact cache retry is byte identical.",
+    "TICK": "Trusted driver declares each successful consecutive logical scheduler slot. Never inferred from POLL. Pause slots remain present.",
+    "DELIVERY": "Signed delivery or terminal attempt and receipt, or explicit PACKET_LOST/ACK_LOST decision.",
+    "CONFIRM": "Separate trusted-driver evidence that sender durably confirmed an observed receipt. A recipient ACK alone cannot advance the global final prefix.",
+    "at": "Public monotone logical time supplied for each event; not measured physical timing.",
+    "unsupported": "Unknown event types, extra fields and connection failures reject the restricted check. Their rejection does not prove that those observations are private-data independent."
+  },
+  "mechanism_oracle": {
+    "inputs": "Operation-bound approved output tuples; operation identity is immutable through the signed Action.",
+    "call": "Exactly once at a successful L1 slot; report binds operation, SHA-256 of original Action, L1 tick and all allocated account costs.",
+    "costs": "0.7 epsilon and 2^-41 delta per count or entire histogram vector, shared domain plus all ancestor cap constraints.",
+    "runtime_comparison": "Driver observes actual operation_randomness calls and compares their order/ticks and final allocated account usage to model state. This private-capable driver is separate from the checker.",
+    "coupling": "Valid finite random tapes chosen to make outputs count=1 or histogram=(1,0,0,0) for every dataset. Public challenge/proof/attempt coins are fixed across compared inputs. This is conditional equality, not enumeration of output probabilities."
+  },
+  "state_correspondence": [
+    "Immutable signed action/request identities map to cached responses and scoped credential identities.",
+    "Shared reserved+spent balances map to allocated model account usage; before-L1 cancellation refunds, after-L1 cancellation does not.",
+    "Public slot count and cursor map to fixed-work round-robin scheduling, independent of private slots/results.",
+    "Atomic publication maps to immutable ADMITTED/WITHHELD, with authorization expiry including all ancestors.",
+    "Prepared envelope and terminal bytes map to descriptor-bound delivery state and original first recipient fact.",
+    "Sender confirmation maps to maximal contiguous final prefix and signed cursor pagination."
+  ],
+  "model_relationship": "The earlier public_transcript_model.py uses N=2/B=2/K=1 and in-round event scheduling. This adapter is a separate event-driven finite implementation correspondence check. It does not establish equality of those two models. Actual cancellation after publication returns REJECTED and consumes a request journal position; this is explicitly retained, not translated into a successful abstract cancellation.",
+  "proof_obligations_open": [
+    "Inductive simulation for all permitted public inputs, rather than only the enumerated plans.",
+    "A constructive signed-transcript simulator: verifying observed COSE bytes is not generating them. Define ideal signing oracles/key setup and independent service coins before claiming View≈Sim.",
+    "Oracle provenance and independence of all public coins, failure decisions, timing and availability from private state.",
+    "Independent byte codec/signature implementation; checker currently shares public parsers with runtime.",
+    "Crash/recovery, dynamic management, retention/cleanup and arbitrary mixed adaptive scheduling.",
+    "Production isolation, authority nonrollback, physical observation and global identity/lineage assumptions."
+  ],
+  "conditional_privacy_target": "Only after the missing premises are established could basic composition yield (0.7*m, m*2^-41) for a public bound m. No end-to-end DP claim is made by passing these checks."
+}

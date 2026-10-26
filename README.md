@@ -39,3 +39,12 @@ python3 scripts/verify.py --models --output /tmp/agentsec-verification-new
 该命令在临时副本中执行所有测试入口和模型，报告绑定运行时源码与依赖版本。GitHub Actions 将固定依赖与升级依赖分开运行。
 
 本次修复的本地结果与源码绑定见 [验证摘要](docs/reviews/evidence/summary.json)：原有 30 套件、7 个模型入口通过；最终审核回归 15 项通过。
+
+## 后续研究：公开轨迹与持久化成本
+
+PR #1 已合并。新的受限轨迹检查与成本实验见 [2026-10-26 研究记录](docs/research/2026-10-26-progress.md) 和 [范围契约](docs/research/restricted-trace-contract.json)。它们提供有限条件对应和本机实测，不代表完整精化证明或生产性能验收。
+
+```sh
+python3 outputs/agent-cryptography-design-20261025/prototype/restricted_trace.py --output /tmp/agentsec-traces-new
+python3 outputs/agent-cryptography-design-20261025/prototype/persistence_experiment.py --output /tmp/agentsec-cost-new.json
+```
