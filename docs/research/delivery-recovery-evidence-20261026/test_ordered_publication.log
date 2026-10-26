@@ -1,0 +1,24 @@
+test_actual_process_cuts_preserve_ack_and_withheld_drain_atomically (__main__.OrderedPublicationTests) ... ok
+test_audit_detects_trusted_base_class_bypass_of_order_gate (__main__.OrderedPublicationTests) ... ok
+test_authenticated_two_recipient_network_lost_ack_then_ordered_release (__main__.OrderedPublicationTests) ... ok
+test_authority_ahead_restores_final_prefix_without_reconfirmation (__main__.OrderedPublicationTests) ... ok
+test_blocked_delivery_does_not_block_public_control_transactions (__main__.OrderedPublicationTests) ... ok
+test_concurrent_confirmation_and_other_route_preparation_are_serialized (__main__.OrderedPublicationTests) ... ok
+test_confirmation_failure_rolls_back_fact_and_entire_final_drain (__main__.OrderedPublicationTests) ... ok
+test_expiry_after_lost_ack_preserves_original_accepted_fact (__main__.OrderedPublicationTests) ... ok
+test_leading_withheld_is_finalized_in_publication_transaction (__main__.OrderedPublicationTests) ... ok
+test_leading_withheld_publication_process_cuts (__main__.OrderedPublicationTests) ... ok
+test_profile_core_guard_and_original_retry_after_frontier_moves (__main__.OrderedPublicationTests) ... ok
+test_receiver_acceptance_without_sender_ack_does_not_unlock_next (__main__.OrderedPublicationTests) ... ok
+test_recovery_rejects_forged_frontier_without_receipt (__main__.OrderedPublicationTests) ... ok
+test_recovery_rejects_valid_retention_image_with_missing_final_event (__main__.OrderedPublicationTests) ... ok
+test_revocation_does_not_reset_frontier_or_unblock_pending (__main__.OrderedPublicationTests) ... ok
+test_timeout_alone_never_advances_and_later_terminal_is_blocked (__main__.OrderedPublicationTests) ... ok
+test_two_recipients_cannot_release_out_of_domain_order (__main__.OrderedPublicationTests) ... ok
+test_unresolved_domain_does_not_block_disjoint_domain (__main__.OrderedPublicationTests) ... ok
+test_withheld_event_waits_behind_unacknowledged_other_route (__main__.OrderedPublicationTests) ... ok
+
+----------------------------------------------------------------------
+Ran 19 tests in 22.536s
+
+OK

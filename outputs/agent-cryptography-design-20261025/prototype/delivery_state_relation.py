@@ -1,8 +1,10 @@
 """Test-side R5--R8 projections for the no-retirement public trace profile.
 
 Decrypts stored transport evidence, never private snapshots/work/seed/results.
-The generated transcript is the expectation; no database value is passed back
-to the simulator. Successful boundary equality is not a recovery proof.
+The generated logical history is the expectation; no database value is passed
+back to the simulator. initialized_contexts declares empty receivers from public
+trusted setup for recovery profiles. Default completed-event checks are unchanged.
+Successful boundary equality is not a general recovery proof.
 """
 from wire import decode
 from ledger import Rejected
@@ -11,7 +13,7 @@ import retention_delivery as d
 import retention_wire as r
 
 
-def assert_delivery_relation(runtime, simulator):
+def assert_delivery_relation(runtime, simulator, *, initialized_contexts=()):
     model = simulator.state
     tenant, domain = model.cfg['tenant'], model.cfg['domain']
     sender = runtime.l
@@ -54,7 +56,9 @@ def assert_delivery_relation(runtime, simulator):
 
     # Derive receiver reachability and first sender confirmation from generated
     # observations. Hidden lost ACK bytes are neither invented nor read here.
-    reached = {}
+    reached = {h: 0 for h in initialized_contexts}
+    if not set(reached) <= set(contexts):
+        raise StateRelationMismatch('R6.initial_context_scope')
     first_confirmations = {}
     for event in simulator.records:
         if event['kind'] not in ('DELIVERY', 'CONFIRM'):
@@ -102,7 +106,7 @@ def assert_delivery_relation(runtime, simulator):
         expected_receiver[key] = (r.delivery_id(contexts[h], seq), fact, model.prepared[(key, kind)])
     equal('R6.first_facts_and_evidence', actual_receiver, expected_receiver)
     equal('R6.receiver_metadata', actual_receiver_meta,
-          {h: (contexts[h], max(seq for hh, seq in model.receiver if hh == h), 0, r.genesis(contexts[h]), at, None) for h, at in reached.items()})
+          {h: (contexts[h], max((seq for hh, seq in model.receiver if hh == h), default=0), 0, r.genesis(contexts[h]), at, None) for h, at in reached.items()})
 
     expected_states, actual_facts, expected_facts = {}, {}, {}
     for key, job in jobs.items():

@@ -1,0 +1,51 @@
+{
+  "profile": "restricted-delivery-recovery-v1",
+  "status": "finite_constructive_correspondence_not_general_proof",
+  "base_commit": "898f9fd6153b57e524803e411deb0a4d2740aced",
+  "implementation": "outputs/agent-cryptography-design-20261025/prototype/delivery_recovery_trace.py",
+  "simulator": "outputs/agent-cryptography-design-20261025/prototype/delivery_recovery_simulator.py",
+  "configuration": {
+    "capacity": 3,
+    "count_K": 40,
+    "histogram_buckets": 4,
+    "datasets": "All eight subsets of the synthetic three-user roster. Outputs conditioned to count=1 or histogram=(1,0,0,0).",
+    "operations": "One or two admitted/withheld operations, one or two fixed recipient contexts.",
+    "recipient_setup": "All public receiver contexts bootstrapped empty before the episode; initial observed clock is zero.",
+    "fault_schedule": "One explicit reachable receiver or sender-confirmation cut per episode. Schedule chosen independently of private input. Driver quiesces all modeled events until the affected replica is restored.",
+    "transport": "In-process calls except actual child-process exit. Separate local SQLite authority files; no network service or host isolation."
+  },
+  "observation_inputs": [
+    "Public configuration and signed caller inputs",
+    "Approved operation-bound mechanism outputs and explicit signing resource",
+    "Public clock, operation ID, delivery/terminal kind, independent attempt challenge",
+    "Explicit cut location, affected side and restore command"
+  ],
+  "forbidden_generator_inputs": [
+    "Runtime database contents",
+    "Witness image, version, digest or actual commit outcome",
+    "Actual receiver facts or service response bytes",
+    "Private random tapes, data records or diagnostic state projections"
+  ],
+  "events": {
+    "DELIVERY_UNAVAILABLE": "Generated outgoing signed attempt and absence of reply; no commit bit or hidden receipt.",
+    "CONFIRM_UNAVAILABLE": "Previously observed signed request/receipt supplied to confirmation and absence of completion.",
+    "DELIVERY_RECOVER": "Trusted driver reports fresh replica restoration for the declared side and operation; no storage contents exposed."
+  },
+  "state_relation": {
+    "R1-R4": "Authorization/request/cache, accounts, scheduling and publication; checked against authoritative state at cuts and restored local state afterwards.",
+    "R5-R8": "Prepared evidence, receiver first facts, sender confirmation/route root and maximal final prefix. Initial empty receivers are an explicit public setup parameter.",
+    "R11": "Witness and local atomicity, stale-guard rejection, other authority unchanged, byte-identical fresh restoration without advancing witness.",
+    "diagnostic_replica": "One ephemeral fresh restore per cut to inspect authoritative projections. Separately counted from the operational fresh restore. Never input to simulator."
+  },
+  "projection": "Generated logical history distinguishes precommit no-receive from durable receive with lost ACK, and nondurable versus durable confirmation. It is internal relation evidence, not additional public traffic.",
+  "excluded": [
+    "Sender envelope/terminal preparation crash",
+    "Interruption during diagnostic or operational recovery",
+    "Retention/cleanup transitions",
+    "Multiple combined public/private/delivery faults per episode",
+    "Arbitrary scheduling or concurrency",
+    "TLS failure mapping and full physical timing/length observations",
+    "Power loss, cross-host persistence and production nonrollback",
+    "Output-distribution or general inductive/cryptographic refinement proof"
+  ]
+}
