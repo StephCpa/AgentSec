@@ -5,6 +5,27 @@ on:
 permissions:
   contents: read
 jobs:
+  retention-induction:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install isolated proof dependency
+        run: python -m pip install -r proofs/retention/requirements.txt
+      - name: Check induction obligations and deliberate mutations
+        run: python proofs/retention/check.py --output retention-proof-run
+      - name: Verify proof harness failure behavior
+        run: python -m unittest discover -s proofs/retention -p 'test_*.py' -v
+      - name: Replay exported SMT-LIB in fresh solver processes
+        run: python proofs/retention/replay.py retention-proof-run --output retention-proof-run/replay.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: retention-induction
+          path: retention-proof-run/
   verify:
     runs-on: ubuntu-latest
     timeout-minutes: 45

@@ -1,0 +1,14 @@
+test_all_declared_obligations_and_nonvacuity_checks (test_checks.ProofHarnessTests) ... ok
+test_changed_query_and_path_escape_are_rejected (test_checks.ProofHarnessTests) ... ok
+test_duplicate_obligation_is_rejected (test_checks.ProofHarnessTests) ... ok
+test_inconsistent_premise_does_not_pass_by_vacuity (test_checks.ProofHarnessTests) ... ok
+test_missing_obligation_is_not_a_complete_replay (test_checks.ProofHarnessTests) ... ok
+test_restricted_positive_proof_is_rejected (test_checks.ProofHarnessTests) ... ok
+test_unknown_is_failure (test_checks.ProofHarnessTests) ... ok
+test_witness_cannot_mask_a_false_universal_claim (test_checks.ProofHarnessTests) ... ok
+test_wrong_expected_result_is_rejected (test_checks.ProofHarnessTests) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.253s
+
+OK
