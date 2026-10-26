@@ -1,0 +1,307 @@
+{
+  "atlas_sha256": "33d0b1bd7cff0a8e8aba49aef6fc7acaa7b242722445d2bcac62006d0aae8102",
+  "viewport": {
+    "width": 1440,
+    "height": 1000
+  },
+  "checks": [
+    {
+      "slug": "architecture",
+      "title": "AgentSec · 系统架构",
+      "svg": true,
+      "outerOverflow": false,
+      "innerOverflow": false,
+      "motion": "still"
+    },
+    {
+      "slug": "dataflow",
+      "title": "AgentSec · 数据与控制流",
+      "svg": true,
+      "outerOverflow": false,
+      "innerOverflow": false,
+      "motion": "still"
+    },
+    {
+      "slug": "request-sequence",
+      "title": "AgentSec · 正常请求时序",
+      "svg": true,
+      "outerOverflow": false,
+      "innerOverflow": false,
+      "motion": "still"
+    },
+    {
+      "slug": "recovery-sequence",
+      "title": "AgentSec · 提交失联与恢复时序",
+      "svg": true,
+      "outerOverflow": false,
+      "innerOverflow": false,
+      "motion": "still"
+    },
+    {
+      "slug": "hierarchy",
+      "title": "AgentSec · 模块与证据层次",
+      "svg": true,
+      "outerOverflow": false,
+      "innerOverflow": false,
+      "motion": "still"
+    },
+    {
+      "slug": "lifecycle",
+      "title": "AgentSec · 操作生命周期",
+      "svg": true,
+      "outerOverflow": false,
+      "innerOverflow": false,
+      "motion": "still"
+    }
+  ],
+  "motion": {
+    "motion": "live",
+    "capable": "true",
+    "animations": [
+      {
+        "time": 0,
+        "target": "BUTTON"
+      },
+      {
+        "time": 0,
+        "target": "BUTTON"
+      },
+      {
+        "time": 0,
+        "target": "SPAN"
+      },
+      {
+        "time": 0,
+        "target": "DIV"
+      },
+      {
+        "time": 0,
+        "target": "path"
+      },
+      {
+        "time": 0,
+        "target": "path"
+      },
+      {
+        "time": 0,
+        "target": "path"
+      },
+      {
+        "time": 0,
+        "target": "path"
+      },
+      {
+        "time": 0,
+        "target": "path"
+      },
+      {
+        "time": 0,
+        "target": "circle"
+      },
+      {
+        "time": 0,
+        "target": "path"
+      },
+      {
+        "time": 0,
+        "target": "path"
+      },
+      {
+        "time": 0,
+        "target": "path"
+      },
+      {
+        "time": 0,
+        "target": "path"
+      },
+      {
+        "time": 0,
+        "target": "path"
+      },
+      {
+        "time": 0,
+        "target": "circle"
+      },
+      {
+        "time": 0,
+        "target": "path"
+      },
+      {
+        "time": 0,
+        "target": "path"
+      },
+      {
+        "time": 0,
+        "target": "path"
+      },
+      {
+        "time": 0,
+        "target": "path"
+      },
+      {
+        "time": 0,
+        "target": "path"
+      },
+      {
+        "time": 0,
+        "target": "circle"
+      },
+      {
+        "time": 0,
+        "target": "path"
+      },
+      {
+        "time": 0,
+        "target": "path"
+      },
+      {
+        "time": 0,
+        "target": "path"
+      },
+      {
+        "time": 0,
+        "target": "path"
+      },
+      {
+        "time": 0,
+        "target": "path"
+      },
+      {
+        "time": 0,
+        "target": "circle"
+      },
+      {
+        "time": 0,
+        "target": "path"
+      },
+      {
+        "time": 0,
+        "target": "path"
+      },
+      {
+        "time": 0,
+        "target": "path"
+      },
+      {
+        "time": 0,
+        "target": "path"
+      },
+      {
+        "time": 0,
+        "target": "path"
+      },
+      {
+        "time": 0,
+        "target": "circle"
+      },
+      {
+        "time": 0,
+        "target": "path"
+      },
+      {
+        "time": 0,
+        "target": "path"
+      },
+      {
+        "time": 0,
+        "target": "path"
+      },
+      {
+        "time": 0,
+        "target": "path"
+      },
+      {
+        "time": 0,
+        "target": "path"
+      },
+      {
+        "time": 0,
+        "target": "circle"
+      },
+      {
+        "time": 0,
+        "target": "rect"
+      },
+      {
+        "time": 0,
+        "target": "rect"
+      },
+      {
+        "time": 0,
+        "target": "rect"
+      },
+      {
+        "time": 0,
+        "target": "rect"
+      },
+      {
+        "time": 0,
+        "target": "rect"
+      },
+      {
+        "time": 0,
+        "target": "rect"
+      },
+      {
+        "time": 0,
+        "target": "rect"
+      }
+    ]
+  },
+  "later": [
+    16.718000015616422,
+    16.718000015616422,
+    16.718000015616422,
+    16.718000015616422,
+    16.718000015616422,
+    16.718000015616422,
+    16.718000015616422,
+    16.718000015616422,
+    16.718000015616422,
+    16.718000015616422,
+    16.718000015616422,
+    16.718000015616422,
+    16.718000015616422,
+    16.718000015616422,
+    16.718000015616422,
+    16.718000015616422,
+    16.718000015616422,
+    16.718000015616422,
+    16.718000015616422,
+    16.718000015616422,
+    16.718000015616422,
+    16.718000015616422,
+    16.718000015616422,
+    16.718000015616422,
+    16.718000015616422,
+    16.718000015616422,
+    16.718000015616422,
+    16.718000015616422,
+    16.718000015616422,
+    16.718000015616422,
+    16.718000015616422,
+    16.718000015616422,
+    16.718000015616422,
+    16.718000015616422,
+    16.718000015616422,
+    16.718000015616422,
+    16.718000015616422,
+    16.718000015616422,
+    16.718000015616422,
+    16.718000015616422,
+    16.718000015616422,
+    16.718000015616422,
+    16.718000015616422,
+    16.718000015616422,
+    16.718000015616422,
+    16.718000015616422,
+    16.718000015616422
+  ],
+  "errors": [],
+  "requests": [
+    "http://127.0.0.1:59042/index.html",
+    "http://127.0.0.1:59042/favicon.ico",
+    "http://127.0.0.1:59042/favicon.ico"
+  ],
+  "externalRequests": []
+}

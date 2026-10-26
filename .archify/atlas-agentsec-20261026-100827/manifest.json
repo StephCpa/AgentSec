@@ -1,0 +1,91 @@
+{
+  "source_revision": "2b596d41a2b9e217c1273a68f592dc71fcf76439",
+  "archify_revision": "81c6be8d87090670c45d08a8f97f9d29c5af0bec",
+  "atlas_sha256": "33d0b1bd7cff0a8e8aba49aef6fc7acaa7b242722445d2bcac62006d0aae8102",
+  "views": [
+    {
+      "slug": "architecture",
+      "type": "architecture",
+      "sha256": "034ad137c684408cddb6fd3c08924c52549cf505fed8691bfb471e49a02f3cae",
+      "bytes": 844657,
+      "candidate_sha256": "c36a88d73d529b7643746ed0c97907aa022f1ec85c53f4e3fce03ebb8c22c179",
+      "gates": {
+        "validate": "pass",
+        "deliver": "pass",
+        "check": "pass",
+        "browser-check": "pass"
+      },
+      "receipt": "architecture.finalize.json"
+    },
+    {
+      "slug": "dataflow",
+      "type": "dataflow",
+      "sha256": "04574bb0d3bc37ce47e6896d591b31ceae79bcbde7e2bf2ef207219d6c534c52",
+      "bytes": 838580,
+      "candidate_sha256": "dd7653f914e224bdc92fb4da2da5a527caadbdb495cd22cd62a9354a451cb32f",
+      "gates": {
+        "validate": "pass",
+        "deliver": "pass",
+        "check": "pass",
+        "browser-check": "pass"
+      },
+      "receipt": "dataflow-review-2/dataflow.finalize.json"
+    },
+    {
+      "slug": "request-sequence",
+      "type": "sequence",
+      "sha256": "29879a7b0955ceb52fcb7e3c218603a130e5202901771fc074eec141150e7286",
+      "bytes": 840207,
+      "candidate_sha256": "da559a7f7586605fbd622168fc04f3e8d1deac4d85a4de402b15e32f9c074f2f",
+      "gates": {
+        "validate": "pass",
+        "deliver": "pass",
+        "check": "pass",
+        "browser-check": "pass"
+      },
+      "receipt": "request-sequence.finalize.json"
+    },
+    {
+      "slug": "recovery-sequence",
+      "type": "sequence",
+      "sha256": "e32d411c3089a35c5886b557726de3385737a83af31a69768f551036883cf5c0",
+      "bytes": 838608,
+      "candidate_sha256": "32a32fefcf87aa6cc6c9b520434bab906f50aae24de35511faf74059a09226a0",
+      "gates": {
+        "validate": "pass",
+        "deliver": "pass",
+        "check": "pass",
+        "browser-check": "pass"
+      },
+      "receipt": "recovery-sequence.finalize.json"
+    },
+    {
+      "slug": "hierarchy",
+      "type": "tree",
+      "sha256": "21dfcf7334a4d235199f4f6218a086993dc1b53bb72b140c4083eee43ad11b7a",
+      "bytes": 850157,
+      "candidate_sha256": "c8c78414d6a4fb7834d46ad8ec09496b9d7b998b9cf8534cfd638f186191a9d9",
+      "gates": {
+        "validate": "pass",
+        "deliver": "pass",
+        "check": "pass",
+        "browser-check": "pass"
+      },
+      "receipt": "hierarchy.finalize.json"
+    },
+    {
+      "slug": "lifecycle",
+      "type": "lifecycle",
+      "sha256": "4d83b5d327061b806e13f9baf53fa57052101a626b50fdb5511093ced48e700b",
+      "bytes": 846477,
+      "candidate_sha256": "33de72d7395647450a2515d2fc360c83cae1280965f0824b62062203b78dccbc",
+      "gates": {
+        "validate": "pass",
+        "deliver": "pass",
+        "check": "pass",
+        "browser-check": "pass"
+      },
+      "receipt": "lifecycle.finalize.json"
+    }
+  ]
+}

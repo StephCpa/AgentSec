@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "ok": true,
+  "command": "finalize",
+  "status": "pass",
+  "type": "lifecycle",
+  "quality": "showcase",
+  "specification": {
+    "path": "/Volumes/Elements SE/AutoResearch/AgentSec/.archify/atlas-agentsec-20261026-100827/lifecycle.json",
+    "sha256": "33de72d7395647450a2515d2fc360c83cae1280965f0824b62062203b78dccbc",
+    "bytes": 6366
+  },
+  "artifact": {
+    "path": "/Volumes/Elements SE/AutoResearch/AgentSec/.archify/atlas-agentsec-20261026-100827/lifecycle.html",
+    "sha256": "4d83b5d327061b806e13f9baf53fa57052101a626b50fdb5511093ced48e700b",
+    "bytes": 846477
+  },
+  "gates": {
+    "validate": "pass",
+    "deliver": "pass",
+    "check": "pass",
+    "browser-check": "pass"
+  },
+  "diagnostics": [],
+  "diagnosticSummary": {
+    "total": 0,
+    "shown": 0,
+    "truncated": false
+  },
+  "evidence": {
+    "receipt": "/Volumes/Elements SE/AutoResearch/AgentSec/.archify/atlas-agentsec-20261026-100827/lifecycle.finalize.json",
+    "summaryReceipt": "/Volumes/Elements SE/AutoResearch/AgentSec/.archify/atlas-agentsec-20261026-100827/lifecycle.finalize-summary.json",
+    "browserCheckReceipt": "/Volumes/Elements SE/AutoResearch/AgentSec/.archify/atlas-agentsec-20261026-100827/lifecycle.browser-check.json"
+  },
+  "visualReview": "not-requested",
+  "durationMs": 1569,
+  "browserCheck": {
+    "requested": true,
+    "ran": true
+  }
+}

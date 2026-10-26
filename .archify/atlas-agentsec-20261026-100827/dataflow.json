@@ -1,0 +1,231 @@
+{
+  "schema_version": 1,
+  "diagram_type": "dataflow",
+  "meta": {
+    "title": "AgentSec · 数据与控制流",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "output": ".archify/atlas-agentsec-20261026-100827/dataflow.html",
+    "repository": {
+      "url": "https://github.com/StephCpa/AgentSec",
+      "revision": "2b596d41a2b9e217c1273a68f592dc71fcf76439"
+    }
+  },
+  "stages": [
+    {
+      "label": "可信输入"
+    },
+    {
+      "label": "受保护快照"
+    },
+    {
+      "label": "受限计算"
+    },
+    {
+      "label": "原子发布"
+    },
+    {
+      "label": "接收消费"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "input",
+      "type": "external",
+      "label": "用户贡献",
+      "sublabel": "固定名册",
+      "stage": 0,
+      "row": 0,
+      "sources": [
+        {
+          "path": "outputs/agent-cryptography-design-20261025/prototype/contribution_ingestion.py",
+          "line": 34,
+          "end_line": 66,
+          "label": "contribution_ingestion.py"
+        }
+      ]
+    },
+    {
+      "id": "snapshot",
+      "type": "database",
+      "label": "精确快照",
+      "sublabel": "每人最多一项",
+      "stage": 1,
+      "row": 0,
+      "sources": [
+        {
+          "path": "outputs/agent-cryptography-design-20261025/prototype/contribution_ingestion.py",
+          "line": 42,
+          "end_line": 74,
+          "label": "contribution_ingestion.py"
+        }
+      ]
+    },
+    {
+      "id": "compute",
+      "type": "backend",
+      "label": "固定工作",
+      "sublabel": "DP 机制",
+      "stage": 2,
+      "row": 0,
+      "sources": [
+        {
+          "path": "outputs/agent-cryptography-design-20261025/prototype/scheduled_ledger.py",
+          "line": 163,
+          "end_line": 203,
+          "label": "scheduled_ledger.py"
+        },
+        {
+          "path": "outputs/agent-cryptography-design-20261025/prototype/dp_ledger.py",
+          "line": 18,
+          "end_line": 22,
+          "label": "dp_ledger.py"
+        }
+      ]
+    },
+    {
+      "id": "release",
+      "type": "security",
+      "label": "发布门控",
+      "sublabel": "结果与票据绑定",
+      "stage": 3,
+      "row": 0,
+      "sources": [
+        {
+          "path": "outputs/agent-cryptography-design-20261025/prototype/atomic_publication.py",
+          "line": 95,
+          "end_line": 118,
+          "label": "atomic_publication.py"
+        }
+      ]
+    },
+    {
+      "id": "output",
+      "type": "external",
+      "label": "接收方",
+      "sublabel": "首次事实与回执",
+      "stage": 4,
+      "row": 0,
+      "sources": [
+        {
+          "path": "outputs/agent-cryptography-design-20261025/prototype/retention_recipient.py",
+          "line": 172,
+          "end_line": 199,
+          "label": "retention_recipient.py"
+        }
+      ]
+    },
+    {
+      "id": "authority",
+      "type": "security",
+      "label": "权限与预算",
+      "sublabel": "域及祖先额度",
+      "stage": 1,
+      "row": 1,
+      "sources": [
+        {
+          "path": "outputs/agent-cryptography-design-20261025/prototype/delegated_ledger.py",
+          "line": 68,
+          "end_line": 85,
+          "label": "delegated_ledger.py"
+        },
+        {
+          "path": "outputs/agent-cryptography-design-20261025/prototype/signed_ledger.py",
+          "line": 93,
+          "end_line": 110,
+          "label": "signed_ledger.py"
+        }
+      ]
+    },
+    {
+      "id": "public",
+      "type": "frontend",
+      "label": "公开状态",
+      "sublabel": "POLL / FINAL",
+      "stage": 4,
+      "row": 1,
+      "sources": [
+        {
+          "path": "outputs/agent-cryptography-design-20261025/prototype/public_gateway.py",
+          "line": 218,
+          "end_line": 235,
+          "label": "public_gateway.py"
+        }
+      ]
+    }
+  ],
+  "flows": [
+    {
+      "id": "d1",
+      "from": "input",
+      "to": "snapshot",
+      "label": "归并贡献",
+      "classification": "私有数据",
+      "variant": "security"
+    },
+    {
+      "id": "d2",
+      "from": "snapshot",
+      "to": "compute",
+      "label": "L1 后读取",
+      "classification": "可信内存",
+      "variant": "security"
+    },
+    {
+      "id": "d3",
+      "from": "compute",
+      "to": "release",
+      "label": "带噪结果",
+      "classification": "待授权"
+    },
+    {
+      "id": "d4",
+      "from": "release",
+      "to": "output",
+      "label": "准入后交付",
+      "classification": "签名证据",
+      "variant": "emphasis"
+    },
+    {
+      "id": "d5",
+      "from": "authority",
+      "to": "compute",
+      "label": "预留额度",
+      "classification": "控制元数据"
+    },
+    {
+      "id": "d6",
+      "from": "release",
+      "to": "public",
+      "label": "发布决定",
+      "classification": "公开元数据",
+      "variant": "dashed"
+    }
+  ],
+  "cards": [
+    {
+      "title": "数据边界",
+      "items": [
+        "精确计数、直方图、随机带和中间状态保留在可信路径；持久敏感字段加密。",
+        "固定名册与真实身份、资格分类、血缘可信性是输入假设。"
+      ],
+      "dot": "rose"
+    },
+    {
+      "title": "两个平面",
+      "items": [
+        "主路径展示贡献到结果的逻辑血缘；权限与预算控制是否允许执行。",
+        "POLL / FINAL 不暴露私有计算进度；FINAL 只列已确认的连续前缀。"
+      ],
+      "dot": "cyan"
+    },
+    {
+      "title": "阅读范围",
+      "items": [
+        "这是跨参考模块的逻辑数据流，不宣称 ContributionLedger 与 PublicGatewayLedger 已合并为单一生产服务。",
+        "计算模块的有限机制证据不能替代端到端 DP 与侧信道证明。"
+      ],
+      "dot": "amber"
+    }
+  ]
+}

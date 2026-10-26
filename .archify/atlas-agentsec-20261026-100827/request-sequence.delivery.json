@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "9bf51b5e-314a-407e-9741-629961770c67",
+  "status": "current",
+  "command": "deliver",
+  "type": "sequence",
+  "input": "/Volumes/Elements SE/AutoResearch/AgentSec/.archify/atlas-agentsec-20261026-100827/request-sequence.json",
+  "output": "/Volumes/Elements SE/AutoResearch/AgentSec/.archify/atlas-agentsec-20261026-100827/request-sequence.html",
+  "specification": {
+    "sha256": "da559a7f7586605fbd622168fc04f3e8d1deac4d85a4de402b15e32f9c074f2f",
+    "bytes": 6290
+  },
+  "artifact": {
+    "sha256": "29879a7b0955ceb52fcb7e3c218603a130e5202901771fc074eec141150e7286",
+    "bytes": 840207
+  }
+}

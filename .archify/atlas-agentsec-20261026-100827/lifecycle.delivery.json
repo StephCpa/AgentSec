@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "a841141b-e9b3-4f44-8204-135c17c57a51",
+  "status": "current",
+  "command": "deliver",
+  "type": "lifecycle",
+  "input": "/Volumes/Elements SE/AutoResearch/AgentSec/.archify/atlas-agentsec-20261026-100827/lifecycle.json",
+  "output": "/Volumes/Elements SE/AutoResearch/AgentSec/.archify/atlas-agentsec-20261026-100827/lifecycle.html",
+  "specification": {
+    "sha256": "33de72d7395647450a2515d2fc360c83cae1280965f0824b62062203b78dccbc",
+    "bytes": 6366
+  },
+  "artifact": {
+    "sha256": "4d83b5d327061b806e13f9baf53fa57052101a626b50fdb5511093ced48e700b",
+    "bytes": 846477
+  }
+}

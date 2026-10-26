@@ -1,0 +1,246 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "AgentSec · 正常请求时序",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "output": ".archify/atlas-agentsec-20261026-100827/request-sequence.html",
+    "repository": {
+      "url": "https://github.com/StephCpa/AgentSec",
+      "revision": "2b596d41a2b9e217c1273a68f592dc71fcf76439"
+    }
+  },
+  "participants": [
+    {
+      "id": "caller",
+      "type": "frontend",
+      "label": "调用者",
+      "sublabel": "签名角色",
+      "sources": [
+        {
+          "path": "outputs/agent-cryptography-design-20261025/prototype/README.md",
+          "line": 504,
+          "end_line": 506,
+          "label": "README.md"
+        }
+      ]
+    },
+    {
+      "id": "gateway",
+      "type": "security",
+      "label": "网关",
+      "sublabel": "公开协议",
+      "sources": [
+        {
+          "path": "outputs/agent-cryptography-design-20261025/prototype/public_gateway.py",
+          "line": 202,
+          "end_line": 235,
+          "label": "public_gateway.py"
+        },
+        {
+          "path": "outputs/agent-cryptography-design-20261025/prototype/public_gateway.py",
+          "line": 265,
+          "end_line": 294,
+          "label": "public_gateway.py"
+        }
+      ]
+    },
+    {
+      "id": "runtime",
+      "type": "backend",
+      "label": "账本执行器",
+      "sublabel": "可信内部调度",
+      "sources": [
+        {
+          "path": "outputs/agent-cryptography-design-20261025/prototype/scheduled_ledger.py",
+          "line": 163,
+          "end_line": 203,
+          "label": "scheduled_ledger.py"
+        },
+        {
+          "path": "outputs/agent-cryptography-design-20261025/prototype/atomic_publication.py",
+          "line": 95,
+          "end_line": 118,
+          "label": "atomic_publication.py"
+        }
+      ]
+    },
+    {
+      "id": "witness",
+      "type": "database",
+      "label": "见证",
+      "sublabel": "CAS 权威状态",
+      "sources": [
+        {
+          "path": "outputs/agent-cryptography-design-20261025/prototype/witnessed_ledger.py",
+          "line": 254,
+          "end_line": 271,
+          "label": "witnessed_ledger.py"
+        }
+      ]
+    },
+    {
+      "id": "receiver",
+      "type": "external",
+      "label": "接收方",
+      "sublabel": "持久首次事实",
+      "sources": [
+        {
+          "path": "outputs/agent-cryptography-design-20261025/prototype/retention_recipient.py",
+          "line": 172,
+          "end_line": 199,
+          "label": "retention_recipient.py"
+        },
+        {
+          "path": "outputs/agent-cryptography-design-20261025/prototype/retention_sender.py",
+          "line": 240,
+          "end_line": 258,
+          "label": "retention_sender.py"
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "label": "登记与预留",
+      "from": 150,
+      "to": 355
+    },
+    {
+      "label": "执行与发布",
+      "from": 365,
+      "to": 580
+    },
+    {
+      "label": "交付与确认",
+      "from": 590,
+      "to": 865
+    }
+  ],
+  "messages": [
+    {
+      "id": "s1",
+      "from": "caller",
+      "to": "gateway",
+      "label": "SUBMIT",
+      "y": 175,
+      "variant": "default",
+      "note": "已完成挑战，附动作、证明与委托链"
+    },
+    {
+      "id": "s2",
+      "from": "gateway",
+      "to": "runtime",
+      "label": "登记与 L0 预留",
+      "y": 230,
+      "variant": "default",
+      "note": "身份、作用域、共享额度均在事务内校验"
+    },
+    {
+      "id": "s3",
+      "from": "runtime",
+      "to": "witness",
+      "label": "CAS 状态镜像",
+      "y": 285,
+      "variant": "security",
+      "note": "见证确认后提交本地事务；失败则不返回成功"
+    },
+    {
+      "id": "s4",
+      "from": "gateway",
+      "to": "caller",
+      "label": "RECORDED",
+      "y": 340,
+      "variant": "return"
+    },
+    {
+      "id": "s5",
+      "from": "runtime",
+      "to": "witness",
+      "label": "L1 单独持久化",
+      "y": 390,
+      "variant": "security",
+      "note": "可信调度器调用；此槽不读取私有行"
+    },
+    {
+      "id": "s6",
+      "from": "runtime",
+      "to": "witness",
+      "label": "后续固定工作步",
+      "y": 450,
+      "variant": "security",
+      "note": "每步受守卫保护；最后得到 L2 结果"
+    },
+    {
+      "id": "s7",
+      "from": "runtime",
+      "to": "witness",
+      "label": "L3 原子发布",
+      "y": 515,
+      "variant": "security",
+      "note": "决定、票据与发件箱同一事务；仅展示准入分支"
+    },
+    {
+      "id": "s8",
+      "from": "runtime",
+      "to": "receiver",
+      "label": "交付签名信封",
+      "y": 615,
+      "variant": "default",
+      "note": "先持久准备；域前缀与原始期限均须满足"
+    },
+    {
+      "id": "s9",
+      "from": "receiver",
+      "to": "runtime",
+      "label": "签名 ACK",
+      "y": 680,
+      "variant": "return",
+      "note": "接收方先持久化唯一首次事实，再回复"
+    },
+    {
+      "id": "s10",
+      "from": "runtime",
+      "to": "witness",
+      "label": "确认 ACK",
+      "y": 745,
+      "variant": "security",
+      "note": "验证事实、保存回执并推进最终前缀"
+    },
+    {
+      "id": "s11",
+      "from": "caller",
+      "to": "gateway",
+      "label": "FINAL 查询",
+      "y": 805,
+      "variant": "default"
+    },
+    {
+      "id": "s12",
+      "from": "gateway",
+      "to": "caller",
+      "label": "已确认事件",
+      "y": 845,
+      "variant": "return"
+    }
+  ],
+  "cards": [
+    {
+      "title": "时序的抽象层",
+      "items": [
+        "网关与账本执行器是逻辑角色，不代表额外网络服务。调度调用来自可信控制器，SUBMIT 不同步执行整个机制。",
+        "CHALLENGE、准备信封以及 FINAL 查询也经过守卫事务；图中合并重复持久化细节。"
+      ],
+      "dot": "cyan"
+    },
+    {
+      "title": "发布不等于确认",
+      "items": [
+        "L3 表示原子准入；接收事实经发送端验证并持久确认后，才能出现在最终连续前缀。",
+        "每个接收方拥有独立见证；图中见证列仅展示发送端。"
+      ],
+      "dot": "emerald"
+    }
+  ]
+}

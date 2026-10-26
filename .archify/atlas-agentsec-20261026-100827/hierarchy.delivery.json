@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "47943e02-ef07-4c7e-9f43-0dadd126a0df",
+  "status": "current",
+  "command": "deliver",
+  "type": "tree",
+  "input": "/Volumes/Elements SE/AutoResearch/AgentSec/.archify/atlas-agentsec-20261026-100827/hierarchy.json",
+  "output": "/Volumes/Elements SE/AutoResearch/AgentSec/.archify/atlas-agentsec-20261026-100827/hierarchy.html",
+  "specification": {
+    "sha256": "c8c78414d6a4fb7834d46ad8ec09496b9d7b998b9cf8534cfd638f186191a9d9",
+    "bytes": 6145
+  },
+  "artifact": {
+    "sha256": "21dfcf7334a4d235199f4f6218a086993dc1b53bb72b140c4083eee43ad11b7a",
+    "bytes": 850157
+  }
+}

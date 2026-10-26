@@ -6,6 +6,7 @@ Agent 密码学系统研究：受约束的委托、可验证的行动、可计�
 
 ## 项目内容
 
+- [交互架构图集](.archify/atlas-agentsec-20261026-100827/index.html)：使用 Archify 生成系统架构、数据流、请求与恢复时序、模块层次、生命周期六个视图；支持动画、节点源码卡与导出。可[下载离线包](.archify/atlas-agentsec-20261026-100827/AgentSec-architecture-atlas.zip)后打开 `index.html`，范围与复现见[图集说明](.archify/atlas-agentsec-20261026-100827/README.md)。
 - [完整详细设计](docs/design.zh-CN.md)：从 ChatGPT Page 导出的设计正文（2026-10-25）。
 - [原型说明与运行方法](outputs/agent-cryptography-design-20261025/prototype/README.md)：事务状态机、共享隐私预算、签名委托、见证恢复、交付与公开网关。
 - [阶段验收矩阵（历史快照）](outputs/agent-cryptography-design-20261025/phase_acceptance_matrix.json)；后续证据与未完成目标见[当前验收状态](docs/research/2026-10-26-acceptance-status.md)。
