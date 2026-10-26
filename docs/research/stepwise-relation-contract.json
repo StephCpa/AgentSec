@@ -1,0 +1,29 @@
+{
+  "profile": "restricted-stepwise-state-relation-v1",
+  "extends": "constructive-restricted-public-v1",
+  "status": "finite_runtime_boundary_relation_checks",
+  "baseline_commit": "5b775ccb360ca03272618dfc9c79d6262c08172d",
+  "generator": "outputs/agent-cryptography-design-20261025/prototype/public_simulator.py",
+  "diagnostic_checker": "outputs/agent-cryptography-design-20261025/prototype/state_relation.py",
+  "driver": "outputs/agent-cryptography-design-20261025/prototype/stepwise_trace.py",
+  "boundaries": ["initial after trusted fixture bootstrap", "completed PUBLIC", "completed TICK", "completed SEND", "completed CONFIRM"],
+  "generator_inputs": "Previously recorded public commands, explicit public configuration, operation-bound approved target outputs and synthetic role-scoped signing service. No database projection or observed response is passed into generation.",
+  "diagnostic_inputs": "Real SQLite connection and independently advanced model state, only after generating and comparing that event. The diagnostic is not the simulator.",
+  "relations": {
+    "R1": ["journal sequence and request cache", "challenge ownership, expiry, use and audience", "proof nonce/operation/wire association", "credential identity/digest and no scoped tombstones in this fixture", "ordered operation chain links", "signed actions", "static keys and principals"],
+    "R2": ["charge amount and HELD/SPENT/RETURNED disposition", "per-account total/free/reserved/spent", "model allocated totals", "operation phase/generation and seed/result presence", "successful real L1 calls and model operation/kind/tick"],
+    "R3": ["logical ticks and tick-record continuity", "scheduler next/publish sequence and cursor", "job sequence/pc/work/suppression", "paused state"],
+    "R4": ["root revocation/window and authority bindings", "publication-route bindings", "all-ancestor key/credential authorization ceiling", "eligibility and publication decision/tick", "original ticket recipient/route/issued/expiry", "outbox identity/descriptor and route high watermark"]
+  },
+  "private_fields": "No snapshot rows, private work accumulators, seed bytes or result bytes are returned to the checker. SQL computes seed/result non-null presence bits. Encrypted transport evidence and private data are not needed for these R1-R4 projections.",
+  "state_digest": "Deterministic tagged JSON normalization of selected equal projections, hashed separately by relation. Digests document checkpoints; they are not a substitute for rerunning real database checks.",
+  "randomness_scope": "Valid finite tapes conditioned on a prescribed output; eight data masks per public plan. Not an exhaustive distribution experiment.",
+  "limitations": [
+    "The selected projections are not a complete model of every SQLite field or every runtime invariant.",
+    "Shared model transitions and public codecs remain; implementation independence is incomplete.",
+    "Static synthetic setup with at most two successful operations, existing finite plans, and no route or credential administration events.",
+    "Additional expiry tests change trusted fixture enrollment before requests, never mutate enrolled keys as a supported protocol action.",
+    "No transaction-internal crash points, recovery/retirement events, witness history, physical time, storage traffic or resource exhaustion are checked here.",
+    "Complete real storage relations for R5-R8 and general induction over allowed adversaries remain open."
+  ]
+}
