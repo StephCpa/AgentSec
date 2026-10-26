@@ -1,0 +1,214 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "AgentSec · 提交失联与恢复时序",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "output": ".archify/atlas-agentsec-20261026-100827/recovery-sequence.html",
+    "repository": {
+      "url": "https://github.com/StephCpa/AgentSec",
+      "revision": "2b596d41a2b9e217c1273a68f592dc71fcf76439"
+    }
+  },
+  "participants": [
+    {
+      "id": "caller",
+      "type": "frontend",
+      "label": "调用者",
+      "sublabel": "同一请求",
+      "sources": [
+        {
+          "path": "outputs/agent-cryptography-design-20261025/prototype/public_gateway.py",
+          "line": 265,
+          "end_line": 294,
+          "label": "public_gateway.py"
+        }
+      ]
+    },
+    {
+      "id": "runtime",
+      "type": "backend",
+      "label": "本地账本",
+      "sublabel": "旧副本或新副本",
+      "sources": [
+        {
+          "path": "outputs/agent-cryptography-design-20261025/prototype/witnessed_ledger.py",
+          "line": 247,
+          "end_line": 271,
+          "label": "witnessed_ledger.py"
+        }
+      ]
+    },
+    {
+      "id": "witness",
+      "type": "security",
+      "label": "权威见证",
+      "sublabel": "原始镜像与摘要",
+      "sources": [
+        {
+          "path": "outputs/agent-cryptography-design-20261025/prototype/witnessed_ledger.py",
+          "line": 260,
+          "end_line": 311,
+          "label": "witnessed_ledger.py"
+        }
+      ]
+    },
+    {
+      "id": "recovery",
+      "type": "backend",
+      "label": "恢复协调器",
+      "sublabel": "可信管理路径",
+      "sources": [
+        {
+          "path": "outputs/agent-cryptography-design-20261025/prototype/witnessed_ledger.py",
+          "line": 273,
+          "end_line": 311,
+          "label": "witnessed_ledger.py"
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "label": "权威已提交，本地结果未知",
+      "from": 150,
+      "to": 350
+    },
+    {
+      "label": "冻结并恢复",
+      "from": 360,
+      "to": 735
+    },
+    {
+      "label": "精确重试",
+      "from": 745,
+      "to": 870
+    }
+  ],
+  "messages": [
+    {
+      "id": "r1",
+      "from": "caller",
+      "to": "runtime",
+      "label": "发起请求",
+      "y": 175,
+      "variant": "default"
+    },
+    {
+      "id": "r2",
+      "from": "runtime",
+      "to": "witness",
+      "label": "CAS 接受新镜像",
+      "y": 220,
+      "variant": "security",
+      "note": "故障发生于见证提交后、本地提交前"
+    },
+    {
+      "id": "r3",
+      "from": "runtime",
+      "to": "caller",
+      "label": "中断／回复丢失",
+      "y": 280,
+      "variant": "dashed",
+      "note": "未知提交结果不是业务拒绝，也不是退款"
+    },
+    {
+      "id": "r4",
+      "from": "caller",
+      "to": "runtime",
+      "label": "再次尝试",
+      "y": 330,
+      "variant": "default"
+    },
+    {
+      "id": "r5",
+      "from": "runtime",
+      "to": "witness",
+      "label": "比较本地锚点",
+      "y": 390,
+      "variant": "default",
+      "note": "分歧则冻结业务，要求可信恢复"
+    },
+    {
+      "id": "r6",
+      "from": "recovery",
+      "to": "witness",
+      "label": "读取 head 与镜像",
+      "y": 450,
+      "variant": "security"
+    },
+    {
+      "id": "r7",
+      "from": "witness",
+      "to": "recovery",
+      "label": "原始完整状态",
+      "y": 500,
+      "variant": "return",
+      "note": "验证摘要、模式、密钥配置与审计"
+    },
+    {
+      "id": "r8",
+      "from": "recovery",
+      "to": "runtime",
+      "label": "事务内恢复镜像",
+      "y": 560,
+      "variant": "default",
+      "note": "清除并重装原状态；恢复原随机带与扣费"
+    },
+    {
+      "id": "r9",
+      "from": "recovery",
+      "to": "witness",
+      "label": "再次检查 head",
+      "y": 620,
+      "variant": "security",
+      "note": "检测到变化就拒绝恢复提交"
+    },
+    {
+      "id": "r10",
+      "from": "recovery",
+      "to": "runtime",
+      "label": "提交镜像与锚点",
+      "y": 680,
+      "variant": "default",
+      "note": "恢复中断后可再次恢复；不执行任何业务"
+    },
+    {
+      "id": "r11",
+      "from": "caller",
+      "to": "runtime",
+      "label": "原请求精确重试",
+      "y": 780,
+      "variant": "default",
+      "note": "后续事务再次校验当前权威"
+    },
+    {
+      "id": "r12",
+      "from": "runtime",
+      "to": "caller",
+      "label": "原响应字节",
+      "y": 845,
+      "variant": "return",
+      "note": "已登记请求命中持久响应缓存"
+    }
+  ],
+  "cards": [
+    {
+      "title": "必须保持的不变量",
+      "items": [
+        "恢复不重新采样、不再发票据、不退回已消耗预算，不追加新的见证历史。",
+        "同一请求的原响应与原始交付期限保留。"
+      ],
+      "dot": "emerald"
+    },
+    {
+      "title": "证明边界",
+      "items": [
+        "六次连续恢复退出已在受限配置验证；任意故障组合与跨主机权威回滚防护仍未证明。",
+        "恢复期间权威并发变化仍是开放研究项；图不声称“永远最新”的快照保证。"
+      ],
+      "dot": "amber"
+    }
+  ]
+}

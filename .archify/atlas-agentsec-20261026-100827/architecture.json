@@ -1,0 +1,278 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "AgentSec · 系统架构",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "output": ".archify/atlas-agentsec-20261026-100827/architecture.html",
+    "repository": {
+      "url": "https://github.com/StephCpa/AgentSec",
+      "revision": "2b596d41a2b9e217c1273a68f592dc71fcf76439"
+    }
+  },
+  "components": [
+    {
+      "id": "analyst",
+      "type": "frontend",
+      "label": "分析角色",
+      "sublabel": "合成签名身份",
+      "pos": [
+        40,
+        60
+      ],
+      "size": [
+        180,
+        88
+      ],
+      "sources": [
+        {
+          "path": "outputs/agent-cryptography-design-20261025/prototype/README.md",
+          "line": 502,
+          "end_line": 506,
+          "label": "README.md"
+        }
+      ]
+    },
+    {
+      "id": "gateway",
+      "type": "security",
+      "label": "公开网关",
+      "sublabel": "认证 · 精确重试",
+      "pos": [
+        330,
+        60
+      ],
+      "size": [
+        180,
+        88
+      ],
+      "sources": [
+        {
+          "path": "outputs/agent-cryptography-design-20261025/prototype/public_gateway.py",
+          "line": 265,
+          "end_line": 294,
+          "label": "public_gateway.py"
+        }
+      ]
+    },
+    {
+      "id": "kernel",
+      "type": "backend",
+      "label": "委托执行内核",
+      "sublabel": "共享额度 · 固定工作",
+      "pos": [
+        620,
+        60
+      ],
+      "size": [
+        180,
+        88
+      ],
+      "sources": [
+        {
+          "path": "outputs/agent-cryptography-design-20261025/prototype/delegated_ledger.py",
+          "line": 68,
+          "end_line": 85,
+          "label": "delegated_ledger.py"
+        },
+        {
+          "path": "outputs/agent-cryptography-design-20261025/prototype/scheduled_ledger.py",
+          "line": 163,
+          "end_line": 203,
+          "label": "scheduled_ledger.py"
+        }
+      ]
+    },
+    {
+      "id": "publisher",
+      "type": "backend",
+      "label": "原子发布",
+      "sublabel": "准入 · 票据 · 发件箱",
+      "pos": [
+        910,
+        60
+      ],
+      "size": [
+        180,
+        88
+      ],
+      "sources": [
+        {
+          "path": "outputs/agent-cryptography-design-20261025/prototype/atomic_publication.py",
+          "line": 95,
+          "end_line": 118,
+          "label": "atomic_publication.py"
+        },
+        {
+          "path": "outputs/agent-cryptography-design-20261025/prototype/retention_sender.py",
+          "line": 203,
+          "end_line": 258,
+          "label": "retention_sender.py"
+        }
+      ]
+    },
+    {
+      "id": "recipient",
+      "type": "external",
+      "label": "接收与写作",
+      "sublabel": "首次事实 · 完整证据",
+      "pos": [
+        1200,
+        60
+      ],
+      "size": [
+        180,
+        88
+      ],
+      "sources": [
+        {
+          "path": "outputs/agent-cryptography-design-20261025/prototype/retention_recipient.py",
+          "line": 172,
+          "end_line": 199,
+          "label": "retention_recipient.py"
+        },
+        {
+          "path": "outputs/agent-cryptography-design-20261025/prototype/README.md",
+          "line": 504,
+          "end_line": 506,
+          "label": "README.md"
+        }
+      ]
+    },
+    {
+      "id": "storage",
+      "type": "database",
+      "label": "本地状态库",
+      "sublabel": "敏感字段 AEAD",
+      "pos": [
+        620,
+        310
+      ],
+      "size": [
+        180,
+        88
+      ],
+      "sources": [
+        {
+          "path": "outputs/agent-cryptography-design-20261025/prototype/encrypted_ledger.py",
+          "line": 28,
+          "end_line": 63,
+          "label": "encrypted_ledger.py"
+        },
+        {
+          "path": "outputs/agent-cryptography-design-20261025/prototype/witnessed_ledger.py",
+          "line": 242,
+          "end_line": 252,
+          "label": "witnessed_ledger.py"
+        }
+      ]
+    },
+    {
+      "id": "witness",
+      "type": "security",
+      "label": "独立见证状态",
+      "sublabel": "CAS · 权威镜像",
+      "pos": [
+        910,
+        310
+      ],
+      "size": [
+        180,
+        88
+      ],
+      "sources": [
+        {
+          "path": "outputs/agent-cryptography-design-20261025/prototype/witnessed_ledger.py",
+          "line": 260,
+          "end_line": 311,
+          "label": "witnessed_ledger.py"
+        },
+        {
+          "path": "outputs/agent-cryptography-design-20261025/prototype/witness_transport.py",
+          "line": 1,
+          "end_line": 10,
+          "label": "witness_transport.py"
+        }
+      ]
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "region",
+      "label": "可信逻辑运行时 · 不代表进程隔离",
+      "wraps": [
+        "gateway",
+        "kernel",
+        "publisher"
+      ],
+      "pad": 22
+    }
+  ],
+  "connections": [
+    {
+      "id": "a1",
+      "from": "analyst",
+      "to": "gateway",
+      "label": "签名请求"
+    },
+    {
+      "id": "a2",
+      "from": "gateway",
+      "to": "kernel",
+      "label": "校验登记"
+    },
+    {
+      "id": "a3",
+      "from": "kernel",
+      "to": "publisher",
+      "label": "完成调度"
+    },
+    {
+      "id": "a4",
+      "from": "publisher",
+      "to": "recipient",
+      "label": "交付证据",
+      "variant": "security"
+    },
+    {
+      "id": "a5",
+      "from": "kernel",
+      "to": "storage",
+      "label": "事务状态"
+    },
+    {
+      "id": "a6",
+      "from": "publisher",
+      "to": "witness",
+      "label": "提交镜像",
+      "variant": "security"
+    }
+  ],
+  "cards": [
+    {
+      "title": "实现边界",
+      "items": [
+        "本图描述研究分支 2b596d4 的逻辑组件；同一 Python 账本对象承载多个模块。",
+        "没有真实 LLM、强制进程隔离或完整安全证明。"
+      ],
+      "dot": "amber"
+    },
+    {
+      "title": "持久化与结果释放",
+      "items": [
+        "见证提交先于本地提交；发生分歧时必须恢复。该守卫覆盖所有受保护事务，不只发布模块。",
+        "接收方也有独立的受保护状态；确认 ACK 后才推进域内最终前缀。图省略回程连线。"
+      ],
+      "dot": "emerald"
+    },
+    {
+      "title": "仍待完成",
+      "items": [
+        "实际 Agent 隔离、跨主机故障域和生产密钥生命周期仍未实现。",
+        "隐藏授权与 TEE/MPC 处于设计阶段。"
+      ],
+      "dot": "violet"
+    }
+  ]
+}

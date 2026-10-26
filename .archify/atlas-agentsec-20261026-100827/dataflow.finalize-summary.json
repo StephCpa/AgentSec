@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "ok": true,
+  "command": "finalize",
+  "status": "pass",
+  "type": "dataflow",
+  "quality": "showcase",
+  "specification": {
+    "path": "/Volumes/Elements SE/AutoResearch/AgentSec/.archify/atlas-agentsec-20261026-100827/dataflow.json",
+    "sha256": "ba6d212574b385804a70f1131e652f900017b35536674bc073ceba6243e35edd",
+    "bytes": 5774
+  },
+  "artifact": {
+    "path": "/Volumes/Elements SE/AutoResearch/AgentSec/.archify/atlas-agentsec-20261026-100827/dataflow.html",
+    "sha256": "ad9bccf8905f36d7cce64bc3ed9fd042ea85d18007450a40f8f60e58ca47d4ab",
+    "bytes": 838577
+  },
+  "gates": {
+    "validate": "pass",
+    "deliver": "pass",
+    "check": "pass",
+    "browser-check": "pass"
+  },
+  "diagnostics": [],
+  "diagnosticSummary": {
+    "total": 0,
+    "shown": 0,
+    "truncated": false
+  },
+  "evidence": {
+    "receipt": "/Volumes/Elements SE/AutoResearch/AgentSec/.archify/atlas-agentsec-20261026-100827/dataflow.finalize.json",
+    "summaryReceipt": "/Volumes/Elements SE/AutoResearch/AgentSec/.archify/atlas-agentsec-20261026-100827/dataflow.finalize-summary.json",
+    "browserCheckReceipt": "/Volumes/Elements SE/AutoResearch/AgentSec/.archify/atlas-agentsec-20261026-100827/dataflow.browser-check.json"
+  },
+  "visualReview": "not-requested",
+  "durationMs": 2465,
+  "browserCheck": {
+    "requested": true,
+    "ran": true
+  }
+}

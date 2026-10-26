@@ -1,0 +1,253 @@
+{
+  "schema_version": 3,
+  "diagram_type": "lifecycle",
+  "meta": {
+    "title": "AgentSec · 操作生命周期",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "output": ".archify/atlas-agentsec-20261026-100827/lifecycle.html",
+    "repository": {
+      "url": "https://github.com/StephCpa/AgentSec",
+      "revision": "2b596d41a2b9e217c1273a68f592dc71fcf76439"
+    }
+  },
+  "mainPath": [
+    "reserved",
+    "started",
+    "committed",
+    "admitted",
+    "accepted"
+  ],
+  "states": [
+    {
+      "id": "reserved",
+      "type": "start",
+      "label": "已预留",
+      "sublabel": "L0 · RESERVED",
+      "sources": [
+        {
+          "path": "outputs/agent-cryptography-design-20261025/prototype/signed_ledger.py",
+          "line": 93,
+          "end_line": 110,
+          "label": "signed_ledger.py"
+        }
+      ]
+    },
+    {
+      "id": "started",
+      "type": "active",
+      "label": "已开始",
+      "sublabel": "L1 · STARTED",
+      "sources": [
+        {
+          "path": "outputs/agent-cryptography-design-20261025/prototype/scheduled_ledger.py",
+          "line": 174,
+          "end_line": 199,
+          "label": "scheduled_ledger.py"
+        }
+      ]
+    },
+    {
+      "id": "committed",
+      "type": "active",
+      "label": "结果提交",
+      "sublabel": "L2 · COMMITTED",
+      "sources": [
+        {
+          "path": "outputs/agent-cryptography-design-20261025/prototype/scheduled_ledger.py",
+          "line": 186,
+          "end_line": 194,
+          "label": "scheduled_ledger.py"
+        }
+      ]
+    },
+    {
+      "id": "admitted",
+      "type": "waiting",
+      "label": "发布准入",
+      "sublabel": "L3 · ADMITTED",
+      "sources": [
+        {
+          "path": "outputs/agent-cryptography-design-20261025/prototype/atomic_publication.py",
+          "line": 95,
+          "end_line": 118,
+          "label": "atomic_publication.py"
+        }
+      ]
+    },
+    {
+      "id": "accepted",
+      "type": "success",
+      "label": "接受已确认",
+      "sublabel": "最终前缀可见",
+      "sources": [
+        {
+          "path": "outputs/agent-cryptography-design-20261025/prototype/retention_sender.py",
+          "line": 240,
+          "end_line": 258,
+          "label": "retention_sender.py"
+        },
+        {
+          "path": "outputs/agent-cryptography-design-20261025/prototype/ordered_publication.py",
+          "line": 72,
+          "end_line": 103,
+          "label": "ordered_publication.py"
+        }
+      ]
+    },
+    {
+      "id": "canceled",
+      "type": "neutral",
+      "label": "开始前取消",
+      "sublabel": "额度可退回",
+      "sources": [
+        {
+          "path": "outputs/agent-cryptography-design-20261025/prototype/scheduled_ledger.py",
+          "line": 174,
+          "end_line": 180,
+          "label": "scheduled_ledger.py"
+        },
+        {
+          "path": "outputs/agent-cryptography-design-20261025/prototype/public_gateway.py",
+          "line": 241,
+          "end_line": 250,
+          "label": "public_gateway.py"
+        }
+      ]
+    },
+    {
+      "id": "burned",
+      "type": "failure",
+      "label": "开始后取消",
+      "sublabel": "已消耗 · 不退款",
+      "sources": [
+        {
+          "path": "outputs/agent-cryptography-design-20261025/prototype/public_gateway.py",
+          "line": 241,
+          "end_line": 250,
+          "label": "public_gateway.py"
+        }
+      ]
+    },
+    {
+      "id": "withheld",
+      "type": "neutral",
+      "label": "不予发布",
+      "sublabel": "WITHHELD",
+      "sources": [
+        {
+          "path": "outputs/agent-cryptography-design-20261025/prototype/scheduled_ledger.py",
+          "line": 205,
+          "end_line": 217,
+          "label": "scheduled_ledger.py"
+        },
+        {
+          "path": "outputs/agent-cryptography-design-20261025/prototype/atomic_publication.py",
+          "line": 104,
+          "end_line": 118,
+          "label": "atomic_publication.py"
+        }
+      ]
+    },
+    {
+      "id": "closed",
+      "type": "neutral",
+      "label": "关闭已确认",
+      "sublabel": "无首次接受事实",
+      "sources": [
+        {
+          "path": "outputs/agent-cryptography-design-20261025/prototype/retention_sender.py",
+          "line": 226,
+          "end_line": 258,
+          "label": "retention_sender.py"
+        },
+        {
+          "path": "outputs/agent-cryptography-design-20261025/prototype/retention_recipient.py",
+          "line": 172,
+          "end_line": 199,
+          "label": "retention_recipient.py"
+        }
+      ]
+    }
+  ],
+  "transitions": [
+    {
+      "id": "l1",
+      "from": "reserved",
+      "to": "started",
+      "label": "授权仍有效"
+    },
+    {
+      "id": "l2",
+      "from": "started",
+      "to": "committed",
+      "label": "固定工作完成"
+    },
+    {
+      "id": "l3",
+      "from": "committed",
+      "to": "admitted",
+      "label": "发布条件满足"
+    },
+    {
+      "id": "l4",
+      "from": "admitted",
+      "to": "accepted",
+      "label": "首次接受 + ACK"
+    },
+    {
+      "id": "l5",
+      "from": "reserved",
+      "to": "canceled",
+      "label": "取消或失效"
+    },
+    {
+      "id": "l6",
+      "from": "started",
+      "to": "burned",
+      "label": "取消"
+    },
+    {
+      "id": "l7",
+      "from": "committed",
+      "to": "withheld",
+      "label": "抑制或授权失效"
+    },
+    {
+      "id": "l8",
+      "from": "canceled",
+      "to": "withheld",
+      "label": "虚拟工作槽完成"
+    },
+    {
+      "id": "l9",
+      "from": "burned",
+      "to": "withheld",
+      "label": "虚拟工作槽完成"
+    },
+    {
+      "id": "l10",
+      "from": "admitted",
+      "to": "closed",
+      "label": "到期终止 + ACK"
+    }
+  ],
+  "cards": [
+    {
+      "title": "跨状态表的阅读投影",
+      "items": [
+        "本图组合操作状态、发布决定和交付事实；不是某一数据库字段的完整枚举。",
+        "取消路径仍走完公开工作槽；最终事件按域内最大连续前缀出现。"
+      ],
+      "dot": "cyan"
+    },
+    {
+      "title": "不可逆边界",
+      "items": [
+        "L1 后不退款；恢复保留原随机带与原始期限。",
+        "已接受后的终止重试返回原 ACCEPTED 事实，不会改写为 CLOSED。"
+      ],
+      "dot": "rose"
+    }
+  ]
+}

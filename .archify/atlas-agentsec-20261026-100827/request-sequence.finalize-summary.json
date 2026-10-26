@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "ok": true,
+  "command": "finalize",
+  "status": "pass",
+  "type": "sequence",
+  "quality": "showcase",
+  "specification": {
+    "path": "/Volumes/Elements SE/AutoResearch/AgentSec/.archify/atlas-agentsec-20261026-100827/request-sequence.json",
+    "sha256": "da559a7f7586605fbd622168fc04f3e8d1deac4d85a4de402b15e32f9c074f2f",
+    "bytes": 6290
+  },
+  "artifact": {
+    "path": "/Volumes/Elements SE/AutoResearch/AgentSec/.archify/atlas-agentsec-20261026-100827/request-sequence.html",
+    "sha256": "29879a7b0955ceb52fcb7e3c218603a130e5202901771fc074eec141150e7286",
+    "bytes": 840207
+  },
+  "gates": {
+    "validate": "pass",
+    "deliver": "pass",
+    "check": "pass",
+    "browser-check": "pass"
+  },
+  "diagnostics": [],
+  "diagnosticSummary": {
+    "total": 0,
+    "shown": 0,
+    "truncated": false
+  },
+  "evidence": {
+    "receipt": "/Volumes/Elements SE/AutoResearch/AgentSec/.archify/atlas-agentsec-20261026-100827/request-sequence.finalize.json",
+    "summaryReceipt": "/Volumes/Elements SE/AutoResearch/AgentSec/.archify/atlas-agentsec-20261026-100827/request-sequence.finalize-summary.json",
+    "browserCheckReceipt": "/Volumes/Elements SE/AutoResearch/AgentSec/.archify/atlas-agentsec-20261026-100827/request-sequence.browser-check.json"
+  },
+  "visualReview": "not-requested",
+  "durationMs": 1992,
+  "browserCheck": {
+    "requested": true,
+    "ran": true
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "ceec66cb-9710-409c-8123-21327f68af73",
+  "status": "current",
+  "command": "deliver",
+  "type": "architecture",
+  "input": "/Volumes/Elements SE/AutoResearch/AgentSec/.archify/atlas-agentsec-20261026-100827/architecture.json",
+  "output": "/Volumes/Elements SE/AutoResearch/AgentSec/.archify/atlas-agentsec-20261026-100827/architecture.html",
+  "specification": {
+    "sha256": "c36a88d73d529b7643746ed0c97907aa022f1ec85c53f4e3fce03ebb8c22c179",
+    "bytes": 6549
+  },
+  "artifact": {
+    "sha256": "034ad137c684408cddb6fd3c08924c52549cf505fed8691bfb471e49a02f3cae",
+    "bytes": 844657
+  }
+}

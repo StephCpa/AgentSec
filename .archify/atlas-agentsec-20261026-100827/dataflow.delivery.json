@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "530f925b-f835-4ab5-8e13-318c7d94a707",
+  "status": "current",
+  "command": "deliver",
+  "type": "dataflow",
+  "input": "/Volumes/Elements SE/AutoResearch/AgentSec/.archify/atlas-agentsec-20261026-100827/dataflow.json",
+  "output": "/Volumes/Elements SE/AutoResearch/AgentSec/.archify/atlas-agentsec-20261026-100827/dataflow.html",
+  "specification": {
+    "sha256": "dd7653f914e224bdc92fb4da2da5a527caadbdb495cd22cd62a9354a451cb32f",
+    "bytes": 5777
+  },
+  "artifact": {
+    "sha256": "04574bb0d3bc37ce47e6896d591b31ceae79bcbde7e2bf2ef207219d6c534c52",
+    "bytes": 838580
+  }
+}

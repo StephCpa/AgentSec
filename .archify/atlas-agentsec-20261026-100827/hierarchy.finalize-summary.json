@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "ok": true,
+  "command": "finalize",
+  "status": "pass",
+  "type": "tree",
+  "quality": "showcase",
+  "specification": {
+    "path": "/Volumes/Elements SE/AutoResearch/AgentSec/.archify/atlas-agentsec-20261026-100827/hierarchy.json",
+    "sha256": "c8c78414d6a4fb7834d46ad8ec09496b9d7b998b9cf8534cfd638f186191a9d9",
+    "bytes": 6145
+  },
+  "artifact": {
+    "path": "/Volumes/Elements SE/AutoResearch/AgentSec/.archify/atlas-agentsec-20261026-100827/hierarchy.html",
+    "sha256": "21dfcf7334a4d235199f4f6218a086993dc1b53bb72b140c4083eee43ad11b7a",
+    "bytes": 850157
+  },
+  "gates": {
+    "validate": "pass",
+    "deliver": "pass",
+    "check": "pass",
+    "browser-check": "pass"
+  },
+  "diagnostics": [],
+  "diagnosticSummary": {
+    "total": 0,
+    "shown": 0,
+    "truncated": false
+  },
+  "evidence": {
+    "receipt": "/Volumes/Elements SE/AutoResearch/AgentSec/.archify/atlas-agentsec-20261026-100827/hierarchy.finalize.json",
+    "summaryReceipt": "/Volumes/Elements SE/AutoResearch/AgentSec/.archify/atlas-agentsec-20261026-100827/hierarchy.finalize-summary.json",
+    "browserCheckReceipt": "/Volumes/Elements SE/AutoResearch/AgentSec/.archify/atlas-agentsec-20261026-100827/hierarchy.browser-check.json"
+  },
+  "visualReview": "not-requested",
+  "durationMs": 1650,
+  "browserCheck": {
+    "requested": true,
+    "ran": true
+  }
+}

@@ -1,0 +1,231 @@
+{
+  "schema_version": 1,
+  "diagram_type": "tree",
+  "meta": {
+    "title": "AgentSec · 模块与证据层次",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "output": ".archify/atlas-agentsec-20261026-100827/hierarchy.html",
+    "repository": {
+      "url": "https://github.com/StephCpa/AgentSec",
+      "revision": "2b596d41a2b9e217c1273a68f592dc71fcf76439"
+    }
+  },
+  "layout": {
+    "direction": "right",
+    "nodeW": 190,
+    "nodeMaxW": 250,
+    "gapX": 64,
+    "gapY": 28
+  },
+  "nodes": [
+    {
+      "id": "root",
+      "label": "AgentSec",
+      "sublabel": "研究设计与参考原型",
+      "sources": [
+        {
+          "path": "README.md",
+          "line": 1,
+          "end_line": 20,
+          "label": "项目范围"
+        }
+      ]
+    },
+    {
+      "id": "runtime",
+      "label": "受限运行时",
+      "sublabel": "协议与机制",
+      "sources": [
+        {
+          "path": "outputs/agent-cryptography-design-20261025/prototype/public_gateway.py",
+          "line": 202,
+          "end_line": 235,
+          "label": "public_gateway.py"
+        }
+      ],
+      "parent": "root"
+    },
+    {
+      "id": "auth",
+      "label": "认证与委托",
+      "sublabel": "签名 · 身份 · 作用域",
+      "sources": [
+        {
+          "path": "outputs/agent-cryptography-design-20261025/prototype/delegated_ledger.py",
+          "line": 68,
+          "end_line": 85,
+          "label": "delegated_ledger.py"
+        },
+        {
+          "path": "outputs/agent-cryptography-design-20261025/prototype/signed_ledger.py",
+          "line": 93,
+          "end_line": 110,
+          "label": "signed_ledger.py"
+        }
+      ],
+      "parent": "runtime"
+    },
+    {
+      "id": "compute",
+      "label": "预算与固定工作",
+      "sublabel": "L0 / L1 / L2",
+      "sources": [
+        {
+          "path": "outputs/agent-cryptography-design-20261025/prototype/scheduled_ledger.py",
+          "line": 163,
+          "end_line": 203,
+          "label": "scheduled_ledger.py"
+        }
+      ],
+      "parent": "runtime"
+    },
+    {
+      "id": "publication",
+      "label": "发布与公开接口",
+      "sublabel": "L3 · POLL · FINAL",
+      "sources": [
+        {
+          "path": "outputs/agent-cryptography-design-20261025/prototype/atomic_publication.py",
+          "line": 95,
+          "end_line": 118,
+          "label": "atomic_publication.py"
+        },
+        {
+          "path": "outputs/agent-cryptography-design-20261025/prototype/public_gateway.py",
+          "line": 218,
+          "end_line": 235,
+          "label": "public_gateway.py"
+        }
+      ],
+      "parent": "runtime"
+    },
+    {
+      "id": "durable",
+      "label": "持久化与交付",
+      "sublabel": "恢复与最终事实",
+      "sources": [
+        {
+          "path": "outputs/agent-cryptography-design-20261025/prototype/witnessed_ledger.py",
+          "line": 260,
+          "end_line": 311,
+          "label": "witnessed_ledger.py"
+        }
+      ],
+      "parent": "root"
+    },
+    {
+      "id": "crypto",
+      "label": "加密与见证",
+      "sublabel": "StateVault · CAS",
+      "sources": [
+        {
+          "path": "outputs/agent-cryptography-design-20261025/prototype/encrypted_ledger.py",
+          "line": 28,
+          "end_line": 63,
+          "label": "encrypted_ledger.py"
+        },
+        {
+          "path": "outputs/agent-cryptography-design-20261025/prototype/witnessed_ledger.py",
+          "line": 260,
+          "end_line": 311,
+          "label": "witnessed_ledger.py"
+        }
+      ],
+      "parent": "durable"
+    },
+    {
+      "id": "delivery",
+      "label": "发件箱与接收端",
+      "sublabel": "首次事实 · ACK · 清理",
+      "sources": [
+        {
+          "path": "outputs/agent-cryptography-design-20261025/prototype/retention_sender.py",
+          "line": 240,
+          "end_line": 258,
+          "label": "retention_sender.py"
+        },
+        {
+          "path": "outputs/agent-cryptography-design-20261025/prototype/retention_recipient.py",
+          "line": 172,
+          "end_line": 220,
+          "label": "retention_recipient.py"
+        }
+      ],
+      "parent": "durable"
+    },
+    {
+      "id": "evidence",
+      "label": "验证与研究",
+      "sublabel": "有限证据和待办",
+      "sources": [
+        {
+          "path": "docs/research/2026-10-26-acceptance-status.md",
+          "line": 7,
+          "end_line": 18,
+          "label": "当前证据与开放目标"
+        }
+      ],
+      "parent": "root"
+    },
+    {
+      "id": "relations",
+      "label": "轨迹与故障关系",
+      "sublabel": "R1–R12 受限检查",
+      "sources": [
+        {
+          "path": "docs/research/2026-10-26-acceptance-status.md",
+          "line": 7,
+          "end_line": 18,
+          "label": "当前证据与开放目标"
+        }
+      ],
+      "parent": "evidence"
+    },
+    {
+      "id": "cost",
+      "label": "成本与跨语言",
+      "sublabel": "实测 · 独立 Node",
+      "sources": [
+        {
+          "path": "docs/research/2026-10-26-acceptance-status.md",
+          "line": 7,
+          "end_line": 18,
+          "label": "当前证据与开放目标"
+        }
+      ],
+      "parent": "evidence"
+    },
+    {
+      "id": "future",
+      "label": "开放目标",
+      "sublabel": "隔离 · 强基线 · P5/P6",
+      "sources": [
+        {
+          "path": "docs/research/2026-10-26-acceptance-status.md",
+          "line": 7,
+          "end_line": 18,
+          "label": "当前证据与开放目标"
+        }
+      ],
+      "parent": "evidence"
+    }
+  ],
+  "cards": [
+    {
+      "title": "层次口径",
+      "items": [
+        "按职责组织模块，节点源码卡可跳到固定提交。它不是 Python 继承图，也不等同物理部署层次。"
+      ],
+      "dot": "cyan"
+    },
+    {
+      "title": "证据不能越界",
+      "items": [
+        "测试、模型检查和成本实验各自绑定受限配置。",
+        "真实 LLM 边界、强制隔离、完整证明、隐藏授权与 TEE/MPC 仍有缺口。"
+      ],
+      "dot": "amber"
+    }
+  ]
+}

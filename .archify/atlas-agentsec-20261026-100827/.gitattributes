@@ -1,0 +1,12 @@
+# Preserve upstream renderer bytes, including blank-line whitespace, for receipt hashes.
+architecture.html linguist-generated=true -whitespace
+dataflow.html linguist-generated=true -whitespace
+request-sequence.html linguist-generated=true -whitespace
+recovery-sequence.html linguist-generated=true -whitespace
+hierarchy.html linguist-generated=true -whitespace
+lifecycle.html linguist-generated=true -whitespace
+index.html linguist-generated=true
+*.finalize.json linguist-generated=true
+*.finalize-summary.json linguist-generated=true
+*.browser-check.json linguist-generated=true
+*.delivery.json linguist-generated=true
