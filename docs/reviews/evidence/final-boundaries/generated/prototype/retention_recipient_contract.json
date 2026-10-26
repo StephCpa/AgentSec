@@ -1,0 +1,78 @@
+{
+  "profile": "witnessed-mixed-retention-recipient-v2",
+  "authenticated_profile": "mtls-witnessed-mixed-retention-recipient-v2",
+  "status": "prototype_first_event_window_atomic_logical_retirement_and_conditional_recovery_integrated",
+  "implementation": "retention_recipient.py",
+  "tests": "test_retention_recipient.py",
+  "report": "retention_recipient_test_results.json",
+  "scope": "One immutable v2 route per database. Existing v1 retains all records; no implicit migration or reset.",
+  "storage": {
+    "metadata": "Exact built-in schema, profile/context/key check/receiver authority namespace, uint64 high H and retired floor F_R as fixed 8-byte big-endian BLOBs, prefix root, observed clock and encrypted latest retirement offer.",
+    "live": "Exactly the contiguous interval F_R+1..H, at most public W rows. Each row retains canonical final fact and full signed envelope/control evidence under distinct AEAD purposes bound to context, seq and derived ID.",
+    "last_offer": "One latest authenticated sender offer binds the current nonzero floor and root. Full retired history is intentionally absent; audit trusts authority transition integrity and sender signing policy.",
+    "physical_limit": "16 MiB canonical image cap. Conservative per-route M+W*L admission now runs before database connection/creation and authority calls; see retention_capacity_contract.json. This bounds current canonical image only, not physical or total storage.",
+    "logical_gc_only": true,
+    "secure_erasure": false,
+    "global_storage_bound": false,
+    "byte_capacity_admission": true
+  },
+  "first_event": [
+    "Verify pinned transport peer and receiver signer; dispatch unverified outer payload only to exact authenticated domain/schema parsers before state access.",
+    "BEGIN IMMEDIATE; require current authority image, enforce monotonic clock; reject seq<=floor and non-next unseen sequence; reject full window.",
+    "Reconstruct ACCEPTED from complete signed result within original expiry, or CLOSED from signed terminal control at/after expiry. Persist encrypted fact/evidence and high-water together.",
+    "Existing result replay must match exact stored envelope; terminal replies must match original descriptor and fact. First time/outcome never change. CLOSED rejects later results.",
+    "Audit next image; authority CAS accepts before local commit; only then return signed challenge/request-bound receipt."
+  ],
+  "retirement": [
+    "Require sender-signed offer generated after durable sender confirmation. Signature alone is not an externally verifiable persistence proof.",
+    "Current authority fence and write lock; verify base floor/root, exact consecutive prefix and target root; DELETE prefix and advance floor/root/latest offer in one authoritative state transition, retaining H and clock.",
+    "Already applied target can return current checkpoint; smaller old targets cause no mutation and do not validate or reconstruct forgotten historical roots.",
+    "Old result or FINAL request is rejected; explicit RETIRED query returns current checkpoint, never invented outcome/time. Sender reconciles checkpoint against retained full archive."
+  ],
+  "clock": "Business Rejected rolls back the business savepoint while committing observed clock through authority/local commit. Authentication failures precede state access. Infrastructure or image-cap failures can roll back the entire transaction; clock persistence is not claimed in those cases.",
+  "recovery": "Explicit create/restore only. Missing local database cannot initialize itself. Stale image is fenced; restore exact current authority image under trusted schema, audit full facts and latest offer before commit and recheck authority head. No refund or new first event.",
+  "transport": "Reuses RecipientTLSService and DeliverySender.exchange framing over loopback mTLS, with v2 signed payload dispatch. The peer fingerprint is provided by authenticated transport. This is an integration fixture, not a production deployment/management API or complete public observation protocol.",
+  "trust": "Receiver and sender services/signers trusted; each authority linearizable and nonrollback. Separate files, namespaces, services and signing keys on one host do not establish independent production fault domains.",
+  "validation": {
+    "test_methods": 28,
+    "actual_process_crash_scenarios": 15,
+    "crash_breakdown": {
+      "accept": 4,
+      "close": 4,
+      "retire": 4,
+      "restore": 3
+    },
+    "crash_scope": "Reference authority process exits only. Separate loopback mTLS fixture exercises lost result/retirement replies, not the full TLS crash matrix.",
+    "authenticated_network_requests": {
+      "sender_witness": 894,
+      "receiver_witness": 14,
+      "delivery_attempts": 6
+    },
+    "observed_tls_versions": [
+      "TLSv1.2"
+    ],
+    "mixed_fixture": "Actual signed encrypted shared-account B4 N3 histogram (32 bytes) and count (8 bytes), sender L3/outbox, actual receiver facts, sender confirmation and retirement checkpoint.",
+    "repeated_delivery_retirement_cycles": 32,
+    "coverage": [
+      "window full then prefix retirement permits next record",
+      "accept/close race and both deterministic orders",
+      "lost acceptance and retirement replies preserve original fact",
+      "old local snapshot after retirement cannot resurrect rows",
+      "corrupt authority image rejected before restore commit",
+      "wrong peer/signer/signature before state access",
+      "same identity with different signed evidence rejected",
+      "capacity failure preserves previous image"
+    ],
+    "negative_control": "Rolling back both recipient and reference authority restores an old history and permits a different first-event time; local audit alone cannot detect joint authority rollback.",
+    "capacity_contract": "retention_capacity_contract.json",
+    "capacity_tests": 5
+  },
+  "remaining": [
+    "Scalable authority/history storage and bounded aggregate resources; current per-route image admission implemented",
+    "Production audit access, scalable archive retrieval, availability and retention governance",
+    "Independent COSE/CDDL interoperability and parser review",
+    "Cross-host authority fault tests, identity/key lifecycle and production nonrollback evidence",
+    "Complete P2 workflow, strong baselines and full public-observation refinement; broader P3-P6 goals"
+  ],
+  "archive_contract": "retention_archive_contract.json"
+}

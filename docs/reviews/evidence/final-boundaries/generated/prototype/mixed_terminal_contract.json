@@ -1,0 +1,64 @@
+{
+  "implementation": "mixed_delivery_terminal.py",
+  "schema": "mixed_delivery_terminal_v1.cddl",
+  "wire_profile": "mixed-delivery-terminal-v1",
+  "storage_profile": "mtls-mixed-delivery-terminal-v1",
+  "objects": [
+    "MixedDeliveryTerminal",
+    "MixedDeliveryTerminalAck"
+  ],
+  "composition": "TerminalDeliveryLedger + MixedDeliveryLedger; TerminalRecipientInbox + MixedRecipientInbox; existing fixed-route mTLS and authoritative sender witness",
+  "scope": "Already-admitted fixed-route count/histogram L3 tickets only, post-expiry result-free reconciliation; no pre-L3 withheld events or cross-route protocol",
+  "control": {
+    "public_descriptor": "Original internal action digest/domain/snapshot/accountant/mechanism/N/B/K/codec/catalog/digest/ordered public labels; matches MixedDelivery descriptor",
+    "bindings": "deployment, tenant, recipient, gateway, session, sender/receiver certificate, delivery/operation, sequence and original lifetime",
+    "envelope_hash": "empty iff no prepared envelope, otherwise SHA256 of exact signed envelope; not a bare plaintext result hash",
+    "forbidden": "No result or result envelope field; unprepared control construction reads public operation metadata without opening seed/result",
+    "validation": "Closed fields; independent MixedDeliveryTerminal signature domain; exact original ticket/shape/hash binding; shape validation reuses descriptor validation without synthetic result"
+  },
+  "protocol": {
+    "sender": "Only earliest unfinished route sequence after original expiry; immutable encrypted control and receipt in witnessed state; no new L3, lifetime extension, sample, fee or refund",
+    "recipient": "BEGIN IMMEDIATE shares the lock with ordinary acceptance. Existing exact inbox returns ACCEPTED with original accepted_at; otherwise persist CLOSED tombstone and first closed_at; never infer CLOSED from absence alone",
+    "barrier": "CLOSED fences any later envelope matching delivery ID or sequence, including a re-signed future lifetime; receipt commits before reply",
+    "ack_consistency": "Ordinary ACK accepted_at equals terminal ACCEPTED event_at in either arrival order and audit; conflicting signed outcome or time is rejected",
+    "retry": "Fresh challenge/request hash, identical control, unchanged first event time; missing response can be retried; W-accepted/local-lost state recovered without re-query",
+    "continuation": "Only confirmed ACKED/CLOSED sequence can be skipped for later route work"
+  },
+  "verification": {
+    "report": "mixed_terminal_test_results.json",
+    "test_methods": 30,
+    "network_exchange_attempts": 38,
+    "process_exit_scenarios": 8,
+    "process_scenarios": [
+      "before_inbox_terminal_commit",
+      "after_inbox_terminal_commit",
+      "before_terminal_prepare_commit",
+      "after_terminal_prepare_commit",
+      "before_terminal_receipt_commit",
+      "after_terminal_receipt_commit",
+      "after_witness_accept_prepare",
+      "after_witness_accept_receipt_commit"
+    ],
+    "tls_versions": [
+      "TLSv1.2"
+    ],
+    "maximum_terminal_request_bytes": 6226,
+    "pipeline": "B4 N3 full mixed signed/encrypted/witnessed fixture; expired unsent histogram closure then count delivery with unchanged all-ancestor accounts",
+    "B64_scope": "64 maximal public labels wire-only terminal descriptor and CLOSED inbox fixture, not full 64-bucket execution/performance",
+    "races": "Acceptance wins and closure wins; each serializes at recipient write transaction",
+    "regression_suites": {
+      "delivery_transport": 25,
+      "delivery_terminal": 23,
+      "mixed_delivery": 21
+    },
+    "negative_control": "Whole recipient store rollback changes first closure time from 160 to 170; sender rejects conflicting evidence but cannot restore recipient or prove nonrollback"
+  },
+  "remaining": [
+    "Production receiver authority nonrollback/cross-host recovery and bounded retention; conditional local recovery implemented in TLSWitnessedMixedRecipientInbox",
+    "Pre-L3 withheld/cancel events, cross-route public protocol and complete observation refinement",
+    "Production identities/key custody, independent failure domains and scalable witness",
+    "Independent CDDL/COSE interoperability and parser security review",
+    "Full P2 scenario with trusted contribution lineage, strong baselines and broader P3-P6 goals"
+  ],
+  "receiver_authority_extension": "witnessed_recipient_contract.json"
+}

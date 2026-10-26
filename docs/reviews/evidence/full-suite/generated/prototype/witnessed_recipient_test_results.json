@@ -1,0 +1,85 @@
+{
+  "passed": true,
+  "test_methods": 21,
+  "authenticated_receiver_witness_requests": 203,
+  "delivery_exchange_attempts": 15,
+  "observed_delivery_tls_versions": [
+    "TLSv1.2"
+  ],
+  "ssl_library": "LibreSSL 2.8.3",
+  "actual_process_crash_scenarios": [
+    {
+      "operation": "accept",
+      "point": "before_witness_accept"
+    },
+    {
+      "operation": "accept",
+      "point": "after_witness_accept"
+    },
+    {
+      "operation": "accept",
+      "point": "after_local_anchor_write"
+    },
+    {
+      "operation": "accept",
+      "point": "after_inbox_commit"
+    },
+    {
+      "operation": "close",
+      "point": "before_inbox_terminal_commit"
+    },
+    {
+      "operation": "close",
+      "point": "after_witness_accept"
+    },
+    {
+      "operation": "close",
+      "point": "after_inbox_terminal_commit"
+    },
+    {
+      "operation": "restore",
+      "point": "after_recovery_delete"
+    },
+    {
+      "operation": "restore",
+      "point": "before_recovery_commit"
+    },
+    {
+      "operation": "restore",
+      "point": "after_recovery_commit"
+    }
+  ],
+  "crash_scenario_count": 10,
+  "source_sha256": {
+    "witnessed_recipient.py": "64060786a6bfa383302f1c999648aa6323fafdd34b620e70b923b95037b68cad",
+    "test_witnessed_recipient.py": "d1c464fe282303cfa5446ce9e01823c81bab2a6063118299bc2e1b0226b2b7b9",
+    "delivery_transport.py": "71a96b0310b1004946725e09b89178fdfde5ba7b0205cf1179f95b5da134bc9e",
+    "delivery_terminal.py": "29203cf6a3fa8fce2062cb8a987d61f8a131814ad50f287d0eaf21dad422d2b2",
+    "mixed_delivery_transport.py": "9127fe54d9bb7e396c4056f7db7de15f2f299d647bbb1e1cc77d23d5d1a4b491",
+    "mixed_delivery_terminal.py": "67b759be033cb2f3ce26db2caaa7afc816f1b7f723934fb22445d434ab137acc",
+    "witnessed_ledger.py": "fe62b6e3f2a3e6f267316ea1e819fe3423b6bdfe6c54c7439c8411c506c51353",
+    "witness_transport.py": "7226ebcaaf994f155990e31f747bd8a5ea1625f4ab52ee67a2ccad8ed976983f",
+    "wire.py": "b2e95928c604c923ec549a74f599fd4a16fc4ccec5841474aabf64ec55de6d58",
+    "encrypted_ledger.py": "c1ac348a1657483efeaeb0eb4d43bae80b3990ce9b461f0a2b1533dd17ce32be",
+    "witnessed_mixed_ledger.py": "9d58044454873d31648c0011c296b779d0d90f4449546c44fcb7d8d8b623aced",
+    "encrypted_mixed_ledger.py": "1a085da145bd7fd0ef95a411fbfa3d9b94132508e7a9210127daeb5d2aca5740",
+    "mixed_delegated_ledger.py": "69b87ad162fe3d462fcb31baccb6919e82938a7e8e2b20ea570737b7e9dde7bc",
+    "histogram_ledger.py": "afac61ce7dbc8cfe01e6756a243eea389724d59c8f51bcd22b2c0c2d606c32e0",
+    "delegated_ledger.py": "28cd13ef8d6b43f2ca1c9d273f3d32b92943278a0dbef2894eed1dc570cf3862",
+    "signed_ledger.py": "e777d588e232d0f6f42f3d935b8105ec8b17045ef3eb2cec516975f04a4cd22f",
+    "scheduled_ledger.py": "d8d4b2c32b5028066190845298f8e434fe5d6e262e5adad1c48d221be06511e0",
+    "dp_ledger.py": "35f0c336d549bf0145fd79bcb9b02416b0a729d60d990fc34e477b744887054b",
+    "ledger.py": "5bdd63777480e26d56d89d00e4d0f7a7030668377ca164756f2752103cf04dc7",
+    "../fixed_work_model.py": "06b194302f777bec7977166869f6e83ee11daf83d7b2c1c302ae9bf013603860",
+    "../histogram_kernel.py": "9f369419e74020f2fc8e55fb74f5174d3d6c235e513b0bc6867064923f235831",
+    "test_delivery_transport.py": "1a8eebe3e8650f2c6a2d6649bdc041bcd3da49742490dd68ec8a2ed45f861b2d",
+    "test_mixed_delivery_transport.py": "8bd848285ee32a68d3cd06bf32f892ed747e4b7cf2ff3f264022776fcb87781d",
+    "test_encrypted_mixed_ledger.py": "d2c87ea063425d266d2238758ebc0c5f1de74057fff4bdf2ebff0c6eed4a2589",
+    "test_mixed_delegated_ledger.py": "9babf15f2c9584ed6ebd3d040376d81fb61ce1e97a2e71ea1cad4c377ecbd616",
+    "test_witnessed_mixed_ledger.py": "0d764a9322f15488d1fed5a91f2019ec01296ffb63504b9693e20eb13111b06e",
+    "test_witness_transport.py": "ee6c2a89477e045435b262f87adb8d3d33490a55cab27309708a366b8b3be922"
+  },
+  "failures": [],
+  "errors": [],
+  "scope": "Synthetic mixed terminal inbox with separate authenticated loopback CAS authority; local rollback fenced conditional on authority nonrollback. No pruning, production failure-domain proof, external-effect exactly-once or full observation proof."
+}

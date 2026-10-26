@@ -155,7 +155,7 @@ class RecoveryTests(unittest.TestCase):
 
     def test_revocations_replay_tombstones_and_clock_floor_are_recovered(self):
         chain=chain_fixture();raw,p=packet(self.l,chain);old=self.root/'old';backup(self.l.db,old)
-        self.l.register_delegated(raw,p,chain);self.l.revoke_credential('t','workergrant')
+        self.l.register_delegated(raw,p,chain);self.l.revoke_credential('t','workergrant',root_id='root',kind='delegation',issuer_kid=b'manager')
         stale=self.open_clone(old)
         try:
             self.reject('WITNESS_RECOVERY_REQUIRED',lambda:stale.register_delegated(raw,p,chain))
@@ -174,7 +174,7 @@ class RecoveryTests(unittest.TestCase):
     def test_existing_ticket_and_emit_record_survive_recovery(self):
         register(self.l);finish(self.l);self.l.admit_delivery('t','a','reader','ticket','gw','session')
         old=self.root/'old';backup(self.l.db,old)
-        result=self.l.emit('t','ticket','reader','gw','session');self.l.revoke_credential('t','workergrant')
+        result=self.l.emit('t','ticket','reader','gw','session');self.l.revoke_credential('t','workergrant',root_id='root',kind='delegation',issuer_kid=b'manager')
         stale=self.open_clone(old)
         try:
             self.reject('WITNESS_RECOVERY_REQUIRED',lambda:stale.emit('t','ticket','reader','gw','session'))

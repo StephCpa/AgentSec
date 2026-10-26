@@ -1,0 +1,81 @@
+{
+  "profile": "v2-frame-bound-canonical-image-v1",
+  "implementation": "retention_recipient.py:capacity_certificate",
+  "scope": "A sufficient upper bound for one immutable v2 recipient route current canonical witness image; not an exact maximum feasible window.",
+  "status": "enforced_before_database_open_or_creation_and_before_authority_calls",
+  "limit_bytes": 16777216,
+  "derivation": [
+    "Schema objects and column names come from the built-in trusted in-memory SQL schema; profile, key check, namespace and encoded context are exact configured values.",
+    "All live facts, signed evidence envelopes/controls and latest signed retirement offer are validated through retention_wire.frame; their plaintext lengths are each at most 8192 bytes.",
+    "StateVault adds exactly 36 bytes (8-byte header, 12-byte nonce, 16-byte tag), so each protected field is at most 8228 bytes. Hex serialization doubles byte payload length.",
+    "Metadata high/floor are fixed 8-byte BLOBs, root is 32 bytes, observed time is a nonnegative integer at most 2^62. The non-null maximal latest offer dominates its initial null representation.",
+    "Live rows contain 8-byte sequence, 64-character lowercase hexadecimal derived identity, encrypted fact and encrypted evidence. Fixed text has no JSON escaping expansion.",
+    "Use actual pack_cell and canonical JSON to serialize one maximal metadata row with empty live array: length M. Serialize one maximal live row and one comma: length L.",
+    "For n>0 rows, maximum envelope length is M+n*L-1; for zero rows it is M. Sorting rows changes order, not length. Validated live interval bounds n<=W, hence image bytes <= M+W*L.",
+    "Admit only when M+W*L <= the current configured witness MAX_IMAGE. The gate runs before connecting to or creating the recipient SQLite file and before any authority call. A changed limit is rechecked on reopen/restore.",
+    "This intentionally charges the full frame maximum independently to facts, evidence and latest offer; actual legal objects may be much smaller. Rejecting W above the sufficient bound does not prove that every possible workload would overflow."
+  ],
+  "default_context_certificate": {
+    "basis": "v2-frame-bound-canonical-image-v1",
+    "frame_bytes": 8192,
+    "encrypted_field_bytes": 8228,
+    "metadata_bytes": 18740,
+    "live_row_bytes": 33045,
+    "window": 3,
+    "image_limit": 16777216,
+    "bound_bytes": 117875,
+    "safe_window_upper_limit": 507
+  },
+  "maximum_context_certificate": {
+    "basis": "v2-frame-bound-canonical-image-v1",
+    "frame_bytes": 8192,
+    "encrypted_field_bytes": 8228,
+    "metadata_bytes": 19355,
+    "live_row_bytes": 33045,
+    "window": 507,
+    "image_limit": 16777216,
+    "bound_bytes": 16773170,
+    "safe_window_upper_limit": 507
+  },
+  "validation": {
+    "suite": "retention_recipient_test_results.json",
+    "passed": true,
+    "test_methods": 28,
+    "new_capacity_tests": 5,
+    "checks": [
+      "oversized context rejects before recipient file creation or authority head change",
+      "bound-sized cap admitted and one byte less rejected",
+      "maximum-width context and maximal protected-field serializer fixture near 16 MiB",
+      "actual StateVault overhead and real accept/retire/restore image lifecycle",
+      "incompatible reopen limit and malformed limits reject without state mutation"
+    ],
+    "serializer_fixture_bytes": 16773169,
+    "one_more_window_bound_bytes": 16806215,
+    "fixture_has_valid_signed_facts": false,
+    "actual_lifecycle_image_bytes": [
+      2262,
+      4714,
+      7165,
+      9616,
+      2864,
+      2864
+    ],
+    "limitations": "The saturation fixture uses fake ciphertext to exercise storage serialization, rolled back without authority publication. Actual signed lifecycle is separately tested with small window and mixed jobs; no maximum-window valid-event performance claim."
+  },
+  "compatibility": "No database schema change or implicit context mutation. Existing route whose configured W fails the new conservative gate cannot be opened by this build; no automatic shrink, epoch reset or erasure. Deployment/migration and offline recovery tooling are not provided.",
+  "excluded": [
+    "physical SQLite pages/free-list/WAL/journal",
+    "temporary serialization/encryption/transport memory",
+    "sender archive and request maps",
+    "authority commit history and backups",
+    "aggregate routes/epochs/processes/workers",
+    "network scheduling and public timing observations"
+  ],
+  "remaining": [
+    "Tighter field-specific admission bounds if required by workloads",
+    "Authenticated deployment configuration and recovery policy for changed storage limits",
+    "Scalable journal and bounded aggregate resources",
+    "Archive retrieval/availability and retention governance",
+    "Independent security/interop review, production nonrollback and full P2/observation proof"
+  ]
+}

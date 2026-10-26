@@ -1,0 +1,15 @@
+test_actual_process_cuts_preserve_both_state_families (__main__.CombinedTests) ... ok
+test_combined_schema_and_no_profile_downgrade (__main__.CombinedTests) ... ok
+test_compiled_snapshots_remain_paired_after_retirement_and_archive (__main__.CombinedTests) ... ok
+test_expired_terminal_path_does_not_decrypt_result_or_refund (__main__.CombinedTests) ... ok
+test_fresh_restore_keeps_inputs_outputs_and_retirement_evidence (__main__.CombinedTests) ... ok
+test_full_network_scenario_starts_from_compiled_records (__main__.CombinedTests) ... ok
+test_recovery_checks_contribution_audit_with_valid_delivery_history (__main__.CombinedTests) ... ok
+test_recovery_checks_delivery_audit_with_valid_contributions (__main__.CombinedTests) ... ok
+test_reply_loss_after_preparation_recovers_same_envelope (__main__.CombinedTests) ... ok
+test_writer_still_accepts_only_authenticated_envelopes (__main__.CombinedTests) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 9.619s
+
+OK

@@ -1,0 +1,210 @@
+{
+  "profile": "mixed-receiver-retention-v2-candidate",
+  "status": "v2_sender_and_receiver_authority_transactions_logical_gc_and_loopback_mtls_fixture_integrated",
+  "production_gc_implemented": false,
+  "compatibility": "New wire/storage version and trusted route epoch required. Existing v1 retains every record; no implicit migration.",
+  "problem": [
+    "Deleting receiver evidence before sender authoritative confirmation can destroy the only recoverable first-event fact.",
+    "A sequence floor alone does not prevent reuse of a forgotten free-text delivery ID at a later sequence.",
+    "A commitment authenticates history but does not reconstruct it."
+  ],
+  "identity": {
+    "delivery_id": "Full lowercase hex SHA256(CBOR([\"retention-delivery-id\",2,context_hash,sequence])); context_hash=SHA256(CBOR([\"retention-context\",2,canonical_context])). Context binds deployment, route, immutable epoch, both authority namespaces, both Ed25519 key pins/kids, both TLS certificate pins and public window. Implemented in prototype/retention_wire.py; same context cannot be mutated in place.",
+    "route_epoch": "Trusted immutable unique incarnation; not selected or reset by an untrusted request. Bound to both authority namespaces.",
+    "sequence": "Candidate uint64 sequence 1..2^64-1, never wrap. Store last finalized high-water H and explicit exhaustion; next=H+1 only below maximum. Python model uses unbounded integers over finite explorations.",
+    "semantic_limit": "Uniqueness is per immutable route incarnation. New authorized operations can intentionally repeat application content; this is not semantic deduplication of arbitrary business requests."
+  },
+  "state": {
+    "receiver": "Authoritative (route, epoch, F_R, D_F, H, clock_floor, live records F_R+1..H), with public window W; local replica must equal current authority before writes or first-event replies.",
+    "sender": "Authoritative confirmed frontier F_S, recorded retirement frontier F_T, and retained authenticated canonical final facts through F_S. Sender evidence remains an archive.",
+    "ghost": "Full history in retention_model.py is an assertion oracle, not bounded receiver storage.",
+    "commitment": "Genesis=SHA256(CBOR([\"retention-prefix-genesis\",2,context_hash])); D_i=SHA256(CBOR([\"retention-prefix-step\",2,D_(i-1),canonical_fact_bytes_i])). Fact bytes contain profile/context hash, seq/derived ID, action_digest, descriptor_hash, issued_at/expires_at, outcome, event_at and envelope_hash. Challenge/request/signature bytes excluded. Implemented; complete v2 descriptor/evidence codec implemented in prototype/retention_delivery.py; L3 and both authority transactions implemented in retention_sender.py and retention_recipient.py; full refinement proof remains open."
+  },
+  "invariants": [
+    "0 <= F_T <= F_R <= F_S <= H",
+    "live records equal the exact contiguous unretired history F_R+1..H",
+    "D_F commits to exactly the retired prefix",
+    "Every delivery ID is the route/epoch/sequence derived value and cannot be rebound",
+    "H and all frontiers never decrease; deletion never resets the next sequence",
+    "0 <= H-F_R <= W; admission at full window fails without changing historical facts",
+    "Retirement does not alter privacy consumption, reservations, randomness, release expiry or previous final outcomes"
+  ],
+  "protocol": [
+    {
+      "step": "persist_final_fact",
+      "rule": "Receiver establishes ACCEPTED or CLOSED under existing validity rules, accepts full state at its authority, commits locally, then signs its first-event receipt. Outcome/time immutable."
+    },
+    {
+      "step": "sender_confirm",
+      "rule": "Sender authenticates receipt and stores its normalized final fact and contiguous F_S at sender authority before issuing any retirement authorization. Volatile receipt knowledge is insufficient."
+    },
+    {
+      "step": "retire_offer",
+      "rule": "Sender signs distinct RetireOffer domain binding exact route/epoch, both authority namespaces, base F_T, target T<=F_S and D_T. It retains supporting full facts; recipient trusts this signer to enforce durable confirmation. A signature alone does not prove persistence to an external observer."
+    },
+    {
+      "step": "receiver_retire",
+      "rule": "Current local replica required. Require base==F_R, F_R<T<=H, every interval record present, recomputed D_T matches offer. Atomically advance F_R/D_F and delete exactly the prefix while preserving H/clock/route metadata. Receiver authority accepts first, local commit second, reply third."
+    },
+    {
+      "step": "retire_receipt",
+      "rule": "Distinct signed RetireAck binds current challenge, complete request/offer digest, exact route/epoch/namespaces and accepted floor/root. Failed or unknown authority outcome requires current-head recovery; no unconditional second transition."
+    },
+    {
+      "step": "sender_checkpoint",
+      "rule": "After lost reply, authenticated checkpoint read is sufficient only if sender independently matches floor<=F_S and D_F to its archived final facts. Persist F_T before preparing next base. Old offers cannot lower floor; an already applied exact target can return the current checkpoint without inventing first-event evidence."
+    },
+    {
+      "step": "old_query",
+      "rule": "For sequence<=F_R return authenticated RETIRED checkpoint. Never relabel as CLOSED, never fabricate first-event time, never reaccept. Exact historical recovery requires an available authenticated archive plus sufficient chain evidence."
+    }
+  ],
+  "fault_contract": {
+    "before_authority": "Old authoritative state remains; do not claim deletion succeeded.",
+    "after_authority_before_local": "Freeze stale local copy and restore new authority image. The deleted prefix stays retired.",
+    "after_local_before_reply": "Read current checkpoint with a fresh authenticated challenge and reconcile sender retained facts.",
+    "sender_confirm_reply_loss": "Recover sender authority before deciding which target may be retired.",
+    "sender_or_network_permanent_failure": "Window can fill and stop new work. No unconditional liveness or automatic timeout deletion.",
+    "both_authorities_rollback": "Outside guarantee; local consistency cannot detect rollback of all trusted history."
+  },
+  "capacity": {
+    "bound": "For one fixed route with bounded encodings, receiver current-state bytes <= M + W*L; M bounds permanent metadata and L bounds a maximal live record including serialization overhead.",
+    "admission_gate": "Implemented in prototype/retention_recipient.py: exact schema/context metadata plus maximal frame-sized encrypted cells, actual canonical serialization; require M+W*L<=MAX_IMAGE before database creation/open or authority calls. Sufficient conservative bound, not maximal possible W. See prototype/retention_capacity_contract.json.",
+    "excluded_storage": [
+      "sender/archive history",
+      "witness commit history and old full images",
+      "backups/WAL/transient allocation",
+      "unbounded route or epoch creation"
+    ],
+    "current_v1": "16 MiB full-image cap and retain-all behavior remain unchanged.",
+    "evidence": {
+      "default_context_certificate": {
+        "basis": "v2-frame-bound-canonical-image-v1",
+        "frame_bytes": 8192,
+        "encrypted_field_bytes": 8228,
+        "metadata_bytes": 18740,
+        "live_row_bytes": 33045,
+        "window": 3,
+        "image_limit": 16777216,
+        "bound_bytes": 117875,
+        "safe_window_upper_limit": 507
+      },
+      "actual_lifecycle_image_bytes": [
+        2262,
+        4714,
+        7165,
+        9616,
+        2864,
+        2864
+      ],
+      "actual_vault_overhead_bytes": 36,
+      "maximum_context_certificate": {
+        "basis": "v2-frame-bound-canonical-image-v1",
+        "frame_bytes": 8192,
+        "encrypted_field_bytes": 8228,
+        "metadata_bytes": 19355,
+        "live_row_bytes": 33045,
+        "window": 507,
+        "image_limit": 16777216,
+        "bound_bytes": 16773170,
+        "safe_window_upper_limit": 507
+      },
+      "serializer_fixture_bytes": 16773169,
+      "one_more_window_bound_bytes": 16806215,
+      "fixture_has_valid_signed_facts": false
+    }
+  },
+  "information_limit": {
+    "claim": "If n independently varying ACCEPTED/CLOSED outcomes must be answered exactly for every historical index using retained state alone, at least n bits of distinguishable retained information are needed.",
+    "argument": "There are 2^n possible outcome histories; fewer than 2^n retained states map two histories to the same state, but the histories differ on some queried index. No deterministic exact answer can satisfy both. First-event times add information.",
+    "qualification": "This is an elementary exact-recovery counting argument, not a computational collision attack. A fixed-size cryptographic commitment may bind an archived history computationally, but does not provide archive data or availability."
+  },
+  "induction_obligations": [
+    "Base: empty route has zero frontiers, empty live set, route-bound genesis and no spent-history reset.",
+    "Finalization: current authority fence, next unique ID and available window append exactly one final fact without changing existing facts.",
+    "Confirmation: authenticated immutable receipt extends only the sender contiguous confirmed prefix.",
+    "Offer/retirement: trusted durable offer gives T<=F_S; exact matching interval/root and one atomic authority transition preserve all retained/deleted-history relations.",
+    "Checkpoint: root checked against sender retained history ensures F_T never exceeds receiver retirement or sender confirmation.",
+    "Recovery/replay: local rollback does not alter authority; fence prevents stale writes; exact authority recovery preserves all invariants.",
+    "Full implementation refinement remains a proof obligation. Both authority transactions, signed facts, uint64 storage, tested crash cuts and conservative current-image byte admission exist; this does not establish all protocol transitions, total resource bounds or complete public observations."
+  ],
+  "evidence": {
+    "model": "retention_model.py",
+    "report": "retention_results.json",
+    "cases": [
+      [
+        1,
+        1
+      ],
+      [
+        2,
+        1
+      ],
+      [
+        2,
+        2
+      ],
+      [
+        3,
+        1
+      ]
+    ],
+    "states_per_case": [
+      161,
+      1057,
+      2529,
+      2849
+    ],
+    "negative_mutants": 7,
+    "constructive_drain_operations": 1000,
+    "scope": "Finite safety exploration. Drain is a fault-free macro schedule with invariant checks, not transition-by-transition liveness verification or deployed fault testing. A/C outcome validity and cryptography are abstracted."
+  },
+  "next_gates": [
+    "Scalable authority/history storage and bounded aggregate resources; per-route current-image admission implemented",
+    "Production audit access, scalable archive retrieval, availability and retention governance",
+    "Independent COSE/CDDL interoperability and parser review",
+    "Cross-host authority fault tests, identity/key lifecycle and production nonrollback evidence",
+    "Complete P2 workflow, strong baselines and full public-observation refinement; broader P3-P6 goals"
+  ],
+  "wire_evidence": {
+    "contract": "prototype/retention_wire_contract.json",
+    "implementation": "prototype/retention_wire.py",
+    "tests": "prototype/retention_wire_test_results.json",
+    "test_methods": 28,
+    "independent_interoperability": false,
+    "durable_gc": false
+  },
+  "delivery_evidence": {
+    "contract": "prototype/retention_delivery_contract.json",
+    "report": "prototype/retention_delivery_test_results.json",
+    "test_methods": 22,
+    "complete_descriptor_and_evidence_codec": true,
+    "actual_L3_or_network_integration": false
+  },
+  "sender_integration": {
+    "contract": "prototype/retention_sender_contract.json",
+    "report": "prototype/retention_sender_test_results.json",
+    "test_methods": 25,
+    "crash_scenarios": 23,
+    "receiver_gc": true
+  },
+  "logical_recipient_gc_implemented": true,
+  "receiver_integration": {
+    "contract": "prototype/retention_recipient_contract.json",
+    "report": "prototype/retention_recipient_test_results.json",
+    "test_methods": 28,
+    "crash_scenarios": 15,
+    "logical_gc": true,
+    "network_fixture": true,
+    "byte_capacity_admission": true
+  },
+  "archive_integration": {
+    "contract": "prototype/retention_archive_contract.json",
+    "report": "prototype/retention_archive_test_results.json",
+    "test_methods": 19,
+    "read_only": true,
+    "paginated_full_prefix_verification": true,
+    "network_endpoint": false,
+    "availability_guarantee": false
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "profile": "witnessed-delegated-count-v1",
+  "status": "synthetic-reference-protocol-with-assumed-trusted-witness",
+  "implementation": "witnessed_ledger.py",
+  "witness_implementation": "Independent local SQLite ReferenceWitness; not a deployed or authenticated remote service",
+  "authority_assumptions": [
+    "linearizable CAS",
+    "accepted history never rolls back",
+    "current head cannot be forged or replayed",
+    "trusted namespace bootstrap and writer authorization",
+    "accepted full recovery image remains available"
+  ],
+  "namespace": "hex of trusted-bootstrap fixed deployment_id; not supplied by Agent",
+  "local_anchor": [
+    "sequence",
+    "state_digest"
+  ],
+  "state_digest": "SHA256(ASCII(agent-ledger-image-v1) || 0x00 || canonical_image_bytes)",
+  "image": {
+    "format": "agent-ledger-image-v1",
+    "encoding": "ASCII JSON; sorted object keys; compact separators; rows sorted by canonical encoding; typed cells null/int/text/bytes-hex",
+    "coverage": "all trusted schema objects and table rows except local witness_anchor; private fields remain AEAD envelopes",
+    "max_bytes": 16777216,
+    "contains_storage_master_key": false,
+    "recovery_executes_stored_sql": false
+  },
+  "commit_protocol": [
+    "BEGIN IMMEDIATE locally; check storage profile",
+    "Verify local anchor equals current witness head and local image matches digest",
+    "Observe monotonic clock; execute business changes under savepoint",
+    "Build complete post-state image; generate independent random 128-bit CAS request ID for this transaction",
+    "Witness CAS expected sequence/digest, atomically storing full image and exact request record",
+    "Validate witness receipt; write local anchor and commit locally",
+    "Only now return success or result"
+  ],
+  "linearization": "Witness acceptance is authoritative; local commit is required before caller success, but its failure cannot undo an accepted witness state",
+  "admission_schedule": "One dedicated durable L1 slot before any private row/noise access; N+81 kernel steps follow; total N+82 public slots",
+  "request_idempotency": "Same namespace/request ID must bind same base sequence/digest and image digest; changed content rejects; distinct request IDs cannot reuse historical success merely because their images match",
+  "recovery_protocol": [
+    "Read current authoritative image, never initialize missing witness from local data",
+    "Check image digest and exact trusted local schema; do not execute image SQL",
+    "Replace local table contents atomically with deferred foreign-key validation",
+    "Check canonical image, foreign keys, storage profile, signature/chain/account audits and AEAD fields",
+    "Reject if witness head is observed changing during recovery",
+    "Commit restored anchor; all subsequent business attempts recheck current head"
+  ],
+  "failure_rules": {
+    "before_witness_acceptance": "Discard tentative local state; no accepted L1 may be inferred",
+    "witness_outcome_unknown": "Block business use of divergent local replica; recover current witness state, never assume refund",
+    "after_witness_acceptance_before_local_commit": "Restore exact accepted seed/result/charges; never compensate by rewinding witness",
+    "witness_missing_or_unavailable": "Fail closed; no offline admission or automatic bootstrap",
+    "recovery_interrupted": "Local transaction rolls back or fully commits; repeat recovery without business execution",
+    "both_local_and_witness_rolled_back": "Undetectable in this reference protocol; violates authority assumption"
+  },
+  "remaining_production_work": [
+    "Production CA, pinned signer and writer identity lifecycle",
+    "Nonrollback independent fault domain",
+    "Replicated immutable recovery data and disaster drills",
+    "Bounded network/server resource handling without long-held ledger locks",
+    "Efficient incremental log",
+    "Full observation refinement and physical timing analysis"
+  ],
+  "authenticated_adapter": {
+    "implementation": "witness_transport.py",
+    "profile": "mtls-witnessed-delegated-count-v1",
+    "contract": "witness_transport_contract.json",
+    "scope": "Loopback mTLS and challenge-bound signed responses; independent nonrollback deployment still assumed"
+  }
+}

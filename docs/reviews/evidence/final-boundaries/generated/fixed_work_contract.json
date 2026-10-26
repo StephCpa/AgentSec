@@ -1,0 +1,66 @@
+{
+  "status": "candidate_not_approved_for_sensitive_data",
+  "mechanism_id": "bounded_geometric_count_v1_candidate",
+  "input_contract": {
+    "public_capacity": "N fixed before private snapshot evaluation",
+    "record_value_domain": [
+      0,
+      1
+    ],
+    "per_user_contribution_max": 1,
+    "adjacency": "add/remove one user, represented by padded empty slot",
+    "preprocessing": "Fixed-roster compiler and combined contribution-retention reference workflow now exist; real identity/classifier/global lineage and ingestion observation guarantees remain open."
+  },
+  "parameters": {
+    "K": 40,
+    "random_bits": 80,
+    "work_steps": "N+81",
+    "output": "clamp(count + G1 - G2, 0, N)",
+    "bit_source": "ideal independent uniform bits in proof; prototype uses first 80 bits of persisted secrets.token_bytes(32), OS source not independently reviewed",
+    "work_steps_scope": "count kernel only; excludes durable L1 admission"
+  },
+  "guarantee": {
+    "epsilon": "ln(2)",
+    "delta_numerator": 1,
+    "delta_denominator": 2199023255552,
+    "ordinary_rdp_bound": "infinite in general"
+  },
+  "accounting": {
+    "profile": "approx_dp_fixed_cost_v1_candidate",
+    "epsilon_micro_units": 700000,
+    "delta_q64_units": 8388608,
+    "admission": "both dimensions: spent + reserved + new <= cap",
+    "after_start_refund": false,
+    "cross_profile_migration": "disabled until history conversion is specified and verified",
+    "prototype_integration": "prototype/dp_ledger.py; synthetic data, fixed profile, no migration",
+    "integer_limit_max": 4611686018427387904
+  },
+  "observation_profile": {
+    "id": "fixed_logical_work",
+    "proof_model": "public logical scheduler; output/tick/control joint traces",
+    "physical_constant_time_verified": false,
+    "data_dependent_failure_allowed": false,
+    "database_integration": true,
+    "logical_scheduler_database_integration": true,
+    "database_integration_scope": "synthetic single-database logical steps, L2 atomic commit and internal publication eligibility; no public network adapter",
+    "durable_scheduler_work_steps": "N+82: one public admission slot before N+81 kernel steps",
+    "seed_before_private_read": "L1 commits in its own transaction; witnessed profile also requires witness acceptance",
+    "external_protocol_model": "public_transcript_contract.json; finite executable design only, not a public runtime gateway"
+  },
+  "activation_gates": [
+    "approved contribution-bounded snapshot pipeline",
+    "reviewed random-bit and fixed-work implementation",
+    "durable scheduler and transactional result publication",
+    "two-dimensional ledger accounting",
+    "authenticated identity and action binding",
+    "joint real deployment observation contract"
+  ],
+  "verification_report": "fixed_work_results.json",
+  "implementation_evidence": {
+    "typed_account_and_count": "prototype/dp_test_results.json",
+    "public_scheduler_integration": false,
+    "sensitive_data_approved": false,
+    "logical_scheduler": "prototype/scheduled_test_results.json",
+    "public_scheduler_integration_note": "External network publication and response protocol remain unimplemented"
+  }
+}

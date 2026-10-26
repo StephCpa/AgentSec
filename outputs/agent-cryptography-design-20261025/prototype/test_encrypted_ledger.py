@@ -233,7 +233,7 @@ class EncryptedTests(unittest.TestCase):
         self.reopen();finish(self.l)
         self.assertEqual(raw_op(self.l)['seed'],seed);self.assertEqual(raw_op(self.l)['state'],'BURNED')
         self.assertEqual(raw_job(self.l)['publication'],'WITHHELD')
-        register(self.l,'b',b'q'*16);self.l.revoke_credential('t','workergrant');finish(self.l)
+        register(self.l,'b',b'q'*16);self.l.revoke_credential('t','workergrant',root_id='root',kind='delegation',issuer_kid=b'manager');finish(self.l)
         self.assertEqual(raw_op(self.l,'b')['state'],'CANCELED')
         self.assertEqual(self.l.db.execute("SELECT spent,free FROM accounts WHERE id='domain:epsilon'").fetchone()[:],(E,2*E))
         self.assertEqual(self.l.audit(),[])

@@ -1,0 +1,29 @@
+{
+  "passed": true,
+  "test_methods": 22,
+  "crash_cut_count": 3,
+  "actual_process_crash_cuts": [
+    "after_chain_registration",
+    "before_reserve_commit",
+    "after_reserve_commit"
+  ],
+  "source_sha256": {
+    "delegated_ledger.py": "28cd13ef8d6b43f2ca1c9d273f3d32b92943278a0dbef2894eed1dc570cf3862",
+    "test_delegated_ledger.py": "1cee9d8febe72898d14c995a7ac93476889a2f2ae75129aa86d776f473c4c35f",
+    "ledger.py": "5bdd63777480e26d56d89d00e4d0f7a7030668377ca164756f2752103cf04dc7",
+    "dp_ledger.py": "35f0c336d549bf0145fd79bcb9b02416b0a729d60d990fc34e477b744887054b",
+    "scheduled_ledger.py": "d8d4b2c32b5028066190845298f8e434fe5d6e262e5adad1c48d221be06511e0",
+    "signed_ledger.py": "e777d588e232d0f6f42f3d935b8105ec8b17045ef3eb2cec516975f04a4cd22f",
+    "wire.py": "b2e95928c604c923ec549a74f599fd4a16fc4ccec5841474aabf64ec55de6d58",
+    "count_delegated_v1.cddl": "6749a97aa2991122227959e8b7ccb08c83a11f92a856c36b5b310dac16efec85",
+    "delegation_vectors.json": "58c4e9837b71da1d947f4811df70072d11488427afea572452acc3a84470f69b",
+    "test_signed_ledger.py": "c28e0f8fc365b5ff61e49343f2f1d433ae369c403f849efdb6ddb9c65745aa50",
+    "../fixed_work_model.py": "06b194302f777bec7977166869f6e83ee11daf83d7b2c1c302ae9bf013603860"
+  },
+  "python_version": "3.9.6 (default, Apr 30 2025, 02:07:17) \n[Clang 17.0.0 (clang-1700.0.13.5)]",
+  "sqlite_version": "3.43.2",
+  "cryptography_version": "49.0.0",
+  "failures": [],
+  "errors": [],
+  "scope": "Signed count delegation chains, monotone policies and all-ancestor cumulative caps; trusted registry, synthetic data; not full object-family protocol"
+}

@@ -1,0 +1,92 @@
+{
+  "implementation": "mixed_delivery_transport.py",
+  "storage_profile": "mtls-mixed-delivery-outbox-v1",
+  "wire_profile": "mixed-delivery-v1",
+  "objects": [
+    "MixedDelivery",
+    "MixedDeliveryAck"
+  ],
+  "composition": "DeliveryLedger lifecycle hooks + TLSWitnessedMixedLedger; MixedRecipientInbox/MixedDeliverySender; shared fixed-route mTLS framing",
+  "trust": {
+    "gateway": "Trusted signer checks signed mixed admission and authoritative committed result; recipient verifies gateway signature and shape, not full delegation chain or DP execution proof",
+    "witness": "Linearizable authenticated nonrollback authority assumed; loopback reference implementation",
+    "recipient": "Cooperating durable inbox; whole-store nonrollback external assumption, negative control demonstrates repeat acceptance after rollback"
+  },
+  "signed_fields": {
+    "context": [
+      "deployment",
+      "tenant",
+      "recipient",
+      "gateway",
+      "session",
+      "sender_cert",
+      "receiver_cert",
+      "delivery",
+      "operation",
+      "seq",
+      "issued_at",
+      "expires_at"
+    ],
+    "mechanism": [
+      "action_digest",
+      "domain",
+      "snapshot",
+      "accountant",
+      "mechanism",
+      "capacity",
+      "bucket_count",
+      "k",
+      "codec",
+      "catalog",
+      "catalog_digest",
+      "labels",
+      "result"
+    ],
+    "action_digest": "SHA256 canonical internal action JSON, not COSE wire action bytes; signed admission records in authoritative ledger bind wire action to internal action",
+    "catalog_digest": "SHA256 UTF-8 canonical JSON labels with ensure_ascii=False; ordered unique public labels, each 1..64 UTF-8 bytes",
+    "result": "Full 8B-byte vector, each uint64be <=N; count B=1 with empty catalog/digest/labels. Sum can exceed N; no omitted zero components"
+  },
+  "lifecycle": {
+    "L3": "Delivery ticket and QUEUED outbox atomic, only after full RELEASE; no Agent fetch/readiness API",
+    "prepare": "Bind complete result/metadata to trusted operation, sign once, encrypted immutable envelope persisted and witnessed before network",
+    "receive": "mTLS certificate pin before application bytes; receiver verifies sender certificate and MixedDelivery signature, closed fields, shape and original lifetime; BEGIN IMMEDIATE serializes full-record acceptance and sequence",
+    "retry": "Same full signed envelope and original acceptance time; new challenge binds each ACK",
+    "confirm": "ACK binds exact request/envelope hashes/challenge/receiver; encrypted evidence and ACKED state witnessed atomically; no new charges",
+    "expiry": "No first acceptance after expiry; historical valid ACK may be stored after expiry/revocation; missing ACK at expired head remains blocked until a future mixed terminal protocol"
+  },
+  "verification": {
+    "report": "mixed_delivery_test_results.json",
+    "test_methods": 21,
+    "process_exit_scenarios": 10,
+    "network_exchange_attempts": 30,
+    "tls_versions": [
+      "TLSv1.2"
+    ],
+    "maximum_field_size_request_bytes": 6680,
+    "frame_limit": 8192,
+    "full_pipeline": "N3 B4 histogram then N3 count, shared domain/ancestor accounts, signed delegated admission, encrypted storage, authenticated witness, mTLS inbox and ACK",
+    "B64_scope": "Signed transport/parser fixture with 64 maximal UTF-8 labels and 512-byte vector, plus maximum-field-size parser/framing check; not a B64 full pipeline performance test",
+    "negative_controls": [
+      "partial/truncated/extra/out-of-range vector",
+      "shape/catalog order/digest mismatch",
+      "old count profile/AAD/inbox downgrade",
+      "wrong mTLS identities and wrong signer",
+      "stale witnessed sender",
+      "whole recipient store rollback allows repeated first acceptance"
+    ],
+    "base_regressions": [
+      "delivery_transport:25",
+      "delivery_terminal:23"
+    ]
+  },
+  "remaining": [
+    "Base result-only profile intentionally has no terminal closure; MixedTerminalDeliveryLedger extension supplies result-free ACCEPTED/CLOSED protocol",
+    "Production receiver authority nonrollback/failure domains and bounded retention; conditional local recovery implemented in TLSWitnessedMixedRecipientInbox",
+    "Independent COSE/CDDL interop and parser review",
+    "Full observable trace proof and physical timing/multihost evaluation",
+    "Production witness/CA/signing/storage key lifecycle and scalable journal",
+    "Full P2 scenario/strong-baseline evaluation"
+  ],
+  "terminal_extension": "mixed_terminal_contract.json",
+  "receiver_authority_extension": "witnessed_recipient_contract.json"
+}

@@ -157,14 +157,14 @@ class DelegationTests(unittest.TestCase):
         self.reject('LEAF_BINDING',lambda:self.l.register_delegated(raw,proof,self.chain))
 
     def test_revocation_before_first_use_is_durable(self):
-        self.l.revoke_credential('t','workergrant')
+        self.l.revoke_credential('t','workergrant',root_id='root',kind='delegation',issuer_kid=b'manager')
         self.l.close();self.l=DelegatedLedger(self.path,clock=lambda:100)
         raw,p=packet(self.l,self.chain)
         self.reject('CREDENTIAL_REVOKED',lambda:self.l.register_delegated(raw,p,self.chain))
         self.assertEqual(self.l.db.execute('SELECT COUNT(*) FROM operations').fetchone()[0],0)
 
     def test_ancestor_revocation_before_l1_refunds_all_caps(self):
-        self.register();self.l.revoke_credential('t','workergrant');finish(self.l)
+        self.register();self.l.revoke_credential('t','workergrant',root_id='root',kind='delegation',issuer_kid=b'manager');finish(self.l)
         self.assertEqual(self.l.op('t','a')['state'],'CANCELED')
         self.assertTrue(all(r[0]==0 for r in self.l.db.execute('SELECT spent+reserved FROM accounts')))
 
@@ -177,7 +177,7 @@ class DelegationTests(unittest.TestCase):
 
     def test_existing_ticket_survives_ancestor_revocation_new_l3_fails(self):
         self.register();finish(self.l);self.l.admit_delivery('t','a','reader','old','gw','session')
-        self.l.revoke_credential('t','root')
+        self.l.revoke_credential('t','root',root_id='root',kind='grant',issuer_kid=b'authority')
         self.reject('ACTION_OR_KEY_INACTIVE',lambda:self.l.admit_delivery('t','a','reader','new','gw','session'))
         self.assertEqual(len(self.l.emit('t','old','reader','gw','session')),8)
 
@@ -254,7 +254,7 @@ class DelegationTests(unittest.TestCase):
             p=sign1(encode(dict(profile='count-direct-v1',action_digest=hashlib.sha256(raw).digest(),proof_id=b'r'*16,**ch)),b'manager',KEYS['manager'])
             self.reject('SERVICE_PROFILE_MISMATCH',lambda:direct.register_signed(raw,p))
             self.register();finish(self.l)
-            self.l.revoke_credential('t','workergrant')
+            self.l.revoke_credential('t','workergrant',root_id='root',kind='delegation',issuer_kid=b'manager')
             self.reject('SERVICE_PROFILE_MISMATCH',lambda:direct.admit_delivery('t','a','reader','bypass','gw','session'))
         finally:direct.close()
 

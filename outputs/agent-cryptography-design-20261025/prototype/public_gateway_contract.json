@@ -118,5 +118,17 @@
   "independent_interoperability": false,
   "complete_observation_privacy": false,
   "production_ready": false,
-  "observation_extension": "public_observation_contract.json: 32 conditional equal-output runtime traces, 96 directed neighbor comparisons and actual mTLS private-failure negative controls. Not a full privacy/refinement proof."
+  "observation_extension": "public_observation_contract.json: 32 conditional equal-output runtime traces, 96 directed neighbor comparisons and actual mTLS private-failure negative controls. Not a full privacy/refinement proof.",
+  "credential_identity_revision": {
+    "fields": [
+      "tenant",
+      "root",
+      "kind",
+      "issuer_kid",
+      "id"
+    ],
+    "revocation": "Required explicit full scoped identity, including pre-presentation tombstones. No bare-ID fallback.",
+    "storage": "Fresh scoped schema only; no legacy migration. Exact witness schema match required.",
+    "immutability": "Same identity has immutable signed bytes; parent links and cap accounts use full wire digest."
+  }
 }

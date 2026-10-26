@@ -1,0 +1,125 @@
+{
+  "passed": true,
+  "scenario": "P2 integrated reference workflow",
+  "roles": "Two signed concurrent Python analysis drivers and pure writer adapter; no live LLM or OS isolation claim.",
+  "events": [
+    {
+      "stage": "user_authorization",
+      "root": "root",
+      "delegation_depth": 2,
+      "analysis_subjects": [
+        "leaf",
+        "other"
+      ],
+      "shared_ancestor_cost_units": 2
+    },
+    {
+      "stage": "concurrent_shared_admission",
+      "registered": [
+        {
+          "operation": "analysis_hist",
+          "subject": "leaf"
+        },
+        {
+          "operation": "analysis_count",
+          "subject": "other"
+        }
+      ],
+      "operation_count": 2
+    },
+    {
+      "stage": "shared_cap_blocks_third_query",
+      "error": "BUDGET_EXHAUSTED"
+    },
+    {
+      "stage": "committed_reply_loss_and_retry",
+      "logical_tick": 169,
+      "fixed_seed_and_result": true,
+      "no_recharge": true
+    },
+    {
+      "stage": "committed_outputs_then_delivery_admission",
+      "tickets": 2,
+      "randomness_draws": {
+        "analysis_count": 1,
+        "analysis_hist": 1
+      }
+    },
+    {
+      "stage": "revocation_blocks_new_delivery",
+      "error": "ACTION_OR_KEY_INACTIVE",
+      "old_admitted_tickets_retained": true
+    },
+    {
+      "stage": "original_results_delivered",
+      "accepted": 2,
+      "lost_receipt_retry_preserved_first_time": true
+    },
+    {
+      "stage": "writer_uses_only_authenticated_outputs",
+      "input_count": 2,
+      "raw_snapshot_arguments": 0
+    },
+    {
+      "stage": "audit_matches_consumption_and_output",
+      "charged_operations": 2,
+      "charge_rows": 16,
+      "checked_accounts": 10,
+      "receiver_retired_floor": 2
+    }
+  ],
+  "network_requests": {
+    "sender_witness": 908,
+    "receiver_witness": 10,
+    "delivery": 4
+  },
+  "observed_tls_versions": [
+    "TLSv1.2"
+  ],
+  "randomness_draws": {
+    "analysis_count": 1,
+    "analysis_hist": 1
+  },
+  "committed_reply_loss_tick": 169,
+  "writer": {
+    "records": [
+      {
+        "operation": "analysis_count",
+        "delivery": "c680a0420bb905ebb365aeea2a7f30799cc534f0ec4bcac5736a9c789a6f2fbc",
+        "seq": 1,
+        "values": [
+          1
+        ],
+        "event_at": 100,
+        "descriptor_hash": "0a7f3c655daf09e55586d469221c933a5f82e4bf9c32111631a520897cc411ec"
+      },
+      {
+        "operation": "analysis_hist",
+        "delivery": "4df04c7c207e96c3d7357331c66a2c9d6d0c5c8111bcaba250c1518ec85ce4a7",
+        "seq": 2,
+        "values": [
+          1,
+          1,
+          2,
+          1
+        ],
+        "event_at": 100,
+        "descriptor_hash": "7741db1348b81c04b11c182199be7bb8dce5afa6e50859a362162bcdf70bcefc"
+      }
+    ],
+    "report_text": "已授权统计报告（合成演示）\nanalysis_count: [1]\nanalysis_hist: [1, 1, 2, 1]",
+    "input_policy": "Authenticated accepted envelopes only; no raw snapshot input."
+  },
+  "budget": {
+    "domain_epsilon_spent": 1400000,
+    "domain_delta_spent": 16777216,
+    "shared_ancestor_units": 2,
+    "charged_operations": 2,
+    "charge_rows": 16,
+    "checked_accounts": 10
+  },
+  "full_p2_production_acceptance": false,
+  "public_observation_proof": false,
+  "strong_baselines": false,
+  "trust": "Synthetic snapshots/keys, fixture-supplied input contribution bounds, same-host independent authority files/services, nonrollback assumed. No public identity provisioning or complete Agent-facing API."
+}

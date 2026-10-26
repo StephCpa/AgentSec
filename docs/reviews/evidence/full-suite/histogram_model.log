@@ -1,0 +1,197 @@
+{
+  "status": "passed",
+  "mechanism": "bounded_geometric_histogram_v1_candidate",
+  "scope": "Exact ideal-bit joint PMFs and fixed logical work; synthetic categorical snapshots; no signed ledger/network integration",
+  "guarantee": {
+    "adjacency": "add/remove one user assigned to one public bucket",
+    "epsilon": "ln(2)",
+    "delta": "2^(-(K+1))",
+    "K40_delta": "1/2199023255552",
+    "ordinary_rdp": "infinite in general",
+    "bucket_count_multiplier": 1
+  },
+  "dimensions": {
+    "profile_K": 40,
+    "bucket_count_range": [
+      1,
+      64
+    ],
+    "capacity_range": [
+      1,
+      65535
+    ],
+    "random_bits": "2KB",
+    "K40_random_bytes": "10B",
+    "kernel_steps": "B(N+2K+1)",
+    "planned_durable_steps": "1+B(N+81)",
+    "output_bytes": "8B"
+  },
+  "kernel_configurations": [
+    {
+      "B": 1,
+      "K": 1,
+      "N": 3
+    },
+    {
+      "B": 2,
+      "K": 1,
+      "N": 3
+    },
+    {
+      "B": 3,
+      "K": 1,
+      "N": 3
+    },
+    {
+      "B": 2,
+      "K": 2,
+      "N": 2
+    },
+    {
+      "B": 3,
+      "K": 2,
+      "N": 2
+    },
+    {
+      "B": 2,
+      "K": 3,
+      "N": 2
+    }
+  ],
+  "vector_check_grid": {
+    "B": [
+      1,
+      2,
+      3
+    ],
+    "K": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "N": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
+  },
+  "exhaustive_kernel_cases": 109264,
+  "complete_joint_distribution_checks": 133,
+  "single_bucket_matches_count_cases": 32,
+  "public_access_shape_checks": 6,
+  "scalar_exact_privacy_checks": 128,
+  "vector_directed_privacy_checks": 2360,
+  "max_fraction_of_delta_bound": "1",
+  "tight_examples": [
+    {
+      "B": 1,
+      "K": 1,
+      "N": 1,
+      "counts": [
+        0
+      ],
+      "adjacent": [
+        1
+      ],
+      "loss": "1/4"
+    },
+    {
+      "B": 2,
+      "K": 1,
+      "N": 1,
+      "counts": [
+        0,
+        0
+      ],
+      "adjacent": [
+        1,
+        0
+      ],
+      "loss": "1/4"
+    },
+    {
+      "B": 3,
+      "K": 1,
+      "N": 1,
+      "counts": [
+        0,
+        0,
+        0
+      ],
+      "adjacent": [
+        1,
+        0,
+        0
+      ],
+      "loss": "1/4"
+    }
+  ],
+  "K40_replay_cases": 16,
+  "K40_distinct_bucket_tape_layout_cases": 5,
+  "invalid_contract_cases": 9,
+  "negative_controls": {
+    "shared_noise": {
+      "K": 2,
+      "N": 5,
+      "counts": [
+        0,
+        0
+      ],
+      "adjacent": [
+        1,
+        0
+      ],
+      "hockey": "3/8",
+      "claimed_delta": "1/8"
+    },
+    "replacement_adjacency": {
+      "K": 2,
+      "N": 5,
+      "counts": [
+        1,
+        0
+      ],
+      "adjacent": [
+        0,
+        1
+      ],
+      "hockey": "81/256",
+      "claimed_delta": "1/8"
+    },
+    "multi_bucket_user": {
+      "K": 2,
+      "N": 5,
+      "counts": [
+        0,
+        0
+      ],
+      "adjacent": [
+        1,
+        1
+      ],
+      "hockey": "71/256",
+      "claimed_delta": "1/8"
+    },
+    "finite_rdp": {
+      "event": "first bucket output=0",
+      "P": "1/8",
+      "Q": "0",
+      "conclusion": "infinite for every alpha>1; pure DP fails"
+    }
+  },
+  "excluded": [
+    "user deduplication and stable bucket classification",
+    "snapshot lineage and contribution enforcement",
+    "production random-source review",
+    "signed action/ledger/vault/scheduler/vector transport integration",
+    "physical constant time and complete observable trace proof"
+  ],
+  "source_sha256": {
+    "histogram_kernel.py": "9f369419e74020f2fc8e55fb74f5174d3d6c235e513b0bc6867064923f235831",
+    "histogram_model.py": "d8b55c6c18a9c65ab47777c33c6afe723bc34bd5beacb3a19401996226fd8d63",
+    "fixed_work_model.py": "06b194302f777bec7977166869f6e83ee11daf83d7b2c1c302ae9bf013603860"
+  }
+}

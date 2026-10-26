@@ -92,8 +92,9 @@ def response(raw,request_wire,public_key,kid,deployment):
     actual,obj=verify_sign1(raw,public_key,RESPONSE_TYPE)
     if (actual!=kid or type(obj) is not dict or set(obj)!={'profile','deployment','request_hash','status','body','sequence'} or
         obj['profile']!=PROFILE or obj['deployment']!=deployment or obj['request_hash']!=hashlib.sha256(request_wire).digest() or
-        type(obj['sequence']) is not int or obj['sequence']<0 or type(obj['body']) is not dict or type(obj['status']) is not str or
+        type(obj['sequence']) is not int or not 0<=obj['sequence']<2**63 or type(obj['body']) is not dict or type(obj['status']) is not str or
         obj['status'] not in {'CHALLENGE','RECORDED','CONTROL_RECORDED','POLL','FINAL','REJECTED'}):raise Rejected('GW_RESPONSE')
+    if obj['status']!='REJECTED' and obj['sequence']==0:raise Rejected('GW_RESPONSE')
     validate_public_response_body(obj['status'],obj['body'])
     return obj
 
@@ -183,6 +184,7 @@ class PublicGatewayLedger(OrderedPublicationSender):
         return obj,decode(principal['rights'])
 
     def _reply(self,raw,status,body,seq,signer):
+        if type(seq) is not int or not 0<=seq<2**63 or (status!='REJECTED' and seq==0):raise Rejected('GW_RESPONSE')
         validate_public_response_body(status,body)
         config=self.gateway_config()
         if public(signer)!=config['public_key']:raise Rejected('GW_SERVER_KEY')

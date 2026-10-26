@@ -19,13 +19,14 @@ CREATE TABLE IF NOT EXISTS root_authorities (
  FOREIGN KEY(tenant,kid) REFERENCES signing_keys(tenant,kid)
 );
 CREATE TABLE IF NOT EXISTS credentials (
- tenant TEXT NOT NULL, id TEXT NOT NULL, digest BLOB NOT NULL, wire BLOB NOT NULL,
+ tenant TEXT NOT NULL, root_id TEXT NOT NULL, kind TEXT NOT NULL, issuer_kid BLOB NOT NULL,
+ id TEXT NOT NULL, digest BLOB NOT NULL, wire BLOB NOT NULL,
  revoked INTEGER NOT NULL DEFAULT 0,
- PRIMARY KEY(tenant,id), UNIQUE(tenant,digest)
+ PRIMARY KEY(tenant,root_id,kind,issuer_kid,id), UNIQUE(tenant,digest)
 );
 CREATE TABLE IF NOT EXISTS credential_revocations (
- tenant TEXT NOT NULL, credential_id TEXT NOT NULL,
- PRIMARY KEY(tenant,credential_id)
+ tenant TEXT NOT NULL, root_id TEXT NOT NULL, kind TEXT NOT NULL, issuer_kid BLOB NOT NULL,
+ credential_id TEXT NOT NULL, PRIMARY KEY(tenant,root_id,kind,issuer_kid,credential_id)
 );
 CREATE TABLE IF NOT EXISTS operation_chains (
  tenant TEXT NOT NULL, operation_id TEXT NOT NULL, position INTEGER NOT NULL,
@@ -64,6 +65,15 @@ def parse_credential(wire, *, profile='count-chain-v1', extra_policy_fields=()):
     return obj
 
 
+def credential_identity(obj):
+    """Identity under the signer's authority, independent of credential contents.
+
+    A new kid is a new issuer identity; in-place key rotation/rebinding is not
+    supported. Full wire digest still identifies parent links and cap accounts.
+    """
+    return (obj['tenant'],obj['root'],obj['kind'],obj['issuer_kid'],obj['id'])
+
+
 def cap_accounts(wire):
     prefix='credential:'+hashlib.sha256(wire).hexdigest()
     return prefix+':epsilon',prefix+':delta'
@@ -73,6 +83,19 @@ class DelegatedLedger(SignedLedger):
     accepted_profile='count-delegated-v1'
     parse_chain_credential=staticmethod(parse_credential)
     allowed_root_modes=('delegated',)
+
+    def __init__(self,path,*args,**kwargs):
+        super().__init__(path,*args,**kwargs)
+        try:
+            # No automatic reinterpretation of old bare-ID revocation tombstones.
+            for table,last in (('credentials','id'),('credential_revocations','credential_id')):
+                rows=self.db.execute('PRAGMA table_info('+table+')').fetchall()
+                if rows:
+                    pk=[r['name'] for r in sorted(rows,key=lambda r:r['pk']) if r['pk']]
+                    if pk!=['tenant','root_id','kind','issuer_kid',last]:
+                        raise Rejected('CREDENTIAL_NAMESPACE_SCHEMA_MISMATCH')
+        except BaseException:
+            self.close();raise
 
     @classmethod
     def create(cls,path,clock=None,**kwargs):
@@ -88,13 +111,17 @@ class DelegatedLedger(SignedLedger):
             self.db.execute('INSERT INTO root_authorities VALUES(?,?,?)',(tenant,root_id,kid))
             self.db.execute("UPDATE roots SET authorization_mode='delegated' WHERE tenant=? AND id=?",(tenant,root_id))
 
-    def revoke_credential(self,tenant,credential_id):
-        # Trusted control plane; no identity claim is inferred from this method.
-        identifier(tenant); identifier(credential_id)
+    def revoke_credential(self,tenant,credential_id,*,root_id,kind,issuer_kid):
+        # Trusted control plane; no bare-ID fallback or wildcard revocation.
+        identifier(tenant);identifier(root_id);identifier(credential_id)
+        if kind not in ('grant','delegation') or type(issuer_kid) is not bytes or not 1<=len(issuer_kid)<=32:
+            raise Rejected('CREDENTIAL_IDENTITY')
+        identity=(tenant,root_id,kind,issuer_kid,credential_id)
         with self.tx():
+            self.root(tenant,root_id);self.key(tenant,issuer_kid)
             # Tombstones also cover credentials never presented to the service.
-            self.db.execute('INSERT OR IGNORE INTO credential_revocations VALUES(?,?)',(tenant,credential_id))
-            self.db.execute('UPDATE credentials SET revoked=1 WHERE tenant=? AND id=?',(tenant,credential_id))
+            self.db.execute('INSERT OR IGNORE INTO credential_revocations VALUES(?,?,?,?,?)',identity)
+            self.db.execute('UPDATE credentials SET revoked=1 WHERE tenant=? AND root_id=? AND kind=? AND issuer_kid=? AND id=?',identity)
 
     def register_delegated(self,raw,proof,chain,fault=lambda p:None):
         if (type(chain) is not list or not 1<=len(chain)<=8 or
@@ -128,8 +155,8 @@ class DelegatedLedger(SignedLedger):
         previous=None; previous_wire=None; ids=set(); expiry=root['expires_at']
         for index,wire in enumerate(chain):
             obj=self.parse_chain_credential(wire); p=obj['policy']; digest=hashlib.sha256(wire).digest()
-            if obj['tenant']!=tenant or obj['root']!=root['id'] or obj['id'] in ids: raise Rejected('CHAIN_NAMESPACE')
-            ids.add(obj['id'])
+            if obj['tenant']!=tenant or obj['root']!=root['id'] or credential_identity(obj) in ids: raise Rejected('CHAIN_NAMESPACE')
+            identity=credential_identity(obj);ids.add(identity)
             kid,_,_,_=inspect_sign1(wire)
             if kid!=obj['issuer_kid']: raise Rejected('ISSUER_KEY_BINDING')
             issuer=self.key(tenant,kid); subject=self.key(tenant,obj['subject_kid'])
@@ -138,11 +165,13 @@ class DelegatedLedger(SignedLedger):
             if current and (not self.key_active(issuer) or not self.key_active(subject)):
                 raise Rejected('ANCESTOR_KEY_INACTIVE')
             if current and not obj['not_before']<=self.now()<obj['expires_at']: raise Rejected('CREDENTIAL_INACTIVE')
-            if current and self.db.execute('SELECT 1 FROM credential_revocations WHERE tenant=? AND credential_id=?',
-                                           (tenant,obj['id'])).fetchone(): raise Rejected('CREDENTIAL_REVOKED')
-            stored=self.db.execute('SELECT * FROM credentials WHERE tenant=? AND id=?',(tenant,obj['id'])).fetchone()
+            if current and self.db.execute('SELECT 1 FROM credential_revocations WHERE tenant=? AND root_id=? AND kind=? AND issuer_kid=? AND credential_id=?',
+                                           identity).fetchone(): raise Rejected('CREDENTIAL_REVOKED')
+            stored=self.db.execute('SELECT * FROM credentials WHERE tenant=? AND root_id=? AND kind=? AND issuer_kid=? AND id=?',identity).fetchone()
+            if not current and stored is None:raise Rejected('CREDENTIAL_STORAGE_BINDING')
             if stored is not None:
                 if stored['wire']!=wire: raise Rejected('CREDENTIAL_ID_CONFLICT')
+                if stored['digest']!=digest:raise Rejected('CREDENTIAL_STORAGE_BINDING')
                 if current and stored['revoked']: raise Rejected('CREDENTIAL_REVOKED')
             object_type=self.chain_object_type(index)
             verify_sign1(wire,issuer['public_key'],object_type)
@@ -201,9 +230,10 @@ class DelegatedLedger(SignedLedger):
         action=self.parse_wire_action(self._signed_request[0]); chain=self._chain_request
         for index,wire in enumerate(chain):
             obj=self.parse_chain_credential(wire); digest=hashlib.sha256(wire).digest()
-            exists=self.db.execute('SELECT 1 FROM credentials WHERE tenant=? AND id=?',(action['tenant'],obj['id'])).fetchone()
+            identity=credential_identity(obj)
+            exists=self.db.execute('SELECT 1 FROM credentials WHERE tenant=? AND root_id=? AND kind=? AND issuer_kid=? AND id=?',identity).fetchone()
             if not exists:
-                self.db.execute('INSERT INTO credentials(tenant,id,digest,wire) VALUES(?,?,?,?)',(action['tenant'],obj['id'],digest,wire))
+                self.db.execute('INSERT INTO credentials(tenant,root_id,kind,issuer_kid,id,digest,wire) VALUES(?,?,?,?,?,?,?)',(*identity,digest,wire))
                 for account,limit in zip(cap_accounts(wire),(obj['epsilon_cap'],obj['delta_cap'])):
                     self.db.execute('INSERT INTO accounts(tenant,id,total,free) VALUES(?,?,?,?)',(action['tenant'],account,limit,limit))
             self.db.execute('INSERT OR IGNORE INTO operation_chains VALUES(?,?,?,?)',(action['tenant'],action['operation'],index,digest))
@@ -223,6 +253,14 @@ class DelegatedLedger(SignedLedger):
 
     def audit(self):
         errors=super().audit()
+        for row in self.db.execute('SELECT * FROM credentials'):
+            try:
+                obj=self.parse_chain_credential(row['wire']);identity=credential_identity(obj)
+                if tuple(row[k] for k in ('tenant','root_id','kind','issuer_kid','id'))!=identity or hashlib.sha256(row['wire']).digest()!=row['digest']:
+                    raise Rejected('CREDENTIAL_STORAGE_BINDING')
+                tombstone=self.db.execute('SELECT 1 FROM credential_revocations WHERE tenant=? AND root_id=? AND kind=? AND issuer_kid=? AND credential_id=?',identity).fetchone()
+                if row['revoked']!=int(tombstone is not None):raise Rejected('CREDENTIAL_REVOCATION_BINDING')
+            except Rejected as exc:errors.append(str(exc))
         for op in self.db.execute('SELECT * FROM operations'):
             row=self.db.execute('SELECT action FROM signed_actions WHERE tenant=? AND operation_id=?',(op['tenant'],op['id'])).fetchone()
             if row is None: continue

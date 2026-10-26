@@ -1,0 +1,29 @@
+{
+  "passed": true,
+  "test_methods": 19,
+  "crash_cut_count": 10,
+  "actual_process_crash_cuts": [
+    "before_reserve_commit",
+    "after_reserve_commit",
+    "after_control_write",
+    "after_scheduled_claim",
+    "after_work_step",
+    "after_scheduled_result_write",
+    "after_account_settle",
+    "after_publication_write",
+    "before_tick_commit",
+    "after_tick_commit"
+  ],
+  "python_version": "3.9.6 (default, Apr 30 2025, 02:07:17) \n[Clang 17.0.0 (clang-1700.0.13.5)]",
+  "sqlite_version": "3.43.2",
+  "source_sha256": {
+    "ledger.py": "5bdd63777480e26d56d89d00e4d0f7a7030668377ca164756f2752103cf04dc7",
+    "dp_ledger.py": "35f0c336d549bf0145fd79bcb9b02416b0a729d60d990fc34e477b744887054b",
+    "scheduled_ledger.py": "d8d4b2c32b5028066190845298f8e434fe5d6e262e5adad1c48d221be06511e0",
+    "test_scheduled_ledger.py": "9de478264c7d94f1473e8aa24201e96984bc1339d1208125c9ade41814e8c285",
+    "../fixed_work_model.py": "06b194302f777bec7977166869f6e83ee11daf83d7b2c1c302ae9bf013603860"
+  },
+  "failures": [],
+  "errors": [],
+  "scope": "Durable logical slots and internal publication eligibility; synthetic data; not public transport or physical timing privacy"
+}

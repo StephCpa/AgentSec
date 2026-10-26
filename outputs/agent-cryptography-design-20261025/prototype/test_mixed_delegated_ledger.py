@@ -201,7 +201,7 @@ class MixedDelegationTests(unittest.TestCase):
         self.reject('CREDENTIAL_ID_CONFLICT',lambda:self.l.register_delegated(raw,proof,changed))
 
     def test_ancestor_revocation_before_start_refunds_every_account(self):
-        self.register();self.l.revoke_credential('t','workergrant');finish(self.l)
+        self.register();self.l.revoke_credential('t','workergrant',root_id='root',kind='delegation',issuer_kid=b'manager');finish(self.l)
         self.assertEqual(self.l.op('t','a')['state'],'CANCELED')
         self.assertTrue(all(x[0]==0 for x in self.l.db.execute('SELECT reserved+spent FROM accounts')))
         self.assertEqual(self.l.db.execute('SELECT publication FROM jobs').fetchone()[0],'WITHHELD')
@@ -214,7 +214,7 @@ class MixedDelegationTests(unittest.TestCase):
 
     def test_old_l3_ticket_survives_revocation_but_new_ticket_does_not(self):
         self.register();finish(self.l);self.l.admit_delivery('t','a','reader','old','g','s')
-        self.l.revoke_credential('t','root')
+        self.l.revoke_credential('t','root',root_id='root',kind='grant',issuer_kid=b'authority')
         self.reject('ACTION_OR_KEY_INACTIVE',lambda:self.l.admit_delivery('t','a','reader','new','g','s'))
         self.assertEqual(len(self.l.emit('t','old','reader','g','s')),32)
 
@@ -255,7 +255,7 @@ class MixedDelegationTests(unittest.TestCase):
         self.reject('INVALID_MIXED_ACTION_SCHEMA',lambda:parse_mixed_action(encode(obj)))
 
     def test_revocation_tombstone_blocks_unused_histogram_credential_after_restart(self):
-        self.l.revoke_credential('t','workergrant');self.l.close();self.l=MixedDelegatedLedger(self.path,clock=lambda:100)
+        self.l.revoke_credential('t','workergrant',root_id='root',kind='delegation',issuer_kid=b'manager');self.l.close();self.l=MixedDelegatedLedger(self.path,clock=lambda:100)
         raw,proof=packet(self.l,self.chain)
         self.reject('CREDENTIAL_REVOKED',lambda:self.l.register_delegated(raw,proof,self.chain))
 

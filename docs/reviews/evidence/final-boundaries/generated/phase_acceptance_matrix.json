@@ -1,0 +1,62 @@
+{
+  "status": "requirements_audit_incomplete_goal_active",
+  "basis": "Current design Page phase table and minimal P2 demonstration paragraph; scope is retained rather than replaced by existing prototype coverage.",
+  "source_page": "https://chatgpt.com/space/page_5c2a42360c80819188315c2158d8bb59",
+  "source_blocks": {
+    "phases": "1fd38ba6-cdf0-471c-a972-4492c562073c",
+    "minimal_demo": "d5547d54-b859-4a2b-92e9-6916d9e29641",
+    "baselines": "e84391e4-1bb6-4c40-a527-4c84b209b3b7",
+    "metrics": "29834bc7-0d5f-4b46-bdb3-6f3d50e25aeb"
+  },
+  "phases": [
+    {
+      "phase": "P0",
+      "status": "partial",
+      "evidence": "Protocol contracts, canonical codec and local vectors exist. Restricted public gateway CDDL and signed framing are specified; independent validation remains open.",
+      "open": "Complete object family, independent interoperability, general policy and observable protocol remain."
+    },
+    {
+      "phase": "P1",
+      "status": "partial",
+      "evidence": "Finite lifecycle/observation/retention models and weakened-rule counterexamples exist. public_transcript_contract.json adds a bounded full-observation simulator with adaptive mixed queries, controls, polling, ordering, transport faults and expiry; seven runtime refinement gates are tracked; OBS-2 and OBS-3 now have tested atomic publication and domain-wide final-prefix reference implementations; independent cryptographic refinement remains open. OBS-1/OBS-5 now have a signed public journal and exact-recovery reference; OBS-4 remains partial. public_observation_contract.json adds 32 paired runtime traces and actual-network private-failure counterexamples; not a full proof or exhaustive distribution test.",
+      "open": "Full cryptographic and implementation refinement, arbitrary concurrency/liveness and observation proof remain."
+    },
+    {
+      "phase": "P2",
+      "status": "reference_demo_passed_stage_open",
+      "evidence": "prototype/p2_scenario_contract.json maps the nine reference steps. contribution_delivery_contract.json now covers fixed-roster ingestion through the complete authenticated retention-v2 scenario; combined recovery audits, terminal closure/archive and six local process cuts are separately tested. atomic_publication_contract.json verifies publication/L3/decision atomicity and new-state recovery under reference and loopback authenticated witness. ordered_publication_contract.json verifies domain-wide final prefix, guarded preparation and exact recovery, with two recipient TLS services and local crash cuts. public_gateway_contract.json verifies signed five-method public ingress, request/effect/response atomicity, public controls/polls/final pages and exact response recovery; actual mTLS submit/reply loss/full histogram result/final-query scenario passed. Public input syntax and output vocabulary are explicit; selected policy denials corrected and gateway regression rerun.",
+      "open": [
+        "Actual LLM/tool API and enforced process/container identity boundary",
+        "Real identity/classifier, global privacy-domain lineage and full ingestion observation handling; fixed-roster reference integration with network delivery is now verified.",
+        "Complete public error/availability mapping and physical observation refinement. OBS-1/2/3/5 reference transitions, signed final-page responses and exact public journal recovery are verified; general refinement and independent interoperability remain open.",
+        "Production key/identity/authority lifecycle and independent nonrollback recovery",
+        "Independent interop/security review and full formal refinement"
+      ]
+    },
+    {
+      "phase": "P3",
+      "status": "partial",
+      "evidence": "Existing report suites cover real process exits, races, old replicas and reply loss under stated local/reference or loopback settings.",
+      "open": "Do not sum overlapping tests. Full cross-host/power-loss/fault-domain and production recovery evidence missing."
+    },
+    {
+      "phase": "P4",
+      "status": "not_executed",
+      "evidence": "Strong baseline B0-B4 and required metrics remain specified in Page.",
+      "open": "No claim of improvement, utility or performance; correctly composed baselines and fair budget comparison must be implemented."
+    },
+    {
+      "phase": "P5",
+      "status": "design_only",
+      "evidence": "Hidden-authorization extension scoped in design.",
+      "open": "Leakage function, concrete relation/circuit and proof-to-action binding experiment not implemented."
+    },
+    {
+      "phase": "P6",
+      "status": "design_only",
+      "evidence": "Reduced-trust backend extension scoped in design.",
+      "open": "No TEE/MPC backend, attestation or separate trust-model recovery proof implemented."
+    }
+  ],
+  "next_priority": "Implement a runtime-to-simulator observation adapter and stateful error/availability contract, retaining private-failure negative controls. Establish OBS-4 fault assumptions and OBS-6 physical observations; general proofs, real identity/global lineage, fair P4 baselines and P5/P6 remain open."
+}

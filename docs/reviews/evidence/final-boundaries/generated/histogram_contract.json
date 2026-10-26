@@ -1,0 +1,234 @@
+{
+  "mechanism_id": "bounded_geometric_histogram_v1_candidate",
+  "status": "signed/delegated encrypted mixed execution plus authenticated loopback witness recovery; authenticated vector result transport and production guarantees pending",
+  "implementation": "histogram_kernel.py",
+  "evidence": "histogram_results.json",
+  "public_parameters": {
+    "capacity_N": [
+      1,
+      65535
+    ],
+    "bucket_count_B": [
+      1,
+      64
+    ],
+    "bucket_catalog": "Ordered unique nonempty UTF-8 labels, each at most 64 bytes; fixed before private evaluation; membership rule version and digest must be bound at integration",
+    "production_candidate_K": 40,
+    "toy_proof_checks_K": [
+      1,
+      64
+    ],
+    "output_format": "Exactly B unsigned 64-bit big-endian counts in catalog order, each clipped to [0,N]; always 8B bytes"
+  },
+  "input": {
+    "slots": "Exactly public N categorical slots, 0=empty, 1..B=one chosen bucket",
+    "privacy_unit": "user, including all their records in the protection domain",
+    "adjacency": "add/remove one user; categorical representation changes exactly one empty slot to one bucket or vice versa",
+    "preprocessing_requirements": [
+      "deduplicate all records by stable user identity",
+      "map each user into at most one bucket by a fixed rule depending only on that user and public catalog",
+      "adding/removing one user does not reclassify other users",
+      "pad to capacity selected independently of private population size",
+      "retain common domain lineage across snapshots and bucket catalogs"
+    ],
+    "not_implemented": "Real identity resolution, raw-data classifier, global lineage authority and private ingestion observation handling. Fixed-roster compiler and paired witnessed snapshot reference integration now exist separately.",
+    "reference_contribution_ingestion": "prototype/contribution_ingestion_contract.json",
+    "combined_contribution_delivery": "prototype/contribution_delivery_contract.json"
+  },
+  "sampler": {
+    "for_each_bucket": "Two independent capped initial-one runs of K fair bits; G in 0..K; Z=G_positive-G_negative",
+    "pmf_G": "P(G=g)=2^(-g-1) for 0<=g<K; P(G=K)=2^(-K)",
+    "joint_randomness": "All 2KB bits independent across buckets; independent tapes across operations",
+    "tape_layout": "MSB-first, bucket-major; positive K bits then negative K bits; canonical zero padding only in final byte for non-byte-aligned toy settings",
+    "random_tape_size": "ceil(2KB/8) bytes; K=40 requires exactly 10B bytes, up to 640",
+    "source": "fresh_tape requests the full byte length from secrets.token_bytes; ideal independent bits remain a proof assumption, not a proved property of the OS generator",
+    "legacy_seed_limit": "The existing count path persists 32 bytes. Do not truncate, repeat or implicitly expand it for B>3 under an information-theoretic claim. A PRG expansion would require a separate computational-privacy argument."
+  },
+  "fixed_work": {
+    "kernel": "For each public bucket scan all N slots, read all 2K bits even after first zero, then clip/store one private component; B(N+2K+1) logical calls",
+    "publication": "result remains None until all components are complete; no partial public vector or omission of zero buckets",
+    "planned_durable_schedule": "implemented in synthetic HistogramLedger: one committed L1 slot, then B(N+81) kernel slots",
+    "durable_integration": true,
+    "physical_constant_time": false,
+    "internal_state": "counts, prefix-run flags and partial vector are private trusted state; Python attribute access is not isolation",
+    "durable_integration_scope": "HistogramLedger plaintext, MixedDelegatedLedger signed plaintext and EncryptedMixedLedger signed encrypted fresh-database profiles"
+  },
+  "privacy": {
+    "epsilon": "ln(2)",
+    "delta": "2^(-(K+1))",
+    "K40_delta": "1/2199023255552",
+    "bucket_count_multiplier": 1,
+    "ordinary_rdp": "infinite in general; separate approximate-DP accountant required",
+    "proof_steps": [
+      "For one capped-difference scalar, H_2(P,Q)=sum_y max(P(y)-2Q(y),0)=2^(-(K+1)) for a unit shift, in both directions",
+      "A neighboring histogram differs in exactly one coordinate j. Independence gives P(y)=p_j(y_j) r(y_-j) and Q(y)=q_j(y_j) r(y_-j)",
+      "Since r>=0 and sums to one, joint H_2 equals scalar H_2, independent of B",
+      "Coordinatewise clipping to public [0,N] is deterministic postprocessing and cannot increase H_2"
+    ],
+    "boundary": "All statements concern the complete vector under ideal randomness and contribution contract, not arbitrary marginals, replacement adjacency, multi-bucket contributions, or network traces"
+  },
+  "accounting_plan": {
+    "accountant_profile": "approx_dp_fixed_cost_v1_candidate",
+    "epsilon_micro_units": 700000,
+    "delta_q64_units": 8388608,
+    "charge_unit": "one complete histogram operation, regardless of B within approved profile",
+    "shared_accounts": "same privacy-domain epsilon/delta accounts and all ancestor caps as count operations; no budget per bucket, new snapshot, new catalog or new agent",
+    "count_plus_histogram": "two operations compose and charge twice; not independent fresh accounts",
+    "after_L1": "no refund or new random tape on failure; output vector and all charges commit atomically at L2",
+    "implemented": true,
+    "implementation_scope": "Shared domain and every signed ancestor epsilon/delta cap in MixedDelegatedLedger and EncryptedMixedLedger; no legacy migration"
+  },
+  "integration_requirements": [
+    {
+      "component": "dp_ledger.py",
+      "change": "Separate immutable mechanism/catalog registry from privacy-domain accountant; preserve original account IDs and past consumption; bind snapshot to ordered catalog digest",
+      "acceptance": "count and histogram in one domain compete for the same epsilon/delta and ancestor caps; re-registering catalog cannot reset balances",
+      "status": "shared domain/history and signed ancestor caps implemented in new mixed profile; production domain lineage and legacy migration pending"
+    },
+    {
+      "component": "wire.py, signed_ledger.py, delegated_ledger.py",
+      "change": "New closed action/credential policy profile binds operation kind, histogram mechanism, catalog ID/version/digest, B, N, K and vector codec; parent narrowing covers operation and catalog sets",
+      "acceptance": "reject bucket reorder/substitution, unauthorized histogram mechanism, count-profile downgrade, absent catalog and same-ID parameter change",
+      "status": "mixed closed action/credential profiles, exact catalog digest attenuation, parent/leaf binding and all-ancestor caps implemented; contribution-rule provenance and independent interoperability still pending"
+    },
+    {
+      "component": "scheduled_ledger.py",
+      "change": "Public registered work function; dedicated durable L1 writes full tape before private snapshot access; encrypted variable-width private vector state",
+      "acceptance": "exact 1+B(N+81) steps including admission; cancellation keeps public work; all crash cuts preserve same tape and no partial publication",
+      "status": "full tape committed L1 and fixed-step persistent vector state implemented, including encrypted profile; physical timing and full observation proof pending"
+    },
+    {
+      "component": "encrypted_ledger.py",
+      "change": "Mechanism-bound tape/result/private-state widths replacing hard-coded seed32/result8/accumulator8 checks only in the new profile",
+      "acceptance": "reject wrong B/catalog/work/pc/field bindings, wrong tape length, scalar/vector substitution, corrupted intermediate state; no new sample on recovery",
+      "status": "implemented in encrypted_mixed_ledger.py: mechanism/N/B/catalog/codec-bound fixed-width seed/result/private state, integrity rejection and exact crash recovery; authoritative rollback protection pending; conditional whole-store protection supplied separately by WitnessedMixedLedger and MixedDeliveryLedger"
+    },
+    {
+      "component": "delivery_transport.py, delivery_terminal.py",
+      "change": "Versioned signed vector output schema and exact 8B width bound to original action/catalog; one L3 for full vector; retain durable receipt and terminal reconciliation",
+      "acceptance": "misordered/truncated/extra component rejection; retries return original complete vector; expired reconciliation never transmits partial/full result",
+      "status": "Mixed result/terminal delivery plus TLSWitnessedMixedRecipientInbox local rollback fencing and exact receiver recovery implemented; production receiver authority nonrollback, bounded retention, independent interop and full observation proof pending"
+    },
+    {
+      "component": "witnessed_ledger.py and witness_transport.py integration tests",
+      "change": "Include registry and full tape/private state/vector/receipts in witnessed images with explicit fresh profile or reviewed migration",
+      "acceptance": "recover identical full state after witness acceptance/local loss; no implicit old-profile conversion",
+      "status": "implemented by WitnessedMixedLedger and TLSWitnessedMixedLedger: full mixed schema images, exact restoration, stale-copy fencing and authenticated witness roles; production nonrollback failure domain and scalable log pending"
+    },
+    {
+      "component": "P2 longitudinal demo",
+      "change": "two delegated agents share domain; count plus histogram; inject dropped reply, expiry, revoke and restore",
+      "acceptance": "all charges cover released full vectors; no free re-execution; writer uses only authorized outputs; same-budget baseline reported"
+    }
+  ],
+  "verification": {
+    "exhaustive_kernel_cases": 109264,
+    "complete_joint_distribution_checks": 133,
+    "vector_directed_privacy_checks": 2360,
+    "scalar_exact_privacy_checks": 128,
+    "K40_replay_cases": 16,
+    "K40_distinct_bucket_tape_layout_cases": 5,
+    "invalid_contract_cases": 9,
+    "negative_controls": {
+      "shared_noise": {
+        "K": 2,
+        "N": 5,
+        "counts": [
+          0,
+          0
+        ],
+        "adjacent": [
+          1,
+          0
+        ],
+        "hockey": "3/8",
+        "claimed_delta": "1/8"
+      },
+      "replacement_adjacency": {
+        "K": 2,
+        "N": 5,
+        "counts": [
+          1,
+          0
+        ],
+        "adjacent": [
+          0,
+          1
+        ],
+        "hockey": "81/256",
+        "claimed_delta": "1/8"
+      },
+      "multi_bucket_user": {
+        "K": 2,
+        "N": 5,
+        "counts": [
+          0,
+          0
+        ],
+        "adjacent": [
+          1,
+          1
+        ],
+        "hockey": "71/256",
+        "claimed_delta": "1/8"
+      },
+      "finite_rdp": {
+        "event": "first bucket output=0",
+        "P": "1/8",
+        "Q": "0",
+        "conclusion": "infinite for every alpha>1; pure DP fails"
+      }
+    },
+    "durable_ledger_tests": "prototype/histogram_ledger_test_results.json",
+    "durable_ledger_test_methods": 20,
+    "durable_ledger_process_crash_scenarios": 11,
+    "mixed_delegation_tests": "prototype/mixed_delegated_test_results.json",
+    "mixed_delegation_test_methods": 22,
+    "mixed_delegation_process_crash_cuts": 8,
+    "encrypted_mixed_tests": "prototype/encrypted_mixed_test_results.json",
+    "encrypted_mixed_test_methods": 21,
+    "encrypted_mixed_process_crash_scenarios": 6,
+    "encrypted_mixed_rollback_negative_control": true,
+    "witnessed_mixed_tests": "prototype/witnessed_mixed_test_results.json",
+    "witnessed_mixed_test_methods": 21,
+    "witnessed_mixed_process_crash_scenarios": 8,
+    "witnessed_mixed_authenticated_requests": 1539,
+    "witnessed_mixed_tls_versions": [
+      "TLSv1.2"
+    ],
+    "mixed_delivery_tests": "prototype/mixed_delivery_test_results.json",
+    "mixed_delivery_test_methods": 21,
+    "mixed_delivery_process_crash_scenarios": 10,
+    "mixed_delivery_exchange_attempts": 30,
+    "mixed_delivery_full_pipeline_scope": "B4 N3 histogram plus count; B64 maximum-width wire fixture only",
+    "mixed_terminal_tests": "prototype/mixed_terminal_test_results.json",
+    "mixed_terminal_test_methods": 30,
+    "mixed_terminal_process_crash_scenarios": 8,
+    "mixed_terminal_exchange_attempts": 38,
+    "witnessed_recipient_tests": "prototype/witnessed_recipient_test_results.json",
+    "witnessed_recipient_test_methods": 21,
+    "witnessed_recipient_process_crash_scenarios": 10,
+    "witnessed_recipient_authenticated_authority_requests": 203
+  },
+  "sources": [
+    {
+      "url": "https://www.cis.upenn.edu/~aaroth/Papers/privacybook.pdf",
+      "location": "Example 3.2, printed page 33 / PDF page 37",
+      "supports": "disjoint histogram add/remove sensitivity and independent-coordinate noise principle; not a citation for this new capped sampler proof"
+    }
+  ],
+  "remaining": [
+    "Production receiver authority nonrollback/cross-host recovery and bounded retention; pre-L3 public termination and cross-route protocol; production witness identity/key lifecycle; scalable journal and independent protocol review",
+    "Production contribution-bounded ingestion, real identity/classifier and global lineage; combined fixed-roster retention-v2 reference workflow now tested",
+    "reviewed entropy and production key custody",
+    "full public observation proof and physical timing assessment",
+    "independent mechanism review and strong-baseline utility/performance evaluation"
+  ],
+  "p2_reference_scenario": {
+    "contract": "prototype/p2_scenario_contract.json",
+    "test_report": "prototype/p2_scenario_test_results.json",
+    "reference_demo_passed": true,
+    "full_stage_acceptance": false,
+    "roles": "Concurrent signed Python clients and pure writer adapter, not live LLMs."
+  }
+}

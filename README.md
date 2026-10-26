@@ -2,12 +2,14 @@
 
 Agent 密码学系统研究：受约束的委托、可验证的行动、可计量的信息释放。
 
+本次审核修复 F1（凭证命名空间）、F2（响应契约）和 D1（草稿期限）；说明与兼容性边界见 [修复记录](docs/reviews/2026-10-25-resolution.md)。旧数据库不自动迁移。适配器仍未完成完整轨迹精化验收。
+
 ## 项目内容
 
 - [完整详细设计](docs/design.zh-CN.md)：从 ChatGPT Page 导出的设计正文（2026-10-25）。
 - [原型说明与运行方法](outputs/agent-cryptography-design-20261025/prototype/README.md)：事务状态机、共享隐私预算、签名委托、见证恢复、交付与公开网关。
 - [阶段验收矩阵](outputs/agent-cryptography-design-20261025/phase_acceptance_matrix.json)：已完成证据与尚未完成的目标。
-- [交付清单与源码摘要](outputs/agent-cryptography-design-20261025/delivery_manifest.json)：v37 验证快照，附各模型与测试报告。
+- [交付清单与源码摘要](outputs/agent-cryptography-design-20261025/delivery_manifest.json)：v37 / 提交 8a35b4b 的历史验证快照，其摘要不用于验证修复后的源码。
 
 保留原有 `outputs/agent-cryptography-design-20261025/` 路径，方便按原型说明复现。
 
@@ -15,7 +17,7 @@ Agent 密码学系统研究：受约束的委托、可验证的行动、可计�
 
 这是研究设计和合成数据原型，不是生产可部署的安全服务，也没有完整安全证明。已有报告记录 30 组通过的测试套件；它们包含重叠证据，不能相加解释为独立故障覆盖。这些报告是原工作环境的历史结果，不代表所有环境都已重新验证。
 
-`prototype/public_trace_adapter.py` 是暂停时保存的未验证草稿，尚未接入测试，不属于 v37 已验收源码清单。完整观察归约、真实部署隔离、强基线比较和生产保证仍有待完成。
+`prototype/public_trace_adapter.py` 已修复审核指出的期限错误并增加局部回归，但仍是未完整验收草稿，不属于 v37 已验收源码清单。完整观察归约、真实部署隔离、强基线比较和生产保证仍有待完成。
 
 测试中的固定密钥和身份均为合成材料，仅用于复现。测试依赖见 [requirements.txt](outputs/agent-cryptography-design-20261025/prototype/requirements.txt)。部分测试需要 OpenSSL 命令和本机网络端口；详细命令见原型说明。
 
@@ -27,3 +29,13 @@ python3 outputs/agent-cryptography-design-20261025/test_public_transcript.py
 ```
 
 原始在线设计：[Agent 密码学系统详细设计与验证方案](https://chatgpt.com/space/page_5c2a42360c80819188315c2158d8bb59)。仓库中的 Markdown 副本可独立阅读。
+
+## 不覆盖历史报告的验证
+
+```sh
+python3 scripts/verify.py --models --output /tmp/agentsec-verification-new
+```
+
+该命令在临时副本中执行所有测试入口和模型，报告绑定运行时源码与依赖版本。GitHub Actions 将固定依赖与升级依赖分开运行。
+
+本次修复的本地结果与源码绑定见 [验证摘要](docs/reviews/evidence/summary.json)：原有 30 套件、7 个模型入口通过；最终审核回归 15 项通过。

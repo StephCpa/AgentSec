@@ -1,0 +1,80 @@
+{
+  "profile": "witnessed-contribution-mixed-v1",
+  "rule": "fixed-roster-min-positive-bucket-v1",
+  "status": "synthetic trusted compiler and signed/encrypted/witnessed ledger integration; no public ingestion service",
+  "implementation": "contribution_ingestion.py",
+  "evidence": "contribution_ingestion_test_results.json",
+  "public_configuration": {
+    "capacity": "N in 1..65535 fixed independently of participation",
+    "catalog": "ordered immutable existing catalog; B in 1..64",
+    "rule": "minimum positive eligible bucket per user",
+    "snapshot_batch_aliases": "preassigned opaque aliases, not content hashes or private row counts"
+  },
+  "private_input": {
+    "roster": "N distinct stable 32-byte user tokens; fixed even when a user has no records; encrypted under StateVault",
+    "records": "arbitrary finite list of (user token, bucket code); zero denotes ineligible",
+    "classification": "upstream trusted classifier maps raw records into fixed catalog; not implemented here",
+    "identity": "one real privacy unit maps to exactly one token across tables and snapshots; resolution and Sybil prevention are external assumptions"
+  },
+  "compiler": {
+    "histogram_slot": "min of positive codes for that user, or zero when no eligible records",
+    "count_slot": "1 iff histogram slot is nonzero",
+    "duplicates": "ignored by idempotent min rule",
+    "order": "irrelevant",
+    "error": "generic private rejection for unknown user, malformed record or invalid code; no raw input in exception",
+    "raw_history_storage": false
+  },
+  "adjacency_argument": [
+    "Fix roster, rule, catalog and all public parameters across neighboring inputs.",
+    "Neighbors differ by all records of one roster user, not by removing the user from the roster.",
+    "For any other user v, records belonging to v and its stable slot are unchanged. Its chosen bucket is therefore unchanged.",
+    "The removed user changes at most one slot from bucket j to zero. Exact count changes by at most one; exact histogram changes in at most coordinate j by one.",
+    "The existing scalar/vector mechanism bounds therefore apply separately conditional on their existing ideal-randomness and observation assumptions.",
+    "Releasing both separately perturbed count and histogram requires two charged operations. The combined exact query has L1 sensitivity two; the compiler does not make the pair a single-cost release.",
+    "Replacing a present user record set can move between two buckets, giving L1 distance two. The add/remove one-user bound must not be silently reused for replacement adjacency.",
+    "Across snapshots delete the same user records at every time, preserve the same roster identity and account lineage, and compose all operations in the existing shared accounts."
+  ],
+  "durability": {
+    "atomic_pair": "count ciphertext, histogram ciphertext, catalog binding and batch provenance in one transaction",
+    "authority_order": "whole-state witness accepts before local commit; unknown outcome freezes replica until explicit recovery",
+    "ingestion_retry": "duplicate batch rejected; restore and privileged audit resolve unknown outcome without recompiling or choosing new aliases",
+    "crash_scope": "six actual reference-process exits; no power-loss or distributed witness claim"
+  },
+  "enforcement": {
+    "direct_snapshot_APIs": "disabled in fresh ContributionLedger profile",
+    "reservation": "requires immutable batch provenance using only public metadata; no roster or snapshot decryption at query admission",
+    "snapshot_binding": "signed action pins domain/snapshot/catalog; local immutable registry and witnessed state resolve that to batch and fixed contribution rule; no new transferable ingestion signature",
+    "lineage": "same tenant and lineage cannot rebind to another domain within this database; new aliases/snapshots reuse original accounts",
+    "audit": "all snapshots covered exactly once by a paired batch; private audit checks roster and view consistency; recovery runs it before commit",
+    "admin": "direct SQL and explicit base-class method calls are privileged; Python is not an isolation boundary"
+  },
+  "verification": {
+    "tests": 19,
+    "subset_datasets": 512,
+    "directed_removal_checks": 1536,
+    "actual_process_crash_cuts": 6,
+    "signed_mixed_operations": 2,
+    "same_alias_concurrent_writers": 2,
+    "maximum_compiler_shape": {
+      "N": 65535,
+      "B": 64,
+      "scope": "compiler only"
+    },
+    "negative_controls": [
+      "replacement changes two histogram coordinates",
+      "two aliases for one human permit two contributions",
+      "count and histogram jointly have sensitivity two",
+      "new invented lineage bypasses within-database lineage uniqueness under malicious admin"
+    ]
+  },
+  "remaining": [
+    "Real identity resolution and raw-data eligibility classifier",
+    "Global lineage authority across tenants/deployments and overlap detection",
+    "Confidential ingestion transport, private error/runtime/availability observations and public scheduling",
+    "OS/process isolation and authenticated ingestion management",
+    "Independent privacy/mechanism review, full observation proof and production resource limits"
+  ],
+  "production_acceptance": false,
+  "full_user_level_end_to_end_DP": false,
+  "combined_network_integration": "contribution_delivery_contract.json; fresh combined profiles tested separately"
+}

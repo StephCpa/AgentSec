@@ -1,0 +1,119 @@
+{
+  "passed": true,
+  "scope": "Exact finite K1 count/histogram protocol distributions; public logical rounds and explicit public fault plans. Not runtime or cryptographic refinement.",
+  "plans": 480,
+  "required_global_order_plans": 240,
+  "comparison_per_route_plans": 240,
+  "datasets": 9,
+  "directed_neighbors": 24,
+  "complete_distribution_checks": 11520,
+  "enumerated_execution_paths": 43560,
+  "max_distinct_traces": 18,
+  "epsilon_multiplier": 4,
+  "delta_bound": "1/2",
+  "maximum_observed_hockey_loss": "7/16",
+  "maximum_loss_plan": {
+    "query": "concurrent",
+    "control": "none",
+    "control_round": 0,
+    "transport": "normal",
+    "routes": [
+      0,
+      0
+    ],
+    "ordering": "global",
+    "k": 1,
+    "rounds": 40
+  },
+  "negative_controls": [
+    {
+      "mutant": "readiness_poll",
+      "constant_approved_outputs": true,
+      "first_difference": [
+        [
+          0,
+          "REPLY",
+          "PENDING",
+          "A"
+        ],
+        [
+          0,
+          "REPLY",
+          "READY",
+          "A"
+        ]
+      ],
+      "directed_hockey_loss": "1",
+      "claimed_two_query_delta": "1/2"
+    },
+    {
+      "mutant": "skip_zero_work",
+      "constant_approved_outputs": true,
+      "first_difference": [
+        [
+          8,
+          "JOURNAL",
+          "ADMITTED",
+          "A",
+          0,
+          1
+        ],
+        [
+          9,
+          "ROUND"
+        ]
+      ],
+      "directed_hockey_loss": "1",
+      "claimed_two_query_delta": "1/2"
+    },
+    {
+      "mutant": "private_failure",
+      "constant_approved_outputs": true,
+      "first_difference": [
+        [
+          10,
+          "JOURNAL",
+          "ADMITTED",
+          "A",
+          0,
+          1
+        ],
+        [
+          10,
+          "JOURNAL",
+          "WITHHELD",
+          "A"
+        ]
+      ],
+      "directed_hockey_loss": "1",
+      "claimed_two_query_delta": "1/2"
+    },
+    {
+      "mutant": "private_network",
+      "constant_approved_outputs": true,
+      "first_difference": [
+        [
+          10,
+          "RECEIVE",
+          "RESULT",
+          0,
+          1,
+          "A",
+          [
+            0
+          ]
+        ],
+        [
+          10,
+          "NETWORK",
+          "PACKET_LOST",
+          0,
+          1
+        ]
+      ],
+      "directed_hockey_loss": "1",
+      "claimed_two_query_delta": "1/2"
+    }
+  ],
+  "production_K40_bound": "Conditional design target only: at most two fixed-cost releases compose to (2 ln 2, 2^-40), before conservative ledger rounding; full deployment observation proof absent."
+}

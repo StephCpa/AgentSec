@@ -255,7 +255,7 @@ class EncryptedMixedTests(unittest.TestCase):
         register(self.l);tick(self.l);tape=raw_op(self.l)['seed']
         self.l.advance('t','domain','cancel',1,{'kind':'cancel','operation':'a','actor':'leaf'});finish(self.l)
         self.assertEqual(raw_op(self.l)['state'],'BURNED');self.assertEqual(raw_op(self.l)['seed'],tape)
-        register(self.l,'b');self.l.revoke_credential('t','workergrant');finish(self.l)
+        register(self.l,'b');self.l.revoke_credential('t','workergrant',root_id='root',kind='delegation',issuer_kid=b'manager');finish(self.l)
         self.assertEqual(raw_op(self.l,'b')['state'],'CANCELED')
         self.assertTrue(all(r[0]==E and r[1]==0 for r in self.l.db.execute("SELECT spent,reserved FROM accounts WHERE id LIKE '%:epsilon'")))
         self.assertEqual(self.l.audit(),[])

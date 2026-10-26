@@ -1,0 +1,406 @@
+{
+  "started_utc": "2026-10-25T23:03:45.574522+00:00",
+  "python": "3.9.6 (default, Apr 30 2025, 02:07:17) \n[Clang 17.0.0 (clang-1700.0.13.5)]",
+  "cryptography": "49.0.0",
+  "openssl": "LibreSSL 2.8.3",
+  "sqlite": "3.43.2",
+  "platform": "macOS-15.7.3-arm64-arm-64bit",
+  "source_sha256": {
+    "outputs/agent-cryptography-design-20261025/delivery_manifest.json": "69048065d5b224fc4f64774012b681f9335adabc72844915a23a4e8373ca9f70",
+    "outputs/agent-cryptography-design-20261025/fixed_work_contract.json": "5bee05ca3e75a744d0a0e0f572643058c2ff5b3005e3e90a7699f8ab6a8a900a",
+    "outputs/agent-cryptography-design-20261025/fixed_work_model.py": "06b194302f777bec7977166869f6e83ee11daf83d7b2c1c302ae9bf013603860",
+    "outputs/agent-cryptography-design-20261025/fixed_work_results.json": "b08edd3bdb03f842ad2c74129bda63f174fdf86d7f023950187c6ddde671b564",
+    "outputs/agent-cryptography-design-20261025/histogram_contract.json": "ca02326fad669a6e581dba0c020f4a14c39bcd52553859e3367899b7b028af94",
+    "outputs/agent-cryptography-design-20261025/histogram_kernel.py": "9f369419e74020f2fc8e55fb74f5174d3d6c235e513b0bc6867064923f235831",
+    "outputs/agent-cryptography-design-20261025/histogram_model.py": "d8b55c6c18a9c65ab47777c33c6afe723bc34bd5beacb3a19401996226fd8d63",
+    "outputs/agent-cryptography-design-20261025/histogram_results.json": "ba1f351298b91245931d6dbdf857f3851a1b2bef7f6e154bd1190468b31be8a0",
+    "outputs/agent-cryptography-design-20261025/model_check.py": "47175c05835f2a4848d221c433592ee0076369d5e386107357cee989a4c7c060",
+    "outputs/agent-cryptography-design-20261025/model_results.json": "675c72cb6113100669cca2aacb425eae87639880df6a01fb43db0a13fe752450",
+    "outputs/agent-cryptography-design-20261025/model_v2.py": "5f9e79d6028c9bd30ba5a4285c5c1b775a72f75ea2c320395631a195a8ccaf4a",
+    "outputs/agent-cryptography-design-20261025/model_v2_results.json": "31b594c04dad6c2a41e24d7a4530de75560d2652e339a4add93f1019b430e921",
+    "outputs/agent-cryptography-design-20261025/observation_model.py": "51d867ef88f2452dc2e5c55ec8cb31f07e78427f341dcb226a3b0b320aa63a4f",
+    "outputs/agent-cryptography-design-20261025/observation_results.json": "089550befd6107cd4b076193b4c2b3f33b5834d1ed12f88c6549e5d3d05d631c",
+    "outputs/agent-cryptography-design-20261025/phase_acceptance_matrix.json": "41d8dde5bacf7dca8850b2789400352565677642ce786b555f6fcf9793d293d9",
+    "outputs/agent-cryptography-design-20261025/prototype/README.md": "64bc1420a3557da273b181ded0b945beba35b8ab537a6e2dc03029390774993c",
+    "outputs/agent-cryptography-design-20261025/prototype/atomic_publication.py": "32d5a012fcd3cb309de999666161c4af023faaefd6ed675bdb445558fc4e42cc",
+    "outputs/agent-cryptography-design-20261025/prototype/atomic_publication_contract.json": "ae7921a3666ec4cb5fbc475fc81d5eb38fea2dd6ead830b31d5a29021cc959df",
+    "outputs/agent-cryptography-design-20261025/prototype/atomic_publication_test_results.json": "eb1895c93cfe747efe9938ded7d27ba474255be0da158e3c07a463cd0cd7ddf2",
+    "outputs/agent-cryptography-design-20261025/prototype/contribution_delivery.py": "146cfa730da07e2be09d2c81192c42f9928ce6556a03dc82be525be3f3459f88",
+    "outputs/agent-cryptography-design-20261025/prototype/contribution_delivery_contract.json": "93a872444d44f30c50c5ac6f2429e25bcbb1bfcad7bb7e539b56764c25794e2d",
+    "outputs/agent-cryptography-design-20261025/prototype/contribution_delivery_test_results.json": "4b4bffada7b7f2dc4f021253bd972ec8098a3da1eadac7903afceff644187dc7",
+    "outputs/agent-cryptography-design-20261025/prototype/contribution_ingestion.py": "799a6dc88451de81b1eaddd02a0b44b9d80d859c43a0266b7c1cc46c392d51f4",
+    "outputs/agent-cryptography-design-20261025/prototype/contribution_ingestion_contract.json": "dddedb68aa1d20bec62ddec06d3144ecf33f5edcb2d001f4ea7e0335f38237ee",
+    "outputs/agent-cryptography-design-20261025/prototype/contribution_ingestion_test_results.json": "1381085710096d7da814cf9b94947ee12ec6a655594e9681b07197ec0f1c55a2",
+    "outputs/agent-cryptography-design-20261025/prototype/contribution_scenario.py": "b7556cacd6d8dea98d8c7a1fff19c3785c8fe9ec82c17c5a1fe3f440c5c4065f",
+    "outputs/agent-cryptography-design-20261025/prototype/contribution_scenario_results.json": "8553653a855eb0362351786c4029578e76bbb171c6cbfa09882522b6e59e588b",
+    "outputs/agent-cryptography-design-20261025/prototype/count_delegated_v1.cddl": "6749a97aa2991122227959e8b7ccb08c83a11f92a856c36b5b310dac16efec85",
+    "outputs/agent-cryptography-design-20261025/prototype/count_delivery_terminal_v1.cddl": "c48a9dcee166779f3f7cd9ee684d93bd2fbfc06e507d9a30a0cd79dbaf967404",
+    "outputs/agent-cryptography-design-20261025/prototype/count_delivery_v1.cddl": "f6817ff8c2db631fdf7d02dc4ba0876a755dfd17beb06d818ac8f3b1121af0d8",
+    "outputs/agent-cryptography-design-20261025/prototype/count_direct_v1.cddl": "75f0e4427d8c8c3e342809e00214f39158a8b536fd98cab1ee55e6f0ab9c0d8c",
+    "outputs/agent-cryptography-design-20261025/prototype/delegated_ledger.py": "28cd13ef8d6b43f2ca1c9d273f3d32b92943278a0dbef2894eed1dc570cf3862",
+    "outputs/agent-cryptography-design-20261025/prototype/delegated_test_results.json": "3b521987edc6f8e4326de908d47f3b6563abd05b7881d6224aa6d6317b013f7e",
+    "outputs/agent-cryptography-design-20261025/prototype/delegation_vectors.json": "58c4e9837b71da1d947f4811df70072d11488427afea572452acc3a84470f69b",
+    "outputs/agent-cryptography-design-20261025/prototype/delivery_terminal.py": "29203cf6a3fa8fce2062cb8a987d61f8a131814ad50f287d0eaf21dad422d2b2",
+    "outputs/agent-cryptography-design-20261025/prototype/delivery_terminal_contract.json": "4be4d14ff421341a18941590fec5a84cbc91f8d9a41213fcfb0ecf35f2f38c0d",
+    "outputs/agent-cryptography-design-20261025/prototype/delivery_terminal_test_results.json": "256475493b74c646ab886c366330b43db41342589511f987f73a19cd7145a667",
+    "outputs/agent-cryptography-design-20261025/prototype/delivery_transport.py": "71a96b0310b1004946725e09b89178fdfde5ba7b0205cf1179f95b5da134bc9e",
+    "outputs/agent-cryptography-design-20261025/prototype/delivery_transport_contract.json": "a5568eac6d92c45397e70dc1bba72bfd4345d4210272069c24605e6aca84ff7b",
+    "outputs/agent-cryptography-design-20261025/prototype/delivery_transport_test_results.json": "b1e8ded5bfe40c5405a02b2cadc54a0d6c3e8972cae6ae9333f4f54dc31859fd",
+    "outputs/agent-cryptography-design-20261025/prototype/dp_ledger.py": "35f0c336d549bf0145fd79bcb9b02416b0a729d60d990fc34e477b744887054b",
+    "outputs/agent-cryptography-design-20261025/prototype/dp_test_results.json": "c3cb4a97274dd005841bb045e61b48bfdd7e16f3080723b9521b487610043cdc",
+    "outputs/agent-cryptography-design-20261025/prototype/encrypted_ledger.py": "c1ac348a1657483efeaeb0eb4d43bae80b3990ce9b461f0a2b1533dd17ce32be",
+    "outputs/agent-cryptography-design-20261025/prototype/encrypted_mixed_contract.json": "1bfd1b7adf3a80833ff6078c2151174f41eda3e16fdcb65c3e6903c824f4f980",
+    "outputs/agent-cryptography-design-20261025/prototype/encrypted_mixed_ledger.py": "1a085da145bd7fd0ef95a411fbfa3d9b94132508e7a9210127daeb5d2aca5740",
+    "outputs/agent-cryptography-design-20261025/prototype/encrypted_mixed_test_results.json": "c83201d09b0e7a9b3a440cef561e46f8a856655a60c8895e576a081b90740f12",
+    "outputs/agent-cryptography-design-20261025/prototype/encrypted_test_results.json": "32c7012ed0701981144efe8b934a89a27f6f43b5439ea201f49c661f3296d15c",
+    "outputs/agent-cryptography-design-20261025/prototype/histogram_ledger.py": "afac61ce7dbc8cfe01e6756a243eea389724d59c8f51bcd22b2c0c2d606c32e0",
+    "outputs/agent-cryptography-design-20261025/prototype/histogram_ledger_contract.json": "7fe45ad3e70c546f9d2af0bb8e1044b3c318e3e4a2e36084efefb767cf63beb1",
+    "outputs/agent-cryptography-design-20261025/prototype/histogram_ledger_test_results.json": "b7339c0e89540ade4fb195f5c0a0156fc896bcfa39282f47f388c1a08a37f133",
+    "outputs/agent-cryptography-design-20261025/prototype/ledger.py": "5bdd63777480e26d56d89d00e4d0f7a7030668377ca164756f2752103cf04dc7",
+    "outputs/agent-cryptography-design-20261025/prototype/mixed_delegated_contract.json": "10c161922942e51377c7335f904088a5f3151141690a4f4f6f31616b8b9f31a3",
+    "outputs/agent-cryptography-design-20261025/prototype/mixed_delegated_ledger.py": "69b87ad162fe3d462fcb31baccb6919e82938a7e8e2b20ea570737b7e9dde7bc",
+    "outputs/agent-cryptography-design-20261025/prototype/mixed_delegated_test_results.json": "6851882961da59c2cd8384090568112ddd81f0b9594b4fa616f4c57359eeb8e8",
+    "outputs/agent-cryptography-design-20261025/prototype/mixed_delegated_v1.cddl": "abaa5e18b619027a6149e5b3b8470cbf87af4c0efc3010d9697ddeb0fee10c18",
+    "outputs/agent-cryptography-design-20261025/prototype/mixed_delegation_vectors.json": "e698e39dee720f59c82c174ed8d7856f757863bd4468ceb89c4b7ec739ca460f",
+    "outputs/agent-cryptography-design-20261025/prototype/mixed_delivery_contract.json": "1813bef896f945265b208fe6007c61d225ed64cabc6728468cdedfe7551ee1ac",
+    "outputs/agent-cryptography-design-20261025/prototype/mixed_delivery_terminal.py": "67b759be033cb2f3ce26db2caaa7afc816f1b7f723934fb22445d434ab137acc",
+    "outputs/agent-cryptography-design-20261025/prototype/mixed_delivery_terminal_v1.cddl": "eebdad4318be0aaa7ea313d530759d24ac970db1bbddefe528c67ef2a5ec3c06",
+    "outputs/agent-cryptography-design-20261025/prototype/mixed_delivery_test_results.json": "09d63a9f4ce54f7596f1022dabdff3d91ef5703fe5cccacb95e7cd71a99cff91",
+    "outputs/agent-cryptography-design-20261025/prototype/mixed_delivery_transport.py": "9127fe54d9bb7e396c4056f7db7de15f2f299d647bbb1e1cc77d23d5d1a4b491",
+    "outputs/agent-cryptography-design-20261025/prototype/mixed_delivery_v1.cddl": "24676036ccc2bff1dd3ed2ed65d9c9196678d583ce4bf2178a4a4f84bf84817f",
+    "outputs/agent-cryptography-design-20261025/prototype/mixed_terminal_contract.json": "04a2764ad7a8e49fe0a3c2890094553e958fa6e2a87f243f21dbe8cfc9d3f7df",
+    "outputs/agent-cryptography-design-20261025/prototype/mixed_terminal_test_results.json": "08ccb6fd8267b804be521b26bb50568d6596aebb42625ad713608c37bff0bdec",
+    "outputs/agent-cryptography-design-20261025/prototype/ordered_publication.py": "09deb84392ba054d4541295561865a501004ce09f2d04edca2fd3bd3d9954be1",
+    "outputs/agent-cryptography-design-20261025/prototype/ordered_publication_contract.json": "90cd666277f01a6904a90515f5b64764d63b8be19f244f6d1122ce2e68e680e4",
+    "outputs/agent-cryptography-design-20261025/prototype/ordered_publication_test_results.json": "574ba2642459bcb07d7ff698ea85c9c639d079fa2f537f911bf13c33b3a1c585",
+    "outputs/agent-cryptography-design-20261025/prototype/p2_scenario.py": "8e276dbb9c0ca10282e31e63807612c0997b5e174efaf62c173e5078c3d60f94",
+    "outputs/agent-cryptography-design-20261025/prototype/p2_scenario_contract.json": "326d347d259a2605ca8d6aa18ed00f030de6110046bb66849056f8940a3ee7ac",
+    "outputs/agent-cryptography-design-20261025/prototype/p2_scenario_results.json": "0a52ebd9f739ff9cd60a7839ffd34e868ff7ad8e7d374a32275d00f31563f4be",
+    "outputs/agent-cryptography-design-20261025/prototype/p2_scenario_test_results.json": "20bf2bb65ff9778efabcb98950d60deade870025c8464fcf1885d25216dc0177",
+    "outputs/agent-cryptography-design-20261025/prototype/public_gateway.py": "c9c87e131b01b01592b844eff78ee66b30e0e253e779a135ab0895019232bed9",
+    "outputs/agent-cryptography-design-20261025/prototype/public_gateway_contract.json": "36bcbe01d7d86fb5a4eda176dc09aa9594f2a0d458b35443f6faa801302b29fb",
+    "outputs/agent-cryptography-design-20261025/prototype/public_gateway_test_results.json": "cdc620e9fcc4909cd6007aa88bf5065138360e99e193bd635515a804a4f9a2ea",
+    "outputs/agent-cryptography-design-20261025/prototype/public_gateway_transport.py": "7a6f6f49ce114337dca729b7b242a7e4366cf635043b65ea4f391326a52fe63b",
+    "outputs/agent-cryptography-design-20261025/prototype/public_gateway_v1.cddl": "d7b042f2e7c529cdc5a848b61f8199a6db79a0253a51d3f2d3dddf8af12afe96",
+    "outputs/agent-cryptography-design-20261025/prototype/public_input.py": "f037317ea9f7bf4a0997f6f061206dfd7746bd0fba1432e3f5061517ffbc0e01",
+    "outputs/agent-cryptography-design-20261025/prototype/public_observation.py": "53e21db6e2f507832d1a75c0c0578b2ed1aaa3b5c221a9ee6e86dc23dfa562ee",
+    "outputs/agent-cryptography-design-20261025/prototype/public_observation_contract.json": "b2326c020aebe5427f96721d355b3a272c93402b83b0ba687a25a05a57796176",
+    "outputs/agent-cryptography-design-20261025/prototype/public_observation_test_results.json": "3ed717d302ba6262be56f30ad41b68863f07ff24e12c7940e0feb7e0b34b6741",
+    "outputs/agent-cryptography-design-20261025/prototype/public_trace_adapter.py": "7f404abd980bf3490b76a8b7bbd00d6e7d1a5049011a940e633c914fd98202b3",
+    "outputs/agent-cryptography-design-20261025/prototype/recovery_contract.json": "8497d41f6d6ca8dd41c1d6c9dd37dba20bcb9f4355a6471b7ac278caa8618dc5",
+    "outputs/agent-cryptography-design-20261025/prototype/requirements-crypto.txt": "b1cf9fa6f606d1486e0e1294f0c8715991e9e79cc16f536be2c78ff60192ef4f",
+    "outputs/agent-cryptography-design-20261025/prototype/requirements.txt": "da4f4c50c7cb835ad672e2f8daf69cc46954c96545546a6502ba46ca75b7c41c",
+    "outputs/agent-cryptography-design-20261025/prototype/retention_archive.py": "c727898455e30af80257ec307157173e109c5c9dad9b66dab404a5ca4ed943b7",
+    "outputs/agent-cryptography-design-20261025/prototype/retention_archive_contract.json": "1920f7dd63c5fd8db3317496f3980afb68e8aae9ef87b2918cfe47c278486277",
+    "outputs/agent-cryptography-design-20261025/prototype/retention_archive_test_results.json": "aeeadb80c0aeab48134ed3f285dea6f1f40c5caec59d2e4a2fe3ac2819d02a1b",
+    "outputs/agent-cryptography-design-20261025/prototype/retention_archive_v2.cddl": "9cd5d1b9c941eb2417a0b2900773fcf7466d8149c911f8b7b4e6e2b0e6a32105",
+    "outputs/agent-cryptography-design-20261025/prototype/retention_capacity_contract.json": "c131ccc10f3d542b2734cdc96a49eacf64e70ece9b7b6c7928a43843b3cb74d1",
+    "outputs/agent-cryptography-design-20261025/prototype/retention_delivery.py": "35dd17fa0d0d50aa34674239fe68a128b1865421ef8e371145abb996e00d0d46",
+    "outputs/agent-cryptography-design-20261025/prototype/retention_delivery_contract.json": "5d53ef9b1dc5fd85464b3f17b26368d5828d3c0b5feb661800e17cc09af90ca5",
+    "outputs/agent-cryptography-design-20261025/prototype/retention_delivery_test_results.json": "c87fd97fc09522ef979dff26b17d31789190497e6141ef5c16a7374c85cc9e9e",
+    "outputs/agent-cryptography-design-20261025/prototype/retention_delivery_v2.cddl": "f22b023ada9a8e3317d4e898530a8b8e0bd6a755fccbf115159bbca1f276bd8a",
+    "outputs/agent-cryptography-design-20261025/prototype/retention_delivery_vectors.json": "41fc00abe27c024b7fca1273066877d228b90137a83874ff0c09274e36e0b606",
+    "outputs/agent-cryptography-design-20261025/prototype/retention_recipient.py": "562e3ed9404b3ea4a8d94cb73abb863949eff92931f73d4d71cca8bb253b148d",
+    "outputs/agent-cryptography-design-20261025/prototype/retention_recipient_contract.json": "a8d5b2169a5aaf7e090ce8ad417f5a769d17420b421824d9d47a8edbdafd1c01",
+    "outputs/agent-cryptography-design-20261025/prototype/retention_recipient_test_results.json": "9da6ead3bd99ec6781935579d34fee7670f7a1dff4eb6fdbcf27f0208ac5099e",
+    "outputs/agent-cryptography-design-20261025/prototype/retention_sender.py": "1f55f6d9a68614bb03883b460c52b6cea0dfbe0ac3811ed2e3e3d5af4623dbb6",
+    "outputs/agent-cryptography-design-20261025/prototype/retention_sender_contract.json": "ba295a2ba5f38d6952188622b93598f7e805208c6235f77b170aadfadac66fd3",
+    "outputs/agent-cryptography-design-20261025/prototype/retention_sender_test_results.json": "0a635666b0fc084944ef4b561f23fd9a730c70eae5261f1bda915dd5b57b001c",
+    "outputs/agent-cryptography-design-20261025/prototype/retention_v2.cddl": "21b4ba22af615354ebb9a4103a96484bb2b889f2ea2beffc3be7f4897425a6e1",
+    "outputs/agent-cryptography-design-20261025/prototype/retention_vectors.json": "cd4d9493dafa0e6874fc90b55838ce1ff7d3101d269d9b409c3375659ff425f8",
+    "outputs/agent-cryptography-design-20261025/prototype/retention_wire.py": "38ce3865e3be049cb570225216ec8e8ae192617b7124f03b2cb51612bd56e22a",
+    "outputs/agent-cryptography-design-20261025/prototype/retention_wire_contract.json": "3615a937356368a25f4e8c0bde09e12a93d38a5fc1c6eecc202dcd4d14b83a6c",
+    "outputs/agent-cryptography-design-20261025/prototype/retention_wire_test_results.json": "5b9b4204a69b4c2695df877926cfe48117e6526b55097a1687d1efa842fc3047",
+    "outputs/agent-cryptography-design-20261025/prototype/scheduled_ledger.py": "d8d4b2c32b5028066190845298f8e434fe5d6e262e5adad1c48d221be06511e0",
+    "outputs/agent-cryptography-design-20261025/prototype/scheduled_test_results.json": "66d28083b9363a63099d37233eb3e739452c6b0a0f599920ec07e5baa32824fb",
+    "outputs/agent-cryptography-design-20261025/prototype/signed_ledger.py": "e777d588e232d0f6f42f3d935b8105ec8b17045ef3eb2cec516975f04a4cd22f",
+    "outputs/agent-cryptography-design-20261025/prototype/signed_test_results.json": "8e2cb7e2246cd3924ac82124c89a2c922960787c7ad034f55c2f084719a65617",
+    "outputs/agent-cryptography-design-20261025/prototype/storage_contract.json": "899e365016ab433dfea7653046a3929967129f45a40fa02cbfb5f5a56251c9a4",
+    "outputs/agent-cryptography-design-20261025/prototype/test_atomic_publication.py": "7830e50f432618dd845e82e30fa18b564771074419ac2b9843537666a101aa9b",
+    "outputs/agent-cryptography-design-20261025/prototype/test_contribution_delivery.py": "3017c1f5c89f82018b7acdeca28f1c84129baa4745ec31d0f4047633183f814a",
+    "outputs/agent-cryptography-design-20261025/prototype/test_contribution_ingestion.py": "6ebb147f72824a0b1cee8ed169cb26e628b53322f48c2e3b04684f1d3b5ff9b9",
+    "outputs/agent-cryptography-design-20261025/prototype/test_delegated_ledger.py": "1cee9d8febe72898d14c995a7ac93476889a2f2ae75129aa86d776f473c4c35f",
+    "outputs/agent-cryptography-design-20261025/prototype/test_delivery_terminal.py": "1d8cc3d14e566f579ff038b960ac70cb5de9006e4e9b06dce878191c4750d137",
+    "outputs/agent-cryptography-design-20261025/prototype/test_delivery_transport.py": "1a8eebe3e8650f2c6a2d6649bdc041bcd3da49742490dd68ec8a2ed45f861b2d",
+    "outputs/agent-cryptography-design-20261025/prototype/test_dp_ledger.py": "41c936fbd1cf5f5c3eb5d2cd4b99f8601d425355a8f0d8b17e67b1f0e7f3c291",
+    "outputs/agent-cryptography-design-20261025/prototype/test_encrypted_ledger.py": "bbcc428ddbd8bbcc9e8ffad6358e6936a0403fcc6c9900f4d8e1c836eac3f466",
+    "outputs/agent-cryptography-design-20261025/prototype/test_encrypted_mixed_ledger.py": "d2c87ea063425d266d2238758ebc0c5f1de74057fff4bdf2ebff0c6eed4a2589",
+    "outputs/agent-cryptography-design-20261025/prototype/test_histogram_ledger.py": "d065b1af66187adf2c81a818994900887005c2e1f5713e9f0bbf5e5c34176797",
+    "outputs/agent-cryptography-design-20261025/prototype/test_ledger.py": "d44c082f517a09080790183bf8a9a5a8960d14160ed1c644bf2b284970e77ae7",
+    "outputs/agent-cryptography-design-20261025/prototype/test_mixed_delegated_ledger.py": "9babf15f2c9584ed6ebd3d040376d81fb61ce1e97a2e71ea1cad4c377ecbd616",
+    "outputs/agent-cryptography-design-20261025/prototype/test_mixed_delivery_terminal.py": "eec723c9ed969d088fd634a2191be83e261bdbd5282e8ceb88dcc73b5fa22aff",
+    "outputs/agent-cryptography-design-20261025/prototype/test_mixed_delivery_transport.py": "8bd848285ee32a68d3cd06bf32f892ed747e4b7cf2ff3f264022776fcb87781d",
+    "outputs/agent-cryptography-design-20261025/prototype/test_ordered_publication.py": "693bea9acc98d2de0472644484760bbb46a88a13b14b69c0d76e76485449033f",
+    "outputs/agent-cryptography-design-20261025/prototype/test_p2_scenario.py": "1fd37412477e3a8063348e42a79ee1c2ee89bdff9602e4419fd43a0518f7afad",
+    "outputs/agent-cryptography-design-20261025/prototype/test_public_gateway.py": "bbaa068581cdd755882aa5db1b0a917f703f0c24692a128ac84253d055efaed0",
+    "outputs/agent-cryptography-design-20261025/prototype/test_public_observation.py": "2d600354949d3686950e4a40732e01df18b80e564aa3bc909a01aac2b159d959",
+    "outputs/agent-cryptography-design-20261025/prototype/test_results.json": "42f3a9ec6c3af118d9f31caae96e46b83de0abd910f803a3b1c7011b3af394ac",
+    "outputs/agent-cryptography-design-20261025/prototype/test_retention_archive.py": "bd088478e062544b5ad1ee2f48ebd9ff60e69d06d144b8c93d117c275a3fc8c3",
+    "outputs/agent-cryptography-design-20261025/prototype/test_retention_delivery.py": "1bee89816723bc7b54dd501643a340a465c7cdb17a421d8717c61ac2f25e2cd6",
+    "outputs/agent-cryptography-design-20261025/prototype/test_retention_recipient.py": "6f2df27a2a357d9d4f68f937bfc13ed851c6486a5814b5fdddae7c47792c35ed",
+    "outputs/agent-cryptography-design-20261025/prototype/test_retention_sender.py": "9311d56d525cd28e963d44ced9e8ffc784c78366f56b8e130820159f145369d1",
+    "outputs/agent-cryptography-design-20261025/prototype/test_retention_wire.py": "0a14471278b94db57c5a83096bb1714f5e5e73632b4bf68961dfaad7c261f3a0",
+    "outputs/agent-cryptography-design-20261025/prototype/test_scheduled_ledger.py": "9de478264c7d94f1473e8aa24201e96984bc1339d1208125c9ade41814e8c285",
+    "outputs/agent-cryptography-design-20261025/prototype/test_signed_ledger.py": "c28e0f8fc365b5ff61e49343f2f1d433ae369c403f849efdb6ddb9c65745aa50",
+    "outputs/agent-cryptography-design-20261025/prototype/test_witness_transport.py": "ee6c2a89477e045435b262f87adb8d3d33490a55cab27309708a366b8b3be922",
+    "outputs/agent-cryptography-design-20261025/prototype/test_witnessed_ledger.py": "73a4202b220fec643dbb88ae74449bbe307ed4e5997ff643592d7f2803e62cfc",
+    "outputs/agent-cryptography-design-20261025/prototype/test_witnessed_mixed_ledger.py": "0d764a9322f15488d1fed5a91f2019ec01296ffb63504b9693e20eb13111b06e",
+    "outputs/agent-cryptography-design-20261025/prototype/test_witnessed_recipient.py": "d1c464fe282303cfa5446ce9e01823c81bab2a6063118299bc2e1b0226b2b7b9",
+    "outputs/agent-cryptography-design-20261025/prototype/wire.py": "b2e95928c604c923ec549a74f599fd4a16fc4ccec5841474aabf64ec55de6d58",
+    "outputs/agent-cryptography-design-20261025/prototype/wire_vectors.json": "690e64be4278fa69f56c67a89bc19a48b9ddbf30de39b300d2e85562954a019b",
+    "outputs/agent-cryptography-design-20261025/prototype/witness_rpc_v1.cddl": "cb637c8051e2b4067d68a5e54848418c44ffc40d19e280763b40776c5c1ac729",
+    "outputs/agent-cryptography-design-20261025/prototype/witness_transport.py": "7226ebcaaf994f155990e31f747bd8a5ea1625f4ab52ee67a2ccad8ed976983f",
+    "outputs/agent-cryptography-design-20261025/prototype/witness_transport_contract.json": "c48dabbbd8bebe4d7899a1bdd70a9e8ff0093951f4e51d32f34fee7bcad23ee0",
+    "outputs/agent-cryptography-design-20261025/prototype/witness_transport_test_results.json": "826118fa3e92fade79e1ad89ea22dfdebbefaaecb6aea47059e32f9ee9331ae3",
+    "outputs/agent-cryptography-design-20261025/prototype/witnessed_ledger.py": "fe62b6e3f2a3e6f267316ea1e819fe3423b6bdfe6c54c7439c8411c506c51353",
+    "outputs/agent-cryptography-design-20261025/prototype/witnessed_mixed_contract.json": "57b17a68347c6d869749ad127cf01cb954fc9e63f2d6254d6f700961786f5002",
+    "outputs/agent-cryptography-design-20261025/prototype/witnessed_mixed_ledger.py": "9d58044454873d31648c0011c296b779d0d90f4449546c44fcb7d8d8b623aced",
+    "outputs/agent-cryptography-design-20261025/prototype/witnessed_mixed_test_results.json": "cbddc3a8d4f5a8b1b277d064c7de6ba7916e18d1af097967446cdc30787f8edc",
+    "outputs/agent-cryptography-design-20261025/prototype/witnessed_recipient.py": "64060786a6bfa383302f1c999648aa6323fafdd34b620e70b923b95037b68cad",
+    "outputs/agent-cryptography-design-20261025/prototype/witnessed_recipient_contract.json": "e722ac5b81dbbee0060d9bbbf501d00df7b43e27f49e52a2584265c077c219fd",
+    "outputs/agent-cryptography-design-20261025/prototype/witnessed_recipient_test_results.json": "30641e7d65f8ad0af5327f241b292c507194573ca988b39a68e64d4d527c40e1",
+    "outputs/agent-cryptography-design-20261025/prototype/witnessed_test_results.json": "ce871c0f7d363f66f3098d1fcab71df9a653ef254eefa66580f91f014b472309",
+    "outputs/agent-cryptography-design-20261025/public_transcript_contract.json": "f71ed7fce149196c085faccb54bc3157d77bbff2c4b674e3bdbb2c51e15aad03",
+    "outputs/agent-cryptography-design-20261025/public_transcript_model.py": "b7359c606065a3ef63efc56c2d7ea1158a72f0eee99523eb4a7f702134e6644e",
+    "outputs/agent-cryptography-design-20261025/public_transcript_results.json": "8352c075cde0ede19ced79262511927974725c01c8b2ac442120b548137f7f93",
+    "outputs/agent-cryptography-design-20261025/public_transcript_test_results.json": "1ba9974cb12858832a01ea3ab555b210bcb745958418547e9ca80269e33f0204",
+    "outputs/agent-cryptography-design-20261025/retention_contract.json": "b853979cb639aecf3e8ba529fb39a600bbafbd47068fe59af7771fc10c7f6208",
+    "outputs/agent-cryptography-design-20261025/retention_model.py": "69ec29731d0ae2ef4ce06c59a34372587722acd79744994252eee050699ac87c",
+    "outputs/agent-cryptography-design-20261025/retention_results.json": "6c5169717f416e7f1ad80406b10bf7bb00f900fb55f29e51c8168ca64880ab67",
+    "outputs/agent-cryptography-design-20261025/test_public_transcript.py": "0c24188a1f27be7c786a006b5cf3f5ef578021e414d60322e82c2a777fa87411",
+    "tests/test_review_regressions.py": "5135cae78bc1109255479e2523be64da58f86acb290418fa6d1d3bc1dde406f5",
+    "scripts/verify.py": "be0dbcea34d9dc5c2ce9b84eddec6cb228f61b8fc4ce25705f6a8ad79203915e"
+  },
+  "results": [
+    {
+      "name": "test_atomic_publication",
+      "returncode": 0,
+      "passed": true,
+      "log": "test_atomic_publication.log"
+    },
+    {
+      "name": "test_contribution_delivery",
+      "returncode": 0,
+      "passed": true,
+      "log": "test_contribution_delivery.log"
+    },
+    {
+      "name": "test_contribution_ingestion",
+      "returncode": 0,
+      "passed": true,
+      "log": "test_contribution_ingestion.log"
+    },
+    {
+      "name": "test_delegated_ledger",
+      "returncode": 0,
+      "passed": true,
+      "log": "test_delegated_ledger.log"
+    },
+    {
+      "name": "test_delivery_terminal",
+      "returncode": 0,
+      "passed": true,
+      "log": "test_delivery_terminal.log"
+    },
+    {
+      "name": "test_delivery_transport",
+      "returncode": 0,
+      "passed": true,
+      "log": "test_delivery_transport.log"
+    },
+    {
+      "name": "test_dp_ledger",
+      "returncode": 0,
+      "passed": true,
+      "log": "test_dp_ledger.log"
+    },
+    {
+      "name": "test_encrypted_ledger",
+      "returncode": 0,
+      "passed": true,
+      "log": "test_encrypted_ledger.log"
+    },
+    {
+      "name": "test_encrypted_mixed_ledger",
+      "returncode": 0,
+      "passed": true,
+      "log": "test_encrypted_mixed_ledger.log"
+    },
+    {
+      "name": "test_histogram_ledger",
+      "returncode": 0,
+      "passed": true,
+      "log": "test_histogram_ledger.log"
+    },
+    {
+      "name": "test_ledger",
+      "returncode": 0,
+      "passed": true,
+      "log": "test_ledger.log"
+    },
+    {
+      "name": "test_mixed_delegated_ledger",
+      "returncode": 0,
+      "passed": true,
+      "log": "test_mixed_delegated_ledger.log"
+    },
+    {
+      "name": "test_mixed_delivery_terminal",
+      "returncode": 0,
+      "passed": true,
+      "log": "test_mixed_delivery_terminal.log"
+    },
+    {
+      "name": "test_mixed_delivery_transport",
+      "returncode": 0,
+      "passed": true,
+      "log": "test_mixed_delivery_transport.log"
+    },
+    {
+      "name": "test_ordered_publication",
+      "returncode": 0,
+      "passed": true,
+      "log": "test_ordered_publication.log"
+    },
+    {
+      "name": "test_p2_scenario",
+      "returncode": 0,
+      "passed": true,
+      "log": "test_p2_scenario.log"
+    },
+    {
+      "name": "test_public_gateway",
+      "returncode": 0,
+      "passed": true,
+      "log": "test_public_gateway.log"
+    },
+    {
+      "name": "test_public_observation",
+      "returncode": 0,
+      "passed": true,
+      "log": "test_public_observation.log"
+    },
+    {
+      "name": "test_retention_archive",
+      "returncode": 0,
+      "passed": true,
+      "log": "test_retention_archive.log"
+    },
+    {
+      "name": "test_retention_delivery",
+      "returncode": 0,
+      "passed": true,
+      "log": "test_retention_delivery.log"
+    },
+    {
+      "name": "test_retention_recipient",
+      "returncode": 0,
+      "passed": true,
+      "log": "test_retention_recipient.log"
+    },
+    {
+      "name": "test_retention_sender",
+      "returncode": 0,
+      "passed": true,
+      "log": "test_retention_sender.log"
+    },
+    {
+      "name": "test_retention_wire",
+      "returncode": 0,
+      "passed": true,
+      "log": "test_retention_wire.log"
+    },
+    {
+      "name": "test_scheduled_ledger",
+      "returncode": 0,
+      "passed": true,
+      "log": "test_scheduled_ledger.log"
+    },
+    {
+      "name": "test_signed_ledger",
+      "returncode": 0,
+      "passed": true,
+      "log": "test_signed_ledger.log"
+    },
+    {
+      "name": "test_witness_transport",
+      "returncode": 0,
+      "passed": true,
+      "log": "test_witness_transport.log"
+    },
+    {
+      "name": "test_witnessed_ledger",
+      "returncode": 0,
+      "passed": true,
+      "log": "test_witnessed_ledger.log"
+    },
+    {
+      "name": "test_witnessed_mixed_ledger",
+      "returncode": 0,
+      "passed": true,
+      "log": "test_witnessed_mixed_ledger.log"
+    },
+    {
+      "name": "test_witnessed_recipient",
+      "returncode": 0,
+      "passed": true,
+      "log": "test_witnessed_recipient.log"
+    },
+    {
+      "name": "test_public_transcript",
+      "returncode": 0,
+      "passed": true,
+      "log": "test_public_transcript.log"
+    },
+    {
+      "name": "review_regressions",
+      "returncode": 0,
+      "passed": true,
+      "log": "review_regressions.log"
+    },
+    {
+      "name": "model_check",
+      "returncode": 0,
+      "passed": true,
+      "log": "model_check.log"
+    },
+    {
+      "name": "model_v2",
+      "returncode": 0,
+      "passed": true,
+      "log": "model_v2.log"
+    },
+    {
+      "name": "observation_model",
+      "returncode": 0,
+      "passed": true,
+      "log": "observation_model.log"
+    },
+    {
+      "name": "fixed_work_model",
+      "returncode": 0,
+      "passed": true,
+      "log": "fixed_work_model.log"
+    },
+    {
+      "name": "histogram_model",
+      "returncode": 0,
+      "passed": true,
+      "log": "histogram_model.log"
+    },
+    {
+      "name": "retention_model",
+      "returncode": 0,
+      "passed": true,
+      "log": "retention_model.log"
+    },
+    {
+      "name": "public_transcript_model",
+      "returncode": 0,
+      "passed": true,
+      "log": "public_transcript_model.log"
+    }
+  ],
+  "passed": true,
+  "finished_utc": "2026-10-25T23:08:03.333105+00:00"
+}

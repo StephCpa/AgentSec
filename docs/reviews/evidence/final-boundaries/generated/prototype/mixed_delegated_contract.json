@@ -1,0 +1,124 @@
+{
+  "implementation": "mixed_delegated_ledger.py",
+  "storage_profile": "synthetic-signed-mixed-delegated-v1",
+  "action_profile": "mixed-delegated-v1",
+  "credential_profile": "mixed-chain-v1",
+  "status": "Synthetic plaintext signed reference; no encrypted vector state, witness or authenticated vector network",
+  "wire_contract": "mixed_delegated_v1.cddl",
+  "fixture_vectors": "mixed_delegation_vectors.json",
+  "independent_interoperability_validated": false,
+  "signature": {
+    "suite": "Ed25519-SHA256-CBOR-v1",
+    "cose": "tag 18 Sign1, protected {1:-19,4:kid}, empty unprotected",
+    "aad_objects": [
+      "MixedGrant",
+      "MixedDelegation",
+      "MixedActionProof"
+    ],
+    "aad_envelope": "CBOR([agent-action-system,1,object_type,Ed25519-SHA256-CBOR-v1])",
+    "audience": "mixed-gateway-v1",
+    "legacy_signature_domains_accepted": false
+  },
+  "action": {
+    "common_binding": [
+      "profile",
+      "tenant",
+      "operation ID",
+      "root",
+      "actor/key",
+      "domain",
+      "snapshot",
+      "recipient",
+      "mechanism",
+      "accountant",
+      "cost maxima",
+      "validity window",
+      "leaf digest",
+      "operation_kind",
+      "N",
+      "K",
+      "codec"
+    ],
+    "histogram_extra_binding": [
+      "catalog ID",
+      "ordered catalog digest",
+      "B"
+    ],
+    "count_codec": "uint64be_count_v1",
+    "histogram_codec": "uint64be_public_bucket_order_v1",
+    "registry_revalidation": "inside reservation transaction; N, B and catalog digest match immutable registry",
+    "shape": "count cannot include histogram fields; unknown fields rejected"
+  },
+  "policy": {
+    "sets": [
+      "snapshots",
+      "recipients",
+      "mechanisms",
+      "operations"
+    ],
+    "catalogs": "map from public catalog ID to exact 32-byte digest of ordered registered labels; <=32 entries",
+    "child_rule": "all sets narrow; catalog ID/digest pairs subset of parent; digest substitution rejected",
+    "count_catalog_rule": "count requires no catalog field; empty catalog policy only denies histogram",
+    "scope_rule": "operation_kind, mechanism, snapshot, recipient all required; histogram additionally requires exact catalog pair"
+  },
+  "chain": {
+    "max_credentials": 8,
+    "max_aggregate_wire_bytes": 65536,
+    "root_authority": "trusted pinned root key; never learned from chain",
+    "identity": "parent issuer/key, child subject/key, tenant/root and exact parent/leaf wire digests bound",
+    "limits": "time/depth and epsilon/delta caps only narrow",
+    "immutable_ids": true,
+    "unused_revocation_tombstones": true
+  },
+  "accounting": {
+    "per_operation_epsilon_micro": 700000,
+    "per_operation_delta_q64": 8388608,
+    "charged_accounts": "same original domain pair plus every credential ancestor pair, atomically",
+    "two_mechanisms": "count and histogram consume the same cumulative parent allowance; cost does not multiply by buckets",
+    "new_children": "cannot duplicate any shared parent or domain budget",
+    "failed_registration": "challenge use, proof, credential/account creation, chain, operation and all reservations roll back together",
+    "fresh_retry": "same exact action with fresh challenge/proof; no second charge"
+  },
+  "execution": {
+    "histogram_steps": "1+B(N+81)",
+    "randomness": "complete 10B-byte tape durable before private read",
+    "revoked_before_L1": "refund all held domain and ancestor charges; dummy work withheld",
+    "revoked_after_L1": "no refund/no reseed; compute complete vector but withhold publication",
+    "L2": "full vector and all domain/ancestor charges atomic",
+    "L3": "internal existing ticket semantics only; cap lifetime at all action/credential/key/root expirations",
+    "old_ticket": "existing admitted ticket survives later revocation within original expiry"
+  },
+  "verification": {
+    "test_report": "mixed_delegated_test_results.json",
+    "test_methods": 22,
+    "actual_process_crash_cuts": 8,
+    "mixed_sibling_race": "8 signed requests across sibling leaf credentials and count/histogram; shared ancestor allowance of 1 operation; exactly 1 accepted",
+    "previous_suites_rerun": 11
+  },
+  "remaining": [
+    "Mechanism-bound encrypted tape, vector state and result",
+    "Authoritative witness full-state recovery including catalogs/signatures/caps",
+    "Authenticated vector result and terminal delivery",
+    "Trusted user contribution preprocessing, assignment-rule provenance and domain lineage",
+    "Production enrollment, signing isolation, key custody and rotation",
+    "Independent CDDL/COSE interoperability, full observable-trace proof and strong baseline",
+    "No implicit legacy profile migration"
+  ],
+  "encrypted_extension": {
+    "implementation": "encrypted_mixed_ledger.py",
+    "contract": "encrypted_mixed_contract.json",
+    "scope": "Separate signed encrypted profile now protects all mixed private fields; base class remains plaintext"
+  },
+  "credential_identity_revision": {
+    "fields": [
+      "tenant",
+      "root",
+      "kind",
+      "issuer_kid",
+      "id"
+    ],
+    "revocation": "Required explicit full scoped identity, including pre-presentation tombstones. No bare-ID fallback.",
+    "storage": "Fresh scoped schema only; no legacy migration. Exact witness schema match required.",
+    "immutability": "Same identity has immutable signed bytes; parent links and cap accounts use full wire digest."
+  }
+}

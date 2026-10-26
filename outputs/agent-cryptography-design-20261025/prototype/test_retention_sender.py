@@ -133,7 +133,7 @@ class RetentionSenderTests(unittest.TestCase):
         self.assertEqual(set(seq),{1,2});self.assertEqual(self.l.audit(),[])
 
     def test_root_and_route_revocation_block_new_admission_but_keep_old_evidence(self):
-        row,env=self.prepared();self.l.revoke_credential('t','root')
+        row,env=self.prepared();self.l.revoke_credential('t','root',root_id='root',kind='grant',issuer_kid=b'authority')
         self.reject('ACTION_OR_KEY_INACTIVE',self.admit)
         self.assertEqual(self.l.prepare_envelope('t',row['id'],self.s),env)
         self.l.revoke_context(self.h)

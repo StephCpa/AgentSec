@@ -1,0 +1,28 @@
+test_actual_process_cuts_restore_request_effect_and_original_response (__main__.PublicGatewayTests) ... ok
+test_authenticated_public_network_commits_once_after_socket_reply_loss (__main__.PublicGatewayTests) ... ok
+test_authority_ahead_requires_restore_before_cached_retry (__main__.PublicGatewayTests) ... ok
+test_budget_rejection_rolls_back_proof_but_journals_denial (__main__.PublicGatewayTests) ... ok
+test_cancel_does_not_advance_work_or_read_private_result (__main__.PublicGatewayTests) ... ok
+test_cancel_process_cuts_preserve_refund_and_control_journal_together (__main__.PublicGatewayTests) ... ok
+test_concurrent_duplicate_requests_have_one_operation_and_identical_response (__main__.PublicGatewayTests) ... ok
+test_core_and_profile_cannot_bypass_public_request_path (__main__.PublicGatewayTests) ... ok
+test_final_pages_keep_original_response_and_contiguous_cursor (__main__.PublicGatewayTests) ... ok
+test_live_revocation_blocks_cached_response_replay (__main__.PublicGatewayTests) ... ok
+test_pause_resume_and_root_revocation_are_authenticated_durable_controls (__main__.PublicGatewayTests) ... ok
+test_poll_and_control_cannot_cross_actor_scope (__main__.PublicGatewayTests) ... ok
+test_poll_is_identical_before_and_during_private_work (__main__.PublicGatewayTests) ... ok
+test_post_L1_cancel_keeps_spending_with_same_public_ack_shape (__main__.PublicGatewayTests) ... ok
+test_recovery_rejects_deleted_control_only_journal (__main__.PublicGatewayTests) ... ok
+test_recovery_rejects_missing_request_coverage_and_pause_state (__main__.PublicGatewayTests) ... ok
+test_recovery_rejects_unjournaled_pause_and_future_poll_claim (__main__.PublicGatewayTests) ... ok
+test_recovery_rejects_unsigned_response_corruption (__main__.PublicGatewayTests) ... ok
+test_request_identity_conflict_does_not_replace_original_response (__main__.PublicGatewayTests) ... ok
+test_request_signature_domain_and_all_signature_bytes_are_checked (__main__.PublicGatewayTests) ... ok
+test_submit_and_exact_retry_after_request_expiry_have_one_effect (__main__.PublicGatewayTests) ... ok
+test_unknown_failure_rolls_back_business_and_journal_not_normal_denial (__main__.PublicGatewayTests) ... ok
+test_wrong_certificate_signature_actor_deployment_and_expiry_are_generic (__main__.PublicGatewayTests) ... ok
+
+----------------------------------------------------------------------
+Ran 23 tests in 10.060s
+
+OK

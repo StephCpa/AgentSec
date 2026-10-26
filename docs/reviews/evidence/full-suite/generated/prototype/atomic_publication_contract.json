@@ -1,0 +1,120 @@
+{
+  "status": "OBS-2_reference_atomic_transition_verified_full_public_gateway_open",
+  "profiles": [
+    "witnessed-atomic-publication-v1",
+    "mtls-atomic-publication-v1"
+  ],
+  "implementation": "atomic_publication.py",
+  "shared_transaction_core": "RetentionSender._admit_v2_tx",
+  "test_report": "atomic_publication_test_results.json",
+  "trusted_bootstrap": "Before a signed root has any operation, bind its existing domain/recipient to an immutable registered route context and TTL. Several roots may share a context only in the same tenant/domain. Not a new public route-management endpoint.",
+  "transaction_order": [
+    "existing advance guarded transaction and current authority fence",
+    "public command and fixed work slot",
+    "optional L2 full result plus all charges",
+    "internal ordered publication eligibility",
+    "for every newly published job: public-policy WITHHELD or L3 ticket/request/outbox allocation using guarded transaction core",
+    "persist one public decision with the same domain job sequence and tick",
+    "persist tick retry identity",
+    "one full witness-image acceptance",
+    "one local commit",
+    "return tick acknowledgement"
+  ],
+  "invariants": [
+    "Every published job has exactly one pub_decisions row, and every decision points to that published job/sequence/tick.",
+    "ADMITTED binds exactly one immutable route, L3 ticket, stable request key, original operation, and outbox; all outboxes are covered by admitted decisions.",
+    "WITHHELD has no ticket and no outbox. Public authorization/cancel or revoked route may cause withholding; unknown internal failures roll back rather than being converted to a public success/failure bit.",
+    "Result commit, all charges, publication eligibility, decision, ticket/outbox and tick retry mapping are atomic at the scheduler transaction boundary.",
+    "A witness-ahead/local-behind replica cannot advance until exact recovery; recovery does not republish, reclassify, resample or re-admit.",
+    "Separate admit_v2 is disabled in the new profile. Internal admission core requires a guarded transaction with sampled transaction clock and witness base anchor.",
+    "Recovery validates contribution source pairs, retention-v2 evidence/frontiers and public decision/ticket coverage before commit."
+  ],
+  "withholding_cases": {
+    "cancel_before_L1": "Original work retained; CANCELED budget returned; one WITHHELD decision at scheduled publication; no ticket.",
+    "cancel_or_revoke_after_L1": "Original work and no-refund semantics retained; withheld result is not eligible for a new delivery.",
+    "route_revoked_before_publication": "Internal kernel eligibility may be RELEASE, but final public decision WITHHELD and no ticket; the two records have different roles.",
+    "action_expired": "Scheduled authorization check yields WITHHELD; no later separate L3 call needed.",
+    "credential_revoked_after_admission": "Original bounded ticket may recover under unchanged retention semantics; cannot create new L3 through disabled API.",
+    "unknown_storage_or_integrity_failure": "Abort entire business transition; do not substitute WITHHELD. External error/availability observation still requires OBS-4."
+  },
+  "schema": {
+    "pub_bindings": "immutable root/domain/context/TTL registry, trusted setup",
+    "pub_decisions": "one kind/delivery pointer per domain job sequence with original tick; not a signed public event feed"
+  },
+  "shared_core_change": "Extracted existing retention-v2 admission checks and mutations into _admit_v2_tx. Existing admit_v2 remains a guarded wrapper with same authorization and fresh/retry distinction. No nested transaction or witness commit in core.",
+  "verification": {
+    "test_methods": 16,
+    "actual_process_crash_scenarios": [
+      {
+        "decision": "ADMITTED",
+        "point": "after_scheduled_result_write"
+      },
+      {
+        "decision": "ADMITTED",
+        "point": "after_publication_write"
+      },
+      {
+        "decision": "ADMITTED",
+        "point": "after_v2_ticket_write"
+      },
+      {
+        "decision": "ADMITTED",
+        "point": "before_public_decision_write"
+      },
+      {
+        "decision": "ADMITTED",
+        "point": "after_public_decision_write"
+      },
+      {
+        "decision": "ADMITTED",
+        "point": "after_witness_accept"
+      },
+      {
+        "decision": "ADMITTED",
+        "point": "after_local_anchor_write"
+      },
+      {
+        "decision": "ADMITTED",
+        "point": "after_tick_commit"
+      },
+      {
+        "decision": "WITHHELD",
+        "point": "after_public_decision_write"
+      },
+      {
+        "decision": "WITHHELD",
+        "point": "after_witness_accept"
+      }
+    ],
+    "actual_process_crash_count": 10,
+    "network": {
+      "witness_requests": 205,
+      "tls_version": "TLSv1.2",
+      "scope": "Atomic count publication and fresh restore over actual loopback authenticated witness; no new public gateway or network result receiver."
+    },
+    "regression_suites_rerun": {
+      "retention_sender": 25,
+      "retention_recipient": 28,
+      "retention_archive": 19,
+      "p2_scenario": 8,
+      "contribution_delivery": 10
+    },
+    "crash_scope": "Eight ADMITTED and two WITHHELD local-reference process cuts. Separately, actual loopback TLS witness for atomic count publication and fresh restore. Not cross-host or power-loss testing.",
+    "mixed_scope": "Actual encrypted signed B4 N3 histogram plus count share final publication transaction in local reference profile.",
+    "receiver_scope": "Existing recipient accepts a new-profile original count ticket after intermediate-credential revocation; this case uses direct local recipient calls."
+  },
+  "remaining": [
+    "OBS-1 authenticated external public request/control/response gateway",
+    "OBS-3 domain-wide final frontier and cross-route transmission gate, including ordered WITHHELD events",
+    "OBS-4 exhaustive error/health/timeout mapping and private-failure observation proof",
+    "OBS-5 recovery for the still-unimplemented gateway/final-frontier state",
+    "OBS-6 physical observation and fault-process refinement",
+    "OBS-7 general cryptographic/adaptive-concurrency proof",
+    "Public signed decision schema and independent interoperability",
+    "Actual workload identity/classifier/global lineage and production authority/key lifecycle"
+  ],
+  "public_gateway_implemented": false,
+  "cross_route_final_order_implemented": false,
+  "full_observation_privacy": false,
+  "production_acceptance": false
+}

@@ -1,0 +1,88 @@
+{
+  "implementation": "witnessed_mixed_ledger.py",
+  "reference_class": "WitnessedMixedLedger",
+  "authenticated_class": "TLSWitnessedMixedLedger",
+  "profiles": [
+    "witnessed-signed-mixed-v1",
+    "mtls-witnessed-signed-mixed-v1"
+  ],
+  "status": "conditional local rollback protection and exact recovery, with authenticated loopback witness; not production nonrollback infrastructure",
+  "composition": "Reuse whole-state WitnessedLedger protocol over EncryptedMixedLedger; TLS profile reuses exact TLSWitnessClient requirement and RPC contract",
+  "namespace": "trusted deployment_id.hex(); not chosen by an Agent request",
+  "state_image": {
+    "format": "agent-ledger-image-v1",
+    "maximum_bytes": 16777216,
+    "coverage": "all schema objects and table rows except local witness_anchor",
+    "explicit_mixed_tables": [
+      "histogram_catalogs",
+      "histogram_snapshots",
+      "signed_actions",
+      "credentials",
+      "credential_revocations",
+      "operation_chains",
+      "accounts",
+      "charges",
+      "snapshots",
+      "operations",
+      "jobs",
+      "tick_requests",
+      "publication_events",
+      "deliveries",
+      "clock_floor",
+      "storage_metadata"
+    ],
+    "private_fields": "ciphertexts only; witness is not given StateVault master key"
+  },
+  "commit": "Check current head and exact local image before every business transaction; witness CAS commits full next image before local anchor/commit and acknowledgement",
+  "unknown_outcome": "Lost reply or process death after witness acceptance is not a rollback/refund; old local copy must recover authoritative state",
+  "restore": {
+    "validation": [
+      "current authenticated head",
+      "image hash",
+      "exact trusted local schema/columns",
+      "canonical byte-for-byte image",
+      "foreign keys",
+      "storage profile/key check",
+      "signatures/chains/account coverage",
+      "AEAD and shape checks",
+      "unchanged witness head before commit"
+    ],
+    "business_effects": "no new sampling, logical job advancement, result replacement, budget reset or extra charge",
+    "audit_detail": "Histogram audit can deterministically replay kernel with stored tape to validate result; this is verification, not fresh mechanism execution",
+    "fresh_replica": "restore_new requires fresh path; ordinary create cannot reset initialized witness namespace"
+  },
+  "authentication": {
+    "transport": "existing witness-rpc-v1 / agent-ledger-witness-v1 over loopback mTLS",
+    "server_identity": "CA/hostname validation plus pinned Ed25519 response key",
+    "freshness": "32-byte request challenge, method/namespace/request digest/body hash and requester certificate fingerprint bound in signed response",
+    "roles": "admin bootstraps; writer reads image and CAS; restorer reads image but cannot write; observer cannot fetch image",
+    "downgrade": "TLS profile rejects ReferenceWitness and old count storage profile"
+  },
+  "verification": {
+    "report": "witnessed_mixed_test_results.json",
+    "test_methods": 21,
+    "actual_process_crash_scenarios": 8,
+    "reference_process_scenarios": 7,
+    "authenticated_final_vector_process_scenarios": 1,
+    "authenticated_server_requests": 1539,
+    "observed_tls_versions": [
+      "TLSv1.2"
+    ],
+    "full_vector_restore": "same encrypted tape/result, same checkpoint, same domain/all-ancestor spent amounts",
+    "image_larger_than_64KiB": "authenticated restore includes N=65535 categorical snapshot; RPC body independent of CBOR metadata limit",
+    "growth_ceiling": "lowered public size cap exercises actual image_hash limit; overflow rolls back local step without losing tape or held charges",
+    "negative_control": "rolling back both the trusted witness and local database remains undetectable"
+  },
+  "remaining": [
+    "Production recipient authority nonrollback and bounded retention; result and terminal delivery implemented in separate MixedDeliveryLedger/MixedTerminalDeliveryLedger profiles",
+    "Independent nonrollback witness/failure domain and real remote recovery validation",
+    "Scalable replicated journal, bounded history and public capacity/admission sizing; full-image 16 MiB cap can halt growth",
+    "Production CA, signing key, storage key and role lifecycle",
+    "Full observable-trace proof and physical timing/performance baseline",
+    "Trusted contribution preprocessing and source lineage",
+    "Independent interoperability and no implicit legacy migration"
+  ],
+  "delivery_extension": "mixed_delivery_contract.json",
+  "terminal_extension": "mixed_terminal_contract.json",
+  "receiver_authority_extension": "witnessed_recipient_contract.json"
+}

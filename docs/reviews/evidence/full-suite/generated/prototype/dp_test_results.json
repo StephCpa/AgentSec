@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "test_methods": 17,
+  "actual_process_crash_cuts": [
+    "after_account_reserve",
+    "before_reserve_commit",
+    "after_reserve_commit",
+    "before_claim_commit",
+    "after_claim_commit",
+    "after_result_write",
+    "after_account_settle",
+    "before_result_commit",
+    "after_result_commit"
+  ],
+  "crash_cut_count": 9,
+  "python_version": "3.9.6 (default, Apr 30 2025, 02:07:17) \n[Clang 17.0.0 (clang-1700.0.13.5)]",
+  "sqlite_version": "3.43.2",
+  "source_sha256": {
+    "ledger.py": "5bdd63777480e26d56d89d00e4d0f7a7030668377ca164756f2752103cf04dc7",
+    "dp_ledger.py": "35f0c336d549bf0145fd79bcb9b02416b0a729d60d990fc34e477b744887054b",
+    "test_dp_ledger.py": "41c936fbd1cf5f5c3eb5d2cd4b99f8601d425355a8f0d8b17e67b1f0e7f3c291",
+    "../fixed_work_model.py": "06b194302f777bec7977166869f6e83ee11daf83d7b2c1c302ae9bf013603860"
+  },
+  "failures": [],
+  "errors": [],
+  "scope": "Synthetic typed domain accounts, fixed-bit count execution and replay, internal L3; no public scheduler or production cryptographic guarantee"
+}

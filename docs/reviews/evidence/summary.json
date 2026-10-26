@@ -1,0 +1,21 @@
+{
+  "base_commit": "8a35b4bfb42009e8a309db44ef120e3a86bcb52d",
+  "historical_suites_rerun": 30,
+  "historical_test_methods": 619,
+  "models_rerun": 7,
+  "final_review_test_methods": 15,
+  "response_vectors": 37,
+  "full_suite": "full-suite/run.json",
+  "final_boundary_rerun": "final-boundaries/run.json",
+  "baseline_expected_failures": "baseline/run.json",
+  "source_changes_after_full_suite": [
+    "outputs/agent-cryptography-design-20261025/prototype/README.md",
+    "outputs/agent-cryptography-design-20261025/prototype/mixed_delegated_contract.json",
+    "outputs/agent-cryptography-design-20261025/prototype/public_gateway.py",
+    "outputs/agent-cryptography-design-20261025/prototype/public_gateway_contract.json",
+    "outputs/agent-cryptography-design-20261025/prototype/public_gateway_v1.cddl",
+    "tests/test_review_regressions.py",
+    "scripts/verify.py"
+  ],
+  "interpretation": "Full suite completed before final response-sequence tightening and additional vector/regression tests. The final boundary run repeats public gateway, public observation, and all final review regressions against final executable sources. Logs are not independent fault cases. CI results are reported separately."
+}

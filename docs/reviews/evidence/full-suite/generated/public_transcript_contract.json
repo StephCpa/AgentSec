@@ -1,0 +1,225 @@
+{
+  "profile": "public-transcript-fixed-work-candidate-v1",
+  "status": "executable_simulator_with_reference_gateway_partial_refinement",
+  "implementation": "public_transcript_model.py",
+  "semantic_tests": "test_public_transcript.py",
+  "evidence": [
+    "public_transcript_results.json",
+    "public_transcript_test_results.json"
+  ],
+  "required_scope": "Preserve original ordered final results/cancel events, immediate public controls, dynamic bounded requests, shared budget, no free samples, original-ticket recovery, and colluding-recipient joint observation.",
+  "normal_simulator_inputs": {
+    "public": "public capacity/catalog/route/work configuration, registered requests, control plan, network-fault plan and previously observed authorized results",
+    "private_oracle": "at most two action-bound full mechanism results; sampled once at each abstract L1",
+    "excluded": "raw slots, raw counts, partial kernel state, readiness flags, data-dependent failure selectors"
+  },
+  "round_order": [
+    "record public arrivals and adaptive request selected only after prior received output",
+    "apply public controls and acknowledge application",
+    "answer polls from published journal only",
+    "advance one fixed public work quantum unless publicly paused",
+    "publish completed jobs in admission order with conceptual atomic WITHHELD or L3 admission",
+    "attempt original outbox at eligible route in global order; expired attempts use result-free terminal control",
+    "advance ordered application-final prefix through ACCEPTED/CLOSED/WITHHELD"
+  ],
+  "observed_events": [
+    "logical round index",
+    "request metadata and response class",
+    "control ACK",
+    "all poll statuses",
+    "ADMITTED/WITHHELD journal records",
+    "all routes SEND and RECEIVE including full approved result values",
+    "packet loss and ACK loss",
+    "retry content and first-outcome time",
+    "canonical APP_FINAL prefix",
+    "finite-prefix ACTIVE/QUIESCENT marker"
+  ],
+  "response_contract": {
+    "SUBMIT": "RECORDED with public job sequence, or public authorization/budget denial; no private-data existence test",
+    "POLL": "RECORDED plus prior public outcome or UNPUBLISHED; never READY/PENDING/STARTED/percent complete/partial vector",
+    "CONTROL": "CONTROL_RECORDED acknowledges application only; not proof of no prior/future authorized effect; no return of private completion state",
+    "WITHHELD": "only from public cancellation/revocation or registration policy; consumes original dummy work and enters ordered final stream",
+    "ADMITTED": "original immutable action/route/expiry and one outbox; not proof of receipt",
+    "RETRY": "original approved output and first acceptance fact; no new randomness, no expiry extension",
+    "EXPIRED": "result-free terminal reconciliation; receiver lock chooses existing ACCEPTED or CLOSED barrier",
+    "PERMANENT_LOSS": "remain ACTIVE; never infer CLOSED or refund from no reply"
+  },
+  "ordering": {
+    "required_global": "Later admitted output waits for earlier final acknowledgement; canonical application-final stream also orders WITHHELD behind unresolved earlier deliveries.",
+    "availability_cost": "Slow or permanently unavailable prior recipient blocks later final events. Already-admitted later tickets may expire while queued; no automatic renewal or refund.",
+    "controls": "Continue to be handled at public rounds; do not wait for batch completion or delivery ACK.",
+    "comparison_only": "per_route profile is deliberately weaker; its successful privacy checks do NOT satisfy original global-order requirement and do not authorize replacing that requirement.",
+    "network_visibility": "Raw transport observation is included separately even when canonical application events are buffered; application ordering cannot erase observed arrivals."
+  },
+  "conditional_argument": {
+    "assumptions": [
+      "Fixed contribution contract and approved full count/histogram kernels",
+      "Each conditional chosen mechanism has fixed cost (ln2, 2^(-(K+1))) and independent randomness",
+      "At most two mechanism draws, shared budget and no resampling on retry",
+      "Every non-oracle transition uses public state and already approved/received values only",
+      "Fault/control policy is public or depends only on allowed transcript, never unobserved raw data",
+      "Crypto/storage/runtime implementation must be shown to refine this simulator; not established here"
+    ],
+    "induction": "Given public state and action-bound oracle transcript, the next request, control, scheduler choice, journal transition, retry/terminal packet and application event are reproducible without raw database access. This is structural by construction for the simulator, not a theorem about existing deployed code.",
+    "composition": "Two fixed-cost conditional mechanisms yield (2 ln2, 2^-K) by basic adaptive approximate-DP composition; remaining trace is postprocessing if the simulator premise holds.",
+    "K1": "Exact finite check uses epsilon multiplier 4 and delta bound 1/2.",
+    "K40": "Conditional target (2 ln2, 2^-40), before epsilon rounding to 1.4; no end-to-end production claim.",
+    "infinite_traces": "Only bounded prefixes checked. Permanent packet loss retained as ACTIVE; arbitrary-adversary/infinite-trace proof and liveness require separate work."
+  },
+  "verification": {
+    "plans": 480,
+    "required_global_order_plans": 240,
+    "comparison_per_route_plans": 240,
+    "datasets": 9,
+    "directed_neighbors": 24,
+    "complete_distribution_checks": 11520,
+    "enumerated_execution_paths": 43560,
+    "maximum_observed_hockey_loss": "7/16",
+    "negative_controls": [
+      {
+        "mutant": "readiness_poll",
+        "constant_approved_outputs": true,
+        "first_difference": [
+          [
+            0,
+            "REPLY",
+            "PENDING",
+            "A"
+          ],
+          [
+            0,
+            "REPLY",
+            "READY",
+            "A"
+          ]
+        ],
+        "directed_hockey_loss": "1",
+        "claimed_two_query_delta": "1/2"
+      },
+      {
+        "mutant": "skip_zero_work",
+        "constant_approved_outputs": true,
+        "first_difference": [
+          [
+            8,
+            "JOURNAL",
+            "ADMITTED",
+            "A",
+            0,
+            1
+          ],
+          [
+            9,
+            "ROUND"
+          ]
+        ],
+        "directed_hockey_loss": "1",
+        "claimed_two_query_delta": "1/2"
+      },
+      {
+        "mutant": "private_failure",
+        "constant_approved_outputs": true,
+        "first_difference": [
+          [
+            10,
+            "JOURNAL",
+            "ADMITTED",
+            "A",
+            0,
+            1
+          ],
+          [
+            10,
+            "JOURNAL",
+            "WITHHELD",
+            "A"
+          ]
+        ],
+        "directed_hockey_loss": "1",
+        "claimed_two_query_delta": "1/2"
+      },
+      {
+        "mutant": "private_network",
+        "constant_approved_outputs": true,
+        "first_difference": [
+          [
+            10,
+            "RECEIVE",
+            "RESULT",
+            0,
+            1,
+            "A",
+            [
+              0
+            ]
+          ],
+          [
+            10,
+            "NETWORK",
+            "PACKET_LOST",
+            0,
+            1
+          ]
+        ],
+        "directed_hockey_loss": "1",
+        "claimed_two_query_delta": "1/2"
+      }
+    ]
+  },
+  "semantic_test_methods": 17,
+  "implementation_refinement_gates": [
+    {
+      "id": "OBS-1",
+      "requirement": "Authenticated immutable public request/control journal with logical ordering and exact retry identity",
+      "current": "PublicGatewayLedger and loopback TLS service bind signed request to enrolled actor/domain/certificate, journal exact original response and execute effect atomically; five public methods and real lost-response retry verified.",
+      "status": "reference_implementation_verified"
+    },
+    {
+      "id": "OBS-2",
+      "requirement": "Atomically decide public WITHHELD or L3/outbox for each scheduled slot, preserving admission sequence",
+      "current": "AtomicPublicationSender couples scheduled eligibility, WITHHELD or guarded L3/outbox and public decision in one witnessed tick transaction; prototype/atomic_publication_contract.json. Full external gateway proof remains separate.",
+      "status": "reference_implementation_verified"
+    },
+    {
+      "id": "OBS-3",
+      "requirement": "Gate transmission by domain-wide final frontier across routes and ordered pre-L3 WITHHELD records",
+      "current": "OrderedPublicationSender gates result/first terminal preparation by domain-wide final prefix and atomically advances signed first-outcome/WITHHELD final records. Dual-recipient authenticated loopback, concurrency and local process cuts verified; external final feed/gateway remains open.",
+      "status": "reference_implementation_verified"
+    },
+    {
+      "id": "OBS-4",
+      "requirement": "Map every external error, poll, timeout, restore and health response into permitted view",
+      "current": "Pure public input validation, explicit public policy error inventory and strict server/client response vocabulary now implemented. 32 equal-approved-output runtime traces match across 96 directed neighbor comparisons; real TLS negative controls distinguish private failure or generic-policy alias. Unknown failures/health/overload and complete simulator mapping remain open.",
+      "status": "partial_reference_response_mapping"
+    },
+    {
+      "id": "OBS-5",
+      "requirement": "Recover public cursor/journal/frontiers and original samples without publishing stale state",
+      "current": "Public requests, response bytes, control links, pause state, publication decisions and final events are witnessed and checked before exact recovery. Stateless page cursors replay their original signed response; old replica is fenced after restored replica advances.",
+      "status": "reference_implementation_verified"
+    },
+    {
+      "id": "OBS-6",
+      "requirement": "Relate logical rounds to actual transport/CPU/DB observations with stated fault and timing assumptions",
+      "current": "Only loopback protocol execution and finite logical models; physical timing/packet length excluded",
+      "status": "open"
+    },
+    {
+      "id": "OBS-7",
+      "requirement": "Independent adaptive composition and arbitrary-concurrency refinement review",
+      "current": "Exact K1 bounded cases plus targeted K2 checks and K40 work-shape test; no general proof",
+      "status": "open"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.cis.upenn.edu/~aaroth/Papers/privacybook.pdf#page=271",
+      "location": "Appendix B.1, Theorem B.1, printed page 267",
+      "supports": "Basic adaptive composition for two conditional approximate-DP functions, not the new protocol implementation."
+    }
+  ],
+  "production_acceptance": false,
+  "full_public_observation_proof": false,
+  "runtime_gateway_implemented": true,
+  "runtime_gateway_scope": "Reference five-method signed certificate-bound loopback gateway; full response/physical/refinement proof remains open."
+}
