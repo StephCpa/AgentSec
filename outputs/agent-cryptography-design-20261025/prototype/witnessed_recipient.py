@@ -119,6 +119,9 @@ class WitnessedMixedRecipientInbox(MixedTerminalRecipientInbox):
         except BaseException:self.db.rollback();raise
 
     def recover_from_witness(self,fault=lambda point:None):
+        # Return the restored snapshot's identity, not a lease on currentness.
+        # A rival can advance after the recheck; business begin/CAS guards remain
+        # mandatory even after this method returns successfully.
         self.db.execute('BEGIN IMMEDIATE')
         try:
             head=self.witness.head(self.namespace,include_image=True)
