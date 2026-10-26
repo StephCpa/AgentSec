@@ -1,0 +1,48 @@
+{
+  "profile": "witness-deflate-v1",
+  "status": "optional research transport encoding; not production or privacy acceptance",
+  "selection": {
+    "argument": "frame_mode",
+    "default": "raw",
+    "allowed": ["raw", "deflate-v1"],
+    "authority": "trusted bootstrap on both endpoints",
+    "negotiation": false,
+    "fallback": false
+  },
+  "frame": {
+    "magic_ascii": "WRZ1",
+    "header_bytes": 16,
+    "header_after_magic": ["metadata_length:u32be", "encoded_body_length:u32be", "raw_body_length:u32be"],
+    "metadata_max_bytes": 8192,
+    "metadata_min_bytes": 1,
+    "raw_body_max_bytes": 16777216,
+    "encoded_body_max_bytes": 16842752,
+    "body": "One zlib-wrapped DEFLATE stream; sender level 6. Empty body uses zero raw length and zero encoded length.",
+    "decoder": "Bound output at advertised raw length + 1; require exact length, EOF, no unused_data, no unconsumed_tail. No unbounded flush. Reject truncation, trailing data and concatenated streams.",
+    "wire_canonicality": "No unique compressed byte encoding required: signatures and hashes bind decoded raw bytes, never compressed bytes. Alternative valid streams for the same raw bytes are semantically equivalent.",
+    "deadline": "Existing absolute RPC deadline; check before and after codec work. No preemption or hard CPU deadline guaranteed."
+  },
+  "unchanged_bindings": [
+    "request metadata body_size and body_hash refer to original bytes",
+    "signed reply body_size and body_hash refer to original bytes",
+    "image_hash domain separation and canonical image format",
+    "witness namespace, authorization, expected sequence, digest, request token and CAS idempotency",
+    "raw image stored at witness and used for restore",
+    "application-level public schedule, logical slot count and transaction count"
+  ],
+  "evidence": {
+    "codec": "Maximum body, empty body, incompressible expansion, limits before read, malformed streams, dishonest lengths, bomb, mode mismatch and deadline regression tests",
+    "rpc": "Existing authenticated RPC and ambiguous-outcome recovery tests repeated through compressed mode, using the same TLSWitnessClient class",
+    "experiment": "6 count/histogram schedules, poll cadence 0/1/8; each CAS image encoded and round-tripped locally; paired identical final snapshots over actual loopback mTLS, 8 CAS and 8 image GET samples per mode",
+    "restoration": "Exact canonical image equality, local audit and R1-R8 final projections match independent generated public transcript; receiver fixtures retained",
+    "byte_accounting": "Stream totals are measured codec output, not whole-query network traffic. Snapshot counts are actual application frame bytes passed to successful sendall, exclude TLS/TCP/IP/handshake.",
+    "sample_percentile": "Nearest rank; with 8 observations p95 is the maximum, not a stable tail estimate."
+  },
+  "open_obligations": [
+    "All-event refinement with arbitrary faults, retry interleavings, concurrency and retirement",
+    "External observations including compression length, CPU time, network timing and resource usage",
+    "Full-query remote workload performance and larger capacity/history sweeps",
+    "Reduction of canonical serialization work, witness raw storage, physical writes and CAS count",
+    "Independent nonrollback witness authority and cross-host/power-loss recovery"
+  ]
+}

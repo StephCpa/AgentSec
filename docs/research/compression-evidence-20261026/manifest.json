@@ -1,0 +1,28 @@
+{
+  "created_utc": "2026-10-26T12:23:46.445818+00:00",
+  "base_commit": "5daa0911f23842b5dd43424db683f5aa73999617",
+  "passed": true,
+  "local_checks": {
+    "test_public_gateway": 23,
+    "test_witness_transport": 19,
+    "test_public_transcript": 17,
+    "review_regressions": 97
+  },
+  "experiment_cases": 6,
+  "paired_restore_checks": 12,
+  "cas_samples_per_mode_per_case": 8,
+  "get_samples_per_mode_per_case": 8,
+  "qualification": "Source hashes bind the uncommitted implementation later committed with this manifest; base_commit is ancestry, not tested-source identity. CI results are tracked separately on the PR.",
+  "files_sha256": {
+    "cost.json": "d1aee8d3f86f1ff303abc2997e35790e52cd0203d5660acd779ebfafdda5de94",
+    "review_regressions.log": "d2e5fd53ab37694d410d623d4caf4faaaa8464ba1ec0289b039b3e0546462235",
+    "run.json": "b642c632309a40c5ee725129fcaf8bc5a8b4bb96617746219fbc3577c83bd7e9",
+    "test_public_gateway.log": "e49cfe5bb5eb39ed745ca21f6352a73a4ae906f0c392d1af5ce8ca3454d0fb35",
+    "test_public_transcript.log": "595d85286cdd2d614d8b4f79b93b2bd5ddfdd4bc2050bbbf66da7ab50617c1f5",
+    "test_witness_transport.log": "5eec377bd85eb903c5ed86bf9c2f0fbaeb33caf20aaba12978f1d3f417965473"
+  },
+  "specification_sha256": {
+    "docs/research/2026-10-26-witness-compression.md": "ca8adbb1e9a8d98e38aa09f776e082c4293c0c0bce52d5d375fbc448fbe4be0c",
+    "docs/research/witness-compression-contract.json": "12aafffa450544eab58d26121c1310644fc741ce2d08931a58667ae93a718b4f"
+  }
+}

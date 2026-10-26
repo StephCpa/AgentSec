@@ -69,3 +69,9 @@ python3 outputs/agent-cryptography-design-20261025/prototype/stepwise_trace.py -
 ```sh
 python3 outputs/agent-cryptography-design-20261025/prototype/delivery_relation_trace.py --output /tmp/agentsec-delivery-relations-new
 ```
+
+[见证帧压缩与成本对照](docs/research/2026-10-26-witness-compression.md)增加可选有界压缩：六组执行期镜像的编码字节减少约 79%–82%，原始摘要、提交次数与恢复后的 R1–R8 投影保持一致；本机 mTLS 快照耗时增加，默认继续使用原始帧。
+
+```sh
+python3 outputs/agent-cryptography-design-20261025/prototype/compression_experiment.py --output /tmp/agentsec-compression-cost-new.json
+```
