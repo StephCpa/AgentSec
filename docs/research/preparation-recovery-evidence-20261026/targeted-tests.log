@@ -1,0 +1,19 @@
+test_all_declared_hooks_exit_and_restore_authority (test_preparation_recovery.PreparationRecoveryTests) ... ok
+test_archived_input_replay_never_reads_database (test_preparation_recovery.PreparationRecoveryTests) ... ok
+test_completed_preparation_and_terminal_retries_reuse_exact_body (test_preparation_recovery.PreparationRecoveryTests) ... ok
+test_conditioned_empty_and_full_rosters_agree (test_preparation_recovery.PreparationRecoveryTests) ... ok
+test_cross_route_order_and_withheld_tail (test_preparation_recovery.PreparationRecoveryTests) ... ok
+test_deadline_boundary_closes_but_binds_only_durable_preparation (test_preparation_recovery.PreparationRecoveryTests) ... ok
+test_failed_exact_retry_keeps_original_prepared_envelope (test_preparation_recovery.PreparationRecoveryTests) ... ok
+test_failed_observation_contains_neither_body_nor_commit_bit (test_preparation_recovery.PreparationRecoveryTests) ... ok
+test_histogram_draw_is_not_repeated (test_preparation_recovery.PreparationRecoveryTests) ... ok
+test_recovery_gate_and_unreachable_or_untrusted_commands (test_preparation_recovery.PreparationRecoveryTests) ... ok
+test_relation_rejects_dropped_preparation_and_changed_opaque_seed (test_preparation_recovery.PreparationRecoveryTests) ... ok
+test_renewed_deadline_mutant_disagrees_with_actual_expiry_rejection (test_preparation_recovery.PreparationRecoveryTests) ... ok
+test_terminal_empty_prepared_and_existing_fact_are_distinct (test_preparation_recovery.PreparationRecoveryTests) ... ok
+test_wrong_commit_boundary_mutant_changes_terminal_public_evidence (test_preparation_recovery.PreparationRecoveryTests) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 94.781s
+
+OK
