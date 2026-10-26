@@ -1,0 +1,7 @@
+{
+  "passed": true,
+  "groups": 52,
+  "directed_pairs": 1248,
+  "summary_sha256": "591be1911457fd15645f820b23757e7375fb4912bd56ab023e7865ab7f6e8e0a",
+  "check": "For each plan/cut and mask, compare records+checkpoint digest with mask XOR (1 << bit), for bit 0,1,2."
+}

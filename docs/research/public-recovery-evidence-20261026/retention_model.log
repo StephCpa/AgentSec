@@ -1,0 +1,82 @@
+{
+  "cases": [
+    {
+      "status": "passed",
+      "operations": 1,
+      "window": 1,
+      "states": 161,
+      "edges": 638,
+      "fully_retired_states": 120,
+      "maximum_live_records": 1,
+      "retired_queries": 120
+    },
+    {
+      "status": "passed",
+      "operations": 2,
+      "window": 1,
+      "states": 1057,
+      "edges": 4714,
+      "fully_retired_states": 240,
+      "maximum_live_records": 1,
+      "retired_queries": 1256
+    },
+    {
+      "status": "passed",
+      "operations": 2,
+      "window": 2,
+      "states": 2529,
+      "edges": 12046,
+      "fully_retired_states": 852,
+      "maximum_live_records": 2,
+      "retired_queries": 2988
+    },
+    {
+      "status": "passed",
+      "operations": 3,
+      "window": 1,
+      "states": 2849,
+      "edges": 12866,
+      "fully_retired_states": 480,
+      "maximum_live_records": 1,
+      "retired_queries": 5320
+    }
+  ],
+  "counterexamples": [
+    {
+      "mutation": "retire_without_offer",
+      "error": "RETIRED_BEFORE_SENDER_DURABLE_CONFIRMATION",
+      "trace_length": 2
+    },
+    {
+      "mutation": "volatile_ack_offer",
+      "error": "RETIRED_BEFORE_SENDER_DURABLE_CONFIRMATION",
+      "trace_length": 4
+    },
+    {
+      "mutation": "free_text_id",
+      "error": "REBOUND_FORGOTTEN_DELIVERY_ID",
+      "trace_length": 6
+    },
+    {
+      "mutation": "forget_next",
+      "error": "LOST_NEXT_SEQUENCE",
+      "trace_length": 5
+    },
+    {
+      "mutation": "delete_before_floor",
+      "error": "LOST_OR_REWRITTEN_LIVE_HISTORY",
+      "trace_length": 5
+    },
+    {
+      "mutation": "omit_local_fence",
+      "error": "LOST_NEXT_SEQUENCE",
+      "trace_length": 2
+    },
+    {
+      "mutation": "omit_window",
+      "error": "LIVE_WINDOW_EXCEEDED",
+      "trace_length": 2
+    }
+  ],
+  "long_run": 1000
+}

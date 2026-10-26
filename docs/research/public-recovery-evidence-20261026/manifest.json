@@ -1,0 +1,47 @@
+{
+  "created_utc": "2026-10-26T13:27:54.072708+00:00",
+  "base_commit": "e17cb7e1b38baca1d009c9a0dfc40a4792ddf538",
+  "passed": true,
+  "process_exits": 416,
+  "fresh_restores": 416,
+  "checkpoints": 48680,
+  "r1_to_r8_checkpoints": 48264,
+  "r9_checkpoints": 832,
+  "regenerated_traces": 416,
+  "directed_neighbor_pairs": 1248,
+  "negative_controls": 8,
+  "test_methods": {
+    "test_public_gateway": 23,
+    "test_witnessed_ledger": 19,
+    "test_public_transcript": 17,
+    "review_regressions": 117
+  },
+  "model_entries": 7,
+  "qualification": "Source hashes bind tested files committed with this evidence; base_commit is ancestry. Archive replay verifies generated observations and stored checkpoint hashes, not re-execution of process cuts or SQL projections. First candidate evidence was superseded after adding unreachable-cut rejection.",
+  "files_sha256": {
+    "cases.jsonl.gz": "92f1628d3456bb7f232c2ba454aaf638ad7a6d015ed1cd5414c9502083eb821f",
+    "experiment.log": "cccb859f69bcc0bf8fd5e9838f3f86db77d8e2980c01e9e125cbca9bc7dfc00a",
+    "fixed_work_model.log": "3ed5b6ee912a25331b728c60301259b731889244aa9dac41151eb14268fb2e2b",
+    "histogram_model.log": "ba1f351298b91245931d6dbdf857f3851a1b2bef7f6e154bd1190468b31be8a0",
+    "model_check.log": "675c72cb6113100669cca2aacb425eae87639880df6a01fb43db0a13fe752450",
+    "model_v2.log": "31b594c04dad6c2a41e24d7a4530de75560d2652e339a4add93f1019b430e921",
+    "negative-controls.json": "ac07206339d7fee6f7cec47e4686f6bd2f619b184f323ab6cac7bfafad20c081",
+    "neighbor-check.json": "41b3e840e847a060f9b0d5b21e98d2bc7aa7e3f8f1ab4eeae6e82a5aab1deb52",
+    "observation_model.log": "dd282f7341299ec2bf76c77ff35fe26299d8b94cf8703f01bb35b496e438f5ea",
+    "public_transcript_model.log": "29d881d700c6dd5a95c82d1b238a68fbd67d2bff69d3add09621cb5f7c54109b",
+    "replay.json": "7d31fca476f0e21abfc75f67012f37e940c40c5d916a297357077517d2f60349",
+    "replay.log": "d9de2d5f3a2dcdcbb7439ba40605bddc71c2b4b7dfca86f15d6a3a767509348b",
+    "retention_model.log": "1e4d513d648979c4e508913599c1d5d185e19343833826d18759882e4505b591",
+    "review_regressions.log": "c1327b63fd7d52b6c4011d50c8ef247c7e6b84511de25e8b06fa9e4a5b2907d3",
+    "run.json": "c9a2cd9e2ffa6531b559790a6a200d6c7bc22bc713e50220b7563c83870c2da4",
+    "summary.json": "591be1911457fd15645f820b23757e7375fb4912bd56ab023e7865ab7f6e8e0a",
+    "test_public_gateway.log": "75bcdbe474e023f91bdf84c1bae7eb9bc38a7593959718fa081e8124fcc1f3d6",
+    "test_public_transcript.log": "8573b13fc99a0e313a710036bbbe990c1ed9938ef82f719f0c240e5c3d2a0cc4",
+    "test_witnessed_ledger.log": "6fd1a886601651efc4c12f9f531dac90446d0993e84dd9d05d11982caa6d01c4"
+  },
+  "related_sources_sha256": {
+    "docs/research/2026-10-26-public-request-recovery.md": "36b2fdb5a19f0cab2ca26f611f933f6d9833c0f3f71aad2328231ac3df3a5972",
+    "docs/research/public-request-recovery-contract.json": "54243ecaaa16f73fa6129d8a258b58c16a6782b947f45517e179092c326122fb",
+    "scripts/replay_public_recovery.py": "bdccdd2625a24da3448e983adf815d7459803c0b641484a81f03b8cf1453e2e9"
+  }
+}
