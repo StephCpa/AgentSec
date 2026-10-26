@@ -1,0 +1,17 @@
+test_all_three_recovery_hooks_repeat_twice_with_real_exits (test_recovery_interruptions.RecoveryInterruptionTests) ... ok
+test_empty_and_full_rosters_have_same_conditioned_recovery_trace (test_recovery_interruptions.RecoveryInterruptionTests) ... ok
+test_existing_and_fresh_replica_modes_have_identical_public_view (test_recovery_interruptions.RecoveryInterruptionTests) ... ok
+test_existing_current_and_stale_replicas_are_distinguished (test_recovery_interruptions.RecoveryInterruptionTests) ... ok
+test_expired_receiver_recovery_preserves_authoritative_first_fact (test_recovery_interruptions.RecoveryInterruptionTests) ... ok
+test_extra_private_fields_wrong_target_and_no_pending_recovery_reject (test_recovery_interruptions.RecoveryInterruptionTests) ... ok
+test_fresh_replica_keeps_empty_anchor_until_recovery_commit (test_recovery_interruptions.RecoveryInterruptionTests) ... ok
+test_json_roundtrip_replays_without_database (test_recovery_interruptions.RecoveryInterruptionTests) ... ok
+test_mutant_advancing_private_tick_during_restore_is_detected (test_recovery_interruptions.RecoveryInterruptionTests) ... ok
+test_mutant_treating_interruption_as_success_is_detected (test_recovery_interruptions.RecoveryInterruptionTests) ... ok
+test_private_l1_and_final_recovery_do_not_resample_or_refund (test_recovery_interruptions.RecoveryInterruptionTests) ... ok
+test_recovery_is_logical_stutter_even_after_local_commit (test_recovery_interruptions.RecoveryInterruptionTests) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 52.490s
+
+OK

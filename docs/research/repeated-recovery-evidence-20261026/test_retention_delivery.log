@@ -1,0 +1,27 @@
+test_accepted_and_closed_event_time_boundaries (__main__.RetentionDeliveryTests) ... ok
+test_all_payloads_have_closed_schema (__main__.RetentionDeliveryTests) ... ok
+test_catalog_reorder_requires_matching_digest_and_changes_fact (__main__.RetentionDeliveryTests) ... ok
+test_challenge_and_full_signed_request_binding (__main__.RetentionDeliveryTests) ... ok
+test_changed_first_time_is_different_fact_and_conflicts_with_offer (__main__.RetentionDeliveryTests) ... ok
+test_closed_unprepared_control_contains_no_result (__main__.RetentionDeliveryTests) ... ok
+test_complete_count_and_histogram_result_bind_to_fact (__main__.RetentionDeliveryTests) ... ok
+test_deterministic_delivery_vectors (__main__.RetentionDeliveryTests) ... ok
+test_direct_terminal_and_fresh_query_share_one_fact_and_prefix (__main__.RetentionDeliveryTests) ... ok
+test_evidence_flows_into_retention_offer_without_reconstructed_outcome (__main__.RetentionDeliveryTests) ... ok
+test_fact_fields_cannot_be_substituted_even_with_receiver_signature (__main__.RetentionDeliveryTests) ... ok
+test_invalid_shape_descriptors_are_rejected_inside_valid_signature (__main__.RetentionDeliveryTests) ... ok
+test_max64_buckets_max_fields_and_unsigned_sequence_fit_frame (__main__.RetentionDeliveryTests) ... ok
+test_nested_descriptor_encoding_must_be_canonical (__main__.RetentionDeliveryTests) ... ok
+test_new_context_id_and_profile_cannot_coerce_v1 (__main__.RetentionDeliveryTests) ... ok
+test_outer_and_inner_signatures_are_both_checked (__main__.RetentionDeliveryTests) ... ok
+test_real_signed_encrypted_mixed_results_as_evidence_inputs (__main__.RetentionDeliveryTests) ... ok
+test_signed_descriptor_binds_all_operation_and_shape_fields (__main__.RetentionDeliveryTests) ... ok
+test_terminal_must_match_original_descriptor_and_envelope (__main__.RetentionDeliveryTests) ... ok
+test_trusted_signer_is_not_computation_or_first_event_proof (__main__.RetentionDeliveryTests) ... ok
+test_vector_must_be_complete_and_in_public_range (__main__.RetentionDeliveryTests) ... ok
+test_wrong_evidence_type_never_reinterpreted (__main__.RetentionDeliveryTests) ... ok
+
+----------------------------------------------------------------------
+Ran 22 tests in 1.474s
+
+OK

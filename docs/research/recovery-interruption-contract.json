@@ -1,0 +1,74 @@
+{
+  "profile": "repeated-recovery-interruption-v1",
+  "status": "finite_composition_evidence_not_general_proof",
+  "base_commit": "463b84a8551b98415efa96c4ed7d57b348fa795f",
+  "driver": "outputs/agent-cryptography-design-20261025/prototype/recovery_interruption_trace.py",
+  "simulator": "outputs/agent-cryptography-design-20261025/prototype/recovery_interruption_simulator.py",
+  "base_simulators": [
+    "RecoverySimulator",
+    "KernelRecoverySimulator",
+    "DeliveryRecoverySimulator"
+  ],
+  "original_failures": {
+    "public_submit_pre": "SUBMIT before witness accept",
+    "public_submit_post": "SUBMIT after witness accept",
+    "count_l1_pre": "Count L1 after sampling, before commit",
+    "histogram_l1_post": "Histogram L1 after witness accept",
+    "count_final_pre": "Count final slot before witness accept",
+    "histogram_final_post": "Histogram final slot after witness accept",
+    "receive_expire_pre": "Receiver first event before witness accept; retry after expiry",
+    "receive_expire_post": "Receiver first event after witness accept; retry after expiry",
+    "confirm_withheld_pre": "Sender confirmation before final event write, with withheld tail",
+    "confirm_cross_post": "Sender confirmation after witness accept, with second route"
+  },
+  "replica_modes": [
+    "existing replica left by original failure",
+    "fresh initialized empty replica without witness anchor"
+  ],
+  "recovery_cut_sequence": [
+    "after_recovery_delete",
+    "before_recovery_commit",
+    "after_recovery_commit",
+    "after_recovery_delete",
+    "before_recovery_commit",
+    "after_recovery_commit"
+  ],
+  "datasets": "All eight subsets of a synthetic three-user roster, conditioned on approved count=1 or histogram=(1,0,0,0).",
+  "public_event": {
+    "kind": "RECOVERY_UNAVAILABLE",
+    "fields": [
+      "at",
+      "side",
+      "operation"
+    ],
+    "excluded": [
+      "cut point",
+      "local commit bit",
+      "witness version/digest/image",
+      "private diagnostics",
+      "actual storage reply"
+    ]
+  },
+  "logical_rule": "Recovery interruption only advances the declared public clock. Model data, pending exact retry, budget, approved-output resources, receiver facts and final prefix remain unchanged. Successful RECOVER/DELIVERY_RECOVER is still required by the driver before business resumes.",
+  "runtime_assertions": [
+    "Each recovery child actually exits at the named hook with code 96",
+    "All sender/receiver authority heads and images unchanged",
+    "Local image and optional anchor stay byte-identical to pre-recovery state before commit, or both match authority after commit",
+    "Incomplete or stale replica rejects business guard; current replica is not falsely required to reject",
+    "Business-dispatch and witness-write entry points guarded in recovery child",
+    "Separate diagnostic restore verifies R1-R8 and R10 where applicable against authority, never feeding storage into generator"
+  ],
+  "relations": {
+    "R12": "Local recovery atomicity, optional anchor/current status, authority unchanged, stale guard and forbidden-dispatch checks",
+    "existing_relations": "Original profile R9/R10/R11 and operational restore checks retained; not every relation applies to every profile"
+  },
+  "scope_limits": [
+    "Single specified original failure followed by six restore failures; not arbitrary interleavings",
+    "No concurrent writer or changing authority during recovery",
+    "No authority rollback or power loss; local SQLite files only",
+    "No TLS/network/physical timing or length privacy claim",
+    "No sender preparation or retention/cleanup transitions",
+    "No general induction or cryptographic/DP composition proof"
+  ],
+  "replay": "Rebuilds public observations/signing calls/final model state. Checks archived relation-hash bindings, dataset neighbors and public-view equality between replica modes. Does not repeat child exits or independently reconstruct DB projections."
+}

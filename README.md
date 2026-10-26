@@ -116,3 +116,10 @@ python3 scripts/replay_wire_interop.py /tmp/agentsec-wire-new --output /tmp/agen
 python3 outputs/agent-cryptography-design-20261025/prototype/delivery_recovery_trace.py --output /tmp/agentsec-delivery-recovery-new
 python3 scripts/replay_delivery_recovery.py /tmp/agentsec-delivery-recovery-new --output /tmp/agentsec-delivery-replay-new.json
 ```
+
+[恢复中再次中断的组合验证](docs/research/2026-10-26-repeated-recovery-interruptions.md)把公开请求、私有槽和交付故障接到连续恢复退出：分别从现有副本和没有 anchor 的新副本开始，在三个恢复切点各退出两次，再恢复并精确重试。新增 R12 核对本地恢复原子性及权威状态不变，范围与结果见报告。
+
+```sh
+python3 outputs/agent-cryptography-design-20261025/prototype/recovery_interruption_trace.py --output /tmp/agentsec-repeated-recovery-new
+python3 scripts/replay_recovery_interruptions.py /tmp/agentsec-repeated-recovery-new --output /tmp/agentsec-repeated-replay-new.json
+```

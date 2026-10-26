@@ -1,0 +1,27 @@
+test_ancestor_revocation_after_start_withholds_vector_without_refund (__main__.MixedDelegationTests) ... ok
+test_ancestor_revocation_before_start_refunds_every_account (__main__.MixedDelegationTests) ... ok
+test_catalog_order_digest_and_new_catalog_cannot_widen_child (__main__.MixedDelegationTests) ... ok
+test_chain_scope_time_cap_parent_and_account_widening_rejected (__main__.MixedDelegationTests) ... ok
+test_count_and_histogram_charge_same_domain_and_every_ancestor (__main__.MixedDelegationTests) ... ok
+test_count_spending_blocks_histogram_at_shared_intermediate_cap (__main__.MixedDelegationTests) ... ok
+test_eight_real_process_crash_cuts_cover_registration_and_vector_settlement (__main__.MixedDelegationTests) ... ok
+test_eight_sibling_mixed_requests_have_one_shared_cap_winner (__main__.MixedDelegationTests) ... ok
+test_leaf_can_drop_histogram_or_catalog_scope_without_affecting_count (__main__.MixedDelegationTests) ... ok
+test_midvector_restart_retains_signatures_full_tape_and_ancestor_charges (__main__.MixedDelegationTests) ... ok
+test_old_l3_ticket_survives_revocation_but_new_ticket_does_not (__main__.MixedDelegationTests) ... ok
+test_old_signature_domains_and_audience_cannot_cross_protocols (__main__.MixedDelegationTests) ... ok
+test_raw_proof_replay_rejected_fresh_proof_retry_does_not_recharge (__main__.MixedDelegationTests) ... ok
+test_registered_catalog_check_inside_transaction_rejects_invented_digest (__main__.MixedDelegationTests) ... ok
+test_revocation_tombstone_blocks_unused_histogram_credential_after_restart (__main__.MixedDelegationTests) ... ok
+test_root_authority_expiry_limits_vector_ticket (__main__.MixedDelegationTests) ... ok
+test_same_operation_cannot_change_mechanism_or_credential_identity (__main__.MixedDelegationTests) ... ok
+test_saved_wire_vectors_verify_signatures_profiles_and_parent_digests (__main__.MixedDelegationTests) ... ok
+test_signed_width_capacity_k_and_codec_are_bound (__main__.MixedDelegationTests) ... ok
+test_strict_closed_schema_and_catalog_policy_types (__main__.MixedDelegationTests) ... ok
+test_unsigned_old_service_or_missing_chain_cannot_bypass_authorization (__main__.MixedDelegationTests) ... ok
+test_valid_signature_cannot_swap_catalog_snapshot_or_action_body (__main__.MixedDelegationTests) ... ok
+
+----------------------------------------------------------------------
+Ran 22 tests in 4.806s
+
+OK
