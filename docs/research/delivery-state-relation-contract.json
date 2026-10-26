@@ -1,0 +1,27 @@
+{
+  "profile": "restricted-delivery-state-relation-v1",
+  "extends": "restricted-stepwise-state-relation-v1",
+  "base_commit": "71b3fc71c8ddac0c120e1036f09ee8478bf50159",
+  "status": "finite_selected_R1_R8_storage_projections",
+  "protocol_or_generator_changed": false,
+  "diagnostic_checker": "outputs/agent-cryptography-design-20261025/prototype/delivery_state_relation.py",
+  "driver": "outputs/agent-cryptography-design-20261025/prototype/delivery_relation_trace.py",
+  "relations": {
+    "R5": ["immutable route context and admission request identity", "exact stored envelope/control bytes", "handoff marker", "explicit zero-retirement scope"],
+    "R6": ["reachable receiver instances", "immutable first fact and original signed evidence", "receiver high/floor/root/observed metadata"],
+    "R7": ["sender outbox phase", "first committed fact and original confirmation request/ack bytes", "route confirmed prefix and cumulative root"],
+    "R8": ["maximal contiguous model final prefix", "exact durable final_events rows including withheld suffixes"]
+  },
+  "new_plans": ["receipt_wait", "cross_route_receipt_wait", "receipt_then_terminal", "withheld_behind_unconfirmed"],
+  "input_boundary": "Generator runs before the diagnostic reads SQLite. Expectations come from generated observations and public model state, never actual response or database fields.",
+  "stored_evidence_access": "The diagnostic decrypts sender/receiver transport evidence. It does not read private computation tables or feed stored evidence to generation.",
+  "failure_controls": "Privileged synthetic storage mutations; not claims of spontaneous runtime faults or feasible external attacks.",
+  "assumptions_and_limits": [
+    "Compose with R1-R4; selected projections are not every stored field or a universal inductive relation.",
+    "Static public setup, at most two successful operations, no key/credential/route management beyond existing root controls.",
+    "One context per recipient in this fixture; no retirement or cleanup, including no hidden deletion of first facts.",
+    "Deferred confirmation names the latest generated receipt; arbitrary older ACK selection and late-packet interleavings remain open.",
+    "Completed event boundaries only; no crash/recovery, physical timing, disk/witness traffic or resource exhaustion modeling.",
+    "Shared codecs, signatures and prefix algorithms; no independent cryptographic implementation or complete DP proof."
+  ]
+}

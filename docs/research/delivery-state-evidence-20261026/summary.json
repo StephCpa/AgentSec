@@ -1,0 +1,4147 @@
+{
+  "profile": "restricted-delivery-state-relation-v1",
+  "passed": true,
+  "source_sha256": {
+    "mixed_delegated_ledger.py": "69b87ad162fe3d462fcb31baccb6919e82938a7e8e2b20ea570737b7e9dde7bc",
+    "delivery_relation_trace.py": "10e55d80a4d5938d292173de40d8b44faff29e97fa8dddd65ba2fd13bc6613a1",
+    "stepwise_trace.py": "a935cf823650abbf944366094e9aa8ecc187149e0d7df7f56094131ea9f5a4d4",
+    "public_observation.py": "53e21db6e2f507832d1a75c0c0578b2ed1aaa3b5c221a9ee6e86dc23dfa562ee",
+    "test_atomic_publication.py": "7830e50f432618dd845e82e30fa18b564771074419ac2b9843537666a101aa9b",
+    "mixed_delivery_terminal.py": "67b759be033cb2f3ce26db2caaa7afc816f1b7f723934fb22445d434ab137acc",
+    "ordered_publication.py": "09deb84392ba054d4541295561865a501004ce09f2d04edca2fd3bd3d9954be1",
+    "retention_sender.py": "1f55f6d9a68614bb03883b460c52b6cea0dfbe0ac3811ed2e3e3d5af4623dbb6",
+    "test_scheduled_ledger.py": "9de478264c7d94f1473e8aa24201e96984bc1339d1208125c9ade41814e8c285",
+    "test_p2_scenario.py": "1fd37412477e3a8063348e42a79ee1c2ee89bdff9602e4419fd43a0518f7afad",
+    "histogram_ledger.py": "afac61ce7dbc8cfe01e6756a243eea389724d59c8f51bcd22b2c0c2d606c32e0",
+    "contribution_delivery.py": "146cfa730da07e2be09d2c81192c42f9928ce6556a03dc82be525be3f3459f88",
+    "public_gateway.py": "b1bf08b7159f96aafc3e28f05496307d120bba688e50e9f460db6a3349b64de0",
+    "test_contribution_ingestion.py": "6ebb147f72824a0b1cee8ed169cb26e628b53322f48c2e3b04684f1d3b5ff9b9",
+    "test_retention_delivery.py": "1bee89816723bc7b54dd501643a340a465c7cdb17a421d8717c61ac2f25e2cd6",
+    "test_dp_ledger.py": "41c936fbd1cf5f5c3eb5d2cd4b99f8601d425355a8f0d8b17e67b1f0e7f3c291",
+    "encrypted_ledger.py": "c1ac348a1657483efeaeb0eb4d43bae80b3990ce9b461f0a2b1533dd17ce32be",
+    "test_retention_wire.py": "0a14471278b94db57c5a83096bb1714f5e5e73632b4bf68961dfaad7c261f3a0",
+    "retention_archive.py": "c727898455e30af80257ec307157173e109c5c9dad9b66dab404a5ca4ed943b7",
+    "delivery_state_relation.py": "6f40d4fe0d04f2ba2f589ecd0203637f617c62c0de2ef3dffae06d4f2aabb150",
+    "test_witness_transport.py": "ee6c2a89477e045435b262f87adb8d3d33490a55cab27309708a366b8b3be922",
+    "public_trace_adapter.py": "5901831f51fabb08c661c59878e3a1d613b68e470963caad4738a28f2badeb3e",
+    "test_mixed_delivery_transport.py": "8bd848285ee32a68d3cd06bf32f892ed747e4b7cf2ff3f264022776fcb87781d",
+    "encrypted_mixed_ledger.py": "1a085da145bd7fd0ef95a411fbfa3d9b94132508e7a9210127daeb5d2aca5740",
+    "test_delegated_ledger.py": "1cee9d8febe72898d14c995a7ac93476889a2f2ae75129aa86d776f473c4c35f",
+    "test_ordered_publication.py": "693bea9acc98d2de0472644484760bbb46a88a13b14b69c0d76e76485449033f",
+    "p2_scenario.py": "8e276dbb9c0ca10282e31e63807612c0997b5e174efaf62c173e5078c3d60f94",
+    "public_simulator.py": "33cabb2ddc928da88d94f3592b205abd4e7293ec8c5a4d9cc722721369dc64cc",
+    "test_delivery_transport.py": "1a8eebe3e8650f2c6a2d6649bdc041bcd3da49742490dd68ec8a2ed45f861b2d",
+    "ledger.py": "5bdd63777480e26d56d89d00e4d0f7a7030668377ca164756f2752103cf04dc7",
+    "test_witnessed_mixed_ledger.py": "0d764a9322f15488d1fed5a91f2019ec01296ffb63504b9693e20eb13111b06e",
+    "witnessed_ledger.py": "fe62b6e3f2a3e6f267316ea1e819fe3423b6bdfe6c54c7439c8411c506c51353",
+    "persistence_experiment.py": "01b818b6eb476fabef6da5555537fc8e87940f4b9ae2ab6f6eda054f31f2ab0a",
+    "delivery_terminal.py": "29203cf6a3fa8fce2062cb8a987d61f8a131814ad50f287d0eaf21dad422d2b2",
+    "public_input.py": "f037317ea9f7bf4a0997f6f061206dfd7746bd0fba1432e3f5061517ffbc0e01",
+    "test_mixed_delivery_terminal.py": "eec723c9ed969d088fd634a2191be83e261bdbd5282e8ceb88dcc73b5fa22aff",
+    "delivery_transport.py": "71a96b0310b1004946725e09b89178fdfde5ba7b0205cf1179f95b5da134bc9e",
+    "wire.py": "b2e95928c604c923ec549a74f599fd4a16fc4ccec5841474aabf64ec55de6d58",
+    "state_relation.py": "314162686d626f2c7e3c4120dc2a5ab808edf84e4c6ea06af793483e1edfc20c",
+    "dp_ledger.py": "35f0c336d549bf0145fd79bcb9b02416b0a729d60d990fc34e477b744887054b",
+    "delegated_ledger.py": "28cd13ef8d6b43f2ca1c9d273f3d32b92943278a0dbef2894eed1dc570cf3862",
+    "witnessed_recipient.py": "64060786a6bfa383302f1c999648aa6323fafdd34b620e70b923b95037b68cad",
+    "retention_recipient.py": "562e3ed9404b3ea4a8d94cb73abb863949eff92931f73d4d71cca8bb253b148d",
+    "contribution_ingestion.py": "799a6dc88451de81b1eaddd02a0b44b9d80d859c43a0266b7c1cc46c392d51f4",
+    "mixed_delivery_transport.py": "9127fe54d9bb7e396c4056f7db7de15f2f299d647bbb1e1cc77d23d5d1a4b491",
+    "test_mixed_delegated_ledger.py": "9babf15f2c9584ed6ebd3d040376d81fb61ce1e97a2e71ea1cad4c377ecbd616",
+    "contribution_scenario.py": "b7556cacd6d8dea98d8c7a1fff19c3785c8fe9ec82c17c5a1fe3f440c5c4065f",
+    "test_retention_archive.py": "bd088478e062544b5ad1ee2f48ebd9ff60e69d06d144b8c93d117c275a3fc8c3",
+    "restricted_trace.py": "86acc8f872b0dbc39236d455217c26e877c4e55f4e2e4fe34ec63e89efa6b43b",
+    "test_witnessed_ledger.py": "73a4202b220fec643dbb88ae74449bbe307ed4e5997ff643592d7f2803e62cfc",
+    "witnessed_mixed_ledger.py": "9d58044454873d31648c0011c296b779d0d90f4449546c44fcb7d8d8b623aced",
+    "test_witnessed_recipient.py": "d1c464fe282303cfa5446ce9e01823c81bab2a6063118299bc2e1b0226b2b7b9",
+    "test_retention_sender.py": "9311d56d525cd28e963d44ced9e8ffc784c78366f56b8e130820159f145369d1",
+    "test_contribution_delivery.py": "3017c1f5c89f82018b7acdeca28f1c84129baa4745ec31d0f4047633183f814a",
+    "test_public_gateway.py": "bbaa068581cdd755882aa5db1b0a917f703f0c24692a128ac84253d055efaed0",
+    "signed_ledger.py": "e777d588e232d0f6f42f3d935b8105ec8b17045ef3eb2cec516975f04a4cd22f",
+    "witness_transport.py": "7226ebcaaf994f155990e31f747bd8a5ea1625f4ab52ee67a2ccad8ed976983f",
+    "atomic_publication.py": "32d5a012fcd3cb309de999666161c4af023faaefd6ed675bdb445558fc4e42cc",
+    "scheduled_ledger.py": "d8d4b2c32b5028066190845298f8e434fe5d6e262e5adad1c48d221be06511e0",
+    "test_histogram_ledger.py": "d065b1af66187adf2c81a818994900887005c2e1f5713e9f0bbf5e5c34176797",
+    "test_public_observation.py": "2d600354949d3686950e4a40732e01df18b80e564aa3bc909a01aac2b159d959",
+    "public_gateway_transport.py": "7a6f6f49ce114337dca729b7b242a7e4366cf635043b65ea4f391326a52fe63b",
+    "retention_wire.py": "38ce3865e3be049cb570225216ec8e8ae192617b7124f03b2cb51612bd56e22a",
+    "test_ledger.py": "d44c082f517a09080790183bf8a9a5a8960d14160ed1c644bf2b284970e77ae7",
+    "constructive_trace.py": "91d6b4e43260d0a30a05889e9c9068c27c5b33b9c817f0e61d8514bce769a8a2",
+    "test_encrypted_ledger.py": "bbcc428ddbd8bbcc9e8ffad6358e6936a0403fcc6c9900f4d8e1c836eac3f466",
+    "test_retention_recipient.py": "6f2df27a2a357d9d4f68f937bfc13ed851c6486a5814b5fdddae7c47792c35ed",
+    "test_delivery_terminal.py": "1d8cc3d14e566f579ff038b960ac70cb5de9006e4e9b06dce878191c4750d137",
+    "retention_delivery.py": "35dd17fa0d0d50aa34674239fe68a128b1865421ef8e371145abb996e00d0d46",
+    "test_encrypted_mixed_ledger.py": "d2c87ea063425d266d2238758ebc0c5f1de74057fff4bdf2ebff0c6eed4a2589",
+    "test_signed_ledger.py": "c28e0f8fc365b5ff61e49343f2f1d433ae369c403f849efdb6ddb9c65745aa50"
+  },
+  "scope": "Selected R1-R8 projections at completed events; no retirement/crash/recovery or universal induction.",
+  "cases": [
+    {
+      "plan": "normal",
+      "target": 1,
+      "mask": 0,
+      "records": 94,
+      "checkpoints": 95,
+      "trace_sha256": "c996a13804e2cf500f647a406b1085590cd7deded3eddf235ef82558c34e1d4e",
+      "checkpoint_sha256": "20013acfaa7892e0f1a2b46c0e1b90d990b18f60de53ce252ba420a7a78ab30d",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "normal",
+      "target": 1,
+      "mask": 1,
+      "records": 94,
+      "checkpoints": 95,
+      "trace_sha256": "c996a13804e2cf500f647a406b1085590cd7deded3eddf235ef82558c34e1d4e",
+      "checkpoint_sha256": "20013acfaa7892e0f1a2b46c0e1b90d990b18f60de53ce252ba420a7a78ab30d",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "normal",
+      "target": 1,
+      "mask": 2,
+      "records": 94,
+      "checkpoints": 95,
+      "trace_sha256": "c996a13804e2cf500f647a406b1085590cd7deded3eddf235ef82558c34e1d4e",
+      "checkpoint_sha256": "20013acfaa7892e0f1a2b46c0e1b90d990b18f60de53ce252ba420a7a78ab30d",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "normal",
+      "target": 1,
+      "mask": 3,
+      "records": 94,
+      "checkpoints": 95,
+      "trace_sha256": "c996a13804e2cf500f647a406b1085590cd7deded3eddf235ef82558c34e1d4e",
+      "checkpoint_sha256": "20013acfaa7892e0f1a2b46c0e1b90d990b18f60de53ce252ba420a7a78ab30d",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "normal",
+      "target": 1,
+      "mask": 4,
+      "records": 94,
+      "checkpoints": 95,
+      "trace_sha256": "c996a13804e2cf500f647a406b1085590cd7deded3eddf235ef82558c34e1d4e",
+      "checkpoint_sha256": "20013acfaa7892e0f1a2b46c0e1b90d990b18f60de53ce252ba420a7a78ab30d",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "normal",
+      "target": 1,
+      "mask": 5,
+      "records": 94,
+      "checkpoints": 95,
+      "trace_sha256": "c996a13804e2cf500f647a406b1085590cd7deded3eddf235ef82558c34e1d4e",
+      "checkpoint_sha256": "20013acfaa7892e0f1a2b46c0e1b90d990b18f60de53ce252ba420a7a78ab30d",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "normal",
+      "target": 1,
+      "mask": 6,
+      "records": 94,
+      "checkpoints": 95,
+      "trace_sha256": "c996a13804e2cf500f647a406b1085590cd7deded3eddf235ef82558c34e1d4e",
+      "checkpoint_sha256": "20013acfaa7892e0f1a2b46c0e1b90d990b18f60de53ce252ba420a7a78ab30d",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "normal",
+      "target": 1,
+      "mask": 7,
+      "records": 94,
+      "checkpoints": 95,
+      "trace_sha256": "c996a13804e2cf500f647a406b1085590cd7deded3eddf235ef82558c34e1d4e",
+      "checkpoint_sha256": "20013acfaa7892e0f1a2b46c0e1b90d990b18f60de53ce252ba420a7a78ab30d",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "cancel_before",
+      "target": 1,
+      "mask": 0,
+      "records": 93,
+      "checkpoints": 94,
+      "trace_sha256": "d7949610002173ff87d4104ed2f7c087165f92b9ecfc28682354b09ffc827ff9",
+      "checkpoint_sha256": "7e300593d649bd8c8f8eb446ad661c35fcfa093169ab5bf51468c37b40187a44",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "WITHHELD"
+        }
+      ]
+    },
+    {
+      "plan": "cancel_before",
+      "target": 1,
+      "mask": 1,
+      "records": 93,
+      "checkpoints": 94,
+      "trace_sha256": "d7949610002173ff87d4104ed2f7c087165f92b9ecfc28682354b09ffc827ff9",
+      "checkpoint_sha256": "7e300593d649bd8c8f8eb446ad661c35fcfa093169ab5bf51468c37b40187a44",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "WITHHELD"
+        }
+      ]
+    },
+    {
+      "plan": "cancel_before",
+      "target": 1,
+      "mask": 2,
+      "records": 93,
+      "checkpoints": 94,
+      "trace_sha256": "d7949610002173ff87d4104ed2f7c087165f92b9ecfc28682354b09ffc827ff9",
+      "checkpoint_sha256": "7e300593d649bd8c8f8eb446ad661c35fcfa093169ab5bf51468c37b40187a44",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "WITHHELD"
+        }
+      ]
+    },
+    {
+      "plan": "cancel_before",
+      "target": 1,
+      "mask": 3,
+      "records": 93,
+      "checkpoints": 94,
+      "trace_sha256": "d7949610002173ff87d4104ed2f7c087165f92b9ecfc28682354b09ffc827ff9",
+      "checkpoint_sha256": "7e300593d649bd8c8f8eb446ad661c35fcfa093169ab5bf51468c37b40187a44",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "WITHHELD"
+        }
+      ]
+    },
+    {
+      "plan": "cancel_before",
+      "target": 1,
+      "mask": 4,
+      "records": 93,
+      "checkpoints": 94,
+      "trace_sha256": "d7949610002173ff87d4104ed2f7c087165f92b9ecfc28682354b09ffc827ff9",
+      "checkpoint_sha256": "7e300593d649bd8c8f8eb446ad661c35fcfa093169ab5bf51468c37b40187a44",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "WITHHELD"
+        }
+      ]
+    },
+    {
+      "plan": "cancel_before",
+      "target": 1,
+      "mask": 5,
+      "records": 93,
+      "checkpoints": 94,
+      "trace_sha256": "d7949610002173ff87d4104ed2f7c087165f92b9ecfc28682354b09ffc827ff9",
+      "checkpoint_sha256": "7e300593d649bd8c8f8eb446ad661c35fcfa093169ab5bf51468c37b40187a44",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "WITHHELD"
+        }
+      ]
+    },
+    {
+      "plan": "cancel_before",
+      "target": 1,
+      "mask": 6,
+      "records": 93,
+      "checkpoints": 94,
+      "trace_sha256": "d7949610002173ff87d4104ed2f7c087165f92b9ecfc28682354b09ffc827ff9",
+      "checkpoint_sha256": "7e300593d649bd8c8f8eb446ad661c35fcfa093169ab5bf51468c37b40187a44",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "WITHHELD"
+        }
+      ]
+    },
+    {
+      "plan": "cancel_before",
+      "target": 1,
+      "mask": 7,
+      "records": 93,
+      "checkpoints": 94,
+      "trace_sha256": "d7949610002173ff87d4104ed2f7c087165f92b9ecfc28682354b09ffc827ff9",
+      "checkpoint_sha256": "7e300593d649bd8c8f8eb446ad661c35fcfa093169ab5bf51468c37b40187a44",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "WITHHELD"
+        }
+      ]
+    },
+    {
+      "plan": "cancel_after",
+      "target": 1,
+      "mask": 0,
+      "records": 93,
+      "checkpoints": 94,
+      "trace_sha256": "66d5bba1c7e321040bb5942f8f2907122c60c14f9ff3f660be994d6073a6f4fe",
+      "checkpoint_sha256": "e09c286f4fa0ea72815629842fcd8a0988289ff5b665abc41655f0c57cee44bb",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "WITHHELD"
+        }
+      ]
+    },
+    {
+      "plan": "cancel_after",
+      "target": 1,
+      "mask": 1,
+      "records": 93,
+      "checkpoints": 94,
+      "trace_sha256": "66d5bba1c7e321040bb5942f8f2907122c60c14f9ff3f660be994d6073a6f4fe",
+      "checkpoint_sha256": "e09c286f4fa0ea72815629842fcd8a0988289ff5b665abc41655f0c57cee44bb",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "WITHHELD"
+        }
+      ]
+    },
+    {
+      "plan": "cancel_after",
+      "target": 1,
+      "mask": 2,
+      "records": 93,
+      "checkpoints": 94,
+      "trace_sha256": "66d5bba1c7e321040bb5942f8f2907122c60c14f9ff3f660be994d6073a6f4fe",
+      "checkpoint_sha256": "e09c286f4fa0ea72815629842fcd8a0988289ff5b665abc41655f0c57cee44bb",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "WITHHELD"
+        }
+      ]
+    },
+    {
+      "plan": "cancel_after",
+      "target": 1,
+      "mask": 3,
+      "records": 93,
+      "checkpoints": 94,
+      "trace_sha256": "66d5bba1c7e321040bb5942f8f2907122c60c14f9ff3f660be994d6073a6f4fe",
+      "checkpoint_sha256": "e09c286f4fa0ea72815629842fcd8a0988289ff5b665abc41655f0c57cee44bb",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "WITHHELD"
+        }
+      ]
+    },
+    {
+      "plan": "cancel_after",
+      "target": 1,
+      "mask": 4,
+      "records": 93,
+      "checkpoints": 94,
+      "trace_sha256": "66d5bba1c7e321040bb5942f8f2907122c60c14f9ff3f660be994d6073a6f4fe",
+      "checkpoint_sha256": "e09c286f4fa0ea72815629842fcd8a0988289ff5b665abc41655f0c57cee44bb",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "WITHHELD"
+        }
+      ]
+    },
+    {
+      "plan": "cancel_after",
+      "target": 1,
+      "mask": 5,
+      "records": 93,
+      "checkpoints": 94,
+      "trace_sha256": "66d5bba1c7e321040bb5942f8f2907122c60c14f9ff3f660be994d6073a6f4fe",
+      "checkpoint_sha256": "e09c286f4fa0ea72815629842fcd8a0988289ff5b665abc41655f0c57cee44bb",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "WITHHELD"
+        }
+      ]
+    },
+    {
+      "plan": "cancel_after",
+      "target": 1,
+      "mask": 6,
+      "records": 93,
+      "checkpoints": 94,
+      "trace_sha256": "66d5bba1c7e321040bb5942f8f2907122c60c14f9ff3f660be994d6073a6f4fe",
+      "checkpoint_sha256": "e09c286f4fa0ea72815629842fcd8a0988289ff5b665abc41655f0c57cee44bb",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "WITHHELD"
+        }
+      ]
+    },
+    {
+      "plan": "cancel_after",
+      "target": 1,
+      "mask": 7,
+      "records": 93,
+      "checkpoints": 94,
+      "trace_sha256": "66d5bba1c7e321040bb5942f8f2907122c60c14f9ff3f660be994d6073a6f4fe",
+      "checkpoint_sha256": "e09c286f4fa0ea72815629842fcd8a0988289ff5b665abc41655f0c57cee44bb",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "WITHHELD"
+        }
+      ]
+    },
+    {
+      "plan": "pause",
+      "target": 1,
+      "mask": 0,
+      "records": 100,
+      "checkpoints": 101,
+      "trace_sha256": "ed853be4fd554744c98e61c352dda68525ddb1f16662b426e9fce8036d14ce0f",
+      "checkpoint_sha256": "07a77992db06ad6ad88f177732892eada9f016706787156937c69c5be6cccd14",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "pause",
+      "target": 1,
+      "mask": 1,
+      "records": 100,
+      "checkpoints": 101,
+      "trace_sha256": "ed853be4fd554744c98e61c352dda68525ddb1f16662b426e9fce8036d14ce0f",
+      "checkpoint_sha256": "07a77992db06ad6ad88f177732892eada9f016706787156937c69c5be6cccd14",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "pause",
+      "target": 1,
+      "mask": 2,
+      "records": 100,
+      "checkpoints": 101,
+      "trace_sha256": "ed853be4fd554744c98e61c352dda68525ddb1f16662b426e9fce8036d14ce0f",
+      "checkpoint_sha256": "07a77992db06ad6ad88f177732892eada9f016706787156937c69c5be6cccd14",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "pause",
+      "target": 1,
+      "mask": 3,
+      "records": 100,
+      "checkpoints": 101,
+      "trace_sha256": "ed853be4fd554744c98e61c352dda68525ddb1f16662b426e9fce8036d14ce0f",
+      "checkpoint_sha256": "07a77992db06ad6ad88f177732892eada9f016706787156937c69c5be6cccd14",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "pause",
+      "target": 1,
+      "mask": 4,
+      "records": 100,
+      "checkpoints": 101,
+      "trace_sha256": "ed853be4fd554744c98e61c352dda68525ddb1f16662b426e9fce8036d14ce0f",
+      "checkpoint_sha256": "07a77992db06ad6ad88f177732892eada9f016706787156937c69c5be6cccd14",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "pause",
+      "target": 1,
+      "mask": 5,
+      "records": 100,
+      "checkpoints": 101,
+      "trace_sha256": "ed853be4fd554744c98e61c352dda68525ddb1f16662b426e9fce8036d14ce0f",
+      "checkpoint_sha256": "07a77992db06ad6ad88f177732892eada9f016706787156937c69c5be6cccd14",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "pause",
+      "target": 1,
+      "mask": 6,
+      "records": 100,
+      "checkpoints": 101,
+      "trace_sha256": "ed853be4fd554744c98e61c352dda68525ddb1f16662b426e9fce8036d14ce0f",
+      "checkpoint_sha256": "07a77992db06ad6ad88f177732892eada9f016706787156937c69c5be6cccd14",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "pause",
+      "target": 1,
+      "mask": 7,
+      "records": 100,
+      "checkpoints": 101,
+      "trace_sha256": "ed853be4fd554744c98e61c352dda68525ddb1f16662b426e9fce8036d14ce0f",
+      "checkpoint_sha256": "07a77992db06ad6ad88f177732892eada9f016706787156937c69c5be6cccd14",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "revoke_before",
+      "target": 1,
+      "mask": 0,
+      "records": 93,
+      "checkpoints": 94,
+      "trace_sha256": "36476f493b62e19f5049211d00ae1f3dc526610a0d38c6e38a3ef92c80dc4976",
+      "checkpoint_sha256": "0456296296be1ed6ef548aa788a06cbb25174de80a80821ed9eb376b9cf87571",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "WITHHELD"
+        }
+      ]
+    },
+    {
+      "plan": "revoke_before",
+      "target": 1,
+      "mask": 1,
+      "records": 93,
+      "checkpoints": 94,
+      "trace_sha256": "36476f493b62e19f5049211d00ae1f3dc526610a0d38c6e38a3ef92c80dc4976",
+      "checkpoint_sha256": "0456296296be1ed6ef548aa788a06cbb25174de80a80821ed9eb376b9cf87571",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "WITHHELD"
+        }
+      ]
+    },
+    {
+      "plan": "revoke_before",
+      "target": 1,
+      "mask": 2,
+      "records": 93,
+      "checkpoints": 94,
+      "trace_sha256": "36476f493b62e19f5049211d00ae1f3dc526610a0d38c6e38a3ef92c80dc4976",
+      "checkpoint_sha256": "0456296296be1ed6ef548aa788a06cbb25174de80a80821ed9eb376b9cf87571",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "WITHHELD"
+        }
+      ]
+    },
+    {
+      "plan": "revoke_before",
+      "target": 1,
+      "mask": 3,
+      "records": 93,
+      "checkpoints": 94,
+      "trace_sha256": "36476f493b62e19f5049211d00ae1f3dc526610a0d38c6e38a3ef92c80dc4976",
+      "checkpoint_sha256": "0456296296be1ed6ef548aa788a06cbb25174de80a80821ed9eb376b9cf87571",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "WITHHELD"
+        }
+      ]
+    },
+    {
+      "plan": "revoke_before",
+      "target": 1,
+      "mask": 4,
+      "records": 93,
+      "checkpoints": 94,
+      "trace_sha256": "36476f493b62e19f5049211d00ae1f3dc526610a0d38c6e38a3ef92c80dc4976",
+      "checkpoint_sha256": "0456296296be1ed6ef548aa788a06cbb25174de80a80821ed9eb376b9cf87571",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "WITHHELD"
+        }
+      ]
+    },
+    {
+      "plan": "revoke_before",
+      "target": 1,
+      "mask": 5,
+      "records": 93,
+      "checkpoints": 94,
+      "trace_sha256": "36476f493b62e19f5049211d00ae1f3dc526610a0d38c6e38a3ef92c80dc4976",
+      "checkpoint_sha256": "0456296296be1ed6ef548aa788a06cbb25174de80a80821ed9eb376b9cf87571",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "WITHHELD"
+        }
+      ]
+    },
+    {
+      "plan": "revoke_before",
+      "target": 1,
+      "mask": 6,
+      "records": 93,
+      "checkpoints": 94,
+      "trace_sha256": "36476f493b62e19f5049211d00ae1f3dc526610a0d38c6e38a3ef92c80dc4976",
+      "checkpoint_sha256": "0456296296be1ed6ef548aa788a06cbb25174de80a80821ed9eb376b9cf87571",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "WITHHELD"
+        }
+      ]
+    },
+    {
+      "plan": "revoke_before",
+      "target": 1,
+      "mask": 7,
+      "records": 93,
+      "checkpoints": 94,
+      "trace_sha256": "36476f493b62e19f5049211d00ae1f3dc526610a0d38c6e38a3ef92c80dc4976",
+      "checkpoint_sha256": "0456296296be1ed6ef548aa788a06cbb25174de80a80821ed9eb376b9cf87571",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "WITHHELD"
+        }
+      ]
+    },
+    {
+      "plan": "revoke_after",
+      "target": 1,
+      "mask": 0,
+      "records": 93,
+      "checkpoints": 94,
+      "trace_sha256": "3aa598483c1ccdc1f075170cf232b3c80785792c69d627aa19a871254c9d1cca",
+      "checkpoint_sha256": "08e13e9d61e161692d0e1f4d2322351b16c6d8dced9155c2788c31f18285a687",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "WITHHELD"
+        }
+      ]
+    },
+    {
+      "plan": "revoke_after",
+      "target": 1,
+      "mask": 1,
+      "records": 93,
+      "checkpoints": 94,
+      "trace_sha256": "3aa598483c1ccdc1f075170cf232b3c80785792c69d627aa19a871254c9d1cca",
+      "checkpoint_sha256": "08e13e9d61e161692d0e1f4d2322351b16c6d8dced9155c2788c31f18285a687",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "WITHHELD"
+        }
+      ]
+    },
+    {
+      "plan": "revoke_after",
+      "target": 1,
+      "mask": 2,
+      "records": 93,
+      "checkpoints": 94,
+      "trace_sha256": "3aa598483c1ccdc1f075170cf232b3c80785792c69d627aa19a871254c9d1cca",
+      "checkpoint_sha256": "08e13e9d61e161692d0e1f4d2322351b16c6d8dced9155c2788c31f18285a687",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "WITHHELD"
+        }
+      ]
+    },
+    {
+      "plan": "revoke_after",
+      "target": 1,
+      "mask": 3,
+      "records": 93,
+      "checkpoints": 94,
+      "trace_sha256": "3aa598483c1ccdc1f075170cf232b3c80785792c69d627aa19a871254c9d1cca",
+      "checkpoint_sha256": "08e13e9d61e161692d0e1f4d2322351b16c6d8dced9155c2788c31f18285a687",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "WITHHELD"
+        }
+      ]
+    },
+    {
+      "plan": "revoke_after",
+      "target": 1,
+      "mask": 4,
+      "records": 93,
+      "checkpoints": 94,
+      "trace_sha256": "3aa598483c1ccdc1f075170cf232b3c80785792c69d627aa19a871254c9d1cca",
+      "checkpoint_sha256": "08e13e9d61e161692d0e1f4d2322351b16c6d8dced9155c2788c31f18285a687",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "WITHHELD"
+        }
+      ]
+    },
+    {
+      "plan": "revoke_after",
+      "target": 1,
+      "mask": 5,
+      "records": 93,
+      "checkpoints": 94,
+      "trace_sha256": "3aa598483c1ccdc1f075170cf232b3c80785792c69d627aa19a871254c9d1cca",
+      "checkpoint_sha256": "08e13e9d61e161692d0e1f4d2322351b16c6d8dced9155c2788c31f18285a687",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "WITHHELD"
+        }
+      ]
+    },
+    {
+      "plan": "revoke_after",
+      "target": 1,
+      "mask": 6,
+      "records": 93,
+      "checkpoints": 94,
+      "trace_sha256": "3aa598483c1ccdc1f075170cf232b3c80785792c69d627aa19a871254c9d1cca",
+      "checkpoint_sha256": "08e13e9d61e161692d0e1f4d2322351b16c6d8dced9155c2788c31f18285a687",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "WITHHELD"
+        }
+      ]
+    },
+    {
+      "plan": "revoke_after",
+      "target": 1,
+      "mask": 7,
+      "records": 93,
+      "checkpoints": 94,
+      "trace_sha256": "3aa598483c1ccdc1f075170cf232b3c80785792c69d627aa19a871254c9d1cca",
+      "checkpoint_sha256": "08e13e9d61e161692d0e1f4d2322351b16c6d8dced9155c2788c31f18285a687",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "WITHHELD"
+        }
+      ]
+    },
+    {
+      "plan": "revoke_after_admission",
+      "target": 1,
+      "mask": 0,
+      "records": 95,
+      "checkpoints": 96,
+      "trace_sha256": "d7dbd2528a0e9c7cdabdb07219e3a237c6ddfae5fe13a02b57afe5a2106a991a",
+      "checkpoint_sha256": "5980156da66685acf138c24d9111b7c484a731e4eed82eff5bb0fbb8cb630c56",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "revoke_after_admission",
+      "target": 1,
+      "mask": 1,
+      "records": 95,
+      "checkpoints": 96,
+      "trace_sha256": "d7dbd2528a0e9c7cdabdb07219e3a237c6ddfae5fe13a02b57afe5a2106a991a",
+      "checkpoint_sha256": "5980156da66685acf138c24d9111b7c484a731e4eed82eff5bb0fbb8cb630c56",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "revoke_after_admission",
+      "target": 1,
+      "mask": 2,
+      "records": 95,
+      "checkpoints": 96,
+      "trace_sha256": "d7dbd2528a0e9c7cdabdb07219e3a237c6ddfae5fe13a02b57afe5a2106a991a",
+      "checkpoint_sha256": "5980156da66685acf138c24d9111b7c484a731e4eed82eff5bb0fbb8cb630c56",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "revoke_after_admission",
+      "target": 1,
+      "mask": 3,
+      "records": 95,
+      "checkpoints": 96,
+      "trace_sha256": "d7dbd2528a0e9c7cdabdb07219e3a237c6ddfae5fe13a02b57afe5a2106a991a",
+      "checkpoint_sha256": "5980156da66685acf138c24d9111b7c484a731e4eed82eff5bb0fbb8cb630c56",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "revoke_after_admission",
+      "target": 1,
+      "mask": 4,
+      "records": 95,
+      "checkpoints": 96,
+      "trace_sha256": "d7dbd2528a0e9c7cdabdb07219e3a237c6ddfae5fe13a02b57afe5a2106a991a",
+      "checkpoint_sha256": "5980156da66685acf138c24d9111b7c484a731e4eed82eff5bb0fbb8cb630c56",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "revoke_after_admission",
+      "target": 1,
+      "mask": 5,
+      "records": 95,
+      "checkpoints": 96,
+      "trace_sha256": "d7dbd2528a0e9c7cdabdb07219e3a237c6ddfae5fe13a02b57afe5a2106a991a",
+      "checkpoint_sha256": "5980156da66685acf138c24d9111b7c484a731e4eed82eff5bb0fbb8cb630c56",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "revoke_after_admission",
+      "target": 1,
+      "mask": 6,
+      "records": 95,
+      "checkpoints": 96,
+      "trace_sha256": "d7dbd2528a0e9c7cdabdb07219e3a237c6ddfae5fe13a02b57afe5a2106a991a",
+      "checkpoint_sha256": "5980156da66685acf138c24d9111b7c484a731e4eed82eff5bb0fbb8cb630c56",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "revoke_after_admission",
+      "target": 1,
+      "mask": 7,
+      "records": 95,
+      "checkpoints": 96,
+      "trace_sha256": "d7dbd2528a0e9c7cdabdb07219e3a237c6ddfae5fe13a02b57afe5a2106a991a",
+      "checkpoint_sha256": "5980156da66685acf138c24d9111b7c484a731e4eed82eff5bb0fbb8cb630c56",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "cancel_after_publication",
+      "target": 1,
+      "mask": 0,
+      "records": 95,
+      "checkpoints": 96,
+      "trace_sha256": "73f724349504e7487f849310ba2b847e57400984b18e8c6f57a09fad28e19d62",
+      "checkpoint_sha256": "9a56c35f84939921e5a05038f9ade24629a058396833bc41d1c2fa4730ef188d",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "cancel_after_publication",
+      "target": 1,
+      "mask": 1,
+      "records": 95,
+      "checkpoints": 96,
+      "trace_sha256": "73f724349504e7487f849310ba2b847e57400984b18e8c6f57a09fad28e19d62",
+      "checkpoint_sha256": "9a56c35f84939921e5a05038f9ade24629a058396833bc41d1c2fa4730ef188d",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "cancel_after_publication",
+      "target": 1,
+      "mask": 2,
+      "records": 95,
+      "checkpoints": 96,
+      "trace_sha256": "73f724349504e7487f849310ba2b847e57400984b18e8c6f57a09fad28e19d62",
+      "checkpoint_sha256": "9a56c35f84939921e5a05038f9ade24629a058396833bc41d1c2fa4730ef188d",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "cancel_after_publication",
+      "target": 1,
+      "mask": 3,
+      "records": 95,
+      "checkpoints": 96,
+      "trace_sha256": "73f724349504e7487f849310ba2b847e57400984b18e8c6f57a09fad28e19d62",
+      "checkpoint_sha256": "9a56c35f84939921e5a05038f9ade24629a058396833bc41d1c2fa4730ef188d",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "cancel_after_publication",
+      "target": 1,
+      "mask": 4,
+      "records": 95,
+      "checkpoints": 96,
+      "trace_sha256": "73f724349504e7487f849310ba2b847e57400984b18e8c6f57a09fad28e19d62",
+      "checkpoint_sha256": "9a56c35f84939921e5a05038f9ade24629a058396833bc41d1c2fa4730ef188d",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "cancel_after_publication",
+      "target": 1,
+      "mask": 5,
+      "records": 95,
+      "checkpoints": 96,
+      "trace_sha256": "73f724349504e7487f849310ba2b847e57400984b18e8c6f57a09fad28e19d62",
+      "checkpoint_sha256": "9a56c35f84939921e5a05038f9ade24629a058396833bc41d1c2fa4730ef188d",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "cancel_after_publication",
+      "target": 1,
+      "mask": 6,
+      "records": 95,
+      "checkpoints": 96,
+      "trace_sha256": "73f724349504e7487f849310ba2b847e57400984b18e8c6f57a09fad28e19d62",
+      "checkpoint_sha256": "9a56c35f84939921e5a05038f9ade24629a058396833bc41d1c2fa4730ef188d",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "cancel_after_publication",
+      "target": 1,
+      "mask": 7,
+      "records": 95,
+      "checkpoints": 96,
+      "trace_sha256": "73f724349504e7487f849310ba2b847e57400984b18e8c6f57a09fad28e19d62",
+      "checkpoint_sha256": "9a56c35f84939921e5a05038f9ade24629a058396833bc41d1c2fa4730ef188d",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "packet_loss",
+      "target": 1,
+      "mask": 0,
+      "records": 95,
+      "checkpoints": 96,
+      "trace_sha256": "9874daae79e5ca9efa108ba679a3cd3914d415c6c87c61af715a1c80b73ca9af",
+      "checkpoint_sha256": "bbdc83ec8c8881f9709551a6dca0f6c3a64f61f9fe2bf67062392874cf14f360",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "packet_loss",
+      "target": 1,
+      "mask": 1,
+      "records": 95,
+      "checkpoints": 96,
+      "trace_sha256": "9874daae79e5ca9efa108ba679a3cd3914d415c6c87c61af715a1c80b73ca9af",
+      "checkpoint_sha256": "bbdc83ec8c8881f9709551a6dca0f6c3a64f61f9fe2bf67062392874cf14f360",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "packet_loss",
+      "target": 1,
+      "mask": 2,
+      "records": 95,
+      "checkpoints": 96,
+      "trace_sha256": "9874daae79e5ca9efa108ba679a3cd3914d415c6c87c61af715a1c80b73ca9af",
+      "checkpoint_sha256": "bbdc83ec8c8881f9709551a6dca0f6c3a64f61f9fe2bf67062392874cf14f360",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "packet_loss",
+      "target": 1,
+      "mask": 3,
+      "records": 95,
+      "checkpoints": 96,
+      "trace_sha256": "9874daae79e5ca9efa108ba679a3cd3914d415c6c87c61af715a1c80b73ca9af",
+      "checkpoint_sha256": "bbdc83ec8c8881f9709551a6dca0f6c3a64f61f9fe2bf67062392874cf14f360",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "packet_loss",
+      "target": 1,
+      "mask": 4,
+      "records": 95,
+      "checkpoints": 96,
+      "trace_sha256": "9874daae79e5ca9efa108ba679a3cd3914d415c6c87c61af715a1c80b73ca9af",
+      "checkpoint_sha256": "bbdc83ec8c8881f9709551a6dca0f6c3a64f61f9fe2bf67062392874cf14f360",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "packet_loss",
+      "target": 1,
+      "mask": 5,
+      "records": 95,
+      "checkpoints": 96,
+      "trace_sha256": "9874daae79e5ca9efa108ba679a3cd3914d415c6c87c61af715a1c80b73ca9af",
+      "checkpoint_sha256": "bbdc83ec8c8881f9709551a6dca0f6c3a64f61f9fe2bf67062392874cf14f360",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "packet_loss",
+      "target": 1,
+      "mask": 6,
+      "records": 95,
+      "checkpoints": 96,
+      "trace_sha256": "9874daae79e5ca9efa108ba679a3cd3914d415c6c87c61af715a1c80b73ca9af",
+      "checkpoint_sha256": "bbdc83ec8c8881f9709551a6dca0f6c3a64f61f9fe2bf67062392874cf14f360",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "packet_loss",
+      "target": 1,
+      "mask": 7,
+      "records": 95,
+      "checkpoints": 96,
+      "trace_sha256": "9874daae79e5ca9efa108ba679a3cd3914d415c6c87c61af715a1c80b73ca9af",
+      "checkpoint_sha256": "bbdc83ec8c8881f9709551a6dca0f6c3a64f61f9fe2bf67062392874cf14f360",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "ack_loss",
+      "target": 1,
+      "mask": 0,
+      "records": 95,
+      "checkpoints": 96,
+      "trace_sha256": "42557eed0f5648124379a7f85e3852aeefc4c7d5c124b405b5b7f158b2f80954",
+      "checkpoint_sha256": "d28153b7a1310414101a6f9dff7cbcef46867dbef56464afb73895067a1b0fd6",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "ack_loss",
+      "target": 1,
+      "mask": 1,
+      "records": 95,
+      "checkpoints": 96,
+      "trace_sha256": "42557eed0f5648124379a7f85e3852aeefc4c7d5c124b405b5b7f158b2f80954",
+      "checkpoint_sha256": "d28153b7a1310414101a6f9dff7cbcef46867dbef56464afb73895067a1b0fd6",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "ack_loss",
+      "target": 1,
+      "mask": 2,
+      "records": 95,
+      "checkpoints": 96,
+      "trace_sha256": "42557eed0f5648124379a7f85e3852aeefc4c7d5c124b405b5b7f158b2f80954",
+      "checkpoint_sha256": "d28153b7a1310414101a6f9dff7cbcef46867dbef56464afb73895067a1b0fd6",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "ack_loss",
+      "target": 1,
+      "mask": 3,
+      "records": 95,
+      "checkpoints": 96,
+      "trace_sha256": "42557eed0f5648124379a7f85e3852aeefc4c7d5c124b405b5b7f158b2f80954",
+      "checkpoint_sha256": "d28153b7a1310414101a6f9dff7cbcef46867dbef56464afb73895067a1b0fd6",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "ack_loss",
+      "target": 1,
+      "mask": 4,
+      "records": 95,
+      "checkpoints": 96,
+      "trace_sha256": "42557eed0f5648124379a7f85e3852aeefc4c7d5c124b405b5b7f158b2f80954",
+      "checkpoint_sha256": "d28153b7a1310414101a6f9dff7cbcef46867dbef56464afb73895067a1b0fd6",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "ack_loss",
+      "target": 1,
+      "mask": 5,
+      "records": 95,
+      "checkpoints": 96,
+      "trace_sha256": "42557eed0f5648124379a7f85e3852aeefc4c7d5c124b405b5b7f158b2f80954",
+      "checkpoint_sha256": "d28153b7a1310414101a6f9dff7cbcef46867dbef56464afb73895067a1b0fd6",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "ack_loss",
+      "target": 1,
+      "mask": 6,
+      "records": 95,
+      "checkpoints": 96,
+      "trace_sha256": "42557eed0f5648124379a7f85e3852aeefc4c7d5c124b405b5b7f158b2f80954",
+      "checkpoint_sha256": "d28153b7a1310414101a6f9dff7cbcef46867dbef56464afb73895067a1b0fd6",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "ack_loss",
+      "target": 1,
+      "mask": 7,
+      "records": 95,
+      "checkpoints": 96,
+      "trace_sha256": "42557eed0f5648124379a7f85e3852aeefc4c7d5c124b405b5b7f158b2f80954",
+      "checkpoint_sha256": "d28153b7a1310414101a6f9dff7cbcef46867dbef56464afb73895067a1b0fd6",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "closed",
+      "target": 1,
+      "mask": 0,
+      "records": 94,
+      "checkpoints": 95,
+      "trace_sha256": "f6d136869cbb9ef833a3dbbc8db5eaf3f6ea71e6f0f23181fbdc3b90d609a640",
+      "checkpoint_sha256": "4b58d91188ecb1a7346a86ff63d41ead169b103c9974672d69af5769be91a0ba",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "CLOSED"
+        }
+      ]
+    },
+    {
+      "plan": "closed",
+      "target": 1,
+      "mask": 1,
+      "records": 94,
+      "checkpoints": 95,
+      "trace_sha256": "f6d136869cbb9ef833a3dbbc8db5eaf3f6ea71e6f0f23181fbdc3b90d609a640",
+      "checkpoint_sha256": "4b58d91188ecb1a7346a86ff63d41ead169b103c9974672d69af5769be91a0ba",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "CLOSED"
+        }
+      ]
+    },
+    {
+      "plan": "closed",
+      "target": 1,
+      "mask": 2,
+      "records": 94,
+      "checkpoints": 95,
+      "trace_sha256": "f6d136869cbb9ef833a3dbbc8db5eaf3f6ea71e6f0f23181fbdc3b90d609a640",
+      "checkpoint_sha256": "4b58d91188ecb1a7346a86ff63d41ead169b103c9974672d69af5769be91a0ba",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "CLOSED"
+        }
+      ]
+    },
+    {
+      "plan": "closed",
+      "target": 1,
+      "mask": 3,
+      "records": 94,
+      "checkpoints": 95,
+      "trace_sha256": "f6d136869cbb9ef833a3dbbc8db5eaf3f6ea71e6f0f23181fbdc3b90d609a640",
+      "checkpoint_sha256": "4b58d91188ecb1a7346a86ff63d41ead169b103c9974672d69af5769be91a0ba",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "CLOSED"
+        }
+      ]
+    },
+    {
+      "plan": "closed",
+      "target": 1,
+      "mask": 4,
+      "records": 94,
+      "checkpoints": 95,
+      "trace_sha256": "f6d136869cbb9ef833a3dbbc8db5eaf3f6ea71e6f0f23181fbdc3b90d609a640",
+      "checkpoint_sha256": "4b58d91188ecb1a7346a86ff63d41ead169b103c9974672d69af5769be91a0ba",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "CLOSED"
+        }
+      ]
+    },
+    {
+      "plan": "closed",
+      "target": 1,
+      "mask": 5,
+      "records": 94,
+      "checkpoints": 95,
+      "trace_sha256": "f6d136869cbb9ef833a3dbbc8db5eaf3f6ea71e6f0f23181fbdc3b90d609a640",
+      "checkpoint_sha256": "4b58d91188ecb1a7346a86ff63d41ead169b103c9974672d69af5769be91a0ba",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "CLOSED"
+        }
+      ]
+    },
+    {
+      "plan": "closed",
+      "target": 1,
+      "mask": 6,
+      "records": 94,
+      "checkpoints": 95,
+      "trace_sha256": "f6d136869cbb9ef833a3dbbc8db5eaf3f6ea71e6f0f23181fbdc3b90d609a640",
+      "checkpoint_sha256": "4b58d91188ecb1a7346a86ff63d41ead169b103c9974672d69af5769be91a0ba",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "CLOSED"
+        }
+      ]
+    },
+    {
+      "plan": "closed",
+      "target": 1,
+      "mask": 7,
+      "records": 94,
+      "checkpoints": 95,
+      "trace_sha256": "f6d136869cbb9ef833a3dbbc8db5eaf3f6ea71e6f0f23181fbdc3b90d609a640",
+      "checkpoint_sha256": "4b58d91188ecb1a7346a86ff63d41ead169b103c9974672d69af5769be91a0ba",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "CLOSED"
+        }
+      ]
+    },
+    {
+      "plan": "accepted_then_expired",
+      "target": 1,
+      "mask": 0,
+      "records": 95,
+      "checkpoints": 96,
+      "trace_sha256": "185f7d3aa9a85100aff90932cd3fd470a99dcb4916f52f818a0e915f76cd21b9",
+      "checkpoint_sha256": "faf1fdfd990cc238395e9be9149e98c9f13cbb4b9e69ebecd749788d59b05863",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "accepted_then_expired",
+      "target": 1,
+      "mask": 1,
+      "records": 95,
+      "checkpoints": 96,
+      "trace_sha256": "185f7d3aa9a85100aff90932cd3fd470a99dcb4916f52f818a0e915f76cd21b9",
+      "checkpoint_sha256": "faf1fdfd990cc238395e9be9149e98c9f13cbb4b9e69ebecd749788d59b05863",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "accepted_then_expired",
+      "target": 1,
+      "mask": 2,
+      "records": 95,
+      "checkpoints": 96,
+      "trace_sha256": "185f7d3aa9a85100aff90932cd3fd470a99dcb4916f52f818a0e915f76cd21b9",
+      "checkpoint_sha256": "faf1fdfd990cc238395e9be9149e98c9f13cbb4b9e69ebecd749788d59b05863",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "accepted_then_expired",
+      "target": 1,
+      "mask": 3,
+      "records": 95,
+      "checkpoints": 96,
+      "trace_sha256": "185f7d3aa9a85100aff90932cd3fd470a99dcb4916f52f818a0e915f76cd21b9",
+      "checkpoint_sha256": "faf1fdfd990cc238395e9be9149e98c9f13cbb4b9e69ebecd749788d59b05863",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "accepted_then_expired",
+      "target": 1,
+      "mask": 4,
+      "records": 95,
+      "checkpoints": 96,
+      "trace_sha256": "185f7d3aa9a85100aff90932cd3fd470a99dcb4916f52f818a0e915f76cd21b9",
+      "checkpoint_sha256": "faf1fdfd990cc238395e9be9149e98c9f13cbb4b9e69ebecd749788d59b05863",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "accepted_then_expired",
+      "target": 1,
+      "mask": 5,
+      "records": 95,
+      "checkpoints": 96,
+      "trace_sha256": "185f7d3aa9a85100aff90932cd3fd470a99dcb4916f52f818a0e915f76cd21b9",
+      "checkpoint_sha256": "faf1fdfd990cc238395e9be9149e98c9f13cbb4b9e69ebecd749788d59b05863",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "accepted_then_expired",
+      "target": 1,
+      "mask": 6,
+      "records": 95,
+      "checkpoints": 96,
+      "trace_sha256": "185f7d3aa9a85100aff90932cd3fd470a99dcb4916f52f818a0e915f76cd21b9",
+      "checkpoint_sha256": "faf1fdfd990cc238395e9be9149e98c9f13cbb4b9e69ebecd749788d59b05863",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "accepted_then_expired",
+      "target": 1,
+      "mask": 7,
+      "records": 95,
+      "checkpoints": 96,
+      "trace_sha256": "185f7d3aa9a85100aff90932cd3fd470a99dcb4916f52f818a0e915f76cd21b9",
+      "checkpoint_sha256": "faf1fdfd990cc238395e9be9149e98c9f13cbb4b9e69ebecd749788d59b05863",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "permanent_loss",
+      "target": 1,
+      "mask": 0,
+      "records": 93,
+      "checkpoints": 94,
+      "trace_sha256": "72f1895e7c0e9d725084a86b359848f66ff958ad42ebb26ebb4a151b33ca4ccc",
+      "checkpoint_sha256": "f1374b58ecbad9c2d629a2fbb89cb092587a24aa80e73bbb6d0d396fe0a03f7d",
+      "final": []
+    },
+    {
+      "plan": "permanent_loss",
+      "target": 1,
+      "mask": 1,
+      "records": 93,
+      "checkpoints": 94,
+      "trace_sha256": "72f1895e7c0e9d725084a86b359848f66ff958ad42ebb26ebb4a151b33ca4ccc",
+      "checkpoint_sha256": "f1374b58ecbad9c2d629a2fbb89cb092587a24aa80e73bbb6d0d396fe0a03f7d",
+      "final": []
+    },
+    {
+      "plan": "permanent_loss",
+      "target": 1,
+      "mask": 2,
+      "records": 93,
+      "checkpoints": 94,
+      "trace_sha256": "72f1895e7c0e9d725084a86b359848f66ff958ad42ebb26ebb4a151b33ca4ccc",
+      "checkpoint_sha256": "f1374b58ecbad9c2d629a2fbb89cb092587a24aa80e73bbb6d0d396fe0a03f7d",
+      "final": []
+    },
+    {
+      "plan": "permanent_loss",
+      "target": 1,
+      "mask": 3,
+      "records": 93,
+      "checkpoints": 94,
+      "trace_sha256": "72f1895e7c0e9d725084a86b359848f66ff958ad42ebb26ebb4a151b33ca4ccc",
+      "checkpoint_sha256": "f1374b58ecbad9c2d629a2fbb89cb092587a24aa80e73bbb6d0d396fe0a03f7d",
+      "final": []
+    },
+    {
+      "plan": "permanent_loss",
+      "target": 1,
+      "mask": 4,
+      "records": 93,
+      "checkpoints": 94,
+      "trace_sha256": "72f1895e7c0e9d725084a86b359848f66ff958ad42ebb26ebb4a151b33ca4ccc",
+      "checkpoint_sha256": "f1374b58ecbad9c2d629a2fbb89cb092587a24aa80e73bbb6d0d396fe0a03f7d",
+      "final": []
+    },
+    {
+      "plan": "permanent_loss",
+      "target": 1,
+      "mask": 5,
+      "records": 93,
+      "checkpoints": 94,
+      "trace_sha256": "72f1895e7c0e9d725084a86b359848f66ff958ad42ebb26ebb4a151b33ca4ccc",
+      "checkpoint_sha256": "f1374b58ecbad9c2d629a2fbb89cb092587a24aa80e73bbb6d0d396fe0a03f7d",
+      "final": []
+    },
+    {
+      "plan": "permanent_loss",
+      "target": 1,
+      "mask": 6,
+      "records": 93,
+      "checkpoints": 94,
+      "trace_sha256": "72f1895e7c0e9d725084a86b359848f66ff958ad42ebb26ebb4a151b33ca4ccc",
+      "checkpoint_sha256": "f1374b58ecbad9c2d629a2fbb89cb092587a24aa80e73bbb6d0d396fe0a03f7d",
+      "final": []
+    },
+    {
+      "plan": "permanent_loss",
+      "target": 1,
+      "mask": 7,
+      "records": 93,
+      "checkpoints": 94,
+      "trace_sha256": "72f1895e7c0e9d725084a86b359848f66ff958ad42ebb26ebb4a151b33ca4ccc",
+      "checkpoint_sha256": "f1374b58ecbad9c2d629a2fbb89cb092587a24aa80e73bbb6d0d396fe0a03f7d",
+      "final": []
+    },
+    {
+      "plan": "retry_and_denial",
+      "target": 1,
+      "mask": 0,
+      "records": 103,
+      "checkpoints": 104,
+      "trace_sha256": "f34739130ffc1ea2c852c99596fa465de68624dd4f7e9736412751bb8d6f9a50",
+      "checkpoint_sha256": "ced3e485c9ef85360cbead9be7d10bae5d706e1067edb0cbe65cd6b65e7ad0cc",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "retry_and_denial",
+      "target": 1,
+      "mask": 1,
+      "records": 103,
+      "checkpoints": 104,
+      "trace_sha256": "f34739130ffc1ea2c852c99596fa465de68624dd4f7e9736412751bb8d6f9a50",
+      "checkpoint_sha256": "ced3e485c9ef85360cbead9be7d10bae5d706e1067edb0cbe65cd6b65e7ad0cc",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "retry_and_denial",
+      "target": 1,
+      "mask": 2,
+      "records": 103,
+      "checkpoints": 104,
+      "trace_sha256": "f34739130ffc1ea2c852c99596fa465de68624dd4f7e9736412751bb8d6f9a50",
+      "checkpoint_sha256": "ced3e485c9ef85360cbead9be7d10bae5d706e1067edb0cbe65cd6b65e7ad0cc",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "retry_and_denial",
+      "target": 1,
+      "mask": 3,
+      "records": 103,
+      "checkpoints": 104,
+      "trace_sha256": "f34739130ffc1ea2c852c99596fa465de68624dd4f7e9736412751bb8d6f9a50",
+      "checkpoint_sha256": "ced3e485c9ef85360cbead9be7d10bae5d706e1067edb0cbe65cd6b65e7ad0cc",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "retry_and_denial",
+      "target": 1,
+      "mask": 4,
+      "records": 103,
+      "checkpoints": 104,
+      "trace_sha256": "f34739130ffc1ea2c852c99596fa465de68624dd4f7e9736412751bb8d6f9a50",
+      "checkpoint_sha256": "ced3e485c9ef85360cbead9be7d10bae5d706e1067edb0cbe65cd6b65e7ad0cc",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "retry_and_denial",
+      "target": 1,
+      "mask": 5,
+      "records": 103,
+      "checkpoints": 104,
+      "trace_sha256": "f34739130ffc1ea2c852c99596fa465de68624dd4f7e9736412751bb8d6f9a50",
+      "checkpoint_sha256": "ced3e485c9ef85360cbead9be7d10bae5d706e1067edb0cbe65cd6b65e7ad0cc",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "retry_and_denial",
+      "target": 1,
+      "mask": 6,
+      "records": 103,
+      "checkpoints": 104,
+      "trace_sha256": "f34739130ffc1ea2c852c99596fa465de68624dd4f7e9736412751bb8d6f9a50",
+      "checkpoint_sha256": "ced3e485c9ef85360cbead9be7d10bae5d706e1067edb0cbe65cd6b65e7ad0cc",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "retry_and_denial",
+      "target": 1,
+      "mask": 7,
+      "records": 103,
+      "checkpoints": 104,
+      "trace_sha256": "f34739130ffc1ea2c852c99596fa465de68624dd4f7e9736412751bb8d6f9a50",
+      "checkpoint_sha256": "ced3e485c9ef85360cbead9be7d10bae5d706e1067edb0cbe65cd6b65e7ad0cc",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "mixed_same_route",
+      "target": 1,
+      "mask": 0,
+      "records": 441,
+      "checkpoints": 442,
+      "trace_sha256": "7080d478e9f317ba4aee10b15d1318babe6f42907aa5764eb223f597390389ba",
+      "checkpoint_sha256": "7ce4923dd5d7f6dd3b848e0dee7273ef87910f3b68a3a282e6406c0fc3f80bbf",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "mixed_same_route",
+      "target": 1,
+      "mask": 1,
+      "records": 441,
+      "checkpoints": 442,
+      "trace_sha256": "7080d478e9f317ba4aee10b15d1318babe6f42907aa5764eb223f597390389ba",
+      "checkpoint_sha256": "7ce4923dd5d7f6dd3b848e0dee7273ef87910f3b68a3a282e6406c0fc3f80bbf",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "mixed_same_route",
+      "target": 1,
+      "mask": 2,
+      "records": 441,
+      "checkpoints": 442,
+      "trace_sha256": "7080d478e9f317ba4aee10b15d1318babe6f42907aa5764eb223f597390389ba",
+      "checkpoint_sha256": "7ce4923dd5d7f6dd3b848e0dee7273ef87910f3b68a3a282e6406c0fc3f80bbf",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "mixed_same_route",
+      "target": 1,
+      "mask": 3,
+      "records": 441,
+      "checkpoints": 442,
+      "trace_sha256": "7080d478e9f317ba4aee10b15d1318babe6f42907aa5764eb223f597390389ba",
+      "checkpoint_sha256": "7ce4923dd5d7f6dd3b848e0dee7273ef87910f3b68a3a282e6406c0fc3f80bbf",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "mixed_same_route",
+      "target": 1,
+      "mask": 4,
+      "records": 441,
+      "checkpoints": 442,
+      "trace_sha256": "7080d478e9f317ba4aee10b15d1318babe6f42907aa5764eb223f597390389ba",
+      "checkpoint_sha256": "7ce4923dd5d7f6dd3b848e0dee7273ef87910f3b68a3a282e6406c0fc3f80bbf",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "mixed_same_route",
+      "target": 1,
+      "mask": 5,
+      "records": 441,
+      "checkpoints": 442,
+      "trace_sha256": "7080d478e9f317ba4aee10b15d1318babe6f42907aa5764eb223f597390389ba",
+      "checkpoint_sha256": "7ce4923dd5d7f6dd3b848e0dee7273ef87910f3b68a3a282e6406c0fc3f80bbf",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "mixed_same_route",
+      "target": 1,
+      "mask": 6,
+      "records": 441,
+      "checkpoints": 442,
+      "trace_sha256": "7080d478e9f317ba4aee10b15d1318babe6f42907aa5764eb223f597390389ba",
+      "checkpoint_sha256": "7ce4923dd5d7f6dd3b848e0dee7273ef87910f3b68a3a282e6406c0fc3f80bbf",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "mixed_same_route",
+      "target": 1,
+      "mask": 7,
+      "records": 441,
+      "checkpoints": 442,
+      "trace_sha256": "7080d478e9f317ba4aee10b15d1318babe6f42907aa5764eb223f597390389ba",
+      "checkpoint_sha256": "7ce4923dd5d7f6dd3b848e0dee7273ef87910f3b68a3a282e6406c0fc3f80bbf",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "mixed_cross_route",
+      "target": 1,
+      "mask": 0,
+      "records": 441,
+      "checkpoints": 442,
+      "trace_sha256": "aead9e398e79cd00ac3852c6bf0c7a8ee72c42e2336eca4425058a589dac1e9d",
+      "checkpoint_sha256": "e0f867649a928b8baaef9e7c61c75006435e436cec2ee24ff7285a8d342cd519",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "mixed_cross_route",
+      "target": 1,
+      "mask": 1,
+      "records": 441,
+      "checkpoints": 442,
+      "trace_sha256": "aead9e398e79cd00ac3852c6bf0c7a8ee72c42e2336eca4425058a589dac1e9d",
+      "checkpoint_sha256": "e0f867649a928b8baaef9e7c61c75006435e436cec2ee24ff7285a8d342cd519",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "mixed_cross_route",
+      "target": 1,
+      "mask": 2,
+      "records": 441,
+      "checkpoints": 442,
+      "trace_sha256": "aead9e398e79cd00ac3852c6bf0c7a8ee72c42e2336eca4425058a589dac1e9d",
+      "checkpoint_sha256": "e0f867649a928b8baaef9e7c61c75006435e436cec2ee24ff7285a8d342cd519",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "mixed_cross_route",
+      "target": 1,
+      "mask": 3,
+      "records": 441,
+      "checkpoints": 442,
+      "trace_sha256": "aead9e398e79cd00ac3852c6bf0c7a8ee72c42e2336eca4425058a589dac1e9d",
+      "checkpoint_sha256": "e0f867649a928b8baaef9e7c61c75006435e436cec2ee24ff7285a8d342cd519",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "mixed_cross_route",
+      "target": 1,
+      "mask": 4,
+      "records": 441,
+      "checkpoints": 442,
+      "trace_sha256": "aead9e398e79cd00ac3852c6bf0c7a8ee72c42e2336eca4425058a589dac1e9d",
+      "checkpoint_sha256": "e0f867649a928b8baaef9e7c61c75006435e436cec2ee24ff7285a8d342cd519",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "mixed_cross_route",
+      "target": 1,
+      "mask": 5,
+      "records": 441,
+      "checkpoints": 442,
+      "trace_sha256": "aead9e398e79cd00ac3852c6bf0c7a8ee72c42e2336eca4425058a589dac1e9d",
+      "checkpoint_sha256": "e0f867649a928b8baaef9e7c61c75006435e436cec2ee24ff7285a8d342cd519",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "mixed_cross_route",
+      "target": 1,
+      "mask": 6,
+      "records": 441,
+      "checkpoints": 442,
+      "trace_sha256": "aead9e398e79cd00ac3852c6bf0c7a8ee72c42e2336eca4425058a589dac1e9d",
+      "checkpoint_sha256": "e0f867649a928b8baaef9e7c61c75006435e436cec2ee24ff7285a8d342cd519",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "mixed_cross_route",
+      "target": 1,
+      "mask": 7,
+      "records": 441,
+      "checkpoints": 442,
+      "trace_sha256": "aead9e398e79cd00ac3852c6bf0c7a8ee72c42e2336eca4425058a589dac1e9d",
+      "checkpoint_sha256": "e0f867649a928b8baaef9e7c61c75006435e436cec2ee24ff7285a8d342cd519",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "mixed_ack_loss",
+      "target": 1,
+      "mask": 0,
+      "records": 442,
+      "checkpoints": 443,
+      "trace_sha256": "77a055eec2ff8194c597d086a828351b6016b8cd71aee320a10bda1b1098fffc",
+      "checkpoint_sha256": "08bf183abee8d597b0f985b490b59ea73dbfb33ce8f88465773f2a27ca6ef048",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "mixed_ack_loss",
+      "target": 1,
+      "mask": 1,
+      "records": 442,
+      "checkpoints": 443,
+      "trace_sha256": "77a055eec2ff8194c597d086a828351b6016b8cd71aee320a10bda1b1098fffc",
+      "checkpoint_sha256": "08bf183abee8d597b0f985b490b59ea73dbfb33ce8f88465773f2a27ca6ef048",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "mixed_ack_loss",
+      "target": 1,
+      "mask": 2,
+      "records": 442,
+      "checkpoints": 443,
+      "trace_sha256": "77a055eec2ff8194c597d086a828351b6016b8cd71aee320a10bda1b1098fffc",
+      "checkpoint_sha256": "08bf183abee8d597b0f985b490b59ea73dbfb33ce8f88465773f2a27ca6ef048",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "mixed_ack_loss",
+      "target": 1,
+      "mask": 3,
+      "records": 442,
+      "checkpoints": 443,
+      "trace_sha256": "77a055eec2ff8194c597d086a828351b6016b8cd71aee320a10bda1b1098fffc",
+      "checkpoint_sha256": "08bf183abee8d597b0f985b490b59ea73dbfb33ce8f88465773f2a27ca6ef048",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "mixed_ack_loss",
+      "target": 1,
+      "mask": 4,
+      "records": 442,
+      "checkpoints": 443,
+      "trace_sha256": "77a055eec2ff8194c597d086a828351b6016b8cd71aee320a10bda1b1098fffc",
+      "checkpoint_sha256": "08bf183abee8d597b0f985b490b59ea73dbfb33ce8f88465773f2a27ca6ef048",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "mixed_ack_loss",
+      "target": 1,
+      "mask": 5,
+      "records": 442,
+      "checkpoints": 443,
+      "trace_sha256": "77a055eec2ff8194c597d086a828351b6016b8cd71aee320a10bda1b1098fffc",
+      "checkpoint_sha256": "08bf183abee8d597b0f985b490b59ea73dbfb33ce8f88465773f2a27ca6ef048",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "mixed_ack_loss",
+      "target": 1,
+      "mask": 6,
+      "records": 442,
+      "checkpoints": 443,
+      "trace_sha256": "77a055eec2ff8194c597d086a828351b6016b8cd71aee320a10bda1b1098fffc",
+      "checkpoint_sha256": "08bf183abee8d597b0f985b490b59ea73dbfb33ce8f88465773f2a27ca6ef048",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "mixed_ack_loss",
+      "target": 1,
+      "mask": 7,
+      "records": 442,
+      "checkpoints": 443,
+      "trace_sha256": "77a055eec2ff8194c597d086a828351b6016b8cd71aee320a10bda1b1098fffc",
+      "checkpoint_sha256": "08bf183abee8d597b0f985b490b59ea73dbfb33ce8f88465773f2a27ca6ef048",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "mixed_expired",
+      "target": 1,
+      "mask": 0,
+      "records": 442,
+      "checkpoints": 443,
+      "trace_sha256": "350b8c00fc414e4b2dd729f5cd15fb4237c7d9f7abea6bf813cd941ce9b7cfd4",
+      "checkpoint_sha256": "dad561d2b0a07664777bc554433ee49c42525db9dba04c3b936162a9259d84c7",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "CLOSED"
+        }
+      ]
+    },
+    {
+      "plan": "mixed_expired",
+      "target": 1,
+      "mask": 1,
+      "records": 442,
+      "checkpoints": 443,
+      "trace_sha256": "350b8c00fc414e4b2dd729f5cd15fb4237c7d9f7abea6bf813cd941ce9b7cfd4",
+      "checkpoint_sha256": "dad561d2b0a07664777bc554433ee49c42525db9dba04c3b936162a9259d84c7",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "CLOSED"
+        }
+      ]
+    },
+    {
+      "plan": "mixed_expired",
+      "target": 1,
+      "mask": 2,
+      "records": 442,
+      "checkpoints": 443,
+      "trace_sha256": "350b8c00fc414e4b2dd729f5cd15fb4237c7d9f7abea6bf813cd941ce9b7cfd4",
+      "checkpoint_sha256": "dad561d2b0a07664777bc554433ee49c42525db9dba04c3b936162a9259d84c7",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "CLOSED"
+        }
+      ]
+    },
+    {
+      "plan": "mixed_expired",
+      "target": 1,
+      "mask": 3,
+      "records": 442,
+      "checkpoints": 443,
+      "trace_sha256": "350b8c00fc414e4b2dd729f5cd15fb4237c7d9f7abea6bf813cd941ce9b7cfd4",
+      "checkpoint_sha256": "dad561d2b0a07664777bc554433ee49c42525db9dba04c3b936162a9259d84c7",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "CLOSED"
+        }
+      ]
+    },
+    {
+      "plan": "mixed_expired",
+      "target": 1,
+      "mask": 4,
+      "records": 442,
+      "checkpoints": 443,
+      "trace_sha256": "350b8c00fc414e4b2dd729f5cd15fb4237c7d9f7abea6bf813cd941ce9b7cfd4",
+      "checkpoint_sha256": "dad561d2b0a07664777bc554433ee49c42525db9dba04c3b936162a9259d84c7",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "CLOSED"
+        }
+      ]
+    },
+    {
+      "plan": "mixed_expired",
+      "target": 1,
+      "mask": 5,
+      "records": 442,
+      "checkpoints": 443,
+      "trace_sha256": "350b8c00fc414e4b2dd729f5cd15fb4237c7d9f7abea6bf813cd941ce9b7cfd4",
+      "checkpoint_sha256": "dad561d2b0a07664777bc554433ee49c42525db9dba04c3b936162a9259d84c7",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "CLOSED"
+        }
+      ]
+    },
+    {
+      "plan": "mixed_expired",
+      "target": 1,
+      "mask": 6,
+      "records": 442,
+      "checkpoints": 443,
+      "trace_sha256": "350b8c00fc414e4b2dd729f5cd15fb4237c7d9f7abea6bf813cd941ce9b7cfd4",
+      "checkpoint_sha256": "dad561d2b0a07664777bc554433ee49c42525db9dba04c3b936162a9259d84c7",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "CLOSED"
+        }
+      ]
+    },
+    {
+      "plan": "mixed_expired",
+      "target": 1,
+      "mask": 7,
+      "records": 442,
+      "checkpoints": 443,
+      "trace_sha256": "350b8c00fc414e4b2dd729f5cd15fb4237c7d9f7abea6bf813cd941ce9b7cfd4",
+      "checkpoint_sha256": "dad561d2b0a07664777bc554433ee49c42525db9dba04c3b936162a9259d84c7",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "CLOSED"
+        }
+      ]
+    },
+    {
+      "plan": "adaptive",
+      "target": 1,
+      "mask": 0,
+      "records": 436,
+      "checkpoints": 437,
+      "trace_sha256": "11f6de1186fcc75afaa668be7a449f1adc4a1b0cf10109086cc4cadf8c58a42e",
+      "checkpoint_sha256": "b67fbe75637b5271d853c5b696941e09ade06ecd643873340f13cc1a915ce746",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "adaptive",
+      "target": 1,
+      "mask": 1,
+      "records": 436,
+      "checkpoints": 437,
+      "trace_sha256": "11f6de1186fcc75afaa668be7a449f1adc4a1b0cf10109086cc4cadf8c58a42e",
+      "checkpoint_sha256": "b67fbe75637b5271d853c5b696941e09ade06ecd643873340f13cc1a915ce746",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "adaptive",
+      "target": 1,
+      "mask": 2,
+      "records": 436,
+      "checkpoints": 437,
+      "trace_sha256": "11f6de1186fcc75afaa668be7a449f1adc4a1b0cf10109086cc4cadf8c58a42e",
+      "checkpoint_sha256": "b67fbe75637b5271d853c5b696941e09ade06ecd643873340f13cc1a915ce746",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "adaptive",
+      "target": 1,
+      "mask": 3,
+      "records": 436,
+      "checkpoints": 437,
+      "trace_sha256": "11f6de1186fcc75afaa668be7a449f1adc4a1b0cf10109086cc4cadf8c58a42e",
+      "checkpoint_sha256": "b67fbe75637b5271d853c5b696941e09ade06ecd643873340f13cc1a915ce746",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "adaptive",
+      "target": 1,
+      "mask": 4,
+      "records": 436,
+      "checkpoints": 437,
+      "trace_sha256": "11f6de1186fcc75afaa668be7a449f1adc4a1b0cf10109086cc4cadf8c58a42e",
+      "checkpoint_sha256": "b67fbe75637b5271d853c5b696941e09ade06ecd643873340f13cc1a915ce746",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "adaptive",
+      "target": 1,
+      "mask": 5,
+      "records": 436,
+      "checkpoints": 437,
+      "trace_sha256": "11f6de1186fcc75afaa668be7a449f1adc4a1b0cf10109086cc4cadf8c58a42e",
+      "checkpoint_sha256": "b67fbe75637b5271d853c5b696941e09ade06ecd643873340f13cc1a915ce746",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "adaptive",
+      "target": 1,
+      "mask": 6,
+      "records": 436,
+      "checkpoints": 437,
+      "trace_sha256": "11f6de1186fcc75afaa668be7a449f1adc4a1b0cf10109086cc4cadf8c58a42e",
+      "checkpoint_sha256": "b67fbe75637b5271d853c5b696941e09ade06ecd643873340f13cc1a915ce746",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "adaptive",
+      "target": 1,
+      "mask": 7,
+      "records": 436,
+      "checkpoints": 437,
+      "trace_sha256": "11f6de1186fcc75afaa668be7a449f1adc4a1b0cf10109086cc4cadf8c58a42e",
+      "checkpoint_sha256": "b67fbe75637b5271d853c5b696941e09ade06ecd643873340f13cc1a915ce746",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "normal",
+      "target": 0,
+      "mask": 0,
+      "records": 94,
+      "checkpoints": 95,
+      "trace_sha256": "ad21b877d228fb2e6c797e49886f552d378947f86e3b2895b517e09b0d53e52b",
+      "checkpoint_sha256": "b8480e7ec8ba5eaba36dcc2d31fbf9f665acda4ece330fc8bea057e001e3304c",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "normal",
+      "target": 0,
+      "mask": 1,
+      "records": 94,
+      "checkpoints": 95,
+      "trace_sha256": "ad21b877d228fb2e6c797e49886f552d378947f86e3b2895b517e09b0d53e52b",
+      "checkpoint_sha256": "b8480e7ec8ba5eaba36dcc2d31fbf9f665acda4ece330fc8bea057e001e3304c",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "normal",
+      "target": 0,
+      "mask": 2,
+      "records": 94,
+      "checkpoints": 95,
+      "trace_sha256": "ad21b877d228fb2e6c797e49886f552d378947f86e3b2895b517e09b0d53e52b",
+      "checkpoint_sha256": "b8480e7ec8ba5eaba36dcc2d31fbf9f665acda4ece330fc8bea057e001e3304c",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "normal",
+      "target": 0,
+      "mask": 3,
+      "records": 94,
+      "checkpoints": 95,
+      "trace_sha256": "ad21b877d228fb2e6c797e49886f552d378947f86e3b2895b517e09b0d53e52b",
+      "checkpoint_sha256": "b8480e7ec8ba5eaba36dcc2d31fbf9f665acda4ece330fc8bea057e001e3304c",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "normal",
+      "target": 0,
+      "mask": 4,
+      "records": 94,
+      "checkpoints": 95,
+      "trace_sha256": "ad21b877d228fb2e6c797e49886f552d378947f86e3b2895b517e09b0d53e52b",
+      "checkpoint_sha256": "b8480e7ec8ba5eaba36dcc2d31fbf9f665acda4ece330fc8bea057e001e3304c",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "normal",
+      "target": 0,
+      "mask": 5,
+      "records": 94,
+      "checkpoints": 95,
+      "trace_sha256": "ad21b877d228fb2e6c797e49886f552d378947f86e3b2895b517e09b0d53e52b",
+      "checkpoint_sha256": "b8480e7ec8ba5eaba36dcc2d31fbf9f665acda4ece330fc8bea057e001e3304c",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "normal",
+      "target": 0,
+      "mask": 6,
+      "records": 94,
+      "checkpoints": 95,
+      "trace_sha256": "ad21b877d228fb2e6c797e49886f552d378947f86e3b2895b517e09b0d53e52b",
+      "checkpoint_sha256": "b8480e7ec8ba5eaba36dcc2d31fbf9f665acda4ece330fc8bea057e001e3304c",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "normal",
+      "target": 0,
+      "mask": 7,
+      "records": 94,
+      "checkpoints": 95,
+      "trace_sha256": "ad21b877d228fb2e6c797e49886f552d378947f86e3b2895b517e09b0d53e52b",
+      "checkpoint_sha256": "b8480e7ec8ba5eaba36dcc2d31fbf9f665acda4ece330fc8bea057e001e3304c",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "adaptive",
+      "target": 0,
+      "mask": 0,
+      "records": 184,
+      "checkpoints": 185,
+      "trace_sha256": "72fcafabefd5b4190aa1e2f9d9d4f49f366ffe0b29a33ef44af29cfc3810e998",
+      "checkpoint_sha256": "8d661ce500f35fad831743bdb5717271a3075d878bd6e3840e19e01a222db97f",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "adaptive",
+      "target": 0,
+      "mask": 1,
+      "records": 184,
+      "checkpoints": 185,
+      "trace_sha256": "72fcafabefd5b4190aa1e2f9d9d4f49f366ffe0b29a33ef44af29cfc3810e998",
+      "checkpoint_sha256": "8d661ce500f35fad831743bdb5717271a3075d878bd6e3840e19e01a222db97f",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "adaptive",
+      "target": 0,
+      "mask": 2,
+      "records": 184,
+      "checkpoints": 185,
+      "trace_sha256": "72fcafabefd5b4190aa1e2f9d9d4f49f366ffe0b29a33ef44af29cfc3810e998",
+      "checkpoint_sha256": "8d661ce500f35fad831743bdb5717271a3075d878bd6e3840e19e01a222db97f",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "adaptive",
+      "target": 0,
+      "mask": 3,
+      "records": 184,
+      "checkpoints": 185,
+      "trace_sha256": "72fcafabefd5b4190aa1e2f9d9d4f49f366ffe0b29a33ef44af29cfc3810e998",
+      "checkpoint_sha256": "8d661ce500f35fad831743bdb5717271a3075d878bd6e3840e19e01a222db97f",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "adaptive",
+      "target": 0,
+      "mask": 4,
+      "records": 184,
+      "checkpoints": 185,
+      "trace_sha256": "72fcafabefd5b4190aa1e2f9d9d4f49f366ffe0b29a33ef44af29cfc3810e998",
+      "checkpoint_sha256": "8d661ce500f35fad831743bdb5717271a3075d878bd6e3840e19e01a222db97f",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "adaptive",
+      "target": 0,
+      "mask": 5,
+      "records": 184,
+      "checkpoints": 185,
+      "trace_sha256": "72fcafabefd5b4190aa1e2f9d9d4f49f366ffe0b29a33ef44af29cfc3810e998",
+      "checkpoint_sha256": "8d661ce500f35fad831743bdb5717271a3075d878bd6e3840e19e01a222db97f",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "adaptive",
+      "target": 0,
+      "mask": 6,
+      "records": 184,
+      "checkpoints": 185,
+      "trace_sha256": "72fcafabefd5b4190aa1e2f9d9d4f49f366ffe0b29a33ef44af29cfc3810e998",
+      "checkpoint_sha256": "8d661ce500f35fad831743bdb5717271a3075d878bd6e3840e19e01a222db97f",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "adaptive",
+      "target": 0,
+      "mask": 7,
+      "records": 184,
+      "checkpoints": 185,
+      "trace_sha256": "72fcafabefd5b4190aa1e2f9d9d4f49f366ffe0b29a33ef44af29cfc3810e998",
+      "checkpoint_sha256": "8d661ce500f35fad831743bdb5717271a3075d878bd6e3840e19e01a222db97f",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "normal",
+      "target": 2,
+      "mask": 0,
+      "records": 94,
+      "checkpoints": 95,
+      "trace_sha256": "9e15ade10a89edf43cf930ef548c1ce7375599997f4cff584eb48f896111eb65",
+      "checkpoint_sha256": "147b7b30cdf3d4a02192386aeac8ca6a4c81fa20e76d73ced511e88d30c5f80d",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "normal",
+      "target": 2,
+      "mask": 1,
+      "records": 94,
+      "checkpoints": 95,
+      "trace_sha256": "9e15ade10a89edf43cf930ef548c1ce7375599997f4cff584eb48f896111eb65",
+      "checkpoint_sha256": "147b7b30cdf3d4a02192386aeac8ca6a4c81fa20e76d73ced511e88d30c5f80d",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "normal",
+      "target": 2,
+      "mask": 2,
+      "records": 94,
+      "checkpoints": 95,
+      "trace_sha256": "9e15ade10a89edf43cf930ef548c1ce7375599997f4cff584eb48f896111eb65",
+      "checkpoint_sha256": "147b7b30cdf3d4a02192386aeac8ca6a4c81fa20e76d73ced511e88d30c5f80d",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "normal",
+      "target": 2,
+      "mask": 3,
+      "records": 94,
+      "checkpoints": 95,
+      "trace_sha256": "9e15ade10a89edf43cf930ef548c1ce7375599997f4cff584eb48f896111eb65",
+      "checkpoint_sha256": "147b7b30cdf3d4a02192386aeac8ca6a4c81fa20e76d73ced511e88d30c5f80d",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "normal",
+      "target": 2,
+      "mask": 4,
+      "records": 94,
+      "checkpoints": 95,
+      "trace_sha256": "9e15ade10a89edf43cf930ef548c1ce7375599997f4cff584eb48f896111eb65",
+      "checkpoint_sha256": "147b7b30cdf3d4a02192386aeac8ca6a4c81fa20e76d73ced511e88d30c5f80d",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "normal",
+      "target": 2,
+      "mask": 5,
+      "records": 94,
+      "checkpoints": 95,
+      "trace_sha256": "9e15ade10a89edf43cf930ef548c1ce7375599997f4cff584eb48f896111eb65",
+      "checkpoint_sha256": "147b7b30cdf3d4a02192386aeac8ca6a4c81fa20e76d73ced511e88d30c5f80d",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "normal",
+      "target": 2,
+      "mask": 6,
+      "records": 94,
+      "checkpoints": 95,
+      "trace_sha256": "9e15ade10a89edf43cf930ef548c1ce7375599997f4cff584eb48f896111eb65",
+      "checkpoint_sha256": "147b7b30cdf3d4a02192386aeac8ca6a4c81fa20e76d73ced511e88d30c5f80d",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "normal",
+      "target": 2,
+      "mask": 7,
+      "records": 94,
+      "checkpoints": 95,
+      "trace_sha256": "9e15ade10a89edf43cf930ef548c1ce7375599997f4cff584eb48f896111eb65",
+      "checkpoint_sha256": "147b7b30cdf3d4a02192386aeac8ca6a4c81fa20e76d73ced511e88d30c5f80d",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "adaptive",
+      "target": 2,
+      "mask": 0,
+      "records": 184,
+      "checkpoints": 185,
+      "trace_sha256": "6d5851a191c1f1bf5033dc4450535698004ed7c54277ebf5d5c845ec1d520ff6",
+      "checkpoint_sha256": "8123a928124f64626bd18b435656620ed5a9d7474771c70bf9136e1ce7f16b96",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "adaptive",
+      "target": 2,
+      "mask": 1,
+      "records": 184,
+      "checkpoints": 185,
+      "trace_sha256": "6d5851a191c1f1bf5033dc4450535698004ed7c54277ebf5d5c845ec1d520ff6",
+      "checkpoint_sha256": "8123a928124f64626bd18b435656620ed5a9d7474771c70bf9136e1ce7f16b96",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "adaptive",
+      "target": 2,
+      "mask": 2,
+      "records": 184,
+      "checkpoints": 185,
+      "trace_sha256": "6d5851a191c1f1bf5033dc4450535698004ed7c54277ebf5d5c845ec1d520ff6",
+      "checkpoint_sha256": "8123a928124f64626bd18b435656620ed5a9d7474771c70bf9136e1ce7f16b96",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "adaptive",
+      "target": 2,
+      "mask": 3,
+      "records": 184,
+      "checkpoints": 185,
+      "trace_sha256": "6d5851a191c1f1bf5033dc4450535698004ed7c54277ebf5d5c845ec1d520ff6",
+      "checkpoint_sha256": "8123a928124f64626bd18b435656620ed5a9d7474771c70bf9136e1ce7f16b96",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "adaptive",
+      "target": 2,
+      "mask": 4,
+      "records": 184,
+      "checkpoints": 185,
+      "trace_sha256": "6d5851a191c1f1bf5033dc4450535698004ed7c54277ebf5d5c845ec1d520ff6",
+      "checkpoint_sha256": "8123a928124f64626bd18b435656620ed5a9d7474771c70bf9136e1ce7f16b96",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "adaptive",
+      "target": 2,
+      "mask": 5,
+      "records": 184,
+      "checkpoints": 185,
+      "trace_sha256": "6d5851a191c1f1bf5033dc4450535698004ed7c54277ebf5d5c845ec1d520ff6",
+      "checkpoint_sha256": "8123a928124f64626bd18b435656620ed5a9d7474771c70bf9136e1ce7f16b96",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "adaptive",
+      "target": 2,
+      "mask": 6,
+      "records": 184,
+      "checkpoints": 185,
+      "trace_sha256": "6d5851a191c1f1bf5033dc4450535698004ed7c54277ebf5d5c845ec1d520ff6",
+      "checkpoint_sha256": "8123a928124f64626bd18b435656620ed5a9d7474771c70bf9136e1ce7f16b96",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "adaptive",
+      "target": 2,
+      "mask": 7,
+      "records": 184,
+      "checkpoints": 185,
+      "trace_sha256": "6d5851a191c1f1bf5033dc4450535698004ed7c54277ebf5d5c845ec1d520ff6",
+      "checkpoint_sha256": "8123a928124f64626bd18b435656620ed5a9d7474771c70bf9136e1ce7f16b96",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "normal",
+      "target": 3,
+      "mask": 0,
+      "records": 94,
+      "checkpoints": 95,
+      "trace_sha256": "9dbb67422fb0dbf89d4fd3e080fd8d3f6834cc21755c734da7a6698a24b70836",
+      "checkpoint_sha256": "c228b6e9a1fcf8e00c6a5651e19b5c1d8686248e09f21955228cc0183179f96e",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "normal",
+      "target": 3,
+      "mask": 1,
+      "records": 94,
+      "checkpoints": 95,
+      "trace_sha256": "9dbb67422fb0dbf89d4fd3e080fd8d3f6834cc21755c734da7a6698a24b70836",
+      "checkpoint_sha256": "c228b6e9a1fcf8e00c6a5651e19b5c1d8686248e09f21955228cc0183179f96e",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "normal",
+      "target": 3,
+      "mask": 2,
+      "records": 94,
+      "checkpoints": 95,
+      "trace_sha256": "9dbb67422fb0dbf89d4fd3e080fd8d3f6834cc21755c734da7a6698a24b70836",
+      "checkpoint_sha256": "c228b6e9a1fcf8e00c6a5651e19b5c1d8686248e09f21955228cc0183179f96e",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "normal",
+      "target": 3,
+      "mask": 3,
+      "records": 94,
+      "checkpoints": 95,
+      "trace_sha256": "9dbb67422fb0dbf89d4fd3e080fd8d3f6834cc21755c734da7a6698a24b70836",
+      "checkpoint_sha256": "c228b6e9a1fcf8e00c6a5651e19b5c1d8686248e09f21955228cc0183179f96e",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "normal",
+      "target": 3,
+      "mask": 4,
+      "records": 94,
+      "checkpoints": 95,
+      "trace_sha256": "9dbb67422fb0dbf89d4fd3e080fd8d3f6834cc21755c734da7a6698a24b70836",
+      "checkpoint_sha256": "c228b6e9a1fcf8e00c6a5651e19b5c1d8686248e09f21955228cc0183179f96e",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "normal",
+      "target": 3,
+      "mask": 5,
+      "records": 94,
+      "checkpoints": 95,
+      "trace_sha256": "9dbb67422fb0dbf89d4fd3e080fd8d3f6834cc21755c734da7a6698a24b70836",
+      "checkpoint_sha256": "c228b6e9a1fcf8e00c6a5651e19b5c1d8686248e09f21955228cc0183179f96e",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "normal",
+      "target": 3,
+      "mask": 6,
+      "records": 94,
+      "checkpoints": 95,
+      "trace_sha256": "9dbb67422fb0dbf89d4fd3e080fd8d3f6834cc21755c734da7a6698a24b70836",
+      "checkpoint_sha256": "c228b6e9a1fcf8e00c6a5651e19b5c1d8686248e09f21955228cc0183179f96e",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "normal",
+      "target": 3,
+      "mask": 7,
+      "records": 94,
+      "checkpoints": 95,
+      "trace_sha256": "9dbb67422fb0dbf89d4fd3e080fd8d3f6834cc21755c734da7a6698a24b70836",
+      "checkpoint_sha256": "c228b6e9a1fcf8e00c6a5651e19b5c1d8686248e09f21955228cc0183179f96e",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "adaptive",
+      "target": 3,
+      "mask": 0,
+      "records": 184,
+      "checkpoints": 185,
+      "trace_sha256": "18ed8af17758e22815ffe8ea7b5e44b64993e896792003754eee5c0136b377db",
+      "checkpoint_sha256": "445b1b727779f09d635fe785bccddca4da3c67ab34475d9484d0b0f3c4446e59",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "adaptive",
+      "target": 3,
+      "mask": 1,
+      "records": 184,
+      "checkpoints": 185,
+      "trace_sha256": "18ed8af17758e22815ffe8ea7b5e44b64993e896792003754eee5c0136b377db",
+      "checkpoint_sha256": "445b1b727779f09d635fe785bccddca4da3c67ab34475d9484d0b0f3c4446e59",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "adaptive",
+      "target": 3,
+      "mask": 2,
+      "records": 184,
+      "checkpoints": 185,
+      "trace_sha256": "18ed8af17758e22815ffe8ea7b5e44b64993e896792003754eee5c0136b377db",
+      "checkpoint_sha256": "445b1b727779f09d635fe785bccddca4da3c67ab34475d9484d0b0f3c4446e59",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "adaptive",
+      "target": 3,
+      "mask": 3,
+      "records": 184,
+      "checkpoints": 185,
+      "trace_sha256": "18ed8af17758e22815ffe8ea7b5e44b64993e896792003754eee5c0136b377db",
+      "checkpoint_sha256": "445b1b727779f09d635fe785bccddca4da3c67ab34475d9484d0b0f3c4446e59",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "adaptive",
+      "target": 3,
+      "mask": 4,
+      "records": 184,
+      "checkpoints": 185,
+      "trace_sha256": "18ed8af17758e22815ffe8ea7b5e44b64993e896792003754eee5c0136b377db",
+      "checkpoint_sha256": "445b1b727779f09d635fe785bccddca4da3c67ab34475d9484d0b0f3c4446e59",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "adaptive",
+      "target": 3,
+      "mask": 5,
+      "records": 184,
+      "checkpoints": 185,
+      "trace_sha256": "18ed8af17758e22815ffe8ea7b5e44b64993e896792003754eee5c0136b377db",
+      "checkpoint_sha256": "445b1b727779f09d635fe785bccddca4da3c67ab34475d9484d0b0f3c4446e59",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "adaptive",
+      "target": 3,
+      "mask": 6,
+      "records": 184,
+      "checkpoints": 185,
+      "trace_sha256": "18ed8af17758e22815ffe8ea7b5e44b64993e896792003754eee5c0136b377db",
+      "checkpoint_sha256": "445b1b727779f09d635fe785bccddca4da3c67ab34475d9484d0b0f3c4446e59",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "adaptive",
+      "target": 3,
+      "mask": 7,
+      "records": 184,
+      "checkpoints": 185,
+      "trace_sha256": "18ed8af17758e22815ffe8ea7b5e44b64993e896792003754eee5c0136b377db",
+      "checkpoint_sha256": "445b1b727779f09d635fe785bccddca4da3c67ab34475d9484d0b0f3c4446e59",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "receipt_wait",
+      "target": 1,
+      "mask": 0,
+      "records": 93,
+      "checkpoints": 94,
+      "trace_sha256": "e6076713e692728ee47d1b2a06aa6ab1496243759cae0fd52b51c0cd964d5750",
+      "checkpoint_sha256": "37bb7466928cc73485d2f300b76c339810471c537c0b5a597291b87e8000a00e",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "receipt_wait",
+      "target": 1,
+      "mask": 1,
+      "records": 93,
+      "checkpoints": 94,
+      "trace_sha256": "e6076713e692728ee47d1b2a06aa6ab1496243759cae0fd52b51c0cd964d5750",
+      "checkpoint_sha256": "37bb7466928cc73485d2f300b76c339810471c537c0b5a597291b87e8000a00e",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "receipt_wait",
+      "target": 1,
+      "mask": 2,
+      "records": 93,
+      "checkpoints": 94,
+      "trace_sha256": "e6076713e692728ee47d1b2a06aa6ab1496243759cae0fd52b51c0cd964d5750",
+      "checkpoint_sha256": "37bb7466928cc73485d2f300b76c339810471c537c0b5a597291b87e8000a00e",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "receipt_wait",
+      "target": 1,
+      "mask": 3,
+      "records": 93,
+      "checkpoints": 94,
+      "trace_sha256": "e6076713e692728ee47d1b2a06aa6ab1496243759cae0fd52b51c0cd964d5750",
+      "checkpoint_sha256": "37bb7466928cc73485d2f300b76c339810471c537c0b5a597291b87e8000a00e",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "receipt_wait",
+      "target": 1,
+      "mask": 4,
+      "records": 93,
+      "checkpoints": 94,
+      "trace_sha256": "e6076713e692728ee47d1b2a06aa6ab1496243759cae0fd52b51c0cd964d5750",
+      "checkpoint_sha256": "37bb7466928cc73485d2f300b76c339810471c537c0b5a597291b87e8000a00e",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "receipt_wait",
+      "target": 1,
+      "mask": 5,
+      "records": 93,
+      "checkpoints": 94,
+      "trace_sha256": "e6076713e692728ee47d1b2a06aa6ab1496243759cae0fd52b51c0cd964d5750",
+      "checkpoint_sha256": "37bb7466928cc73485d2f300b76c339810471c537c0b5a597291b87e8000a00e",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "receipt_wait",
+      "target": 1,
+      "mask": 6,
+      "records": 93,
+      "checkpoints": 94,
+      "trace_sha256": "e6076713e692728ee47d1b2a06aa6ab1496243759cae0fd52b51c0cd964d5750",
+      "checkpoint_sha256": "37bb7466928cc73485d2f300b76c339810471c537c0b5a597291b87e8000a00e",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "receipt_wait",
+      "target": 1,
+      "mask": 7,
+      "records": 93,
+      "checkpoints": 94,
+      "trace_sha256": "e6076713e692728ee47d1b2a06aa6ab1496243759cae0fd52b51c0cd964d5750",
+      "checkpoint_sha256": "37bb7466928cc73485d2f300b76c339810471c537c0b5a597291b87e8000a00e",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "cross_route_receipt_wait",
+      "target": 1,
+      "mask": 0,
+      "records": 435,
+      "checkpoints": 436,
+      "trace_sha256": "89cfd189b90be128dc9a6c3d87d08550272f05b028e24413bf8cc385a0ee3e08",
+      "checkpoint_sha256": "71fb333b88b8158addef9f03ad173243ea7f8f5a05a1a6b7827f345bff0ec110",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "cross_route_receipt_wait",
+      "target": 1,
+      "mask": 1,
+      "records": 435,
+      "checkpoints": 436,
+      "trace_sha256": "89cfd189b90be128dc9a6c3d87d08550272f05b028e24413bf8cc385a0ee3e08",
+      "checkpoint_sha256": "71fb333b88b8158addef9f03ad173243ea7f8f5a05a1a6b7827f345bff0ec110",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "cross_route_receipt_wait",
+      "target": 1,
+      "mask": 2,
+      "records": 435,
+      "checkpoints": 436,
+      "trace_sha256": "89cfd189b90be128dc9a6c3d87d08550272f05b028e24413bf8cc385a0ee3e08",
+      "checkpoint_sha256": "71fb333b88b8158addef9f03ad173243ea7f8f5a05a1a6b7827f345bff0ec110",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "cross_route_receipt_wait",
+      "target": 1,
+      "mask": 3,
+      "records": 435,
+      "checkpoints": 436,
+      "trace_sha256": "89cfd189b90be128dc9a6c3d87d08550272f05b028e24413bf8cc385a0ee3e08",
+      "checkpoint_sha256": "71fb333b88b8158addef9f03ad173243ea7f8f5a05a1a6b7827f345bff0ec110",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "cross_route_receipt_wait",
+      "target": 1,
+      "mask": 4,
+      "records": 435,
+      "checkpoints": 436,
+      "trace_sha256": "89cfd189b90be128dc9a6c3d87d08550272f05b028e24413bf8cc385a0ee3e08",
+      "checkpoint_sha256": "71fb333b88b8158addef9f03ad173243ea7f8f5a05a1a6b7827f345bff0ec110",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "cross_route_receipt_wait",
+      "target": 1,
+      "mask": 5,
+      "records": 435,
+      "checkpoints": 436,
+      "trace_sha256": "89cfd189b90be128dc9a6c3d87d08550272f05b028e24413bf8cc385a0ee3e08",
+      "checkpoint_sha256": "71fb333b88b8158addef9f03ad173243ea7f8f5a05a1a6b7827f345bff0ec110",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "cross_route_receipt_wait",
+      "target": 1,
+      "mask": 6,
+      "records": 435,
+      "checkpoints": 436,
+      "trace_sha256": "89cfd189b90be128dc9a6c3d87d08550272f05b028e24413bf8cc385a0ee3e08",
+      "checkpoint_sha256": "71fb333b88b8158addef9f03ad173243ea7f8f5a05a1a6b7827f345bff0ec110",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "cross_route_receipt_wait",
+      "target": 1,
+      "mask": 7,
+      "records": 435,
+      "checkpoints": 436,
+      "trace_sha256": "89cfd189b90be128dc9a6c3d87d08550272f05b028e24413bf8cc385a0ee3e08",
+      "checkpoint_sha256": "71fb333b88b8158addef9f03ad173243ea7f8f5a05a1a6b7827f345bff0ec110",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "receipt_then_terminal",
+      "target": 1,
+      "mask": 0,
+      "records": 93,
+      "checkpoints": 94,
+      "trace_sha256": "e4757799f388d00dc04c408a3da60d3650db31d7009f416d7c5e428517a4ef1b",
+      "checkpoint_sha256": "22a19ccb05b5d82a911f8d61682540846874aa8dafb58754af15d08b3f078829",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "receipt_then_terminal",
+      "target": 1,
+      "mask": 1,
+      "records": 93,
+      "checkpoints": 94,
+      "trace_sha256": "e4757799f388d00dc04c408a3da60d3650db31d7009f416d7c5e428517a4ef1b",
+      "checkpoint_sha256": "22a19ccb05b5d82a911f8d61682540846874aa8dafb58754af15d08b3f078829",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "receipt_then_terminal",
+      "target": 1,
+      "mask": 2,
+      "records": 93,
+      "checkpoints": 94,
+      "trace_sha256": "e4757799f388d00dc04c408a3da60d3650db31d7009f416d7c5e428517a4ef1b",
+      "checkpoint_sha256": "22a19ccb05b5d82a911f8d61682540846874aa8dafb58754af15d08b3f078829",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "receipt_then_terminal",
+      "target": 1,
+      "mask": 3,
+      "records": 93,
+      "checkpoints": 94,
+      "trace_sha256": "e4757799f388d00dc04c408a3da60d3650db31d7009f416d7c5e428517a4ef1b",
+      "checkpoint_sha256": "22a19ccb05b5d82a911f8d61682540846874aa8dafb58754af15d08b3f078829",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "receipt_then_terminal",
+      "target": 1,
+      "mask": 4,
+      "records": 93,
+      "checkpoints": 94,
+      "trace_sha256": "e4757799f388d00dc04c408a3da60d3650db31d7009f416d7c5e428517a4ef1b",
+      "checkpoint_sha256": "22a19ccb05b5d82a911f8d61682540846874aa8dafb58754af15d08b3f078829",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "receipt_then_terminal",
+      "target": 1,
+      "mask": 5,
+      "records": 93,
+      "checkpoints": 94,
+      "trace_sha256": "e4757799f388d00dc04c408a3da60d3650db31d7009f416d7c5e428517a4ef1b",
+      "checkpoint_sha256": "22a19ccb05b5d82a911f8d61682540846874aa8dafb58754af15d08b3f078829",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "receipt_then_terminal",
+      "target": 1,
+      "mask": 6,
+      "records": 93,
+      "checkpoints": 94,
+      "trace_sha256": "e4757799f388d00dc04c408a3da60d3650db31d7009f416d7c5e428517a4ef1b",
+      "checkpoint_sha256": "22a19ccb05b5d82a911f8d61682540846874aa8dafb58754af15d08b3f078829",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "receipt_then_terminal",
+      "target": 1,
+      "mask": 7,
+      "records": 93,
+      "checkpoints": 94,
+      "trace_sha256": "e4757799f388d00dc04c408a3da60d3650db31d7009f416d7c5e428517a4ef1b",
+      "checkpoint_sha256": "22a19ccb05b5d82a911f8d61682540846874aa8dafb58754af15d08b3f078829",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        }
+      ]
+    },
+    {
+      "plan": "withheld_behind_unconfirmed",
+      "target": 1,
+      "mask": 0,
+      "records": 182,
+      "checkpoints": 183,
+      "trace_sha256": "f3ef8c00b5d4af3e75ee8341c36f96a743e962cb48c34477e2b25111dd8d1880",
+      "checkpoint_sha256": "aa422a8d04b0e89f64c90c3b3a05de4e0f9b93b173352d3b190e0f992362bfe1",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "WITHHELD"
+        }
+      ]
+    },
+    {
+      "plan": "withheld_behind_unconfirmed",
+      "target": 1,
+      "mask": 1,
+      "records": 182,
+      "checkpoints": 183,
+      "trace_sha256": "f3ef8c00b5d4af3e75ee8341c36f96a743e962cb48c34477e2b25111dd8d1880",
+      "checkpoint_sha256": "aa422a8d04b0e89f64c90c3b3a05de4e0f9b93b173352d3b190e0f992362bfe1",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "WITHHELD"
+        }
+      ]
+    },
+    {
+      "plan": "withheld_behind_unconfirmed",
+      "target": 1,
+      "mask": 2,
+      "records": 182,
+      "checkpoints": 183,
+      "trace_sha256": "f3ef8c00b5d4af3e75ee8341c36f96a743e962cb48c34477e2b25111dd8d1880",
+      "checkpoint_sha256": "aa422a8d04b0e89f64c90c3b3a05de4e0f9b93b173352d3b190e0f992362bfe1",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "WITHHELD"
+        }
+      ]
+    },
+    {
+      "plan": "withheld_behind_unconfirmed",
+      "target": 1,
+      "mask": 3,
+      "records": 182,
+      "checkpoints": 183,
+      "trace_sha256": "f3ef8c00b5d4af3e75ee8341c36f96a743e962cb48c34477e2b25111dd8d1880",
+      "checkpoint_sha256": "aa422a8d04b0e89f64c90c3b3a05de4e0f9b93b173352d3b190e0f992362bfe1",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "WITHHELD"
+        }
+      ]
+    },
+    {
+      "plan": "withheld_behind_unconfirmed",
+      "target": 1,
+      "mask": 4,
+      "records": 182,
+      "checkpoints": 183,
+      "trace_sha256": "f3ef8c00b5d4af3e75ee8341c36f96a743e962cb48c34477e2b25111dd8d1880",
+      "checkpoint_sha256": "aa422a8d04b0e89f64c90c3b3a05de4e0f9b93b173352d3b190e0f992362bfe1",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "WITHHELD"
+        }
+      ]
+    },
+    {
+      "plan": "withheld_behind_unconfirmed",
+      "target": 1,
+      "mask": 5,
+      "records": 182,
+      "checkpoints": 183,
+      "trace_sha256": "f3ef8c00b5d4af3e75ee8341c36f96a743e962cb48c34477e2b25111dd8d1880",
+      "checkpoint_sha256": "aa422a8d04b0e89f64c90c3b3a05de4e0f9b93b173352d3b190e0f992362bfe1",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "WITHHELD"
+        }
+      ]
+    },
+    {
+      "plan": "withheld_behind_unconfirmed",
+      "target": 1,
+      "mask": 6,
+      "records": 182,
+      "checkpoints": 183,
+      "trace_sha256": "f3ef8c00b5d4af3e75ee8341c36f96a743e962cb48c34477e2b25111dd8d1880",
+      "checkpoint_sha256": "aa422a8d04b0e89f64c90c3b3a05de4e0f9b93b173352d3b190e0f992362bfe1",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "WITHHELD"
+        }
+      ]
+    },
+    {
+      "plan": "withheld_behind_unconfirmed",
+      "target": 1,
+      "mask": 7,
+      "records": 182,
+      "checkpoints": 183,
+      "trace_sha256": "f3ef8c00b5d4af3e75ee8341c36f96a743e962cb48c34477e2b25111dd8d1880",
+      "checkpoint_sha256": "aa422a8d04b0e89f64c90c3b3a05de4e0f9b93b173352d3b190e0f992362bfe1",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "WITHHELD"
+        }
+      ]
+    }
+  ],
+  "cases_count": 232,
+  "checkpoint_count": 41592,
+  "directed_neighbor_comparisons": 696
+}
