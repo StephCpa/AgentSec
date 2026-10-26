@@ -1,0 +1,38 @@
+{
+  "profile": "cross-route-retention-isolation-v1",
+  "base_revision": "9ffdc99fe10b6f9f67c0ac104b206eb7596dd35f",
+  "routes": ["root", "root2"],
+  "operations": ["a", "b"],
+  "window": 1,
+  "shared": ["sender", "publication domain", "FINAL prefix"],
+  "distinct": ["recipient namespaces", "recipient local databases", "recipient reference witnesses"],
+  "cuts": {
+    "receiver": ["before_witness_accept", "after_witness_accept", "after_v2_recipient_retire_commit"],
+    "sender": ["before_witness_accept", "after_witness_accept", "after_v2_retirement_offer_commit"]
+  },
+  "workloads": ["count", "histogram"],
+  "admissions": ["before_fault", "after_fault"],
+  "dataset_masks": [0, 1, 2, 3, 4, 5, 6, 7],
+  "cases": 192,
+  "original_process_exits": 192,
+  "fresh_operational_restores": 192,
+  "directed_neighbor_comparisons": 576,
+  "availability_events": ["PUBLIC_UNAVAILABLE", "TICK_UNAVAILABLE", "RETENTION_UNAVAILABLE"],
+  "pending_fault_calls": ["PUBLIC", "TICK", "SEND to healthy receiver", "CONFIRM with a healthy sender", "RETENTION_QUERY"],
+  "assumptions": [
+    "A is confirmed before cleanup; B is on the second route and remains behind the shared FINAL gate.",
+    "A pending retirement exit is distinct from staleness: pre-witness and post-local-commit exits leave the local replica current.",
+    "A stale sender blocks public requests and scheduler steps before dispatch, including cached SUBMIT retries.",
+    "A stale recipient blocks its retention query; healthy sender/recipient components may continue.",
+    "The harness projects a stale component through one separately restored diagnostic image and checks its authority, original image and anchor remain unchanged at every completed boundary.",
+    "The simulator receives public commands, declared cuts, fixed coins and operation-bound approved outputs; no actual image, head, response or staleness result is an input."
+  ],
+  "exclusions": [
+    "arbitrary interleavings, more than one pending component fault, or concurrent writes",
+    "recovery interrupted mid-install, prepared-envelope faults, or cross-host power failure composition",
+    "outgoing SEND to the stale recipient or SEND/CONFIRM through a stale sender in this profile",
+    "network timing, packet length, deployment-level availability or liveness guarantees",
+    "complete implementation refinement, cryptographic simulation or DP composition",
+    "physical storage bounds or performance comparisons"
+  ]
+}
