@@ -1,0 +1,64 @@
+{
+  "profile": "authority-race-finite-v1",
+  "status": "finite_local_interleaving_evidence_not_general_refinement",
+  "base_commit": "588d275c154a2f2e219c3cc9f955bfe0d6f299ac",
+  "driver": "outputs/agent-cryptography-design-20261025/prototype/authority_race_experiment.py",
+  "tests": "tests/test_recovery_authority_races.py",
+  "profiles": [
+    "public gateway with count at durable L1",
+    "public gateway with histogram at durable L1",
+    "retention recipient with one ACCEPTED first fact"
+  ],
+  "replica_modes": [
+    "existing stale replica",
+    "fresh replica without anchor"
+  ],
+  "rival_writes": {
+    "same_image": "Exact signed original request replay; new witness sequence with identical canonical image and original response bytes",
+    "changed_image": "Signed manager pause for gateway, or signed receiver checkpoint at a later clock; changes authoritative image while preserving tape/budget/first-fact evidence"
+  },
+  "recovery_cuts": [
+    "before_image_read",
+    "after_image_read",
+    "after_recovery_delete",
+    "after_head_recheck",
+    "before_recovery_commit",
+    "after_recovery_commit"
+  ],
+  "recovery_rule": {
+    "before_capture": "Restore the new head's image and anchor",
+    "change_visible_at_recheck": "Reject and roll back both local image and anchor",
+    "change_after_recheck": "May commit the captured old image and matching anchor; returning this identity is not a currentness lease",
+    "next_business": "Reject a stale anchor before business-state observation",
+    "advance_after_begin_guard": "Expected-version CAS rejects the losing transaction; no successful response or local business commit"
+  },
+  "matrix": {
+    "recovery_cases": 72,
+    "commit_races": 12,
+    "negative_control_instances_in_tests": 9
+  },
+  "assertions": [
+    "Rival uses separate database and witness connections and advances exactly one sequence",
+    "Same-image advance is distinguished from unchanged authority",
+    "Recovery does not call business dispatch or witness compare_and_store",
+    "Rejected recovery leaves image and optional anchor unchanged",
+    "Successful recovery installs an internally consistent snapshot even when already stale",
+    "Blocked business use leaves local state unchanged",
+    "CAS conflict rolls back tentative business changes and returns no success",
+    "After rival stops, exact recovery and database reopen preserve original tape, accounting rows or first-fact ciphertext",
+    "Original signed request replay returns identical response bytes and a new same-image witness attempt"
+  ],
+  "negative_controls": [
+    "omit recovery recheck",
+    "compare only image digest, ignoring sequence",
+    "omit commit CAS"
+  ],
+  "trusted_observations": "Head identities and image digests are private diagnostic evidence, not public simulator inputs or emitted public events.",
+  "scope_limits": [
+    "One scripted competing valid transaction per episode; deterministic interleavings, not a scheduling stress test",
+    "Local ReferenceWitness with linearizable nonrollback authority assumed; no TLS, cross-host or power-loss evidence",
+    "No composition with prior process exits, preparation or retention cleanup races",
+    "No liveness guarantee against a continuously advancing rival",
+    "No complete R1-R12 simulator extension, general induction, timing/length privacy or cryptographic/DP composition proof"
+  ]
+}

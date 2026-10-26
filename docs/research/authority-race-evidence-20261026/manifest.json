@@ -1,0 +1,64 @@
+{
+  "profile": "authority-race-evidence-v1",
+  "base_commit": "588d275c154a2f2e219c3cc9f955bfe0d6f299ac",
+  "summary": {
+    "recovery_cases": 72,
+    "commit_races": 12,
+    "new_regression_tests": 10,
+    "negative_control_instances": 9,
+    "legacy_test_entries": 30,
+    "regressions": 182,
+    "models": 7,
+    "all_passed": true
+  },
+  "files": {
+    "README.md": {
+      "sha256": "ddd98b68b30adbfeb615ef300df7715b14d81249bd11752b18c94f16945bdc37",
+      "bytes": 10995
+    },
+    "docs/research/2026-10-26-acceptance-status.md": {
+      "sha256": "1b813b616b5f542c777ff152e8e8319e63c475429b8a8d5bb1f646af6c2cb257",
+      "bytes": 4076
+    },
+    "docs/research/2026-10-26-recovery-authority-races.md": {
+      "sha256": "f86e60d8e1ea357f83de688e7c35505766640db66cc7fcb963ce7853af530638",
+      "bytes": 5392
+    },
+    "docs/research/authority-race-contract.json": {
+      "sha256": "98d03850421bad3fe134722b145906d3c89536deda22e4bf7e0eaa335ff94297",
+      "bytes": 3393
+    },
+    "tests/test_recovery_authority_races.py": {
+      "sha256": "d4e3e473638a8befd91a1d3826ed0293b86801e70ef41149212aebbff6a83494",
+      "bytes": 4593
+    },
+    "outputs/agent-cryptography-design-20261025/prototype/authority_race_experiment.py": {
+      "sha256": "2a0623856fe4cb1f16cc7ed2e9fa134d649efa15159b29502a3ce3f5b9313fe0",
+      "bytes": 16622
+    },
+    "outputs/agent-cryptography-design-20261025/prototype/witnessed_ledger.py": {
+      "sha256": "19a46aac50b8764cce235bf6670fd829d7b23b7d988bb7da2729d67d1bcd43f0",
+      "bytes": 15823
+    },
+    "outputs/agent-cryptography-design-20261025/prototype/witnessed_recipient.py": {
+      "sha256": "f8386ae57b9b6593c4ca4f6899e22f1ad207dd0e8a9bb26f9416f418f30cf7fd",
+      "bytes": 9268
+    },
+    "outputs/agent-cryptography-design-20261025/prototype/recovery_contract.json": {
+      "sha256": "98c062e4249c9a36dbfb43cc45b419ed18700e868d6be989c5e90b58d6c626a8",
+      "bytes": 4503
+    },
+    "docs/research/authority-race-evidence-20261026/results.json": {
+      "sha256": "ba93e0dbc518cbd23888525460d31f378978014dc1421cefd4969d3b39b5156d",
+      "bytes": 109974
+    },
+    "docs/research/authority-race-evidence-20261026/verification.json": {
+      "sha256": "f4db161879a3dffef3b2b8cf57db586adb9f46d1473e5156382264f16600488a",
+      "bytes": 36274
+    },
+    "docs/research/authority-race-evidence-20261026/verification-logs.json.xz": {
+      "sha256": "075848558c63982aab4678ad03941b52566d92444156a591e477e23674f2fc59",
+      "bytes": 18168
+    }
+  }
+}

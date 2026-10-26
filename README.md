@@ -124,3 +124,5 @@ python3 scripts/replay_delivery_recovery.py /tmp/agentsec-delivery-recovery-new 
 python3 outputs/agent-cryptography-design-20261025/prototype/recovery_interruption_trace.py --output /tmp/agentsec-repeated-recovery-new
 python3 scripts/replay_recovery_interruptions.py /tmp/agentsec-repeated-recovery-new --output /tmp/agentsec-repeated-replay-new.json
 ```
+
+[恢复期间权威变化](docs/research/2026-10-26-recovery-authority-races.md)检查 72 个恢复交错与 12 个提交竞争案例：恢复返回值标识已安装快照，后续起始检查及 CAS 仍不可省略。这是有限本地证据，不是一般并发或活性证明。

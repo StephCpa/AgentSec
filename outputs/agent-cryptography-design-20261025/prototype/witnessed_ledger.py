@@ -273,6 +273,9 @@ class WitnessedLedger(EncryptedLedger):
     def recover_from_witness(self,fault=lambda point:None):
         # Trusted coordinator only. Does not create a new witness history, execute
         # business code, rerun sampling, issue tickets, or refund any operation.
+        # The returned head identifies the restored snapshot, not a freshness
+        # lease: another writer may advance after the final head read. Subsequent
+        # business uses both the begin guard and expected-version commit CAS.
         self.db.execute('BEGIN IMMEDIATE')
         try:
             head=self.witness.head(self.namespace,include_image=True)

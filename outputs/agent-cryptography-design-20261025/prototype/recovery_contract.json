@@ -65,5 +65,6 @@
     "profile": "mtls-witnessed-delegated-count-v1",
     "contract": "witness_transport_contract.json",
     "scope": "Loopback mTLS and challenge-bound signed responses; independent nonrollback deployment still assumed"
-  }
+  },
+  "recovery_return": "Identifies the snapshot installed locally. No lease or guarantee that the witness is still at this head when recovery returns; later advancement is fenced by business begin checks and expected-version commit CAS."
 }
