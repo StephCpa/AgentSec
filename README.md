@@ -8,7 +8,7 @@ Agent 密码学系统研究：受约束的委托、可验证的行动、可计�
 
 - [完整详细设计](docs/design.zh-CN.md)：从 ChatGPT Page 导出的设计正文（2026-10-25）。
 - [原型说明与运行方法](outputs/agent-cryptography-design-20261025/prototype/README.md)：事务状态机、共享隐私预算、签名委托、见证恢复、交付与公开网关。
-- [阶段验收矩阵](outputs/agent-cryptography-design-20261025/phase_acceptance_matrix.json)：已完成证据与尚未完成的目标。
+- [阶段验收矩阵（历史快照）](outputs/agent-cryptography-design-20261025/phase_acceptance_matrix.json)；后续证据与未完成目标见[当前验收状态](docs/research/2026-10-26-acceptance-status.md)。
 - [交付清单与源码摘要](outputs/agent-cryptography-design-20261025/delivery_manifest.json)：v37 / 提交 8a35b4b 的历史验证快照，其摘要不用于验证修复后的源码。
 
 保留原有 `outputs/agent-cryptography-design-20261025/` 路径，方便按原型说明复现。
@@ -108,4 +108,11 @@ python3 outputs/agent-cryptography-design-20261025/prototype/compact_witness_exp
 ```sh
 python3 outputs/agent-cryptography-design-20261025/prototype/wire_interop.py --output /tmp/agentsec-wire-new
 python3 scripts/replay_wire_interop.py /tmp/agentsec-wire-new --output /tmp/agentsec-wire-replay-new.json
+```
+
+[接收与确认中断对应](docs/research/2026-10-26-delivery-recovery-correspondence.md)增加真实子进程退出和 R11：分别核对接收首次事实、发送确认、路由根与最终顺序的提交/恢复边界。故障后的公开事件由显式环境计划生成，权威镜像只供独立诊断；到期后保留已提交的首次事实。范围与结果见报告及[配置契约](docs/research/delivery-recovery-contract.json)。
+
+```sh
+python3 outputs/agent-cryptography-design-20261025/prototype/delivery_recovery_trace.py --output /tmp/agentsec-delivery-recovery-new
+python3 scripts/replay_delivery_recovery.py /tmp/agentsec-delivery-recovery-new --output /tmp/agentsec-delivery-replay-new.json
 ```

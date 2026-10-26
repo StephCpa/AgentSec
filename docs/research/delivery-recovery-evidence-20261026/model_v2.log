@@ -1,0 +1,198 @@
+{
+  "scope": "Exhaustive finite design model: 2 operations, budgets 1 and 2, unit costs, 1 root revocation, distinct delivery admission and emission, one resumable delivery ticket per operation, atomic durable transitions, volatile candidate crash loss.",
+  "excluded": [
+    "cryptography",
+    "database implementation",
+    "external provider contracts",
+    "DP proof",
+    "timing/order side channels",
+    "delegation chains",
+    "rollback"
+  ],
+  "results": [
+    {
+      "variant": "correct",
+      "budget": 1,
+      "passed": true,
+      "reachable_states": 64,
+      "transitions": 108,
+      "maximum_shortest_path": 9
+    },
+    {
+      "variant": "timeout_refund",
+      "budget": 1,
+      "passed": false,
+      "states_seen": 14,
+      "transitions": 14,
+      "violations": [
+        "live_operation_charge_coverage[0]"
+      ],
+      "counterexample": [
+        "reserve[0]",
+        "start[0]",
+        "refund_with_live_worker[0]"
+      ]
+    },
+    {
+      "variant": "early_output",
+      "budget": 1,
+      "passed": false,
+      "states_seen": 23,
+      "transitions": 27,
+      "violations": [
+        "commit_before_visibility[0]",
+        "delivery_without_admission[0]"
+      ],
+      "counterexample": [
+        "reserve[0]",
+        "start[0]",
+        "compute_same_persisted_tape[0]",
+        "emit_before_commit[0]"
+      ]
+    },
+    {
+      "variant": "fresh_retry",
+      "budget": 1,
+      "passed": false,
+      "states_seen": 53,
+      "transitions": 82,
+      "violations": [
+        "one_sample_per_operation[0]"
+      ],
+      "counterexample": [
+        "reserve[0]",
+        "start[0]",
+        "compute_same_persisted_tape[0]",
+        "commit_result_and_charge[0]",
+        "admit_delivery[0]",
+        "deliver_original[0]",
+        "retry_with_new_sample[0]"
+      ]
+    },
+    {
+      "variant": "stale_admission",
+      "budget": 1,
+      "passed": false,
+      "states_seen": 10,
+      "transitions": 10,
+      "violations": [
+        "no_start_after_revocation[0]"
+      ],
+      "counterexample": [
+        "reserve[0]",
+        "revoke",
+        "start[0]"
+      ]
+    },
+    {
+      "variant": "stale_delivery",
+      "budget": 1,
+      "passed": false,
+      "states_seen": 42,
+      "transitions": 61,
+      "violations": [
+        "new_delivery_after_revocation[0]"
+      ],
+      "counterexample": [
+        "reserve[0]",
+        "start[0]",
+        "revoke",
+        "compute_same_persisted_tape[0]",
+        "commit_result_and_charge[0]",
+        "admit_delivery[0]"
+      ]
+    },
+    {
+      "variant": "correct",
+      "budget": 2,
+      "passed": true,
+      "reachable_states": 162,
+      "transitions": 423,
+      "maximum_shortest_path": 13
+    },
+    {
+      "variant": "timeout_refund",
+      "budget": 2,
+      "passed": false,
+      "states_seen": 15,
+      "transitions": 16,
+      "violations": [
+        "live_operation_charge_coverage[0]"
+      ],
+      "counterexample": [
+        "reserve[0]",
+        "start[0]",
+        "refund_with_live_worker[0]"
+      ]
+    },
+    {
+      "variant": "early_output",
+      "budget": 2,
+      "passed": false,
+      "states_seen": 27,
+      "transitions": 36,
+      "violations": [
+        "commit_before_visibility[0]",
+        "delivery_without_admission[0]"
+      ],
+      "counterexample": [
+        "reserve[0]",
+        "start[0]",
+        "compute_same_persisted_tape[0]",
+        "emit_before_commit[0]"
+      ]
+    },
+    {
+      "variant": "fresh_retry",
+      "budget": 2,
+      "passed": false,
+      "states_seen": 89,
+      "transitions": 180,
+      "violations": [
+        "one_sample_per_operation[0]"
+      ],
+      "counterexample": [
+        "reserve[0]",
+        "start[0]",
+        "compute_same_persisted_tape[0]",
+        "commit_result_and_charge[0]",
+        "admit_delivery[0]",
+        "deliver_original[0]",
+        "retry_with_new_sample[0]"
+      ]
+    },
+    {
+      "variant": "stale_admission",
+      "budget": 2,
+      "passed": false,
+      "states_seen": 11,
+      "transitions": 12,
+      "violations": [
+        "no_start_after_revocation[0]"
+      ],
+      "counterexample": [
+        "reserve[0]",
+        "revoke",
+        "start[0]"
+      ]
+    },
+    {
+      "variant": "stale_delivery",
+      "budget": 2,
+      "passed": false,
+      "states_seen": 64,
+      "transitions": 117,
+      "violations": [
+        "new_delivery_after_revocation[0]"
+      ],
+      "counterexample": [
+        "reserve[0]",
+        "start[0]",
+        "revoke",
+        "compute_same_persisted_tape[0]",
+        "commit_result_and_charge[0]",
+        "admit_delivery[0]"
+      ]
+    }
+  ]
+}

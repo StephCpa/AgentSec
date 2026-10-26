@@ -1,0 +1,24 @@
+test_all_envelope_bytes_and_truncations_reject (__main__.VaultTests) ... ok
+test_ciphertext_lengths_are_fixed_by_public_plaintext_size (__main__.VaultTests) ... ok
+test_envelope_context_key_and_deployment_substitution (__main__.VaultTests) ... ok
+test_nonce_reuse_known_limitation_remains_authenticated (__main__.VaultTests) ... ok
+test_result_binding_is_contextual_and_uses_separate_purpose (__main__.VaultTests) ... ok
+test_rfc8452_aes256_known_answers (__main__.VaultTests) ... ok
+test_cancel_and_revocation_preserve_encrypted_state_and_accounting (__main__.EncryptedTests) ... ok
+test_concurrent_duplicate_tick_has_one_durable_ciphertext (__main__.EncryptedTests) ... ok
+test_encrypted_profile_refuses_existing_plaintext_database (__main__.EncryptedTests) ... ok
+test_end_to_end_protects_every_private_column_and_delivers_same_result (__main__.EncryptedTests) ... ok
+test_four_actual_process_crash_cuts_preserve_seed_result_and_charges (__main__.EncryptedTests) ... ok
+test_metadata_profile_is_rechecked_before_every_transaction (__main__.EncryptedTests) ... ok
+test_plain_service_wrong_key_and_missing_key_cannot_open (__main__.EncryptedTests) ... ok
+test_private_state_cannot_be_replayed_at_a_later_step (__main__.EncryptedTests) ... ok
+test_result_or_binding_corruption_cannot_be_delivered (__main__.EncryptedTests) ... ok
+test_seed_and_job_state_cannot_move_between_operations (__main__.EncryptedTests) ... ok
+test_seed_corruption_does_not_refund_resample_or_advance (__main__.EncryptedTests) ... ok
+test_snapshot_and_private_tape_never_enter_sqlite_wal_as_plaintext (__main__.EncryptedTests) ... ok
+test_snapshot_substitution_after_durable_l1_preserves_held_budget (__main__.EncryptedTests) ... ok
+
+----------------------------------------------------------------------
+Ran 19 tests in 1.109s
+
+OK
