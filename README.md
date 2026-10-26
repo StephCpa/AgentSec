@@ -95,3 +95,10 @@ python3 scripts/replay_public_recovery.py /tmp/agentsec-public-recovery-new --ou
 python3 outputs/agent-cryptography-design-20261025/prototype/private_recovery_trace.py --output /tmp/agentsec-private-recovery-new
 python3 scripts/replay_private_recovery.py /tmp/agentsec-private-recovery-new --output /tmp/agentsec-private-recovery-replay-new.json
 ```
+
+[紧凑见证重提交](docs/research/2026-10-26-compact-witness-reassert.md)增加默认关闭的 `reassert` 扩展：候选镜像不变时省去镜像重传，但保留写权限、序号、请求 ID、提交历史和全部本地镜像检查。六组实际 mTLS 缓存重试对照中，请求帧减少约 99.2%–99.7%，本机耗时中位数下降约 3.9%–6.0%；两个配置的 p95 上升。正常计算槽和新轮询仍使用完整 CAS。
+
+```sh
+python3 outputs/agent-cryptography-design-20261025/prototype/compact_witness_model.py --output /tmp/agentsec-compact-model-new.json
+python3 outputs/agent-cryptography-design-20261025/prototype/compact_witness_experiment.py --output /tmp/agentsec-compact-cost-new.json
+```

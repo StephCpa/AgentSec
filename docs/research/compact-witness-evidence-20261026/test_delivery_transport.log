@@ -1,0 +1,30 @@
+test_ack_replay_cross_delivery_and_tampering_rejected (__main__.DeliveryTests) ... ok
+test_actual_process_death_inbox_and_ack_boundaries (__main__.DeliveryTests) ... ok
+test_actual_process_death_ticket_and_outbox_boundaries (__main__.DeliveryTests) ... ok
+test_destination_pin_checked_before_any_result_bytes (__main__.DeliveryTests) ... ok
+test_end_to_end_authenticated_delivery_and_no_second_send_after_ack (__main__.DeliveryTests) ... ok
+test_envelope_signature_context_and_strict_fields (__main__.DeliveryTests) ... ok
+test_fifo_delivery_and_concurrent_receiver_deduplication (__main__.DeliveryTests) ... ok
+test_frame_size_and_truncation (__main__.DeliveryTests) ... ok
+test_historical_ack_can_be_recorded_after_expiry_without_new_disclosure (__main__.DeliveryTests) ... ok
+test_l3_ticket_and_outbox_share_one_transaction (__main__.DeliveryTests) ... ok
+test_lost_receiver_ack_retries_identical_envelope_once (__main__.DeliveryTests) ... ok
+test_no_queue_before_publication_and_no_bypass_of_expired_head (__main__.DeliveryTests) ... ok
+test_original_expiry_and_receiver_time_enforced (__main__.DeliveryTests) ... ok
+test_outbox_and_ack_survive_authoritative_witness_restore (__main__.DeliveryTests) ... ok
+test_receiver_ack_loss_after_local_receive_can_retry_without_new_sample (__main__.DeliveryTests) ... ok
+test_receiver_rejection_preserves_clock_floor (__main__.DeliveryTests) ... ok
+test_receiver_rejects_changed_content_for_same_ticket (__main__.DeliveryTests) ... ok
+test_revocation_preserves_only_original_ticket_recovery (__main__.DeliveryTests) ... ok
+test_route_key_id_limit_matches_shared_cose_parser (__main__.DeliveryTests) ... ok
+test_route_revocation_blocks_unsent_old_ticket (__main__.DeliveryTests) ... ok
+test_unknown_route_and_rebinding_are_rejected (__main__.DeliveryTests) ... ok
+test_valid_ca_wrong_gateway_certificate_is_not_authorized (__main__.DeliveryTests) ... ok
+test_witness_acceptance_before_outbox_local_commit_is_recoverable (__main__.DeliveryTests) ... ok
+test_wrong_hostname_ca_and_gateway_signer (__main__.DeliveryTests) ... ok
+test_wrong_inbox_key_and_route_cannot_reinterpret_records (__main__.DeliveryTests) ... ok
+
+----------------------------------------------------------------------
+Ran 25 tests in 19.436s
+
+OK

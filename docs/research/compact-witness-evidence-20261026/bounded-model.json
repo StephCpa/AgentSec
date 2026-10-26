@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "depth": 4,
+  "actions": [
+    "same",
+    "change",
+    "stale",
+    "retry",
+    "conflict",
+    "wrong_digest"
+  ],
+  "cases": 1296,
+  "compared_transitions": 5184,
+  "outcomes": {
+    "ok": 2979,
+    "rejected:WITNESS_CAS_CONFLICT": 1665,
+    "rejected:WITNESS_REQUEST_CONFLICT": 540
+  },
+  "candidate_methods": {
+    "reassert": 2592,
+    "cas": 2592
+  },
+  "scope": "Actual independent in-memory SQLite witnesses, identical initial images/tokens; compare return/error and every head/commit row after each action. Includes stale/ABA-producing sequences, logical retries and token conflicts, plus an untouched namespace. Finite sequential enumeration; no concurrency, corruption, process/disk fault or general proof claim.",
+  "source_sha256": {
+    "compact_witness_model.py": "97a6d492c5f110b49e672aa87de6a584314b4c2337e6e05f26f3dca1759dbae4",
+    "witnessed_ledger.py": "fea3b3d715abebe83415379229e088d92787802f10f84d8fbf27dbcbb2da77fe"
+  }
+}

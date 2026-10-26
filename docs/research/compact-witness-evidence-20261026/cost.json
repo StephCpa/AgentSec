@@ -1,0 +1,7103 @@
+{
+  "profile": "compact-witness-reassert-cost-v1",
+  "passed": true,
+  "python": "3.9.6 (default, Apr 30 2025, 02:07:17) \n[Clang 17.0.0 (clang-1700.0.13.5)]",
+  "platform": "macOS-15.7.3-arm64-arm-64bit",
+  "cryptography": "49.0.0",
+  "sqlite": "3.43.2",
+  "openssl": "LibreSSL 2.8.3",
+  "scope": "Cached signed public POLL replay via in-process gateway with real loopback mTLS witness RPCs. Same ledger snapshot within each workload, 24 alternating pairs. Counts application frames before TLS wrapping, not TLS records/physical disk writes. Two full image builds and one metadata commit per attempt remain. New POLLs still use full CAS. No end-to-end query-throughput or general privacy claim.",
+  "source_sha256": {
+    "mixed_delegated_ledger.py": "69b87ad162fe3d462fcb31baccb6919e82938a7e8e2b20ea570737b7e9dde7bc",
+    "delivery_relation_trace.py": "10e55d80a4d5938d292173de40d8b44faff29e97fa8dddd65ba2fd13bc6613a1",
+    "stepwise_trace.py": "a935cf823650abbf944366094e9aa8ecc187149e0d7df7f56094131ea9f5a4d4",
+    "public_observation.py": "53e21db6e2f507832d1a75c0c0578b2ed1aaa3b5c221a9ee6e86dc23dfa562ee",
+    "test_atomic_publication.py": "7830e50f432618dd845e82e30fa18b564771074419ac2b9843537666a101aa9b",
+    "mixed_delivery_terminal.py": "67b759be033cb2f3ce26db2caaa7afc816f1b7f723934fb22445d434ab137acc",
+    "ordered_publication.py": "09deb84392ba054d4541295561865a501004ce09f2d04edca2fd3bd3d9954be1",
+    "retention_sender.py": "1f55f6d9a68614bb03883b460c52b6cea0dfbe0ac3811ed2e3e3d5af4623dbb6",
+    "public_recovery_trace.py": "9c6abd2ae7c65c4c1fd7e1ac2ccdf91dc3d51fd8476171fac93945fc327b6d67",
+    "test_scheduled_ledger.py": "9de478264c7d94f1473e8aa24201e96984bc1339d1208125c9ade41814e8c285",
+    "test_p2_scenario.py": "1fd37412477e3a8063348e42a79ee1c2ee89bdff9602e4419fd43a0518f7afad",
+    "histogram_ledger.py": "afac61ce7dbc8cfe01e6756a243eea389724d59c8f51bcd22b2c0c2d606c32e0",
+    "contribution_delivery.py": "146cfa730da07e2be09d2c81192c42f9928ce6556a03dc82be525be3f3459f88",
+    "public_gateway.py": "b1bf08b7159f96aafc3e28f05496307d120bba688e50e9f460db6a3349b64de0",
+    "test_contribution_ingestion.py": "6ebb147f72824a0b1cee8ed169cb26e628b53322f48c2e3b04684f1d3b5ff9b9",
+    "recovery_simulator.py": "977218d331c913a7c63336f8c81e4794b23795581467d32a96ad5ca082b0e2e1",
+    "private_state_relation.py": "a66ca4b463c4f27667051c0af54bd3222315cdb85549d40a8f030fadcf03cb69",
+    "test_retention_delivery.py": "1bee89816723bc7b54dd501643a340a465c7cdb17a421d8717c61ac2f25e2cd6",
+    "test_dp_ledger.py": "41c936fbd1cf5f5c3eb5d2cd4b99f8601d425355a8f0d8b17e67b1f0e7f3c291",
+    "encrypted_ledger.py": "c1ac348a1657483efeaeb0eb4d43bae80b3990ce9b461f0a2b1533dd17ce32be",
+    "compact_witness_model.py": "97a6d492c5f110b49e672aa87de6a584314b4c2337e6e05f26f3dca1759dbae4",
+    "test_retention_wire.py": "0a14471278b94db57c5a83096bb1714f5e5e73632b4bf68961dfaad7c261f3a0",
+    "kernel_recovery_simulator.py": "73181d63d345413731d8eafa4b4a8cbc87774d2ce7d46e47dd33e6e6f97a77df",
+    "retention_archive.py": "c727898455e30af80257ec307157173e109c5c9dad9b66dab404a5ca4ed943b7",
+    "delivery_state_relation.py": "6f40d4fe0d04f2ba2f589ecd0203637f617c62c0de2ef3dffae06d4f2aabb150",
+    "test_witness_transport.py": "499d758ce0b39ad3bfa1bc4c015032d520d73984b15bf377f08ed2b753f0ddf6",
+    "public_trace_adapter.py": "5901831f51fabb08c661c59878e3a1d613b68e470963caad4738a28f2badeb3e",
+    "test_mixed_delivery_transport.py": "8bd848285ee32a68d3cd06bf32f892ed747e4b7cf2ff3f264022776fcb87781d",
+    "encrypted_mixed_ledger.py": "1a085da145bd7fd0ef95a411fbfa3d9b94132508e7a9210127daeb5d2aca5740",
+    "test_delegated_ledger.py": "1cee9d8febe72898d14c995a7ac93476889a2f2ae75129aa86d776f473c4c35f",
+    "test_ordered_publication.py": "693bea9acc98d2de0472644484760bbb46a88a13b14b69c0d76e76485449033f",
+    "p2_scenario.py": "8e276dbb9c0ca10282e31e63807612c0997b5e174efaf62c173e5078c3d60f94",
+    "public_simulator.py": "33cabb2ddc928da88d94f3592b205abd4e7293ec8c5a4d9cc722721369dc64cc",
+    "private_recovery_trace.py": "8dc788a601bbbc866cac1f9cb4f065b0b926056993e53e09d562a6fb4f4fbc6e",
+    "test_delivery_transport.py": "1a8eebe3e8650f2c6a2d6649bdc041bcd3da49742490dd68ec8a2ed45f861b2d",
+    "ledger.py": "5bdd63777480e26d56d89d00e4d0f7a7030668377ca164756f2752103cf04dc7",
+    "compact_witness_experiment.py": "4b89e5d6835be25b724230cce97be96a7ad7572c2702ccc6c902e1de1d33c393",
+    "test_witnessed_mixed_ledger.py": "0d764a9322f15488d1fed5a91f2019ec01296ffb63504b9693e20eb13111b06e",
+    "witnessed_ledger.py": "fea3b3d715abebe83415379229e088d92787802f10f84d8fbf27dbcbb2da77fe",
+    "persistence_experiment.py": "01b818b6eb476fabef6da5555537fc8e87940f4b9ae2ab6f6eda054f31f2ab0a",
+    "delivery_terminal.py": "29203cf6a3fa8fce2062cb8a987d61f8a131814ad50f287d0eaf21dad422d2b2",
+    "public_input.py": "f037317ea9f7bf4a0997f6f061206dfd7746bd0fba1432e3f5061517ffbc0e01",
+    "test_mixed_delivery_terminal.py": "eec723c9ed969d088fd634a2191be83e261bdbd5282e8ceb88dcc73b5fa22aff",
+    "delivery_transport.py": "71a96b0310b1004946725e09b89178fdfde5ba7b0205cf1179f95b5da134bc9e",
+    "wire.py": "b2e95928c604c923ec549a74f599fd4a16fc4ccec5841474aabf64ec55de6d58",
+    "state_relation.py": "314162686d626f2c7e3c4120dc2a5ab808edf84e4c6ea06af793483e1edfc20c",
+    "dp_ledger.py": "35f0c336d549bf0145fd79bcb9b02416b0a729d60d990fc34e477b744887054b",
+    "delegated_ledger.py": "28cd13ef8d6b43f2ca1c9d273f3d32b92943278a0dbef2894eed1dc570cf3862",
+    "witness_compression.py": "531b11ae1047fec08b0114afb55a76471ca73b601844729dc1024de8b8011746",
+    "witnessed_recipient.py": "64060786a6bfa383302f1c999648aa6323fafdd34b620e70b923b95037b68cad",
+    "retention_recipient.py": "562e3ed9404b3ea4a8d94cb73abb863949eff92931f73d4d71cca8bb253b148d",
+    "contribution_ingestion.py": "799a6dc88451de81b1eaddd02a0b44b9d80d859c43a0266b7c1cc46c392d51f4",
+    "compression_experiment.py": "c94587b2230bd94b4f2f779636190f14a491f097772176c98f2235367152b239",
+    "mixed_delivery_transport.py": "9127fe54d9bb7e396c4056f7db7de15f2f299d647bbb1e1cc77d23d5d1a4b491",
+    "test_mixed_delegated_ledger.py": "9babf15f2c9584ed6ebd3d040376d81fb61ce1e97a2e71ea1cad4c377ecbd616",
+    "contribution_scenario.py": "b7556cacd6d8dea98d8c7a1fff19c3785c8fe9ec82c17c5a1fe3f440c5c4065f",
+    "test_retention_archive.py": "bd088478e062544b5ad1ee2f48ebd9ff60e69d06d144b8c93d117c275a3fc8c3",
+    "restricted_trace.py": "86acc8f872b0dbc39236d455217c26e877c4e55f4e2e4fe34ec63e89efa6b43b",
+    "test_witnessed_ledger.py": "73a4202b220fec643dbb88ae74449bbe307ed4e5997ff643592d7f2803e62cfc",
+    "witnessed_mixed_ledger.py": "9d58044454873d31648c0011c296b779d0d90f4449546c44fcb7d8d8b623aced",
+    "test_witnessed_recipient.py": "d1c464fe282303cfa5446ce9e01823c81bab2a6063118299bc2e1b0226b2b7b9",
+    "test_retention_sender.py": "9311d56d525cd28e963d44ced9e8ffc784c78366f56b8e130820159f145369d1",
+    "test_contribution_delivery.py": "3017c1f5c89f82018b7acdeca28f1c84129baa4745ec31d0f4047633183f814a",
+    "test_public_gateway.py": "bbaa068581cdd755882aa5db1b0a917f703f0c24692a128ac84253d055efaed0",
+    "signed_ledger.py": "e777d588e232d0f6f42f3d935b8105ec8b17045ef3eb2cec516975f04a4cd22f",
+    "witness_transport.py": "4a94b703dd3a5d3db360abc76b430cfecfae9d5905e59e05f4048e62cc244ac7",
+    "atomic_publication.py": "32d5a012fcd3cb309de999666161c4af023faaefd6ed675bdb445558fc4e42cc",
+    "image_serialization_experiment.py": "4e467ca82b335cd417c74bde90f8dcea9c9c9e6694e9faea3413e300c6829e0f",
+    "scheduled_ledger.py": "d8d4b2c32b5028066190845298f8e434fe5d6e262e5adad1c48d221be06511e0",
+    "test_histogram_ledger.py": "d065b1af66187adf2c81a818994900887005c2e1f5713e9f0bbf5e5c34176797",
+    "test_public_observation.py": "2d600354949d3686950e4a40732e01df18b80e564aa3bc909a01aac2b159d959",
+    "public_gateway_transport.py": "7a6f6f49ce114337dca729b7b242a7e4366cf635043b65ea4f391326a52fe63b",
+    "retention_wire.py": "38ce3865e3be049cb570225216ec8e8ae192617b7124f03b2cb51612bd56e22a",
+    "test_ledger.py": "d44c082f517a09080790183bf8a9a5a8960d14160ed1c644bf2b284970e77ae7",
+    "constructive_trace.py": "91d6b4e43260d0a30a05889e9c9068c27c5b33b9c817f0e61d8514bce769a8a2",
+    "test_encrypted_ledger.py": "bbcc428ddbd8bbcc9e8ffad6358e6936a0403fcc6c9900f4d8e1c836eac3f466",
+    "test_retention_recipient.py": "6f2df27a2a357d9d4f68f937bfc13ed851c6486a5814b5fdddae7c47792c35ed",
+    "test_delivery_terminal.py": "1d8cc3d14e566f579ff038b960ac70cb5de9006e4e9b06dce878191c4750d137",
+    "retention_delivery.py": "35dd17fa0d0d50aa34674239fe68a128b1865421ef8e371145abb996e00d0d46",
+    "test_encrypted_mixed_ledger.py": "d2c87ea063425d266d2238758ebc0c5f1de74057fff4bdf2ebff0c6eed4a2589",
+    "test_signed_ledger.py": "c28e0f8fc365b5ff61e49343f2f1d433ae369c403f849efdb6ddb9c65745aa50"
+  },
+  "cases": [
+    {
+      "kind": "count",
+      "history_polls": 0,
+      "samples_per_mode": 24,
+      "image_bytes": 72116,
+      "order": [
+        [
+          "full",
+          "compact"
+        ],
+        [
+          "compact",
+          "full"
+        ],
+        [
+          "full",
+          "compact"
+        ],
+        [
+          "compact",
+          "full"
+        ],
+        [
+          "full",
+          "compact"
+        ],
+        [
+          "compact",
+          "full"
+        ],
+        [
+          "full",
+          "compact"
+        ],
+        [
+          "compact",
+          "full"
+        ],
+        [
+          "full",
+          "compact"
+        ],
+        [
+          "compact",
+          "full"
+        ],
+        [
+          "full",
+          "compact"
+        ],
+        [
+          "compact",
+          "full"
+        ],
+        [
+          "full",
+          "compact"
+        ],
+        [
+          "compact",
+          "full"
+        ],
+        [
+          "full",
+          "compact"
+        ],
+        [
+          "compact",
+          "full"
+        ],
+        [
+          "full",
+          "compact"
+        ],
+        [
+          "compact",
+          "full"
+        ],
+        [
+          "full",
+          "compact"
+        ],
+        [
+          "compact",
+          "full"
+        ],
+        [
+          "full",
+          "compact"
+        ],
+        [
+          "compact",
+          "full"
+        ],
+        [
+          "full",
+          "compact"
+        ],
+        [
+          "compact",
+          "full"
+        ]
+      ],
+      "measurements": [
+        {
+          "mode": "full",
+          "latency_ms": 10.611083,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 72722,
+            "response_bytes": 995
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 72116
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 8.739625,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 607,
+            "response_bytes": 1000
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 8.244208,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 607,
+            "response_bytes": 1000
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 8.881458,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 72722,
+            "response_bytes": 995
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 72116
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 8.572875,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 72722,
+            "response_bytes": 995
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 72116
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 7.777792,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 607,
+            "response_bytes": 1000
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 8.093291,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 607,
+            "response_bytes": 1000
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 7.943583,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 72722,
+            "response_bytes": 995
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 72116
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 7.993584,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 72722,
+            "response_bytes": 995
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 72116
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 7.944167,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 607,
+            "response_bytes": 1000
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 7.950291,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 607,
+            "response_bytes": 1000
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 8.42175,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 72722,
+            "response_bytes": 995
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 72116
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 10.36575,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 72722,
+            "response_bytes": 995
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 72116
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 8.193875,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 607,
+            "response_bytes": 1000
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 7.857083,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 607,
+            "response_bytes": 1000
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 8.169875,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 72722,
+            "response_bytes": 995
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 72116
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 8.1855,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 72722,
+            "response_bytes": 995
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 72116
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 7.810584,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 607,
+            "response_bytes": 1000
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 8.206084,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 607,
+            "response_bytes": 1000
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 8.51675,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 72722,
+            "response_bytes": 995
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 72116
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 8.848167,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 72722,
+            "response_bytes": 995
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 72116
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 8.569083,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 607,
+            "response_bytes": 1000
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 7.991416,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 607,
+            "response_bytes": 1000
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 8.154458,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 72722,
+            "response_bytes": 995
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 72116
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 8.285208,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 72722,
+            "response_bytes": 995
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 72116
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 7.9575,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 607,
+            "response_bytes": 1000
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 7.881875,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 607,
+            "response_bytes": 1000
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 7.838875,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 72722,
+            "response_bytes": 995
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 72116
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 8.112041,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 72722,
+            "response_bytes": 995
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 72116
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 7.649666,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 607,
+            "response_bytes": 1000
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 8.152541,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 607,
+            "response_bytes": 1000
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 8.31125,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 72722,
+            "response_bytes": 995
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 72116
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 8.139209,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 72722,
+            "response_bytes": 995
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 72116
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 7.814167,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 607,
+            "response_bytes": 1000
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 7.782709,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 607,
+            "response_bytes": 1000
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 8.117042,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 72722,
+            "response_bytes": 995
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 72116
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 7.997917,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 72722,
+            "response_bytes": 995
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 72116
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 7.854875,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 607,
+            "response_bytes": 1000
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 7.898708,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 607,
+            "response_bytes": 1000
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 8.118791,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 72722,
+            "response_bytes": 995
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 72116
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 11.012792,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 72722,
+            "response_bytes": 995
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 72116
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 9.217583,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 607,
+            "response_bytes": 1000
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 9.591542,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 607,
+            "response_bytes": 1000
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 9.551583,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 72722,
+            "response_bytes": 995
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 72116
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 9.149666,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 72722,
+            "response_bytes": 995
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 72116
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 8.834959,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 607,
+            "response_bytes": 1000
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 8.796375,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 607,
+            "response_bytes": 1000
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 9.911917,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 72722,
+            "response_bytes": 995
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 72116
+            }
+          ],
+          "image_builds": 2
+        }
+      ],
+      "modes": {
+        "full": {
+          "latency": {
+            "samples": 24,
+            "values_ms": [
+              10.611083,
+              8.881458,
+              8.572875,
+              7.943583,
+              7.993584,
+              8.42175,
+              10.36575,
+              8.169875,
+              8.1855,
+              8.51675,
+              8.848167,
+              8.154458,
+              8.285208,
+              7.838875,
+              8.112041,
+              8.31125,
+              8.139209,
+              8.117042,
+              7.997917,
+              8.118791,
+              11.012792,
+              9.551583,
+              9.149666,
+              9.911917
+            ],
+            "p50_ms": 8.285208,
+            "p95_ms": 10.611083
+          },
+          "request_frame_bytes": 1745328,
+          "response_frame_bytes": 23880,
+          "cas_body_bytes": 1730784,
+          "cas_commits": 24,
+          "image_builds": 48
+        },
+        "compact": {
+          "latency": {
+            "samples": 24,
+            "values_ms": [
+              8.739625,
+              8.244208,
+              7.777792,
+              8.093291,
+              7.944167,
+              7.950291,
+              8.193875,
+              7.857083,
+              7.810584,
+              8.206084,
+              8.569083,
+              7.991416,
+              7.9575,
+              7.881875,
+              7.649666,
+              8.152541,
+              7.814167,
+              7.782709,
+              7.854875,
+              7.898708,
+              9.217583,
+              9.591542,
+              8.834959,
+              8.796375
+            ],
+            "p50_ms": 7.9575,
+            "p95_ms": 9.217583
+          },
+          "request_frame_bytes": 14568,
+          "response_frame_bytes": 24000,
+          "cas_body_bytes": 0,
+          "cas_commits": 24,
+          "image_builds": 48
+        }
+      },
+      "new_poll_fallback": [
+        {
+          "method": "head",
+          "body_bytes": 0
+        },
+        {
+          "method": "cas",
+          "body_bytes": 73455
+        }
+      ],
+      "transcript_sha256": "8c357e50015ef98a9e3bd57e0f8a3127405cd1196eae2ae2619cd40024b7f91f",
+      "relation": {
+        "R1": "25a378631218273c0e15ebc3544bdb7acb887bd6ac5f954d21eb13b7d6935702",
+        "R2": "b6dd53a8df0cb67ec870511b4597cc90314e8c957372c8fbd2d77805a9ea8e99",
+        "R3": "42f03eadf64bdffec8cd912176e565e28ee995be436cb4dd8d28525438a478c6",
+        "R4": "e2f81c1e053e52986389bf66852ee299ff7a85f44eb3075b159efa785eca2d15",
+        "R5": "9174d3ccfdbf8500e9aaa1b3d08373d33e6dafa245bbbbad47febab0f9568231",
+        "R6": "8d392c7efac9e1f95831ef4a2bbf461a21b95b8416bcf4c6f89c0aa0f54127a1",
+        "R7": "f0a7d7b6e5ceee054bcc0ac1f418063ffc75cbc0dae87f2b6d6d6f9155228a8c",
+        "R8": "222110fcf0b3f401dc185678eec2df39a4a2d2139812baa0ff92999a1d09f680"
+      },
+      "restored": true,
+      "request_frame_reduction": 0.9916531448530018,
+      "p50_latency_change": -0.03955338236529504
+    },
+    {
+      "kind": "count",
+      "history_polls": 16,
+      "samples_per_mode": 24,
+      "image_bytes": 93550,
+      "order": [
+        [
+          "full",
+          "compact"
+        ],
+        [
+          "compact",
+          "full"
+        ],
+        [
+          "full",
+          "compact"
+        ],
+        [
+          "compact",
+          "full"
+        ],
+        [
+          "full",
+          "compact"
+        ],
+        [
+          "compact",
+          "full"
+        ],
+        [
+          "full",
+          "compact"
+        ],
+        [
+          "compact",
+          "full"
+        ],
+        [
+          "full",
+          "compact"
+        ],
+        [
+          "compact",
+          "full"
+        ],
+        [
+          "full",
+          "compact"
+        ],
+        [
+          "compact",
+          "full"
+        ],
+        [
+          "full",
+          "compact"
+        ],
+        [
+          "compact",
+          "full"
+        ],
+        [
+          "full",
+          "compact"
+        ],
+        [
+          "compact",
+          "full"
+        ],
+        [
+          "full",
+          "compact"
+        ],
+        [
+          "compact",
+          "full"
+        ],
+        [
+          "full",
+          "compact"
+        ],
+        [
+          "compact",
+          "full"
+        ],
+        [
+          "full",
+          "compact"
+        ],
+        [
+          "compact",
+          "full"
+        ],
+        [
+          "full",
+          "compact"
+        ],
+        [
+          "compact",
+          "full"
+        ]
+      ],
+      "measurements": [
+        {
+          "mode": "full",
+          "latency_ms": 9.377542,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 94156,
+            "response_bytes": 995
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 93550
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 8.372042,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 607,
+            "response_bytes": 1000
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 8.530417,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 607,
+            "response_bytes": 1000
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 10.502792,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 94156,
+            "response_bytes": 995
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 93550
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 9.171666,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 94156,
+            "response_bytes": 995
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 93550
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 8.158583,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 607,
+            "response_bytes": 1000
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 8.482958,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 607,
+            "response_bytes": 1000
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 8.523083,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 94156,
+            "response_bytes": 995
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 93550
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 8.58325,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 94156,
+            "response_bytes": 995
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 93550
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 8.191,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 607,
+            "response_bytes": 1000
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 8.196416,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 607,
+            "response_bytes": 1000
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 8.971209,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 94156,
+            "response_bytes": 995
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 93550
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 8.576333,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 94156,
+            "response_bytes": 995
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 93550
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 8.462541,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 607,
+            "response_bytes": 1000
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 8.490833,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 607,
+            "response_bytes": 1000
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 10.547416,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 94156,
+            "response_bytes": 995
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 93550
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 13.727167,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 94156,
+            "response_bytes": 995
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 93550
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 9.128666,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 607,
+            "response_bytes": 1000
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 8.07875,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 607,
+            "response_bytes": 1000
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 8.365334,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 94156,
+            "response_bytes": 995
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 93550
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 8.324417,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 94156,
+            "response_bytes": 995
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 93550
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 7.871958,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 607,
+            "response_bytes": 1000
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 8.059583,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 607,
+            "response_bytes": 1000
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 8.4265,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 94156,
+            "response_bytes": 995
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 93550
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 8.486542,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 94156,
+            "response_bytes": 995
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 93550
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 7.969708,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 607,
+            "response_bytes": 1000
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 8.118417,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 607,
+            "response_bytes": 1000
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 8.592458,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 94156,
+            "response_bytes": 995
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 93550
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 8.534042,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 94156,
+            "response_bytes": 995
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 93550
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 8.1735,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 607,
+            "response_bytes": 1000
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 8.042292,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 607,
+            "response_bytes": 1000
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 8.422875,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 94156,
+            "response_bytes": 995
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 93550
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 8.402709,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 94156,
+            "response_bytes": 995
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 93550
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 7.975584,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 607,
+            "response_bytes": 1000
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 8.101792,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 607,
+            "response_bytes": 1000
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 8.351042,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 94156,
+            "response_bytes": 995
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 93550
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 8.56075,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 94156,
+            "response_bytes": 995
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 93550
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 8.120625,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 607,
+            "response_bytes": 1000
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 8.045208,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 607,
+            "response_bytes": 1000
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 8.440042,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 94156,
+            "response_bytes": 995
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 93550
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 8.359083,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 94156,
+            "response_bytes": 995
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 93550
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 7.882583,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 607,
+            "response_bytes": 1000
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 8.094,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 607,
+            "response_bytes": 1000
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 8.389584,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 94156,
+            "response_bytes": 995
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 93550
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 8.300083,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 94156,
+            "response_bytes": 995
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 93550
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 8.135875,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 607,
+            "response_bytes": 1000
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 7.861125,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 607,
+            "response_bytes": 1000
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 8.466041,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 94156,
+            "response_bytes": 995
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 93550
+            }
+          ],
+          "image_builds": 2
+        }
+      ],
+      "modes": {
+        "full": {
+          "latency": {
+            "samples": 24,
+            "values_ms": [
+              9.377542,
+              10.502792,
+              9.171666,
+              8.523083,
+              8.58325,
+              8.971209,
+              8.576333,
+              10.547416,
+              13.727167,
+              8.365334,
+              8.324417,
+              8.4265,
+              8.486542,
+              8.592458,
+              8.534042,
+              8.422875,
+              8.402709,
+              8.351042,
+              8.56075,
+              8.440042,
+              8.359083,
+              8.389584,
+              8.300083,
+              8.466041
+            ],
+            "p50_ms": 8.486542,
+            "p95_ms": 10.547416
+          },
+          "request_frame_bytes": 2259744,
+          "response_frame_bytes": 23880,
+          "cas_body_bytes": 2245200,
+          "cas_commits": 24,
+          "image_builds": 48
+        },
+        "compact": {
+          "latency": {
+            "samples": 24,
+            "values_ms": [
+              8.372042,
+              8.530417,
+              8.158583,
+              8.482958,
+              8.191,
+              8.196416,
+              8.462541,
+              8.490833,
+              9.128666,
+              8.07875,
+              7.871958,
+              8.059583,
+              7.969708,
+              8.118417,
+              8.1735,
+              8.042292,
+              7.975584,
+              8.101792,
+              8.120625,
+              8.045208,
+              7.882583,
+              8.094,
+              8.135875,
+              7.861125
+            ],
+            "p50_ms": 8.118417,
+            "p95_ms": 8.530417
+          },
+          "request_frame_bytes": 14568,
+          "response_frame_bytes": 24000,
+          "cas_body_bytes": 0,
+          "cas_commits": 24,
+          "image_builds": 48
+        }
+      },
+      "new_poll_fallback": [
+        {
+          "method": "head",
+          "body_bytes": 0
+        },
+        {
+          "method": "cas",
+          "body_bytes": 94890
+        }
+      ],
+      "transcript_sha256": "715991b4f8fd42102836dab2bec2ac0d1c7a6a7a6bf3f2d2e109f609b06cdc59",
+      "relation": {
+        "R1": "d072bfe6ca988e1c9ac21f0e14296d92e56448e2f4778f763173610bc8ae075c",
+        "R2": "b6dd53a8df0cb67ec870511b4597cc90314e8c957372c8fbd2d77805a9ea8e99",
+        "R3": "42f03eadf64bdffec8cd912176e565e28ee995be436cb4dd8d28525438a478c6",
+        "R4": "e2f81c1e053e52986389bf66852ee299ff7a85f44eb3075b159efa785eca2d15",
+        "R5": "9174d3ccfdbf8500e9aaa1b3d08373d33e6dafa245bbbbad47febab0f9568231",
+        "R6": "8d392c7efac9e1f95831ef4a2bbf461a21b95b8416bcf4c6f89c0aa0f54127a1",
+        "R7": "f0a7d7b6e5ceee054bcc0ac1f418063ffc75cbc0dae87f2b6d6d6f9155228a8c",
+        "R8": "222110fcf0b3f401dc185678eec2df39a4a2d2139812baa0ff92999a1d09f680"
+      },
+      "restored": true,
+      "request_frame_reduction": 0.9935532520497897,
+      "p50_latency_change": -0.04337750287455111
+    },
+    {
+      "kind": "count",
+      "history_polls": 64,
+      "samples_per_mode": 24,
+      "image_bytes": 157958,
+      "order": [
+        [
+          "full",
+          "compact"
+        ],
+        [
+          "compact",
+          "full"
+        ],
+        [
+          "full",
+          "compact"
+        ],
+        [
+          "compact",
+          "full"
+        ],
+        [
+          "full",
+          "compact"
+        ],
+        [
+          "compact",
+          "full"
+        ],
+        [
+          "full",
+          "compact"
+        ],
+        [
+          "compact",
+          "full"
+        ],
+        [
+          "full",
+          "compact"
+        ],
+        [
+          "compact",
+          "full"
+        ],
+        [
+          "full",
+          "compact"
+        ],
+        [
+          "compact",
+          "full"
+        ],
+        [
+          "full",
+          "compact"
+        ],
+        [
+          "compact",
+          "full"
+        ],
+        [
+          "full",
+          "compact"
+        ],
+        [
+          "compact",
+          "full"
+        ],
+        [
+          "full",
+          "compact"
+        ],
+        [
+          "compact",
+          "full"
+        ],
+        [
+          "full",
+          "compact"
+        ],
+        [
+          "compact",
+          "full"
+        ],
+        [
+          "full",
+          "compact"
+        ],
+        [
+          "compact",
+          "full"
+        ],
+        [
+          "full",
+          "compact"
+        ],
+        [
+          "compact",
+          "full"
+        ]
+      ],
+      "measurements": [
+        {
+          "mode": "full",
+          "latency_ms": 10.022375,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 158564,
+            "response_bytes": 995
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 157958
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 9.268458,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 607,
+            "response_bytes": 1000
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 9.080291,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 607,
+            "response_bytes": 1000
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 9.663125,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 158564,
+            "response_bytes": 995
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 157958
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 9.585875,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 158564,
+            "response_bytes": 995
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 157958
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 8.996667,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 607,
+            "response_bytes": 1000
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 8.929791,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 607,
+            "response_bytes": 1000
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 9.509209,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 158564,
+            "response_bytes": 995
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 157958
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 10.137791,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 158564,
+            "response_bytes": 995
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 157958
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 8.931291,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 607,
+            "response_bytes": 1000
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 8.882542,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 607,
+            "response_bytes": 1000
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 9.356833,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 158564,
+            "response_bytes": 995
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 157958
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 9.55975,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 158564,
+            "response_bytes": 995
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 157958
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 9.0065,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 607,
+            "response_bytes": 1000
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 8.955042,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 607,
+            "response_bytes": 1000
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 9.371666,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 158564,
+            "response_bytes": 995
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 157958
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 9.486916,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 158564,
+            "response_bytes": 995
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 157958
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 8.683417,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 607,
+            "response_bytes": 1000
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 8.956375,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 607,
+            "response_bytes": 1000
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 9.284667,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 158564,
+            "response_bytes": 995
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 157958
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 9.29875,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 158564,
+            "response_bytes": 995
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 157958
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 8.819667,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 607,
+            "response_bytes": 1000
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 8.630125,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 607,
+            "response_bytes": 1000
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 9.401417,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 158564,
+            "response_bytes": 995
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 157958
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 9.342125,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 158564,
+            "response_bytes": 995
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 157958
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 8.747625,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 607,
+            "response_bytes": 1000
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 8.75725,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 607,
+            "response_bytes": 1000
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 9.320625,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 158564,
+            "response_bytes": 995
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 157958
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 9.549125,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 158564,
+            "response_bytes": 995
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 157958
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 8.817208,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 607,
+            "response_bytes": 1000
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 8.947917,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 607,
+            "response_bytes": 1000
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 9.416708,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 158564,
+            "response_bytes": 995
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 157958
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 9.296125,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 158564,
+            "response_bytes": 995
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 157958
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 9.016458,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 607,
+            "response_bytes": 1000
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 8.824334,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 607,
+            "response_bytes": 1000
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 9.721166,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 158564,
+            "response_bytes": 995
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 157958
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 9.364291,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 158564,
+            "response_bytes": 995
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 157958
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 8.927042,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 607,
+            "response_bytes": 1000
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 8.86775,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 607,
+            "response_bytes": 1000
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 9.500292,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 158564,
+            "response_bytes": 995
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 157958
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 9.573042,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 158564,
+            "response_bytes": 995
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 157958
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 8.876875,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 607,
+            "response_bytes": 1000
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 8.858541,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 607,
+            "response_bytes": 1000
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 9.279875,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 158564,
+            "response_bytes": 995
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 157958
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 9.399375,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 158564,
+            "response_bytes": 995
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 157958
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 8.988,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 607,
+            "response_bytes": 1000
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 8.799833,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 607,
+            "response_bytes": 1000
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 9.536791,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 158564,
+            "response_bytes": 995
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 157958
+            }
+          ],
+          "image_builds": 2
+        }
+      ],
+      "modes": {
+        "full": {
+          "latency": {
+            "samples": 24,
+            "values_ms": [
+              10.022375,
+              9.663125,
+              9.585875,
+              9.509209,
+              10.137791,
+              9.356833,
+              9.55975,
+              9.371666,
+              9.486916,
+              9.284667,
+              9.29875,
+              9.401417,
+              9.342125,
+              9.320625,
+              9.549125,
+              9.416708,
+              9.296125,
+              9.721166,
+              9.364291,
+              9.500292,
+              9.573042,
+              9.279875,
+              9.399375,
+              9.536791
+            ],
+            "p50_ms": 9.416708,
+            "p95_ms": 10.022375
+          },
+          "request_frame_bytes": 3805536,
+          "response_frame_bytes": 23880,
+          "cas_body_bytes": 3790992,
+          "cas_commits": 24,
+          "image_builds": 48
+        },
+        "compact": {
+          "latency": {
+            "samples": 24,
+            "values_ms": [
+              9.268458,
+              9.080291,
+              8.996667,
+              8.929791,
+              8.931291,
+              8.882542,
+              9.0065,
+              8.955042,
+              8.683417,
+              8.956375,
+              8.819667,
+              8.630125,
+              8.747625,
+              8.75725,
+              8.817208,
+              8.947917,
+              9.016458,
+              8.824334,
+              8.927042,
+              8.86775,
+              8.876875,
+              8.858541,
+              8.988,
+              8.799833
+            ],
+            "p50_ms": 8.882542,
+            "p95_ms": 9.080291
+          },
+          "request_frame_bytes": 14568,
+          "response_frame_bytes": 24000,
+          "cas_body_bytes": 0,
+          "cas_commits": 24,
+          "image_builds": 48
+        }
+      },
+      "new_poll_fallback": [
+        {
+          "method": "head",
+          "body_bytes": 0
+        },
+        {
+          "method": "cas",
+          "body_bytes": 159300
+        }
+      ],
+      "transcript_sha256": "acea33a909ba778e8b6f416494956024ab31f1969a0cddda5c5336b560d90850",
+      "relation": {
+        "R1": "bc04f6911db461fcf0f1e79e77b8738f447795957676382da2b746f127a5634e",
+        "R2": "b6dd53a8df0cb67ec870511b4597cc90314e8c957372c8fbd2d77805a9ea8e99",
+        "R3": "42f03eadf64bdffec8cd912176e565e28ee995be436cb4dd8d28525438a478c6",
+        "R4": "e2f81c1e053e52986389bf66852ee299ff7a85f44eb3075b159efa785eca2d15",
+        "R5": "9174d3ccfdbf8500e9aaa1b3d08373d33e6dafa245bbbbad47febab0f9568231",
+        "R6": "8d392c7efac9e1f95831ef4a2bbf461a21b95b8416bcf4c6f89c0aa0f54127a1",
+        "R7": "f0a7d7b6e5ceee054bcc0ac1f418063ffc75cbc0dae87f2b6d6d6f9155228a8c",
+        "R8": "222110fcf0b3f401dc185678eec2df39a4a2d2139812baa0ff92999a1d09f680"
+      },
+      "restored": true,
+      "request_frame_reduction": 0.9961718927373174,
+      "p50_latency_change": -0.05672534393123363
+    },
+    {
+      "kind": "histogram",
+      "history_polls": 0,
+      "samples_per_mode": 24,
+      "image_bytes": 136587,
+      "order": [
+        [
+          "full",
+          "compact"
+        ],
+        [
+          "compact",
+          "full"
+        ],
+        [
+          "full",
+          "compact"
+        ],
+        [
+          "compact",
+          "full"
+        ],
+        [
+          "full",
+          "compact"
+        ],
+        [
+          "compact",
+          "full"
+        ],
+        [
+          "full",
+          "compact"
+        ],
+        [
+          "compact",
+          "full"
+        ],
+        [
+          "full",
+          "compact"
+        ],
+        [
+          "compact",
+          "full"
+        ],
+        [
+          "full",
+          "compact"
+        ],
+        [
+          "compact",
+          "full"
+        ],
+        [
+          "full",
+          "compact"
+        ],
+        [
+          "compact",
+          "full"
+        ],
+        [
+          "full",
+          "compact"
+        ],
+        [
+          "compact",
+          "full"
+        ],
+        [
+          "full",
+          "compact"
+        ],
+        [
+          "compact",
+          "full"
+        ],
+        [
+          "full",
+          "compact"
+        ],
+        [
+          "compact",
+          "full"
+        ],
+        [
+          "full",
+          "compact"
+        ],
+        [
+          "compact",
+          "full"
+        ],
+        [
+          "full",
+          "compact"
+        ],
+        [
+          "compact",
+          "full"
+        ]
+      ],
+      "measurements": [
+        {
+          "mode": "full",
+          "latency_ms": 12.105917,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 137194,
+            "response_bytes": 997
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 136587
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 11.384875,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 608,
+            "response_bytes": 1002
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 11.026041,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 608,
+            "response_bytes": 1002
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 11.946333,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 137194,
+            "response_bytes": 997
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 136587
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 11.966083,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 137194,
+            "response_bytes": 997
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 136587
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 10.851125,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 608,
+            "response_bytes": 1002
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 10.877166,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 608,
+            "response_bytes": 1002
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 11.41,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 137194,
+            "response_bytes": 997
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 136587
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 11.4155,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 137194,
+            "response_bytes": 997
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 136587
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 11.337375,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 608,
+            "response_bytes": 1002
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 11.014625,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 608,
+            "response_bytes": 1002
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 11.461666,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 137194,
+            "response_bytes": 997
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 136587
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 12.673333,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 137194,
+            "response_bytes": 997
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 136587
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 10.880834,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 608,
+            "response_bytes": 1002
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 10.901792,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 608,
+            "response_bytes": 1002
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 11.283792,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 137194,
+            "response_bytes": 997
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 136587
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 11.443125,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 137194,
+            "response_bytes": 997
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 136587
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 11.052208,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 608,
+            "response_bytes": 1002
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 11.112042,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 608,
+            "response_bytes": 1002
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 11.342334,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 137194,
+            "response_bytes": 997
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 136587
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 11.065625,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 137194,
+            "response_bytes": 997
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 136587
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 11.519125,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 608,
+            "response_bytes": 1002
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 11.547042,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 608,
+            "response_bytes": 1002
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 12.484542,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 137194,
+            "response_bytes": 997
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 136587
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 12.620459,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 137194,
+            "response_bytes": 997
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 136587
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 37.040708,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 608,
+            "response_bytes": 1002
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 11.787459,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 608,
+            "response_bytes": 1002
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 11.505125,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 137194,
+            "response_bytes": 997
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 136587
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 11.722125,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 137194,
+            "response_bytes": 997
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 136587
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 11.191583,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 608,
+            "response_bytes": 1002
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 11.147917,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 608,
+            "response_bytes": 1002
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 11.803959,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 137194,
+            "response_bytes": 997
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 136587
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 11.627125,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 137194,
+            "response_bytes": 997
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 136587
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 14.380542,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 608,
+            "response_bytes": 1002
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 11.028375,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 608,
+            "response_bytes": 1002
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 11.611375,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 137194,
+            "response_bytes": 997
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 136587
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 11.532,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 137194,
+            "response_bytes": 997
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 136587
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 10.908917,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 608,
+            "response_bytes": 1002
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 10.850167,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 608,
+            "response_bytes": 1002
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 11.467208,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 137194,
+            "response_bytes": 997
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 136587
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 11.340542,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 137194,
+            "response_bytes": 997
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 136587
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 11.067041,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 608,
+            "response_bytes": 1002
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 10.830459,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 608,
+            "response_bytes": 1002
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 11.186125,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 137194,
+            "response_bytes": 997
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 136587
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 11.479208,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 137194,
+            "response_bytes": 997
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 136587
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 10.920083,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 608,
+            "response_bytes": 1002
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 10.91825,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 608,
+            "response_bytes": 1002
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 11.410791,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 137194,
+            "response_bytes": 997
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 136587
+            }
+          ],
+          "image_builds": 2
+        }
+      ],
+      "modes": {
+        "full": {
+          "latency": {
+            "samples": 24,
+            "values_ms": [
+              12.105917,
+              11.946333,
+              11.966083,
+              11.41,
+              11.4155,
+              11.461666,
+              12.673333,
+              11.283792,
+              11.443125,
+              11.342334,
+              11.065625,
+              12.484542,
+              12.620459,
+              11.505125,
+              11.722125,
+              11.803959,
+              11.627125,
+              11.611375,
+              11.532,
+              11.467208,
+              11.340542,
+              11.186125,
+              11.479208,
+              11.410791
+            ],
+            "p50_ms": 11.479208,
+            "p95_ms": 12.620459
+          },
+          "request_frame_bytes": 3292656,
+          "response_frame_bytes": 23928,
+          "cas_body_bytes": 3278088,
+          "cas_commits": 24,
+          "image_builds": 48
+        },
+        "compact": {
+          "latency": {
+            "samples": 24,
+            "values_ms": [
+              11.384875,
+              11.026041,
+              10.851125,
+              10.877166,
+              11.337375,
+              11.014625,
+              10.880834,
+              10.901792,
+              11.052208,
+              11.112042,
+              11.519125,
+              11.547042,
+              37.040708,
+              11.787459,
+              11.191583,
+              11.147917,
+              14.380542,
+              11.028375,
+              10.908917,
+              10.850167,
+              11.067041,
+              10.830459,
+              10.920083,
+              10.91825
+            ],
+            "p50_ms": 11.028375,
+            "p95_ms": 14.380542
+          },
+          "request_frame_bytes": 14592,
+          "response_frame_bytes": 24048,
+          "cas_body_bytes": 0,
+          "cas_commits": 24,
+          "image_builds": 48
+        }
+      },
+      "new_poll_fallback": [
+        {
+          "method": "head",
+          "body_bytes": 0
+        },
+        {
+          "method": "cas",
+          "body_bytes": 137926
+        }
+      ],
+      "transcript_sha256": "404db4f7ca088808b5f739d09f682836fea291106393abe17eba6f436a5599a1",
+      "relation": {
+        "R1": "3562601c147f666051b39f92031e86c9d4e6a44fdcb5726cf4f729b9dcb2b667",
+        "R2": "951706a678290615d79ca1548761e7e545976c15697b95622f40f1fe9eafba25",
+        "R3": "9ca7a6febbfdc00d83e50310c2ee1357e0ab4863b37c58dc4f2c0af7ad633e2c",
+        "R4": "4d8704596479ec7ed69dac5b2b1585aaad5be2f80cd46a5c1cf2c4e52a31ea24",
+        "R5": "9526d50143faad3aa80405fcf181b56d343393f1b58596ee9faf9be9aa1b7b35",
+        "R6": "53486fb91ad61ca747606fa959b9a2d6c47a2de2fe1404d5c1959464d30bdc26",
+        "R7": "bcfdb520f3eb1357996f169aefa76cd3f7f0f5e05234770a63f902bd28eeca24",
+        "R8": "222110fcf0b3f401dc185678eec2df39a4a2d2139812baa0ff92999a1d09f680"
+      },
+      "restored": true,
+      "request_frame_reduction": 0.9955683193142557,
+      "p50_latency_change": -0.03927387673435301
+    },
+    {
+      "kind": "histogram",
+      "history_polls": 16,
+      "samples_per_mode": 24,
+      "image_bytes": 158021,
+      "order": [
+        [
+          "full",
+          "compact"
+        ],
+        [
+          "compact",
+          "full"
+        ],
+        [
+          "full",
+          "compact"
+        ],
+        [
+          "compact",
+          "full"
+        ],
+        [
+          "full",
+          "compact"
+        ],
+        [
+          "compact",
+          "full"
+        ],
+        [
+          "full",
+          "compact"
+        ],
+        [
+          "compact",
+          "full"
+        ],
+        [
+          "full",
+          "compact"
+        ],
+        [
+          "compact",
+          "full"
+        ],
+        [
+          "full",
+          "compact"
+        ],
+        [
+          "compact",
+          "full"
+        ],
+        [
+          "full",
+          "compact"
+        ],
+        [
+          "compact",
+          "full"
+        ],
+        [
+          "full",
+          "compact"
+        ],
+        [
+          "compact",
+          "full"
+        ],
+        [
+          "full",
+          "compact"
+        ],
+        [
+          "compact",
+          "full"
+        ],
+        [
+          "full",
+          "compact"
+        ],
+        [
+          "compact",
+          "full"
+        ],
+        [
+          "full",
+          "compact"
+        ],
+        [
+          "compact",
+          "full"
+        ],
+        [
+          "full",
+          "compact"
+        ],
+        [
+          "compact",
+          "full"
+        ]
+      ],
+      "measurements": [
+        {
+          "mode": "full",
+          "latency_ms": 12.536708,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 158628,
+            "response_bytes": 997
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 158021
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 11.549208,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 608,
+            "response_bytes": 1002
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 11.261208,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 608,
+            "response_bytes": 1002
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 11.966625,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 158628,
+            "response_bytes": 997
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 158021
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 11.782,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 158628,
+            "response_bytes": 997
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 158021
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 11.24575,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 608,
+            "response_bytes": 1002
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 11.5165,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 608,
+            "response_bytes": 1002
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 12.017667,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 158628,
+            "response_bytes": 997
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 158021
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 11.898542,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 158628,
+            "response_bytes": 997
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 158021
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 11.196042,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 608,
+            "response_bytes": 1002
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 11.339709,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 608,
+            "response_bytes": 1002
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 11.723666,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 158628,
+            "response_bytes": 997
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 158021
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 11.758375,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 158628,
+            "response_bytes": 997
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 158021
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 16.448083,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 608,
+            "response_bytes": 1002
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 12.390708,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 608,
+            "response_bytes": 1002
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 12.330791,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 158628,
+            "response_bytes": 997
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 158021
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 12.166375,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 158628,
+            "response_bytes": 997
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 158021
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 11.393667,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 608,
+            "response_bytes": 1002
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 11.565792,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 608,
+            "response_bytes": 1002
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 11.940958,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 158628,
+            "response_bytes": 997
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 158021
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 11.77775,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 158628,
+            "response_bytes": 997
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 158021
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 11.582958,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 608,
+            "response_bytes": 1002
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 11.259959,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 608,
+            "response_bytes": 1002
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 11.746208,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 158628,
+            "response_bytes": 997
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 158021
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 12.003625,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 158628,
+            "response_bytes": 997
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 158021
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 11.481459,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 608,
+            "response_bytes": 1002
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 11.470583,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 608,
+            "response_bytes": 1002
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 12.114042,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 158628,
+            "response_bytes": 997
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 158021
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 12.339417,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 158628,
+            "response_bytes": 997
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 158021
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 11.290625,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 608,
+            "response_bytes": 1002
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 11.736917,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 608,
+            "response_bytes": 1002
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 11.956209,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 158628,
+            "response_bytes": 997
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 158021
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 12.21725,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 158628,
+            "response_bytes": 997
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 158021
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 11.511917,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 608,
+            "response_bytes": 1002
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 11.040375,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 608,
+            "response_bytes": 1002
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 12.138792,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 158628,
+            "response_bytes": 997
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 158021
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 12.013334,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 158628,
+            "response_bytes": 997
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 158021
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 11.173667,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 608,
+            "response_bytes": 1002
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 11.410083,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 608,
+            "response_bytes": 1002
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 11.71925,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 158628,
+            "response_bytes": 997
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 158021
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 12.056041,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 158628,
+            "response_bytes": 997
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 158021
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 12.042041,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 608,
+            "response_bytes": 1002
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 30.979458,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 608,
+            "response_bytes": 1002
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 12.487584,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 158628,
+            "response_bytes": 997
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 158021
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 13.107917,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 158628,
+            "response_bytes": 997
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 158021
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 11.467125,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 608,
+            "response_bytes": 1002
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 11.367125,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 608,
+            "response_bytes": 1002
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 11.822792,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 158628,
+            "response_bytes": 997
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 158021
+            }
+          ],
+          "image_builds": 2
+        }
+      ],
+      "modes": {
+        "full": {
+          "latency": {
+            "samples": 24,
+            "values_ms": [
+              12.536708,
+              11.966625,
+              11.782,
+              12.017667,
+              11.898542,
+              11.723666,
+              11.758375,
+              12.330791,
+              12.166375,
+              11.940958,
+              11.77775,
+              11.746208,
+              12.003625,
+              12.114042,
+              12.339417,
+              11.956209,
+              12.21725,
+              12.138792,
+              12.013334,
+              11.71925,
+              12.056041,
+              12.487584,
+              13.107917,
+              11.822792
+            ],
+            "p50_ms": 12.003625,
+            "p95_ms": 12.536708
+          },
+          "request_frame_bytes": 3807072,
+          "response_frame_bytes": 23928,
+          "cas_body_bytes": 3792504,
+          "cas_commits": 24,
+          "image_builds": 48
+        },
+        "compact": {
+          "latency": {
+            "samples": 24,
+            "values_ms": [
+              11.549208,
+              11.261208,
+              11.24575,
+              11.5165,
+              11.196042,
+              11.339709,
+              16.448083,
+              12.390708,
+              11.393667,
+              11.565792,
+              11.582958,
+              11.259959,
+              11.481459,
+              11.470583,
+              11.290625,
+              11.736917,
+              11.511917,
+              11.040375,
+              11.173667,
+              11.410083,
+              12.042041,
+              30.979458,
+              11.467125,
+              11.367125
+            ],
+            "p50_ms": 11.467125,
+            "p95_ms": 16.448083
+          },
+          "request_frame_bytes": 14592,
+          "response_frame_bytes": 24048,
+          "cas_body_bytes": 0,
+          "cas_commits": 24,
+          "image_builds": 48
+        }
+      },
+      "new_poll_fallback": [
+        {
+          "method": "head",
+          "body_bytes": 0
+        },
+        {
+          "method": "cas",
+          "body_bytes": 159361
+        }
+      ],
+      "transcript_sha256": "1675e56914b919b1d3da5effedfe5e99f862e2fc9adb2fe69cd7267e9ae1d3eb",
+      "relation": {
+        "R1": "f48f2128f60ec59da83f00c896618e10e7509adee45d745f64c9f533b39f79d4",
+        "R2": "951706a678290615d79ca1548761e7e545976c15697b95622f40f1fe9eafba25",
+        "R3": "9ca7a6febbfdc00d83e50310c2ee1357e0ab4863b37c58dc4f2c0af7ad633e2c",
+        "R4": "4d8704596479ec7ed69dac5b2b1585aaad5be2f80cd46a5c1cf2c4e52a31ea24",
+        "R5": "9526d50143faad3aa80405fcf181b56d343393f1b58596ee9faf9be9aa1b7b35",
+        "R6": "53486fb91ad61ca747606fa959b9a2d6c47a2de2fe1404d5c1959464d30bdc26",
+        "R7": "bcfdb520f3eb1357996f169aefa76cd3f7f0f5e05234770a63f902bd28eeca24",
+        "R8": "222110fcf0b3f401dc185678eec2df39a4a2d2139812baa0ff92999a1d09f680"
+      },
+      "restored": true,
+      "request_frame_reduction": 0.9961671331669062,
+      "p50_latency_change": -0.044694831769569676
+    },
+    {
+      "kind": "histogram",
+      "history_polls": 64,
+      "samples_per_mode": 24,
+      "image_bytes": 222429,
+      "order": [
+        [
+          "full",
+          "compact"
+        ],
+        [
+          "compact",
+          "full"
+        ],
+        [
+          "full",
+          "compact"
+        ],
+        [
+          "compact",
+          "full"
+        ],
+        [
+          "full",
+          "compact"
+        ],
+        [
+          "compact",
+          "full"
+        ],
+        [
+          "full",
+          "compact"
+        ],
+        [
+          "compact",
+          "full"
+        ],
+        [
+          "full",
+          "compact"
+        ],
+        [
+          "compact",
+          "full"
+        ],
+        [
+          "full",
+          "compact"
+        ],
+        [
+          "compact",
+          "full"
+        ],
+        [
+          "full",
+          "compact"
+        ],
+        [
+          "compact",
+          "full"
+        ],
+        [
+          "full",
+          "compact"
+        ],
+        [
+          "compact",
+          "full"
+        ],
+        [
+          "full",
+          "compact"
+        ],
+        [
+          "compact",
+          "full"
+        ],
+        [
+          "full",
+          "compact"
+        ],
+        [
+          "compact",
+          "full"
+        ],
+        [
+          "full",
+          "compact"
+        ],
+        [
+          "compact",
+          "full"
+        ],
+        [
+          "full",
+          "compact"
+        ],
+        [
+          "compact",
+          "full"
+        ]
+      ],
+      "measurements": [
+        {
+          "mode": "full",
+          "latency_ms": 13.271791,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 223036,
+            "response_bytes": 997
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 222429
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 12.513,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 608,
+            "response_bytes": 1002
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 12.273166,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 608,
+            "response_bytes": 1002
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 12.963917,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 223036,
+            "response_bytes": 997
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 222429
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 12.991833,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 223036,
+            "response_bytes": 997
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 222429
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 12.288625,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 608,
+            "response_bytes": 1002
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 12.230416,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 608,
+            "response_bytes": 1002
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 12.910625,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 223036,
+            "response_bytes": 997
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 222429
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 12.910417,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 223036,
+            "response_bytes": 997
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 222429
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 11.854125,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 608,
+            "response_bytes": 1002
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 11.940292,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 608,
+            "response_bytes": 1002
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 12.616417,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 223036,
+            "response_bytes": 997
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 222429
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 12.913041,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 223036,
+            "response_bytes": 997
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 222429
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 12.099375,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 608,
+            "response_bytes": 1002
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 12.032667,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 608,
+            "response_bytes": 1002
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 12.751916,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 223036,
+            "response_bytes": 997
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 222429
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 13.129833,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 223036,
+            "response_bytes": 997
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 222429
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 12.140875,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 608,
+            "response_bytes": 1002
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 12.01625,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 608,
+            "response_bytes": 1002
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 12.813792,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 223036,
+            "response_bytes": 997
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 222429
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 12.8445,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 223036,
+            "response_bytes": 997
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 222429
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 12.089792,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 608,
+            "response_bytes": 1002
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 12.089459,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 608,
+            "response_bytes": 1002
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 12.934875,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 223036,
+            "response_bytes": 997
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 222429
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 12.77225,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 223036,
+            "response_bytes": 997
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 222429
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 12.186542,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 608,
+            "response_bytes": 1002
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 12.271084,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 608,
+            "response_bytes": 1002
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 12.82775,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 223036,
+            "response_bytes": 997
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 222429
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 13.057875,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 223036,
+            "response_bytes": 997
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 222429
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 11.955292,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 608,
+            "response_bytes": 1002
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 11.87,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 608,
+            "response_bytes": 1002
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 12.791542,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 223036,
+            "response_bytes": 997
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 222429
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 12.698291,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 223036,
+            "response_bytes": 997
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 222429
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 12.190791,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 608,
+            "response_bytes": 1002
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 12.136417,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 608,
+            "response_bytes": 1002
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 12.68325,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 223036,
+            "response_bytes": 997
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 222429
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 12.763334,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 223036,
+            "response_bytes": 997
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 222429
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 12.245584,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 608,
+            "response_bytes": 1002
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 12.91725,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 608,
+            "response_bytes": 1002
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 13.073791,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 223036,
+            "response_bytes": 997
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 222429
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 12.612625,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 223036,
+            "response_bytes": 997
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 222429
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 12.453709,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 608,
+            "response_bytes": 1002
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 12.063958,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 608,
+            "response_bytes": 1002
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 13.550083,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 223036,
+            "response_bytes": 997
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 222429
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 13.585209,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 223036,
+            "response_bytes": 997
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 222429
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 12.509959,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 608,
+            "response_bytes": 1002
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "compact",
+          "latency_ms": 12.084417,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 608,
+            "response_bytes": 1002
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "reassert",
+              "body_bytes": 0
+            }
+          ],
+          "image_builds": 2
+        },
+        {
+          "mode": "full",
+          "latency_ms": 13.41875,
+          "frames": {
+            "frames": 4,
+            "request_bytes": 223036,
+            "response_bytes": 997
+          },
+          "rpc": [
+            {
+              "method": "head",
+              "body_bytes": 0
+            },
+            {
+              "method": "cas",
+              "body_bytes": 222429
+            }
+          ],
+          "image_builds": 2
+        }
+      ],
+      "modes": {
+        "full": {
+          "latency": {
+            "samples": 24,
+            "values_ms": [
+              13.271791,
+              12.963917,
+              12.991833,
+              12.910625,
+              12.910417,
+              12.616417,
+              12.913041,
+              12.751916,
+              13.129833,
+              12.813792,
+              12.8445,
+              12.934875,
+              12.77225,
+              12.82775,
+              13.057875,
+              12.791542,
+              12.698291,
+              12.68325,
+              12.763334,
+              13.073791,
+              12.612625,
+              13.550083,
+              13.585209,
+              13.41875
+            ],
+            "p50_ms": 12.910417,
+            "p95_ms": 13.550083
+          },
+          "request_frame_bytes": 5352864,
+          "response_frame_bytes": 23928,
+          "cas_body_bytes": 5338296,
+          "cas_commits": 24,
+          "image_builds": 48
+        },
+        "compact": {
+          "latency": {
+            "samples": 24,
+            "values_ms": [
+              12.513,
+              12.273166,
+              12.288625,
+              12.230416,
+              11.854125,
+              11.940292,
+              12.099375,
+              12.032667,
+              12.140875,
+              12.01625,
+              12.089792,
+              12.089459,
+              12.186542,
+              12.271084,
+              11.955292,
+              11.87,
+              12.190791,
+              12.136417,
+              12.245584,
+              12.91725,
+              12.453709,
+              12.063958,
+              12.509959,
+              12.084417
+            ],
+            "p50_ms": 12.136417,
+            "p95_ms": 12.513
+          },
+          "request_frame_bytes": 14592,
+          "response_frame_bytes": 24048,
+          "cas_body_bytes": 0,
+          "cas_commits": 24,
+          "image_builds": 48
+        }
+      },
+      "new_poll_fallback": [
+        {
+          "method": "head",
+          "body_bytes": 0
+        },
+        {
+          "method": "cas",
+          "body_bytes": 223771
+        }
+      ],
+      "transcript_sha256": "97382e7483ee94cb2ec7abf5b78bba2b89dec989b0790e14dc9c4a6c06dc3d80",
+      "relation": {
+        "R1": "6e280d86eaa0e710960eb0ec7a89f1b4bfd1a3635a490b8aebebe8e1686fac34",
+        "R2": "951706a678290615d79ca1548761e7e545976c15697b95622f40f1fe9eafba25",
+        "R3": "9ca7a6febbfdc00d83e50310c2ee1357e0ab4863b37c58dc4f2c0af7ad633e2c",
+        "R4": "4d8704596479ec7ed69dac5b2b1585aaad5be2f80cd46a5c1cf2c4e52a31ea24",
+        "R5": "9526d50143faad3aa80405fcf181b56d343393f1b58596ee9faf9be9aa1b7b35",
+        "R6": "53486fb91ad61ca747606fa959b9a2d6c47a2de2fe1404d5c1959464d30bdc26",
+        "R7": "bcfdb520f3eb1357996f169aefa76cd3f7f0f5e05234770a63f902bd28eeca24",
+        "R8": "222110fcf0b3f401dc185678eec2df39a4a2d2139812baa0ff92999a1d09f680"
+      },
+      "restored": true,
+      "request_frame_reduction": 0.9972739826754425,
+      "p50_latency_change": -0.05995158793089339
+    }
+  ]
+}

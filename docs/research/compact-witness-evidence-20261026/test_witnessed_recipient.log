@@ -1,0 +1,26 @@
+test_authority_changes_during_restore_aborts_without_partial_records (__main__.RecipientWitnessTests) ... ok
+test_changed_local_schema_requires_trusted_fresh_restore (__main__.RecipientWitnessTests) ... ok
+test_competing_clones_at_same_authority_head_only_one_commits (__main__.RecipientWitnessTests) ... ok
+test_complete_mixed_pipeline_with_independent_receiver_authority (__main__.RecipientWitnessTests) ... ok
+test_deleted_closed_barrier_is_restored_before_any_new_receipt (__main__.RecipientWitnessTests) ... ok
+test_fresh_replica_restores_ciphertexts_sequences_and_both_event_kinds (__main__.RecipientWitnessTests) ... ok
+test_local_record_deletion_or_event_time_edit_is_fenced_and_repaired (__main__.RecipientWitnessTests) ... ok
+test_missing_authority_head_is_not_automatically_bootstrapped (__main__.RecipientWitnessTests) ... ok
+test_no_automatic_rebootstrap_missing_store_authority_or_old_profile (__main__.RecipientWitnessTests) ... ok
+test_process_death_accept_and_close_authority_boundaries (__main__.RecipientWitnessTests) ... ok
+test_process_death_recovery_is_atomic (__main__.RecipientWitnessTests) ... ok
+test_real_receiver_authority_outage_yields_no_confirmation (__main__.RecipientWitnessTests) ... ok
+test_receiver_writer_cannot_use_sender_authority_and_roles_separate_restore (__main__.RecipientWitnessTests) ... ok
+test_rejected_expired_request_persists_witnessed_clock_floor (__main__.RecipientWitnessTests) ... ok
+test_rolling_back_both_receiver_and_authority_remains_negative_control (__main__.RecipientWitnessTests) ... ok
+test_size_limit_fails_without_losing_prior_records_or_emitting_ack (__main__.RecipientWitnessTests) ... ok
+test_stale_accepted_copy_cannot_reaccept_and_restores_original_time (__main__.RecipientWitnessTests) ... ok
+test_stale_closed_copy_restores_barrier_and_first_closure (__main__.RecipientWitnessTests) ... ok
+test_unknown_commit_from_dropped_authenticated_reply_recovers_exact_acceptance (__main__.RecipientWitnessTests) ... ok
+test_wrong_key_or_route_and_malformed_authoritative_image_fail_atomically (__main__.RecipientWitnessTests) ... ok
+test_wrong_witness_key_and_revoked_receiver_writer_cannot_sign_receipt (__main__.RecipientWitnessTests) ... ok
+
+----------------------------------------------------------------------
+Ran 21 tests in 9.662s
+
+OK
