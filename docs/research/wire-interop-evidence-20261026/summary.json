@@ -1,0 +1,52 @@
+{
+  "passed": true,
+  "cases": 1598,
+  "groups": {
+    "canonical": 16,
+    "boundary": 101,
+    "malformed": 42,
+    "generated": 320,
+    "mutation": 320,
+    "random-bytes": 400,
+    "cose": 100,
+    "cose-malformed": 14,
+    "frozen-public": 37,
+    "public-body": 46,
+    "witness-request": 89,
+    "witness-reply": 111,
+    "witness-limits": 2
+  },
+  "operations": {
+    "decode": 976,
+    "encode": 223,
+    "verify": 94,
+    "sign": 20,
+    "public_response": 83,
+    "witness_request": 91,
+    "witness_reply": 111
+  },
+  "python_accepted": 618,
+  "curated_expectations": 878,
+  "node": "v26.6.0",
+  "node_openssl": "3.6.3",
+  "executed_node_sha256": "fe28b4a664f1228a49a3290096120a4a23820660024aaa74bbd0765d5d4488d2",
+  "node_source_kind": "repository",
+  "python": "3.9.6 (default, Apr 30 2025, 02:07:17) \n[Clang 17.0.0 (clang-1700.0.13.5)]",
+  "cryptography": "49.0.0",
+  "python_crypto_backend": "OpenSSL 4.0.1 9 Jun 2026",
+  "seed": 20261026,
+  "failures": [],
+  "scope": "Independent Node CBOR/COSE construction and selected public response/witness schemas vs actual Python code. Node receives only typed inputs, not expected values. Deterministic corpus, not exhaustive fuzzing, full protocol interoperability, CDDL-engine validation or independent cryptographic-primitive proof.",
+  "source_sha256": {
+    "outputs/agent-cryptography-design-20261025/prototype/wire_interop.py": "1f358422551c7186299498646222368db8994e098c24cb3f33108ba1c4316bc0",
+    "tests/node/wire-profile.mjs": "fe28b4a664f1228a49a3290096120a4a23820660024aaa74bbd0765d5d4488d2",
+    "tests/vectors/public-responses.json": "631a6d2803bcdb5a832f977e98fd2b87228e061fcc3ae9b02736b9466b9d3113",
+    "outputs/agent-cryptography-design-20261025/prototype/wire.py": "b2e95928c604c923ec549a74f599fd4a16fc4ccec5841474aabf64ec55de6d58",
+    "outputs/agent-cryptography-design-20261025/prototype/public_input.py": "f037317ea9f7bf4a0997f6f061206dfd7746bd0fba1432e3f5061517ffbc0e01",
+    "outputs/agent-cryptography-design-20261025/prototype/public_gateway.py": "b1bf08b7159f96aafc3e28f05496307d120bba688e50e9f460db6a3349b64de0",
+    "outputs/agent-cryptography-design-20261025/prototype/witness_transport.py": "4a94b703dd3a5d3db360abc76b430cfecfae9d5905e59e05f4048e62cc244ac7",
+    "outputs/agent-cryptography-design-20261025/prototype/witnessed_ledger.py": "fea3b3d715abebe83415379229e088d92787802f10f84d8fbf27dbcbb2da77fe",
+    "outputs/agent-cryptography-design-20261025/prototype/public_gateway_v1.cddl": "20d92ad1e224774a5dea171ec7957e9e41a52540f24934800a3cc65918c70a23",
+    "outputs/agent-cryptography-design-20261025/prototype/witness_rpc_v1.cddl": "2c240e9400ccb57f97bf6b37b97b4f2a2b7f4fe4647ebde02c8e5acf54565c72"
+  }
+}

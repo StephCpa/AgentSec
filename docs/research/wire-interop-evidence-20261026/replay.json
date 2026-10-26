@@ -1,0 +1,25 @@
+{
+  "passed": true,
+  "cases": 1598,
+  "node": "v26.6.0",
+  "node_openssl": "3.6.3",
+  "python_crypto_backend": "OpenSSL 4.0.1 9 Jun 2026",
+  "input_sha256": {
+    "summary.json": "f9efba76d95756379f20b2e18e2fb8be38497f5935a54e9c525c0ca6fe5e2206",
+    "cases.jsonl.xz": "c78582adf55bbcae752300829434c3db5a15008d5257a59e62c39332134578f2"
+  },
+  "replay_script_sha256": "2d53c7ecfc029b9b396e2b0fe9dbe527a79812d17f58d1be01d9770abed0db05",
+  "source_sha256": {
+    "outputs/agent-cryptography-design-20261025/prototype/wire_interop.py": "1f358422551c7186299498646222368db8994e098c24cb3f33108ba1c4316bc0",
+    "tests/node/wire-profile.mjs": "fe28b4a664f1228a49a3290096120a4a23820660024aaa74bbd0765d5d4488d2",
+    "tests/vectors/public-responses.json": "631a6d2803bcdb5a832f977e98fd2b87228e061fcc3ae9b02736b9466b9d3113",
+    "outputs/agent-cryptography-design-20261025/prototype/wire.py": "b2e95928c604c923ec549a74f599fd4a16fc4ccec5841474aabf64ec55de6d58",
+    "outputs/agent-cryptography-design-20261025/prototype/public_input.py": "f037317ea9f7bf4a0997f6f061206dfd7746bd0fba1432e3f5061517ffbc0e01",
+    "outputs/agent-cryptography-design-20261025/prototype/public_gateway.py": "b1bf08b7159f96aafc3e28f05496307d120bba688e50e9f460db6a3349b64de0",
+    "outputs/agent-cryptography-design-20261025/prototype/witness_transport.py": "4a94b703dd3a5d3db360abc76b430cfecfae9d5905e59e05f4048e62cc244ac7",
+    "outputs/agent-cryptography-design-20261025/prototype/witnessed_ledger.py": "fea3b3d715abebe83415379229e088d92787802f10f84d8fbf27dbcbb2da77fe",
+    "outputs/agent-cryptography-design-20261025/prototype/public_gateway_v1.cddl": "20d92ad1e224774a5dea171ec7957e9e41a52540f24934800a3cc65918c70a23",
+    "outputs/agent-cryptography-design-20261025/prototype/witness_rpc_v1.cddl": "2c240e9400ccb57f97bf6b37b97b4f2a2b7f4fe4647ebde02c8e5acf54565c72"
+  },
+  "scope": "Re-executes both implementations on all archived inputs and compares original results. No network service, full protocol deployment or CDDL engine is exercised."
+}
