@@ -1,0 +1,21 @@
+test_actual_process_cuts_never_restore_half_decision (__main__.AtomicPublicationTests) ... ok
+test_admitted_output_uses_existing_recipient_evidence_and_no_new_l3 (__main__.AtomicPublicationTests) ... ok
+test_authenticated_witness_atomically_accepts_new_profile (__main__.AtomicPublicationTests) ... ok
+test_count_final_tick_commits_result_charges_decision_and_outbox_once (__main__.AtomicPublicationTests) ... ok
+test_direct_l3_and_unguarded_core_cannot_bypass_publisher (__main__.AtomicPublicationTests) ... ok
+test_distinct_profile_and_authenticated_variant_requirements (__main__.AtomicPublicationTests) ... ok
+test_expired_action_produces_withheld_not_an_unhandled_L3_error (__main__.AtomicPublicationTests) ... ok
+test_mixed_order_publishes_two_decisions_in_same_final_transaction (__main__.AtomicPublicationTests) ... ok
+test_poststart_credential_revoke_withholds_without_refund (__main__.AtomicPublicationTests) ... ok
+test_prestart_cancel_records_withheld_and_refund_without_ticket (__main__.AtomicPublicationTests) ... ok
+test_registration_requires_fresh_immutable_public_route_binding (__main__.AtomicPublicationTests) ... ok
+test_reply_loss_after_witness_acceptance_restores_complete_decision (__main__.AtomicPublicationTests) ... ok
+test_restore_rejects_authority_image_missing_decision (__main__.AtomicPublicationTests) ... ok
+test_route_revoked_between_registration_and_publication_withholds (__main__.AtomicPublicationTests) ... ok
+test_unknown_internal_failure_rolls_back_instead_of_becoming_withheld (__main__.AtomicPublicationTests) ... ok
+test_withheld_process_cuts_preserve_no_ticket_decision (__main__.AtomicPublicationTests) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 6.951s
+
+OK

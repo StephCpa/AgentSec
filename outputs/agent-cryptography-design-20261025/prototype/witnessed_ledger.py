@@ -139,6 +139,44 @@ class ReferenceWitness:
             self.db.rollback();raise
 
 
+    def reassert(self,namespace,expected_seq,expected_digest,request_id):
+        """CAS to the SAME opaque image, retaining version/token/write authority.
+
+        An optional transport optimization, never a read-only success shortcut.
+        The trusted witness retains the current image; no client image is sent.
+        Tokens identify logical CAS content, so an equivalent full-image CAS
+        retransmission and reassert may share one token, but distinct attempts
+        still require fresh tokens and advance the version.
+        """
+        if type(expected_seq) is not int or not 0<=expected_seq<2**62:
+            raise Rejected('INVALID_WITNESS_VERSION')
+        if (type(expected_digest) is not str or len(expected_digest)!=64 or
+                any(c not in '0123456789abcdef' for c in expected_digest)):
+            raise Rejected('INVALID_WITNESS_IMAGE')
+        if type(request_id) is not str or len(request_id)!=32 or any(c not in '0123456789abcdef' for c in request_id):
+            raise Rejected('INVALID_WITNESS_REQUEST_ID')
+        self.db.execute('BEGIN IMMEDIATE')
+        try:
+            self.authorize_operation(namespace,'cas')
+            old=self.db.execute('SELECT seq,base_digest,digest FROM commits WHERE namespace=? AND token=?',(namespace,request_id)).fetchone()
+            if old:
+                if tuple(old)!=(expected_seq+1,expected_digest,expected_digest):
+                    raise Rejected('WITNESS_REQUEST_CONFLICT')
+                self.db.commit();return {'seq':old['seq'],'digest':old['digest']}
+            if self.head(namespace)!={'seq':expected_seq,'digest':expected_digest}:
+                raise Rejected('WITNESS_CAS_CONFLICT')
+            # Reuse requires a valid retained image, not merely a matching head.
+            # Read/hash under the same write lock; never bless corrupted storage.
+            retained=self.db.execute('SELECT image FROM heads WHERE namespace=?',(namespace,)).fetchone()[0]
+            if image_hash(retained)!=expected_digest:raise Rejected('INVALID_WITNESS_IMAGE')
+            seq=expected_seq+1
+            self.db.execute('UPDATE heads SET seq=? WHERE namespace=?',(seq,namespace))
+            self.db.execute('INSERT INTO commits VALUES(?,?,?,?,?)',(namespace,seq,expected_digest,expected_digest,request_id))
+            self.db.commit();return {'seq':seq,'digest':expected_digest}
+        except BaseException:
+            self.db.rollback();raise
+
+
 class WitnessedLedger(EncryptedLedger):
     storage_profile='witnessed-delegated-count-v1'
 

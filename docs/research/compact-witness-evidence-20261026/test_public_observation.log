@@ -1,0 +1,17 @@
+test_actual_application_wire_traces_match_across_eight_datasets (__main__.PublicObservationTests) ... ok
+test_authenticated_malformed_payloads_are_durable_generic_denials (__main__.PublicObservationTests) ... ok
+test_changed_operation_action_is_denied_without_new_release (__main__.PublicObservationTests) ... ok
+test_client_also_rejects_signed_out_of_vocabulary_response (__main__.PublicObservationTests) ... ok
+test_denial_response_restores_without_reparsing_input_or_redispatch (__main__.PublicObservationTests) ... ok
+test_extra_private_response_fields_are_rejected_before_signing_or_journaling (__main__.PublicObservationTests) ... ok
+test_inactive_ancestor_key_is_generic_policy_denial (__main__.PublicObservationTests) ... ok
+test_parser_programming_failure_is_not_disguised_as_bad_input (__main__.PublicObservationTests) ... ok
+test_private_and_integrity_failures_are_not_in_public_denial_set (__main__.PublicObservationTests) ... ok
+test_public_policy_checks_do_not_disconnect_or_consume_proofs (__main__.PublicObservationTests) ... ok
+test_real_network_negative_controls_expose_private_failure_channel (__main__.PublicObservationTests) ... ok
+test_revoked_root_is_durable_rejection_instead_of_connection_failure (__main__.PublicObservationTests) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 14.833s
+
+OK

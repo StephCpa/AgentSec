@@ -58,3 +58,49 @@ error-code = "WITNESS_ACCESS_DENIED" / "WITNESS_UNINITIALIZED" /
   "WITNESS_ALREADY_INITIALIZED" / "WITNESS_CAS_CONFLICT" /
   "WITNESS_REQUEST_CONFLICT" / "INVALID_WITNESS_IMAGE" /
   "INVALID_WITNESS_VERSION" / "INVALID_WITNESS_REQUEST_ID"
+
+; Optional compact same-image CAS extension. The base request/response roots
+; above remain the default profile. Both trusted endpoints must opt in.
+; No negotiation, fallback, or new read-only permission is introduced.
+extended-request = request / reassert-request
+extended-response = response / reassert-response
+reassert-request = {
+  "profile": "witness-rpc-v1",
+  "service": "agent-ledger-witness-v1",
+  "method": "reassert",
+  "namespace": namespace,
+  "challenge": bstr .size 32,
+  "body_size": 0,
+  "body_hash": h'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
+  "expected_seq": 0..4611686018427387903,
+  "expected_digest": digest,
+  "request_id": tstr .regexp "[0-9a-f]{32}"
+}
+reassert-response = #6.18([
+  protected: bstr .cbor {1: -19, 4: bstr},
+  unprotected: {},
+  payload: bstr .cbor reassert-reply,
+  signature: bstr .size 64
+])
+reassert-reply-common = (
+  "profile": "witness-rpc-v1",
+  "service": "agent-ledger-witness-v1",
+  "method": "reassert",
+  "namespace": namespace,
+  "challenge": bstr .size 32,
+  "request_digest": bstr .size 32,
+  "requester": bstr .size 32,
+  "body_size": 0,
+  "body_hash": h'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
+)
+reassert-reply = reassert-success / reassert-rejection
+reassert-success = {
+  reassert-reply-common,
+  "status": "ok",
+  "result": {"seq": 1..4611686018427387904, "digest": digest}
+}
+reassert-rejection = {
+  reassert-reply-common,
+  "status": "rejected",
+  "result": {"error": error-code}
+}

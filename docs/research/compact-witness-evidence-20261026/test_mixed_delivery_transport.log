@@ -1,0 +1,26 @@
+test_ack_binds_every_byte_request_challenge_and_mixed_aad (__main__.MixedDeliveryTests) ... ok
+test_ack_witness_commit_survives_process_death_before_local_record (__main__.MixedDeliveryTests) ... ok
+test_complete_vector_then_count_same_route_and_unchanged_shared_ancestor_spend (__main__.MixedDeliveryTests) ... ok
+test_concurrent_retries_have_one_vector_acceptance (__main__.MixedDeliveryTests) ... ok
+test_count_and_mixed_profile_aad_attempt_and_inbox_are_not_interchangeable (__main__.MixedDeliveryTests) ... ok
+test_expiry_before_first_acceptance_leaves_sequence_blocked_pending_terminal_protocol (__main__.MixedDeliveryTests) ... ok
+test_historical_ack_after_expiry_and_route_revocation_needs_no_disclosure (__main__.MixedDeliveryTests) ... ok
+test_l3_ticket_and_outbox_share_one_transaction (__main__.MixedDeliveryTests) ... ok
+test_lost_network_ack_retries_identical_vector_and_preserves_first_acceptance (__main__.MixedDeliveryTests) ... ok
+test_max64_labels_and_full512_byte_vector_fit_framing_and_inbox (__main__.MixedDeliveryTests) ... ok
+test_no_partial_job_can_create_delivery_or_outbox (__main__.MixedDeliveryTests) ... ok
+test_receiver_rejected_expiry_preserves_clock_floor (__main__.MixedDeliveryTests) ... ok
+test_recipient_whole_database_rollback_negative_control (__main__.MixedDeliveryTests) ... ok
+test_reencrypted_valid_but_wrong_shape_is_detected_by_sender_audit (__main__.MixedDeliveryTests) ... ok
+test_short_partial_extra_and_out_of_range_vectors_never_enter_inbox (__main__.MixedDeliveryTests) ... ok
+test_signed_shape_catalog_order_and_closed_schema_rejections (__main__.MixedDeliveryTests) ... ok
+test_stale_sender_recovers_ack_and_all_ancestor_history_without_resending (__main__.MixedDeliveryTests) ... ok
+test_tls_peer_pins_hostname_ca_and_signer_before_vector_disclosure (__main__.MixedDeliveryTests) ... ok
+test_unknown_route_and_rebinding_are_rejected (__main__.MixedDeliveryTests) ... ok
+test_vector_delivery_process_cuts (__main__.MixedDeliveryTests) ... ok
+test_witness_accepts_outbox_then_process_dies_before_local_commit (__main__.MixedDeliveryTests) ... ok
+
+----------------------------------------------------------------------
+Ran 21 tests in 8.854s
+
+OK

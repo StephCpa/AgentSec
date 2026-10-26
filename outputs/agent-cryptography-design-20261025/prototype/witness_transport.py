@@ -88,7 +88,8 @@ def parse_request(raw,body):
     method=request.get('method')
     if type(method) is not str:raise Rejected('INVALID_WITNESS_RPC')
     extra={'head':{'include_image'},'bootstrap':set(),
-                                      'cas':{'expected_seq','expected_digest','request_id'}}.get(method)
+                                      'cas':{'expected_seq','expected_digest','request_id'},
+                                      'reassert':{'expected_seq','expected_digest','request_id'}}.get(method)
     if extra is None or set(request)!=COMMON|extra:raise Rejected('INVALID_WITNESS_RPC')
     if not hex_string(request['namespace'],32):raise Rejected('INVALID_WITNESS_RPC')
     if type(request['challenge']) is not bytes or len(request['challenge'])!=32:raise Rejected('INVALID_WITNESS_RPC')
@@ -99,8 +100,10 @@ def parse_request(raw,body):
         if body or type(request['include_image']) is not int or request['include_image'] not in (0,1):
             raise Rejected('INVALID_WITNESS_RPC')
     else:
-        image_hash(body)
-        if method=='cas' and (type(request['expected_seq']) is not int or not 0<=request['expected_seq']<2**62 or
+        if method=='reassert':
+            if body:raise Rejected('INVALID_WITNESS_RPC')
+        else:image_hash(body)
+        if method in ('cas','reassert') and (type(request['expected_seq']) is not int or not 0<=request['expected_seq']<2**62 or
                 not hex_string(request['expected_digest'],64) or not hex_string(request['request_id'],32)):
             raise Rejected('INVALID_WITNESS_RPC')
     return request
@@ -158,8 +161,10 @@ def tls_context(cafile,certfile,keyfile,server=False):
 
 class WitnessTLSService:
     def __init__(self,witness_path,*,cafile,certfile,keyfile,signing_key,kid=b'witness',timeout=5,
-                 fault=lambda point,request:None,frame_mode='raw'):
+                 fault=lambda point,request:None,frame_mode='raw',allow_reassert=False):
         if type(timeout) not in (int,float) or not 0<timeout<=30:raise ValueError('invalid timeout')
+        if type(allow_reassert) is not bool:raise ValueError('invalid reassert mode')
+        self.allow_reassert=allow_reassert
         frame_functions(frame_mode);self.frame_mode=frame_mode
         self.path=str(witness_path);self.signing_key=signing_key;self.kid=kid;self.timeout=timeout;self.fault=fault
         self.context=tls_context(cafile,certfile,keyfile,True)
@@ -197,11 +202,13 @@ class WitnessTLSService:
         self.server.shutdown();self.server.server_close();self.thread.join(timeout=5)
 
     def dispatch(self,raw,body,request,peer):
+        if request['method']=='reassert' and not self.allow_reassert:raise Rejected('INVALID_WITNESS_RPC')
         w=AuthorizedWitness(self.path,peer)
         response_body=b''
         try:
             if request['method']=='head':result=w.head(request['namespace'],bool(request['include_image']))
             elif request['method']=='bootstrap':result=w.bootstrap(request['namespace'],body)
+            elif request['method']=='reassert':result=w.reassert(request['namespace'],request['expected_seq'],request['expected_digest'],request['request_id'])
             else:result=w.compare_and_store(request['namespace'],request['expected_seq'],request['expected_digest'],body,request['request_id'])
             response_body=result.pop('image',b'');status='ok'
         except Rejected as error:
@@ -215,10 +222,12 @@ class WitnessTLSService:
 
 
 class TLSWitnessClient:
-    def __init__(self,*,port,cafile,certfile,keyfile,witness_public_key,kid=b'witness',server_hostname='localhost',timeout=5,frame_mode='raw'):
+    def __init__(self,*,port,cafile,certfile,keyfile,witness_public_key,kid=b'witness',server_hostname='localhost',timeout=5,frame_mode='raw',compact_reassert=False):
         if type(port) is not int or not 1<=port<=65535:raise ValueError('invalid port')
         if type(witness_public_key) is not bytes or len(witness_public_key)!=32:raise ValueError('invalid witness key')
         if type(timeout) not in (int,float) or not 0<timeout<=30:raise ValueError('invalid timeout')
+        if type(compact_reassert) is not bool:raise ValueError('invalid reassert mode')
+        self.compact_reassert=compact_reassert
         frame_functions(frame_mode);self.frame_mode=frame_mode
         self.port=port;self.hostname=server_hostname;self.timeout=timeout;self.public_key=witness_public_key;self.kid=kid
         self.requester=certificate_fingerprint(certfile)
@@ -263,11 +272,15 @@ class TLSWitnessClient:
         elif response_body:raise Rejected('INVALID_WITNESS_REPLY')
         if method in ('bootstrap','cas') and (result['digest']!=image_hash(body) or result['seq']!=(0 if method=='bootstrap' else extra['expected_seq']+1)):
             raise Rejected('INVALID_WITNESS_REPLY')
+        if method=='reassert' and (result['digest']!=extra['expected_digest'] or result['seq']!=extra['expected_seq']+1):
+            raise Rejected('INVALID_WITNESS_REPLY')
         return result
 
     def head(self,namespace,include_image=False):return self.call('head',namespace,include_image=int(include_image))
     def bootstrap(self,namespace,image):return self.call('bootstrap',namespace,image)
     def compare_and_store(self,namespace,expected_seq,expected_digest,image,request_id):
+        if self.compact_reassert and image_hash(image)==expected_digest:
+            return self.call('reassert',namespace,expected_seq=expected_seq,expected_digest=expected_digest,request_id=request_id)
         return self.call('cas',namespace,image,expected_seq=expected_seq,expected_digest=expected_digest,request_id=request_id)
 
 

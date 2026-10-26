@@ -1,0 +1,21 @@
+test_aba_stale_attempt_and_changed_content_token_conflict (test_compact_witness.CompactLocalTests) ... ok
+test_bounded_full_cas_refinement (test_compact_witness.CompactLocalTests) ... ok
+test_corrupt_retained_image_is_not_reasserted (test_compact_witness.CompactLocalTests) ... ok
+test_local_and_wire_input_validation (test_compact_witness.CompactLocalTests) ... ok
+test_reassert_does_not_execute_image_column_update (test_compact_witness.CompactLocalTests) ... ok
+test_versions_tokens_and_equivalent_full_cas_retries (test_compact_witness.CompactLocalTests) ... ok
+test_competing_distinct_reassertions_do_not_collapse (test_compact_witness.CompactTransportTests) ... ok
+test_compressed_frames_can_carry_reassert (test_compact_witness.CompactTransportTests) ... ok
+test_empty_body_still_requires_write_role_and_namespace (test_compact_witness.CompactTransportTests) ... ok
+test_noop_guard_unknown_outcomes_restore_exact_image (test_compact_witness.CompactTransportTests) ... ok
+test_only_same_image_uses_empty_body_and_default_stays_full (test_compact_witness.CompactTransportTests) ... ok
+test_reassert_permission_check_and_update_share_write_lock (test_compact_witness.CompactTransportTests) ... ok
+test_reassert_replies_bind_challenge_method_sequence_and_digest (test_compact_witness.CompactTransportTests) ... ok
+test_revocation_after_handshake_is_checked_at_dispatch (test_compact_witness.CompactTransportTests) ... ok
+test_revocation_precedes_new_reassert_and_cached_receipt (test_compact_witness.CompactTransportTests) ... ok
+test_server_opt_in_has_no_fallback_or_commit (test_compact_witness.CompactTransportTests) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 1.178s
+
+OK

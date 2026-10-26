@@ -123,5 +123,25 @@
   "references": [
     "https://docs.python.org/3.9/library/ssl.html",
     "https://cryptography.io/en/49.0.0/x509/tutorial/"
-  ]
+  ],
+  "optional_extensions": {
+    "reassert": {
+      "default_enabled": false,
+      "service_flag": "allow_reassert=True",
+      "client_flag": "compact_reassert=True",
+      "schema_roots": [
+        "extended-request",
+        "extended-response"
+      ],
+      "selection": "Opted-in client uses reassert only if hash of the complete candidate image equals expected_digest; changed images still use cas.",
+      "request_body": "empty; metadata binds expected_seq, expected_digest and request_id",
+      "authority": "Existing cas role permission checked in the same BEGIN IMMEDIATE transaction before historical token lookup.",
+      "new_attempt": "Require exact current sequence/digest and hash the retained image under the same lock. Advance sequence and append the normal commit row; do not update the image column.",
+      "retry": "Same logical CAS content and token may be replayed through full-image cas or reassert; distinct attempts require fresh tokens. Current permission still required.",
+      "response": "Existing challenge/requester/request-digest/signature bindings; successful sequence is expected_seq + 1 and digest is expected_digest; empty body.",
+      "failure": "No automatic fallback. Unsupported service closes the connection. Missing reply is an unknown outcome; reconcile and restore if the witness advanced even when image bytes did not change.",
+      "limits": "Still two complete local image builds, one authority transaction, and growing commit metadata per attempt. Does not accelerate changed-state ticks/new POLLs or repair rollback. Full transport timing/length privacy excluded.",
+      "evidence": "../../../docs/research/compact-witness-evidence-20261026/manifest.json"
+    }
+  }
 }

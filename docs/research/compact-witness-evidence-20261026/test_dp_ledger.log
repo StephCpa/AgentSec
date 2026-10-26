@@ -1,0 +1,22 @@
+test_actual_process_death_at_nine_typed_cuts (__main__.TypedLedgerTests) ... ok
+test_committed_output_delivers_identically_without_additional_cost (__main__.TypedLedgerTests) ... ok
+test_concurrent_different_operations_cannot_overspend_either_dimension (__main__.TypedLedgerTests) ... ok
+test_concurrent_same_operation_debits_both_dimensions_once (__main__.TypedLedgerTests) ... ok
+test_either_dimension_exhaustion_rolls_back_both (__main__.TypedLedgerTests) ... ok
+test_new_root_and_snapshot_share_existing_domain_budget (__main__.TypedLedgerTests) ... ok
+test_prestart_refund_and_started_burn_cover_both_dimensions (__main__.TypedLedgerTests) ... ok
+test_profile_and_mechanism_downgrade_rejected (__main__.TypedLedgerTests) ... ok
+test_recovery_uses_same_bits_and_fences_old_worker (__main__.TypedLedgerTests) ... ok
+test_registered_costs_exact_retry_and_parameter_binding (__main__.TypedLedgerTests) ... ok
+test_registration_never_exposes_seed_output_or_private_readiness (__main__.TypedLedgerTests) ... ok
+test_request_cannot_omit_undercharge_or_redirect_dimensions (__main__.TypedLedgerTests) ... ok
+test_revocation_allows_prior_computation_but_blocks_new_delivery (__main__.TypedLedgerTests) ... ok
+test_root_cannot_access_another_domain_even_with_valid_accounts (__main__.TypedLedgerTests) ... ok
+test_same_query_new_operation_draws_independent_persisted_seed (__main__.TypedLedgerTests) ... ok
+test_snapshot_and_parameter_validation (__main__.TypedLedgerTests) ... ok
+test_typed_audit_detects_balanced_missing_delta_charge (__main__.TypedLedgerTests) ... ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 0.659s
+
+OK

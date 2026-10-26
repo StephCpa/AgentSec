@@ -1,0 +1,36 @@
+test_action_digest_and_output_cannot_change (__main__.LedgerTests) ... ok
+test_actual_process_death_at_four_delivery_cuts (__main__.LedgerTests) ... ok
+test_actual_process_death_at_seven_persistence_cuts (__main__.LedgerTests) ... ok
+test_concurrent_reservations_do_not_overspend (__main__.LedgerTests) ... ok
+test_concurrent_same_id_only_reserves_once (__main__.LedgerTests) ... ok
+test_cross_tenant_namespace_and_output (__main__.LedgerTests) ... ok
+test_delivery_cannot_precede_commit_or_change_recipient (__main__.LedgerTests) ... ok
+test_delivery_id_cannot_move_to_another_operation (__main__.LedgerTests) ... ok
+test_delivery_replay_keeps_result_and_charge (__main__.LedgerTests) ... ok
+test_double_recovery_generation_compare_and_swap (__main__.LedgerTests) ... ok
+test_exact_expiry_rejects_resume_and_emit (__main__.LedgerTests) ... ok
+test_exact_retry_and_changed_action (__main__.LedgerTests) ... ok
+test_expired_root_rejects_reserve_and_claim (__main__.LedgerTests) ... ok
+test_expired_ticket_cannot_be_reissued_with_same_id (__main__.LedgerTests) ... ok
+test_invalid_ticket_lifetimes (__main__.LedgerTests) ... ok
+test_invalid_trusted_clock_is_rejected (__main__.LedgerTests) ... ok
+test_l3_before_revoke_can_finish_but_new_l3_fails (__main__.LedgerTests) ... ok
+test_multi_account_insufficient_rolls_back_everything (__main__.LedgerTests) ... ok
+test_negative_boolean_and_zero_costs (__main__.LedgerTests) ... ok
+test_old_ticket_cannot_bypass_fresh_fetch_authorization (__main__.LedgerTests) ... ok
+test_prestart_cancel_returns_and_tombstone_prevents_restart (__main__.LedgerTests) ... ok
+test_rejected_expiry_persists_clock_floor_across_restart (__main__.LedgerTests) ... ok
+test_resume_preserves_seed_and_fences_worker (__main__.LedgerTests) ... ok
+test_revoke_after_claim_allows_internal_completion_not_delivery (__main__.LedgerTests) ... ok
+test_revoke_before_claim_blocks_new_l1 (__main__.LedgerTests) ... ok
+test_root_expiry_caps_ticket_lifetime (__main__.LedgerTests) ... ok
+test_started_cancel_burns_and_fences_late_commit (__main__.LedgerTests) ... ok
+test_ticket_bound_to_gateway_and_session (__main__.LedgerTests) ... ok
+test_ticket_retry_does_not_extend_lifetime (__main__.LedgerTests) ... ok
+test_two_connections_cannot_rebind_same_ticket (__main__.LedgerTests) ... ok
+test_wrong_actor_and_recipient (__main__.LedgerTests) ... ok
+
+----------------------------------------------------------------------
+Ran 31 tests in 0.669s
+
+OK
