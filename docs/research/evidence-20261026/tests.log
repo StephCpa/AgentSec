@@ -1,0 +1,30 @@
+test_retry_cas_and_new_request_growth_measured_separately (test_persistence_experiment.PersistenceMeasurements) ... ok
+test_work_slots_and_poll_commits_are_accounted_for (test_persistence_experiment.PersistenceMeasurements) ... ok
+test_changed_retry_and_private_error_alias_are_rejected (test_restricted_trace.RestrictedTraceTests) ... ok
+test_cross_route_send_requires_previous_sender_confirmation (test_restricted_trace.RestrictedTraceTests) ... ok
+test_early_publication_and_wrong_final_are_rejected_even_with_valid_signature (test_restricted_trace.RestrictedTraceTests) ... ok
+test_eight_neighbor_inputs_have_identical_conditioned_observations (test_restricted_trace.RestrictedTraceTests) ... ok
+test_frozen_scenario_matrix_and_oracle_l1_binding (test_restricted_trace.RestrictedTraceTests) ... ok
+test_missing_or_replayed_tick_and_unknown_management_event_rejected (test_restricted_trace.RestrictedTraceTests) ... ok
+test_receipt_does_not_stand_for_sender_durable_confirmation (test_restricted_trace.RestrictedTraceTests) ... ok
+test_wrong_or_missing_mechanism_output_and_private_extra_fields_rejected (test_restricted_trace.RestrictedTraceTests) ... ok
+test_exact_ancestor_expiry_blocks_publication (test_review_regressions.AdapterExpiryTests) ... ok
+test_real_delivery_trace_includes_all_ancestor_key_expiries (test_review_regressions.AdapterExpiryTests) ... ok
+test_child_cannot_squat_another_root_grant (test_review_regressions.CredentialNamespaceTests) ... ok
+test_other_root_with_independent_authority_cannot_be_squatted (test_review_regressions.CredentialNamespaceTests) ... ok
+test_same_name_from_different_issuers_and_grant_isolated (test_review_regressions.CredentialNamespaceTests) ... ok
+test_journal_sequence_is_sqlite_bounded (test_review_regressions.ResponseContractTests) ... ok
+test_wrong_audience_is_rejected (test_review_regressions.ResponseContractTests) ... ok
+test_signed_conformance_vectors (test_review_regressions.ResponseVectorTests) ... ok
+test_cross_root_identical_leaf_names_and_scoped_pre_revocation (test_review_regressions.ScopedRevocationTests) ... ok
+test_historical_identity_tampering_is_detected (test_review_regressions.ScopedRevocationTests) ... ok
+test_issuer_scoped_tombstone_does_not_revoke_other_issuer (test_review_regressions.ScopedRevocationTests) ... ok
+test_legacy_namespace_schema_is_rejected_without_migration (test_review_regressions.ScopedRevocationTests) ... ok
+test_new_issuer_key_does_not_reset_shared_ancestor_budget (test_review_regressions.ScopedRevocationTests) ... ok
+test_restore_preserves_scoped_revocations_chains_and_accounts (test_review_regressions.ScopedRevocationTests) ... ok
+test_same_identity_cannot_replace_content (test_review_regressions.ScopedRevocationTests) ... ok
+
+----------------------------------------------------------------------
+Ran 25 tests in 40.085s
+
+OK

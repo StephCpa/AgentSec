@@ -1,0 +1,22 @@
+{
+  "merged_pr": 1,
+  "main_merge_commit": "f051ae2d747c595515552d28b57ab150076129c1",
+  "main_ci": "https://github.com/StephCpa/AgentSec/actions/runs/40303608312",
+  "restricted_trace_cases": 152,
+  "saved_trace_replay_passed": true,
+  "unit_test_methods": 25,
+  "scope": "Conditional finite traces and local persistence measurements; original core protocol unchanged.",
+  "files_sha256": {
+    "persistence.json": "dfc47ff46d950580cc19322fa9ca8208768e7a6245962caff1ee884efc742275",
+    "persistence.png": "9acb6780aa0da86ddb087c9ef15298459e9199df4f6235f3fa423e049b41fc1a",
+    "tests.log": "0689cc64ceb23f93534866f3c2185af649c44ee0810d16386393408e87ab3dc8",
+    "trace-summary.json": "2db509914c5f5a4e3a9902f0f67e40f3bf08305377e25d4a5fe8e624499bbb11",
+    "traces.json.gz": "95adccb282817d14c5ab99a5b9842a28f0af0e771983481586b7a0c476bea731"
+  },
+  "test_and_renderer_sha256": {
+    "tests/test_restricted_trace.py": "d71e99643706fc7680dfdbada689c10af9cd2fde6fc84379536edd27b0fe8828",
+    "tests/test_review_regressions.py": "722c280d33749ea3d683561993b289cbc4d7d95766899d7251ffa5ce52cfa4f4",
+    "tests/test_persistence_experiment.py": "bcbaf8dc58a7fc2997f26e4c7197dafc68fc5c13418d7b2bcc6418e7357aafd1",
+    "scripts/plot_persistence.py": "c6d06110a16203f26b7d74fb5d8a601a4fd11f9b6fbda5cfe16aac639886da20"
+  }
+}
