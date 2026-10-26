@@ -1,0 +1,120 @@
+{
+  "profile": "retirement-recovery-evidence-v1",
+  "base_commit": "86661c1db13a2d64e95da1c5f8a2973cfc5e43e1",
+  "summary": {
+    "main_exits": 352,
+    "batch_exits": 112,
+    "actual_exits": 464,
+    "diagnostic_restores": 464,
+    "operational_restores": 464,
+    "checkpoints": 104280,
+    "replayed_cases": 464,
+    "directed_neighbor_comparisons": 1392,
+    "cost_trials": 30,
+    "denied_cost_query_commits": 480,
+    "new_regressions": 17,
+    "negative_control_classes": 4,
+    "legacy_test_entries": 30,
+    "regressions": 213,
+    "models": 7,
+    "all_passed": true
+  },
+  "files": {
+    "README.md": {
+      "sha256": "9b5b1cdaf804d8e314c10129cf25e29ec36c49437298199f231ecafd12bc6d2f",
+      "bytes": 12457
+    },
+    "docs/research/2026-10-26-acceptance-status.md": {
+      "sha256": "26ecabd73bce492360c3ce0b56a83c3c853d12c4c17e1c2b67ab77ac1dd31b3e",
+      "bytes": 4663
+    },
+    "docs/research/2026-10-26-retirement-recovery-correspondence.md": {
+      "sha256": "e8029fb69a2b7e010009027182b5cdbba57f5077191a533fae326d31f22d1b0a",
+      "bytes": 12327
+    },
+    "docs/research/retirement-recovery-contract.json": {
+      "sha256": "e1d47649f652600724cb514eb520b951e64d130e1b9eb539f799cbbdc6204f1e",
+      "bytes": 7428
+    },
+    "scripts/replay_retirement_recovery.py": {
+      "sha256": "ba48e4199f2c3190067bd8b7468c5d946f0f55ecc75e2a1738eca1fbc3706bdf",
+      "bytes": 4915
+    },
+    "scripts/retirement_batch_probe.py": {
+      "sha256": "19b968f350f0168b2d0e446cbb601c7bf2339e9465ccf9a068a6be213208814b",
+      "bytes": 5459
+    },
+    "tests/test_retirement_recovery.py": {
+      "sha256": "8eaf8c386e0a553ed1f26d409bc8ea5c74bc26d79019b27704214015e57cd772",
+      "bytes": 12579
+    },
+    "outputs/agent-cryptography-design-20261025/prototype/delivery_state_relation.py": {
+      "sha256": "921508576a42373429cb488db9708daa6047e64c3cfc86af978f6bfa5a418d70",
+      "bytes": 11637
+    },
+    "outputs/agent-cryptography-design-20261025/prototype/retirement_recovery_simulator.py": {
+      "sha256": "57b717e25fd28cb05ce1635e9d96c32ead5d3279e4486f05b6769bdaf88eae9d",
+      "bytes": 13485
+    },
+    "outputs/agent-cryptography-design-20261025/prototype/retirement_recovery_trace.py": {
+      "sha256": "4557b8961015a139698a9c3684f64bc914245988220138abec2fdaaf78122b86",
+      "bytes": 20168
+    },
+    "outputs/agent-cryptography-design-20261025/prototype/retirement_cost_experiment.py": {
+      "sha256": "36bca134f0ae72344799073e343281f137eda9f0c7b5e07776e319b8b707e8bf",
+      "bytes": 9117
+    },
+    "docs/research/retirement-recovery-evidence-20261026/batch/cases.jsonl.xz": {
+      "sha256": "62169dac1140d945c98db31b88528c9203f048390e12f330694e408a3377206a",
+      "bytes": 43428
+    },
+    "docs/research/retirement-recovery-evidence-20261026/batch/matrix.log": {
+      "sha256": "69ab698b7323507af5591e7917ed6b47bec62b74dc0c2c8c95f2997b76516daf",
+      "bytes": 770
+    },
+    "docs/research/retirement-recovery-evidence-20261026/batch/replay.json": {
+      "sha256": "31800ba4de24cd7dea1f5759ea0916a7ea94ec604c67c88623fa6fe0a47bf39a",
+      "bytes": 9823
+    },
+    "docs/research/retirement-recovery-evidence-20261026/batch/summary.json": {
+      "sha256": "ee8fc35642e48da3b2e11a0330d545b3daaf3e8d01d03d5ba2f94da30553b56f",
+      "bytes": 563032
+    },
+    "docs/research/retirement-recovery-evidence-20261026/cases.jsonl.xz": {
+      "sha256": "c7b9a8b792755f024587630105bf7998aebc0315dc97f31ceb16a53e3bd9ea5b",
+      "bytes": 68036
+    },
+    "docs/research/retirement-recovery-evidence-20261026/costs.json": {
+      "sha256": "be86a1605a1751a676cf8febc1833d143b3b92898e931664476078ed3d27c92a",
+      "bytes": 308098
+    },
+    "docs/research/retirement-recovery-evidence-20261026/costs.log": {
+      "sha256": "af2c536f5b6a7940a15b1f183cdfa7ef1d8e25828931b8462e0ad20f391fe144",
+      "bytes": 336
+    },
+    "docs/research/retirement-recovery-evidence-20261026/matrix.log": {
+      "sha256": "d8b61db8ddab1ffa8984c74c32030f13b7657863a80b4ccbb57cdb504ed374d2",
+      "bytes": 2490
+    },
+    "docs/research/retirement-recovery-evidence-20261026/replay.json": {
+      "sha256": "308b7ceeb38ad7525cc12053d948b950ce9335df03c1b783abe28263518d79b8",
+      "bytes": 9824
+    },
+    "docs/research/retirement-recovery-evidence-20261026/summary.json": {
+      "sha256": "47af7d099ee8e8f386f73923c68cb84f0854f383088d00eb685a2db32dfa623a",
+      "bytes": 1450851
+    },
+    "docs/research/retirement-recovery-evidence-20261026/verification-logs.json.xz": {
+      "sha256": "027ff925de5e6c27c34d09fa462d4dbd0075478b0f4b25c5684113ad8172b1d3",
+      "bytes": 18696
+    },
+    "docs/research/retirement-recovery-evidence-20261026/verification.json": {
+      "sha256": "e120cbbf608a939c07b7b230c368b298f963f6ea5a7eec1b591165d2c42ad878",
+      "bytes": 37289
+    },
+    "docs/research/retirement-recovery-evidence-20261026/.gitattributes": {
+      "sha256": "c2bfc2198a877f83febf080f712cd73845b0d3577ac1e78ce18d36e97320e9a1",
+      "bytes": 130
+    }
+  }
+}

@@ -1,0 +1,14 @@
+PASS batch_count after_v2_recipient_delete 8 datasets
+PASS batch_count before_v2_recipient_retire_commit 8 datasets
+PASS batch_count before_witness_accept 8 datasets
+PASS batch_count after_witness_accept 8 datasets
+PASS batch_count after_local_anchor_write 8 datasets
+PASS batch_count after_v2_recipient_retire_commit 8 datasets
+PASS batch_count response_drop 8 datasets
+PASS batch_histogram after_v2_recipient_delete 8 datasets
+PASS batch_histogram before_v2_recipient_retire_commit 8 datasets
+PASS batch_histogram before_witness_accept 8 datasets
+PASS batch_histogram after_witness_accept 8 datasets
+PASS batch_histogram after_local_anchor_write 8 datasets
+PASS batch_histogram after_v2_recipient_retire_commit 8 datasets
+PASS batch_histogram response_drop 8 datasets

@@ -1,0 +1,204 @@
+{
+  "profile": "retirement-recovery-correspondence-v1",
+  "base_commit": "86661c1db13a2d64e95da1c5f8a2973cfc5e43e1",
+  "scope": "Finite conditional correspondence for offer preparation, recipient retirement and sender checkpoint confirmation, with actual process exits and fresh recovery.",
+  "public_inputs": [
+    "public setup and original signed gateway requests",
+    "operation-bound approved output values",
+    "explicit role-scoped ideal signing resource",
+    "independent attempt challenges",
+    "nondecreasing environment clock and dataset-independent fault schedule"
+  ],
+  "generator_excludes": [
+    "real responses or commit bits",
+    "SQLite reads and state images",
+    "witness heads",
+    "private records, seed and accumulator storage"
+  ],
+  "plans": {
+    "offer_histogram": "first offer for one completed histogram",
+    "offer_retry": "repeat already prepared offer",
+    "retire_partial": "retire first of ACCEPTED/100 and CLOSED/170 facts",
+    "retire_duplicate": "repeat retirement already accepted by receiver",
+    "retire_second": "retire second prefix after first checkpoint; replay older offer afterwards",
+    "confirm_checkpoint": "ACK loss followed by fresh CHECKPOINT query and confirmation",
+    "confirm_retry": "retry original confirmation request and receipt, including after recovery"
+  },
+  "cuts": {
+    "RETIRE_PREPARE": [
+      "before_v2_retirement_offer_commit",
+      "before_witness_accept",
+      "after_witness_accept",
+      "after_local_anchor_write",
+      "after_v2_retirement_offer_commit",
+      "response_drop"
+    ],
+    "RETIRE_SEND": [
+      "after_v2_recipient_delete",
+      "before_v2_recipient_retire_commit",
+      "before_witness_accept",
+      "after_witness_accept",
+      "after_local_anchor_write",
+      "after_v2_recipient_retire_commit",
+      "response_drop"
+    ],
+    "RETIRE_CONFIRM": [
+      "before_v2_retirement_checkpoint_commit",
+      "before_witness_accept",
+      "after_witness_accept",
+      "after_local_anchor_write",
+      "after_v2_retirement_checkpoint_commit",
+      "response_drop"
+    ]
+  },
+  "unreachable": "retire_duplicate does not execute after_v2_recipient_delete; exclude that pair.",
+  "matrix": {
+    "plan_cut_groups": 44,
+    "datasets": 8,
+    "actual_exits": 352,
+    "diagnostic_restores": 352,
+    "operational_restores": 352
+  },
+  "observation_boundary": "Includes trusted coordinator completions, business denials and recovery notifications as well as signed public traffic. Not a complete network attacker view.",
+  "events": {
+    "completed": [
+      "PUBLIC",
+      "TICK",
+      "DELIVERY",
+      "CONFIRM",
+      "RETIRE_PREPARATION",
+      "RETIRE_PREPARATION_REJECTED",
+      "RETIRE_DELIVERY",
+      "RETIRE_CONFIRMATION",
+      "RETENTION_QUERY",
+      "DELIVERY_REPLAY",
+      "RETIRE_RECOVER"
+    ],
+    "failure": {
+      "RETIRE_PREPARATION_UNAVAILABLE": [
+        "at",
+        "route",
+        "target"
+      ],
+      "RETIRE_DELIVERY_UNAVAILABLE": [
+        "at",
+        "route",
+        "request"
+      ],
+      "RETIRE_CONFIRM_UNAVAILABLE": [
+        "at",
+        "route",
+        "request",
+        "response"
+      ]
+    },
+    "failure_excludes": [
+      "newly computed output body",
+      "commit bit",
+      "cut point",
+      "witness metadata"
+    ],
+    "confirmation_input": "The request and receipt in a failed confirmation were known before this call, not leaked by the failure."
+  },
+  "state_rules": [
+    "Logical historical first facts are immutable; receiver floor selects live records without erasing sender archives.",
+    "Receiver retirement atomically updates floor/root/last_offer and removes the corresponding live rows.",
+    "Before witness acceptance restore previous authority; after acceptance restore the complete new image, even when local commit or reply is missing.",
+    "Repeated/stale offers return the current checkpoint and never reconstruct deleted facts or move floor backwards.",
+    "Authenticated FINAL/RETIRED and delivery replay business denials still persist observed time and a witness CAS.",
+    "A checkpoint at floor zero retains no sender retirement evidence.",
+    "No cleanup event refunds budget, resamples a mechanism or advances/rewinds the public FINAL prefix."
+  ],
+  "relations": {
+    "R1-R4": "Existing gateway, budget/draw, schedule and publication projections.",
+    "R5": "Explicit retirement metadata, checkpoint evidence and prepared offer map; original no-retirement assertions remain default.",
+    "R6": "Filtered live window, high/floor/root/last_offer, observed clock including business denials.",
+    "R7-R8": "Original sender archived confirmations and immutable FINAL prefix.",
+    "R14": "Child exit 97, authority/local atomicity, stale guard, unchanged other authorities, byte-exact fresh restoration, opaque sender archive/budget/final preservation."
+  },
+  "domains": {
+    "users": 3,
+    "dataset_masks": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "operations_max": 2,
+    "routes": 1,
+    "cleanup_starts": "after all domain operations have final outcomes",
+    "approved_outputs": "count=1 or four-bin histogram=[1,0,0,0]",
+    "clocks": [
+      100,
+      170,
+      180,
+      190,
+      200
+    ],
+    "witness": "local ReferenceWitness"
+  },
+  "negative_controls": [
+    "incorrect pre-witness delete durability",
+    "resurrecting the model live window",
+    "ignoring receiver clock commit on rejection",
+    "modifying the retained opaque sender archive"
+  ],
+  "cost_experiment": {
+    "groups": 6,
+    "fresh_fixture_repetitions": 5,
+    "workloads": [
+      "one completed count",
+      "one completed histogram",
+      "two counts",
+      "histogram then count"
+    ],
+    "public_batch_sizes": [
+      1,
+      2
+    ],
+    "paired_comparison": "same two jobs and outcomes, clean individually versus one batch",
+    "rejected_queries_per_trial": 16,
+    "metrics": [
+      "actual full-image CAS count/bytes",
+      "state-image builds/bytes",
+      "service method elapsed time without trace relation overhead",
+      "current sender/receiver image bytes",
+      "live/archive/offer/commit rows",
+      "SQLite main/WAL/SHM/journal bytes, page and freelist counts"
+    ],
+    "excludes": [
+      "crash or restore in cost trials",
+      "VACUUM",
+      "network or scale claims",
+      "statistical speedup inference",
+      "peak I/O/memory, backup sizes or physical secure erasure"
+    ]
+  },
+  "remaining": [
+    "arbitrary allowed-input induction",
+    "composed recovery interruptions and authority races",
+    "large windows and long-running history",
+    "cross-host, TLS and power loss",
+    "complete time/length/availability observation privacy",
+    "DP/cryptographic composition proof"
+  ],
+  "supplemental_batch_matrix": {
+    "profile": "retirement-batch-correspondence-v1",
+    "driver": "scripts/retirement_batch_probe.py",
+    "plans": [
+      "batch_count",
+      "batch_histogram"
+    ],
+    "rows_deleted_together": 2,
+    "both_initial_facts": "ACCEPTED/100",
+    "plan_cut_groups": 14,
+    "datasets": 8,
+    "actual_exits": 112,
+    "purpose": "Connect same-workload two-row batching costs to actual recipient delete crash recovery using unchanged runtime/generator/relations.",
+    "coverage": "All seven RETIRE_SEND cuts; query both rows immediately after recovery; no one-row intermediate state; retain sender archives."
+  }
+}

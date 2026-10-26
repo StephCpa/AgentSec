@@ -133,3 +133,11 @@ python3 scripts/replay_recovery_interruptions.py /tmp/agentsec-repeated-recovery
 python3 outputs/agent-cryptography-design-20261025/prototype/preparation_recovery_trace.py --output /tmp/agentsec-preparation-new
 python3 scripts/replay_preparation_recovery.py /tmp/agentsec-preparation-new --output /tmp/agentsec-preparation-replay-new.json
 ```
+
+[清理中断、恢复窗口与成本](docs/research/2026-10-26-retirement-recovery-correspondence.md)扩展 R5–R8 并增加 R14，区分发送方归档与接收方 live 窗口，核对 offer、删除和检查点确认的提交边界。30 次成本试验在相同工作量上比较逐条/批量清理，同时记录拒绝查询的持久化成本及未缩小的物理文件。
+
+```sh
+python3 outputs/agent-cryptography-design-20261025/prototype/retirement_recovery_trace.py --output /tmp/agentsec-retirement-new
+python3 scripts/replay_retirement_recovery.py /tmp/agentsec-retirement-new --output /tmp/agentsec-retirement-replay-new.json
+python3 outputs/agent-cryptography-design-20261025/prototype/retirement_cost_experiment.py --output /tmp/agentsec-retirement-costs-new.json
+```
