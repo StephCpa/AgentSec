@@ -1,0 +1,19 @@
+test_all_nine_runtime_families_share_event_contract (test_observation_events.FreshRuntimeObservationTests) ... ok
+test_ack_loss_cannot_authorize_confirmation (test_observation_events.ObservationEventTests) ... ok
+test_all_command_event_forms_roundtrip_without_database (test_observation_events.ObservationEventTests) ... ok
+test_audit_rejects_omitted_events_and_preserves_error_distinction (test_observation_events.ObservationEventTests) ... ok
+test_confirmation_receipt_is_input_not_new_output (test_observation_events.ObservationEventTests) ... ok
+test_confirmation_requires_previously_observed_exact_pair (test_observation_events.ObservationEventTests) ... ok
+test_cut_and_commit_location_do_not_enter_caller_view (test_observation_events.ObservationEventTests) ... ok
+test_exact_exception_code_is_never_erased_or_invented (test_observation_events.ObservationEventTests) ... ok
+test_invocation_binding_clock_and_boolean_integer_mutants (test_observation_events.ObservationEventTests) ... ok
+test_packet_loss_and_ack_loss_preserved_only_as_environment (test_observation_events.ObservationEventTests) ... ok
+test_replayed_delivery_receipt_is_an_observed_input (test_observation_events.ObservationEventTests) ... ok
+test_signed_rejection_is_preserved_as_signed_bytes (test_observation_events.ObservationEventTests) ... ok
+test_trace_time_regression_is_atomic (test_observation_events.ObservationEventTests) ... ok
+test_unknown_fields_malformed_hex_and_channel_changes_fail_closed (test_observation_events.ObservationEventTests) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 14.727s
+
+OK
