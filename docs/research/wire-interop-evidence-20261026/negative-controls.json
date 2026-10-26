@@ -1,0 +1,73 @@
+{
+  "passed": true,
+  "controls": [
+    {
+      "name": "round-uint64",
+      "detected": true,
+      "target": "canonical:uint64",
+      "mismatch_count": 13,
+      "source_sha256": "af8de09024dc336e6eb35e5ab8df24c1f4ce3a4a47dd7a4b5fd41020c34cb71b",
+      "replacement": {
+        "old": "if(major===0)return argument;",
+        "new": "if(major===0)return BigInt(Number(argument));"
+      }
+    },
+    {
+      "name": "drop-utf8-bom",
+      "detected": true,
+      "target": "canonical:bom-preserved",
+      "mismatch_count": 1,
+      "source_sha256": "73e027df94ac75b6f90cf119ea662b4cc2a1cbc83b35a6340f3868bce7d15309",
+      "replacement": {
+        "old": "ignoreBOM:true",
+        "new": "ignoreBOM:false"
+      }
+    },
+    {
+      "name": "length-first-map",
+      "detected": true,
+      "target": "canonical:mixed-map-order",
+      "mismatch_count": 2,
+      "source_sha256": "40aa2ec846c32da5047b7aacae1718358324a7d5f450ef39e637d39f13194997",
+      "replacement": {
+        "old": "pairs.sort((a,b)=>Buffer.compare(a[0],b[0]));",
+        "new": "pairs.sort((a,b)=>a[0].length-b[0].length||Buffer.compare(a[0],b[0]));"
+      }
+    },
+    {
+      "name": "allow-polymorphic-alg",
+      "detected": true,
+      "target": "cose-malformed:5",
+      "mismatch_count": 1,
+      "source_sha256": "498086340c3d1e0f03232fd3c3a94ef36f9ab07d1d1701918efd19ac37b6242f",
+      "replacement": {
+        "old": "h.get(1n)===-19n",
+        "new": "(h.get(1n)===-19n||h.get(1n)===-8n)"
+      }
+    },
+    {
+      "name": "relax-audience",
+      "detected": true,
+      "target": "frozen-public:audience-other-gateway-v1",
+      "mismatch_count": 1,
+      "source_sha256": "c51cc6578ec7987556e218bc8f04229013c1a85516187fc7c2ff5d1a7e44a648",
+      "replacement": {
+        "old": "g('audience')==='mixed-gateway-v1'",
+        "new": "id(g('audience'))"
+      }
+    },
+    {
+      "name": "collapse-signing-domains",
+      "detected": true,
+      "target": "cose:AgentPublicResponseV10",
+      "mismatch_count": 52,
+      "source_sha256": "dbe333b00e2a584c3878c5193236ba8fed8341fe254d6718fb65d3061d6f8e2e",
+      "replacement": {
+        "old": "aad(type)",
+        "new": "aad('CountActionProof')"
+      }
+    }
+  ],
+  "baseline_node_sha256": "fe28b4a664f1228a49a3290096120a4a23820660024aaa74bbd0765d5d4488d2",
+  "scope": "Intentional defects in disposable Node copies. Each must cause the designated semantic/acceptance mismatch, not an internal crash. They are not defects found in the Python implementation."
+}

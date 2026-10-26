@@ -29,9 +29,12 @@ def main():
     if out.exists():parser.error('output already exists; preserve evidence by choosing a new directory')
     out.mkdir(parents=True)
     source_paths=sorted(p for p in (ROOT/REL).rglob('*') if p.is_file() and p.suffix in ('.py','.cddl','.json','.md','.txt'))
-    source_paths+=sorted(p for p in (ROOT/'tests').rglob('*') if p.is_file() and p.suffix in ('.py','.json'))+[Path(__file__).resolve()]
+    source_paths+=sorted(p for p in (ROOT/'tests').rglob('*') if p.is_file() and p.suffix in ('.py','.json','.mjs'))+[Path(__file__).resolve()]
     hashes={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in source_paths}
-    report=dict(started_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),python=sys.version,
+    node=shutil.which('node')
+    if node is None:raise SystemExit('Node.js is required for independent protocol validation (CI uses Node 24).')
+    node_version=subprocess.run([node,'--version'],capture_output=True,text=True,check=True,timeout=10).stdout.strip()
+    report=dict(node=node_version,started_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),python=sys.version,
         cryptography=cryptography.__version__,openssl=ssl.OPENSSL_VERSION,sqlite=sqlite3.sqlite_version,
         platform=platform.platform(),source_sha256=hashes,results=[],passed=False)
     (out/'run.json').write_text(json.dumps(report,indent=2)+'\n')

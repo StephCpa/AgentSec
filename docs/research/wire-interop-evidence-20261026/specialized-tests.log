@@ -1,0 +1,10 @@
+test_frozen_response_vectors_include_original_audience_regression (test_node_interop.IndependentWireTests) ... ok
+test_full_cross_language_corpus (test_node_interop.IndependentWireTests) ... ok
+test_node_signatures_and_exact_bytes_checked_in_python (test_node_interop.IndependentWireTests) ... ok
+test_six_semantic_negative_controls_are_detected (test_node_interop.IndependentWireTests) ... ok
+test_uint64_bom_and_bytewise_map_order_match_handwritten_bytes (test_node_interop.IndependentWireTests) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 1.505s
+
+OK

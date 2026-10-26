@@ -1,0 +1,26 @@
+test_action_shape_and_work_tampering_reject_before_secret_use (__main__.EncryptedMixedTests) ... ok
+test_cancel_and_ancestor_revocation_keep_encrypted_state_and_all_cap_rules (__main__.EncryptedMixedTests) ... ok
+test_ciphertext_lengths_do_not_depend_on_private_categories_or_partial_counts (__main__.EncryptedMixedTests) ... ok
+test_concurrent_identical_tick_returns_same_durable_ciphertext (__main__.EncryptedMixedTests) ... ok
+test_full_encrypted_tape_commits_before_snapshot_read (__main__.EncryptedMixedTests) ... ok
+test_job_checkpoint_cannot_be_replayed_at_new_pc_or_sequence (__main__.EncryptedMixedTests) ... ok
+test_maximum_bucket_ciphertext_widths_and_replay (__main__.EncryptedMixedTests) ... ok
+test_maximum_public_capacity_snapshot_fits_vault_without_truncation (__main__.EncryptedMixedTests) ... ok
+test_midvector_reopen_preserves_tape_ciphertext_and_checkpoint (__main__.EncryptedMixedTests) ... ok
+test_operation_and_scalar_vector_ciphertext_substitution_rejected (__main__.EncryptedMixedTests) ... ok
+test_result_corruption_or_bare_hash_cannot_be_delivered (__main__.EncryptedMixedTests) ... ok
+test_seed_and_state_corruption_fail_without_refund_resample_or_progress (__main__.EncryptedMixedTests) ... ok
+test_signed_mixed_execution_encrypts_all_private_fields_and_retains_caps (__main__.EncryptedMixedTests) ... ok
+test_six_real_process_crash_cuts_preserve_ciphertexts_vector_and_all_charges (__main__.EncryptedMixedTests) ... ok
+test_snapshot_id_and_ordered_catalog_binding_reject_swaps (__main__.EncryptedMixedTests) ... ok
+test_snapshot_substitution_and_type_remapping_fail_after_durable_start (__main__.EncryptedMixedTests) ... ok
+test_valid_aead_state_out_of_range_is_rejected (__main__.EncryptedMixedTests) ... ok
+test_valid_aead_with_wrong_field_width_is_still_rejected (__main__.EncryptedMixedTests) ... ok
+test_wal_files_do_not_contain_tape_key_or_categorical_snapshot_sentinels (__main__.EncryptedMixedTests) ... ok
+test_whole_database_rollback_remains_undetectable_without_external_witness (__main__.EncryptedMixedTests) ... ok
+test_wrong_key_deployment_or_plaintext_profile_cannot_open (__main__.EncryptedMixedTests) ... ok
+
+----------------------------------------------------------------------
+Ran 21 tests in 9.013s
+
+OK

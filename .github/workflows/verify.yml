@@ -21,6 +21,9 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
       - name: Install pinned dependencies
         if: matrix.dependencies == 'pinned'
         run: python -m pip install -r outputs/agent-cryptography-design-20261025/prototype/requirements.txt

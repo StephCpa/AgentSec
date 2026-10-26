@@ -19,7 +19,7 @@ Agent 密码学系统研究：受约束的委托、可验证的行动、可计�
 
 `prototype/public_trace_adapter.py` 已修复审核指出的期限错误并增加局部回归，但仍是未完整验收草稿，不属于 v37 已验收源码清单。完整观察归约、真实部署隔离、强基线比较和生产保证仍有待完成。
 
-测试中的固定密钥和身份均为合成材料，仅用于复现。测试依赖见 [requirements.txt](outputs/agent-cryptography-design-20261025/prototype/requirements.txt)。部分测试需要 OpenSSL 命令和本机网络端口；详细命令见原型说明。
+测试中的固定密钥和身份均为合成材料，仅用于复现。测试依赖见 [requirements.txt](outputs/agent-cryptography-design-20261025/prototype/requirements.txt)。部分测试需要 OpenSSL 命令和本机网络端口；跨语言回归还需要 Node.js（CI 使用 24）。详细命令见原型说明。
 
 示例：在仓库根目录运行：
 
@@ -101,4 +101,11 @@ python3 scripts/replay_private_recovery.py /tmp/agentsec-private-recovery-new --
 ```sh
 python3 outputs/agent-cryptography-design-20261025/prototype/compact_witness_model.py --output /tmp/agentsec-compact-model-new.json
 python3 outputs/agent-cryptography-design-20261025/prototype/compact_witness_experiment.py --output /tmp/agentsec-compact-cost-new.json
+```
+
+[独立跨语言协议验证](docs/research/2026-10-26-independent-wire-interop.md)增加 Node 实现的受限 CBOR/COSE、公开响应和见证报文校验：1,598 个案例与 Python 实际代码一致，完整归档重放通过，六种人为错误均被负对照识别。它尚未覆盖全部业务对象、独立 CDDL 验证或完整协议部署。
+
+```sh
+python3 outputs/agent-cryptography-design-20261025/prototype/wire_interop.py --output /tmp/agentsec-wire-new
+python3 scripts/replay_wire_interop.py /tmp/agentsec-wire-new --output /tmp/agentsec-wire-replay-new.json
 ```
