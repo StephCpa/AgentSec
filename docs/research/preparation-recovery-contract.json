@@ -1,0 +1,153 @@
+{
+  "profile": "preparation-recovery-correspondence-v1",
+  "base_commit": "b5fceedf48fc6bbbd8231ebb6254fc3b96e41fe5",
+  "scope": "Finite conditional correspondence for sender envelope/control preparation and fresh replica recovery; not a general simulation or privacy proof.",
+  "public_inputs": [
+    "public configuration and original signed gateway requests",
+    "approved output values bound to operation",
+    "explicit ideal role-scoped signing oracle",
+    "nondecreasing public clock",
+    "dataset-independent preparation kind and cut schedule",
+    "independent public attempt challenges"
+  ],
+  "excluded_generator_inputs": [
+    "observed runtime response",
+    "SQLite rows or state image",
+    "witness head, receipts or commit bit",
+    "private dataset, tape, accumulator or result storage"
+  ],
+  "commands": {
+    "PREPARE": [
+      "kind",
+      "at",
+      "operation",
+      "delivery_kind"
+    ],
+    "PREPARE_CUT": [
+      "kind",
+      "at",
+      "operation",
+      "delivery_kind",
+      "cut"
+    ],
+    "PREPARE_RECOVER": [
+      "kind",
+      "at",
+      "operation"
+    ],
+    "inherited_completed": [
+      "PUBLIC",
+      "TICK",
+      "SEND",
+      "CONFIRM"
+    ]
+  },
+  "observations": {
+    "PREPARATION": [
+      "kind",
+      "at",
+      "operation",
+      "delivery_kind",
+      "body"
+    ],
+    "PREPARATION_REJECTED": [
+      "kind",
+      "at",
+      "operation",
+      "delivery_kind",
+      "reason"
+    ],
+    "PREPARATION_UNAVAILABLE": [
+      "kind",
+      "at",
+      "operation",
+      "delivery_kind"
+    ],
+    "PREPARE_RECOVER": [
+      "kind",
+      "at",
+      "operation"
+    ]
+  },
+  "observation_boundary": "Includes trusted coordinator method completions and recovery notifications alongside signed gateway/delivery traffic. Failure contains no output body or commit marker. This is not an exhaustive attacker network view.",
+  "plans": [
+    "envelope_count",
+    "envelope_histogram",
+    "envelope_expire",
+    "envelope_retry_expire",
+    "terminal_empty",
+    "terminal_prepared",
+    "terminal_existing_fact",
+    "terminal_retry",
+    "envelope_cross_route",
+    "terminal_cross_route",
+    "envelope_withheld_tail"
+  ],
+  "cuts": {
+    "DELIVERY": [
+      "before_v2_envelope_commit",
+      "before_witness_accept",
+      "after_witness_accept",
+      "after_local_anchor_write",
+      "after_v2_envelope_commit",
+      "response_drop"
+    ],
+    "TERMINAL": [
+      "before_v2_control_commit",
+      "before_witness_accept",
+      "after_witness_accept",
+      "after_local_anchor_write",
+      "after_v2_control_commit",
+      "response_drop"
+    ]
+  },
+  "authority_boundary": "Only after_witness_accept and later cuts retain this transaction in authority; before that, retain the entire previous authoritative state, including any previously prepared body.",
+  "local_commit_boundary": "after_v2_envelope_commit / after_v2_control_commit and response_drop only; earlier cuts roll local SQLite transaction back.",
+  "recovery": "All modeled events are paused until an explicit PREPARE_RECOVER restores a fresh sender from unchanged authority. Diagnostic restoration is separate and never feeds generator inputs.",
+  "relations": {
+    "R1-R4": "Existing gateway cache, budget/draw, schedule and publication/ticket projections.",
+    "R5-R8": "Prepared body/handoff, receiver first facts, confirmations and final prefix. Empty receiver contexts are public trusted setup.",
+    "R13": "Actual child exit 96, authority/local atomicity, stale guard, untouched receiver authorities, exact protected opaque seed/result/jobs/budget/ticket/descriptor state, byte-exact fresh restore."
+  },
+  "domains": {
+    "users": 3,
+    "dataset_masks": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "operations_max": 2,
+    "mechanisms": [
+      "count",
+      "four-bucket histogram"
+    ],
+    "approved_output": "count 1 or histogram [1,0,0,0]",
+    "original_issued_at": 100,
+    "original_expires_at": 160,
+    "late_clock": 170,
+    "witness": "local ReferenceWitness"
+  },
+  "negative_controls": [
+    "premature durability changes terminal envelope hash",
+    "renewed deadline wrongly permits expired envelope preparation",
+    "dropped prepared body fails R5",
+    "changed opaque seed fails R13"
+  ],
+  "excluded": [
+    "preparation after sender confirmation",
+    "retirement and cleanup",
+    "repeated recovery interruption in this profile",
+    "receiver/confirmation/public-request/private-work cuts in this profile",
+    "competing authority writers",
+    "arbitrary scheduling and inputs",
+    "wall-clock/traffic-length/comprehensive availability leakage",
+    "power loss or independent hosts",
+    "TLS",
+    "DP output distribution or cryptographic indistinguishability proof"
+  ]
+}

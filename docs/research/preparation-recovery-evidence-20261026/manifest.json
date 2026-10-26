@@ -1,0 +1,81 @@
+{
+  "profile": "preparation-recovery-evidence-v1",
+  "base_commit": "b5fceedf48fc6bbbd8231ebb6254fc3b96e41fe5",
+  "summary": {
+    "actual_exits": 528,
+    "operational_restores": 528,
+    "diagnostic_restores": 528,
+    "groups": 66,
+    "checkpoints": 77232,
+    "replayed_cases": 528,
+    "directed_neighbor_comparisons": 1584,
+    "new_regressions": 14,
+    "negative_control_classes": 4,
+    "legacy_test_entries": 30,
+    "regressions": 196,
+    "models": 7,
+    "all_passed": true
+  },
+  "files": {
+    "README.md": {
+      "sha256": "aeb7eac1262d922c3e0d4ece3a338005afe545262da64e45fcb904ec3541fcf6",
+      "bytes": 11674
+    },
+    "docs/research/2026-10-26-acceptance-status.md": {
+      "sha256": "984d420c486ee0932fa13ef430e388e06b48fefc8cac661a1adb1a0e896c0459",
+      "bytes": 4326
+    },
+    "docs/research/2026-10-26-preparation-recovery-correspondence.md": {
+      "sha256": "c11b84d58282378732ea3d0cc871f55b26b7a510a2035390437d1a4b6c3367b9",
+      "bytes": 9341
+    },
+    "docs/research/preparation-recovery-contract.json": {
+      "sha256": "f5a329bdba0d4130c56593b8da739372cf605fea76afca8caec98f04938d679f",
+      "bytes": 4796
+    },
+    "scripts/replay_preparation_recovery.py": {
+      "sha256": "be9491806b502adc38920aff988f860c21851cd885324fb0b03bdc810f90eb6a",
+      "bytes": 3901
+    },
+    "tests/test_preparation_recovery.py": {
+      "sha256": "2743468842ecf8f622836a5c0c33023491797f7f564dc6aacc78cba2e31893a4",
+      "bytes": 9746
+    },
+    "outputs/agent-cryptography-design-20261025/prototype/preparation_recovery_trace.py": {
+      "sha256": "7a7b3de2cedb810f74076e9bdb70dbdbc8019ecdb584488e7f5b35d2a075b346",
+      "bytes": 14700
+    },
+    "outputs/agent-cryptography-design-20261025/prototype/preparation_recovery_simulator.py": {
+      "sha256": "83a889375639de4ea76667628bd24ee18494f5ed9f6294cd20a802bc156f3928",
+      "bytes": 5453
+    },
+    "docs/research/preparation-recovery-evidence-20261026/cases.jsonl.xz": {
+      "sha256": "3d7206068fe12016dfd5549b7201bc4190c53476a85ae3b51896c5e42feff224",
+      "bytes": 74444
+    },
+    "docs/research/preparation-recovery-evidence-20261026/matrix.log": {
+      "sha256": "8efb7653a92e691b9fcffbf006d9998a906b995b1d15d60786380d9b70deccde",
+      "bytes": 3757
+    },
+    "docs/research/preparation-recovery-evidence-20261026/replay.json": {
+      "sha256": "7dd4c4a7eecf4ae3c5e5064c5e859c9653f42efc1115b7e2aee3a86c79db49da",
+      "bytes": 9508
+    },
+    "docs/research/preparation-recovery-evidence-20261026/summary.json": {
+      "sha256": "1ad20823eeafaad51df5540596ffeaf77229569e08c8bbb8a466a1d41790cdc1",
+      "bytes": 430276
+    },
+    "docs/research/preparation-recovery-evidence-20261026/targeted-tests.log": {
+      "sha256": "03302c904998fc55c3ae0bdfe626708bac65eabf909b91706d23726b8639b82d",
+      "bytes": 1728
+    },
+    "docs/research/preparation-recovery-evidence-20261026/verification-logs.json.xz": {
+      "sha256": "aca2dc11c3cde77c03937c45475620605d52fac29611d9727592daa7d10dcc8c",
+      "bytes": 18400
+    },
+    "docs/research/preparation-recovery-evidence-20261026/verification.json": {
+      "sha256": "38216cdd265a6a2de684c660e78cbf3147f8ef3d55ef645da383ba4e7b2f62b1",
+      "bytes": 36704
+    }
+  }
+}

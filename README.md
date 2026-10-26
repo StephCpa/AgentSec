@@ -126,3 +126,10 @@ python3 scripts/replay_recovery_interruptions.py /tmp/agentsec-repeated-recovery
 ```
 
 [恢复期间权威变化](docs/research/2026-10-26-recovery-authority-races.md)检查 72 个恢复交错与 12 个提交竞争案例：恢复返回值标识已安装快照，后续起始检查及 CAS 仍不可省略。这是有限本地证据，不是一般并发或活性证明。
+
+[发送准备中断与恢复对应](docs/research/2026-10-26-preparation-recovery-correspondence.md)增加 R13：准备调用未返回时，恢复按权威提交保留原信封或终止消息；核对原期限、随机带、预算和最终顺序。到期终止消息仅绑定已持久化的信封，准备不等于接收或确认。范围见[配置契约](docs/research/preparation-recovery-contract.json)。
+
+```sh
+python3 outputs/agent-cryptography-design-20261025/prototype/preparation_recovery_trace.py --output /tmp/agentsec-preparation-new
+python3 scripts/replay_preparation_recovery.py /tmp/agentsec-preparation-new --output /tmp/agentsec-preparation-replay-new.json
+```
