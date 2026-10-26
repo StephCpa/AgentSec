@@ -1,0 +1,17 @@
+{
+  "profile": "window-lifecycle-correspondence-v1",
+  "parent": "retirement-recovery-correspondence-v1",
+  "setup": {"routes": 1, "receiver_window": 1, "operations_max": 2, "roster_capacity": 3, "approved_output": 1},
+  "plans": ["after_retire_count", "after_retire_histogram", "after_retire_cancel", "queued_count", "queued_histogram", "queued_expire"],
+  "retirement_cuts": ["after_v2_recipient_delete", "after_witness_accept", "after_v2_recipient_retire_commit"],
+  "replicas": ["existing", "fresh"],
+  "recovery_cuts": ["after_recovery_delete", "before_recovery_commit", "after_recovery_commit", "after_recovery_delete", "before_recovery_commit", "after_recovery_commit"],
+  "datasets": "All eight subsets of the fixed three-user roster, conditioned on the same released output and public schedule.",
+  "generator_inputs": ["public trusted setup", "public commands and clock", "explicit cut schedule", "approved operation-bound outputs", "role-scoped signing oracle"],
+  "new_observation": {"kind": "DELIVERY_REJECTED", "fields": ["at", "request", "reason"], "reason": "V2_RECIPIENT_WINDOW_FULL"},
+  "full_window_projection": "Sender preparation persists, no receiver fact or receipt appears, and authenticated denial advances persisted observed time. The internal PACKET_LOST transition represents only preparation/no-fact state; it is not emitted as an attacker observation.",
+  "recovery_selector": "The legacy RECOVERY_CUT.operation field is the public route alias root for this composition, not a business operation id.",
+  "r15": ["receiver live count equals historical high minus retirement floor and stays in [0,1]", "completed operation, charge, job and publication rows remain byte-identical", "ticket identity and original lifetime remain unchanged", "confirmed sender archives remain byte-identical", "existing FINAL rows remain unchanged while new rows may append"],
+  "accounting": "Shared accounts may change for B; R2 checks the exact reservation/spend/release relation. R15 does not freeze aggregate accounts.",
+  "excluded": ["more than two jobs", "multiple routes", "arbitrary input induction", "arbitrary interleaving", "authority races or rollback", "cross-host recovery", "power failure", "physical secure deletion", "long-run storage bound", "general cryptographic or DP composition proof"]
+}

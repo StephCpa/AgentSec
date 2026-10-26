@@ -1,0 +1,8 @@
+PASS pressure accounting count 0 attempts, 2 paired repetitions
+PASS pressure accounting count 1 attempts, 2 paired repetitions
+PASS pressure accounting count 8 attempts, 2 paired repetitions
+PASS pressure accounting count 32 attempts, 2 paired repetitions
+PASS pressure accounting histogram 0 attempts, 2 paired repetitions
+PASS pressure accounting histogram 1 attempts, 2 paired repetitions
+PASS pressure accounting histogram 8 attempts, 2 paired repetitions
+PASS pressure accounting histogram 32 attempts, 2 paired repetitions
