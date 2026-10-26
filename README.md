@@ -141,3 +141,11 @@ python3 outputs/agent-cryptography-design-20261025/prototype/retirement_recovery
 python3 scripts/replay_retirement_recovery.py /tmp/agentsec-retirement-new --output /tmp/agentsec-retirement-replay-new.json
 python3 outputs/agent-cryptography-design-20261025/prototype/retirement_cost_experiment.py --output /tmp/agentsec-retirement-costs-new.json
 ```
+
+[窗口补充、后续业务与连续恢复](docs/research/2026-10-26-window-lifecycle-correspondence.md)增加显式单位置窗口配置与 R15：将窗口满拒绝、清理后的新请求、过期/取消、旧请求重放及六次恢复退出接入同一轨迹。另用 32 次成对成本试验比较已准备信封的重用和重复准备，核对相同接收报文与业务结果下的实际提交次数和镜像载荷；不声称两种发送方调用序列的完整观察等价或线上加速。
+
+```sh
+python3 outputs/agent-cryptography-design-20261025/prototype/window_lifecycle_trace.py --output /tmp/agentsec-window-new
+python3 scripts/replay_window_lifecycle.py /tmp/agentsec-window-new --output /tmp/agentsec-window-replay-new.json
+python3 scripts/window_pressure_cost.py --output /tmp/agentsec-window-pressure-new.json
+```
