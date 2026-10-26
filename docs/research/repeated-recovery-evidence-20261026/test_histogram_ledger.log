@@ -1,0 +1,25 @@
+test_action_binds_public_shape_catalog_digest_and_registered_cost (__main__.HistogramLedgerTests) ... ok
+test_cancel_before_and_after_start_has_correct_accounting_and_dummy_work (__main__.HistogramLedgerTests) ... ok
+test_catalog_is_immutable_and_does_not_create_budget (__main__.HistogramLedgerTests) ... ok
+test_direct_execution_bypass_is_rejected (__main__.HistogramLedgerTests) ... ok
+test_eleven_real_process_crash_scenarios_preserve_full_vector_and_charges (__main__.HistogramLedgerTests) ... ok
+test_epsilon_and_delta_both_gate_atomic_registration (__main__.HistogramLedgerTests) ... ok
+test_full_random_tape_is_durable_before_any_private_read (__main__.HistogramLedgerTests) ... ok
+test_invalid_catalog_and_snapshot_inputs_leave_no_registration (__main__.HistogramLedgerTests) ... ok
+test_maximum_64_bucket_width_and_offsets_match_independent_kernel (__main__.HistogramLedgerTests) ... ok
+test_mixed_queries_share_domain_accounts_and_cost_once_per_vector (__main__.HistogramLedgerTests) ... ok
+test_multiagent_count_histogram_budget_race_has_one_winner (__main__.HistogramLedgerTests) ... ok
+test_new_catalog_after_spending_preserves_history_and_exhausts_same_budget (__main__.HistogramLedgerTests) ... ok
+test_operation_id_cannot_switch_mechanism_and_retries_do_not_double_charge (__main__.HistogramLedgerTests) ... ok
+test_partial_bucket_completion_never_commits_or_releases (__main__.HistogramLedgerTests) ... ok
+test_private_categories_and_noise_do_not_change_public_journal (__main__.HistogramLedgerTests) ... ok
+test_profiles_cannot_silently_open_or_upgrade_each_others_database (__main__.HistogramLedgerTests) ... ok
+test_restart_after_each_bucket_preserves_full_tape_and_state (__main__.HistogramLedgerTests) ... ok
+test_revocation_and_expiry_withhold_complete_vector_without_refund (__main__.HistogramLedgerTests) ... ok
+test_snapshot_type_and_catalog_cannot_be_confused (__main__.HistogramLedgerTests) ... ok
+test_tick_replay_and_pause_do_not_reseed_or_advance_twice (__main__.HistogramLedgerTests) ... ok
+
+----------------------------------------------------------------------
+Ran 20 tests in 10.906s
+
+OK

@@ -1,0 +1,30 @@
+test_atomic_l3_retry_identity_original_expiry_and_shared_spending (__main__.RetentionSenderTests) ... ok
+test_authenticated_witness_profile_completes_count_admission_and_confirmation (__main__.RetentionSenderTests) ... ok
+test_checkpoint_cannot_claim_receiver_ahead_or_unconfirmed_floor (__main__.RetentionSenderTests) ... ok
+test_competing_local_clones_cannot_both_commit_distinct_requests (__main__.RetentionSenderTests) ... ok
+test_conflicting_valid_first_time_is_rejected_in_both_arrival_orders (__main__.RetentionSenderTests) ... ok
+test_context_cannot_be_rebound_and_legacy_entrypoints_are_disabled (__main__.RetentionSenderTests) ... ok
+test_distinct_request_race_allocates_distinct_contiguous_sequences (__main__.RetentionSenderTests) ... ok
+test_immutable_envelope_and_terminal_are_encrypted_and_ordered (__main__.RetentionSenderTests) ... ok
+test_invalid_authority_image_fails_subclass_audit_before_restore_commit (__main__.RetentionSenderTests) ... ok
+test_old_replica_fenced_then_exact_request_mapping_restored (__main__.RetentionSenderTests) ... ok
+test_only_persisted_confirmation_allows_offer (__main__.RetentionSenderTests) ... ok
+test_pending_publication_is_not_bypassed (__main__.RetentionSenderTests) ... ok
+test_prepared_control_is_revalidated_before_return (__main__.RetentionSenderTests) ... ok
+test_process_crashes_at_admission_boundaries (__main__.RetentionSenderTests) ... ok
+test_process_crashes_at_prepare_confirm_offer_and_checkpoint (__main__.RetentionSenderTests) ... ok
+test_process_crashes_during_exact_recovery (__main__.RetentionSenderTests) ... ok
+test_receipt_requires_stored_prepared_evidence (__main__.RetentionSenderTests) ... ok
+test_retirement_checkpoint_saved_and_restored_with_archive (__main__.RetentionSenderTests) ... ok
+test_root_and_route_revocation_block_new_admission_but_keep_old_evidence (__main__.RetentionSenderTests) ... ok
+test_same_request_race_creates_one_identity (__main__.RetentionSenderTests) ... ok
+test_scheduler_root_revocation_blocks_fresh_and_retry_admission (__main__.RetentionSenderTests) ... ok
+test_schema_and_context_tampering_are_rejected (__main__.RetentionSenderTests) ... ok
+test_uint64_storage_order_and_exhaustion_gate (__main__.RetentionSenderTests) ... ok
+test_unprepared_close_has_no_result_and_next_count_can_prepare (__main__.RetentionSenderTests) ... ok
+test_wrong_signer_never_prepares_envelope (__main__.RetentionSenderTests) ... ok
+
+----------------------------------------------------------------------
+Ran 25 tests in 9.971s
+
+OK

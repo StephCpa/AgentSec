@@ -1,0 +1,26 @@
+test_catalog_snapshot_links_caps_signatures_and_checkpoint_are_all_witnessed (__main__.MixedWitnessTests) ... ok
+test_corrupt_or_incompatible_image_and_changed_head_leave_local_copy_intact (__main__.MixedWitnessTests) ... ok
+test_four_commit_and_three_recovery_real_process_death_cuts (__main__.MixedWitnessTests) ... ok
+test_image_growth_limit_fails_closed_without_losing_seed_or_held_charges (__main__.MixedWitnessTests) ... ok
+test_local_result_ticket_and_handoff_record_restore_with_original_vector (__main__.MixedWitnessTests) ... ok
+test_partial_vector_snapshot_restores_exact_encrypted_progress (__main__.MixedWitnessTests) ... ok
+test_revocations_used_proofs_and_rejected_attempt_clock_survive_restore (__main__.MixedWitnessTests) ... ok
+test_rollback_of_both_trusted_witness_and_ledger_remains_undetectable (__main__.MixedWitnessTests) ... ok
+test_stale_prestart_copy_restores_complete_mixed_results_and_every_cap (__main__.MixedWitnessTests) ... ok
+test_two_cloned_signed_writers_have_only_one_authoritative_l1 (__main__.MixedWitnessTests) ... ok
+test_unavailable_or_missing_witness_never_reinitializes_or_refunds (__main__.MixedWitnessTests) ... ok
+test_unwitnessed_profiles_cannot_open_or_restore_this_storage (__main__.MixedWitnessTests) ... ok
+test_witness_acceptance_without_local_l1_commit_restores_full_tape (__main__.MixedWitnessTests) ... ok
+test_witness_image_contains_mixed_metadata_and_ciphertext_only_for_secrets (__main__.MixedWitnessTests) ... ok
+test_witness_only_final_vector_and_ancestor_spend_restore_without_new_job_step (__main__.MixedWitnessTests) ... ok
+test_authenticated_complete_vector_restore_and_stale_local_fencing (__main__.TLSMixedWitnessTests) ... ok
+test_authenticated_image_larger_than_cbor_limit_preserves_max_capacity_snapshot (__main__.TLSMixedWitnessTests) ... ok
+test_real_process_exit_after_authenticated_final_cas_recovers_vector_and_caps (__main__.TLSMixedWitnessTests) ... ok
+test_restorer_cannot_write_and_observer_cannot_restore_image (__main__.TLSMixedWitnessTests) ... ok
+test_revoked_or_wrong_witness_identity_blocks_progress_without_fallback (__main__.TLSMixedWitnessTests) ... ok
+test_server_committed_but_dropped_cas_reply_requires_authenticated_recovery (__main__.TLSMixedWitnessTests) ... ok
+
+----------------------------------------------------------------------
+Ran 21 tests in 30.008s
+
+OK
