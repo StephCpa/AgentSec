@@ -1,0 +1,6 @@
+{
+  "passed": true,
+  "groups": 77,
+  "directed_neighbor_pairs": 1848,
+  "comparison": "Identical public commands, generated-matched observations and successful relation digests for each mask versus mask XOR (1 << bit). Conditional on approved outputs; no distributional privacy claim."
+}
