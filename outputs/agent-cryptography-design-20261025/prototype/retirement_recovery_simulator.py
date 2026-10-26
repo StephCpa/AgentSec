@@ -138,6 +138,13 @@ class RetirementRecoverySimulator(DeliveryRecoverySimulator):
         d.parse_receipt(ack, request, ctx)
         return dict(event, response=ack.hex())
 
+    def require_business_scope(self, command):
+        if self.cleanup_started:
+            require(command['kind'] == 'PUBLIC' and parse_request(bytes.fromhex(command['request']))['method'] in ('POLL', 'FINAL'), 'CLEANUP_ONLY_PROFILE')
+
+    def require_cleanup_scope(self):
+        require(self.state.jobs and len(self.state.final) == len(self.state.jobs), 'CLEANUP_BEFORE_FINAL_OUT_OF_SCOPE')
+
     def emit(self, command):
         require(type(command) is dict and type(command.get('kind')) is str, 'COMMAND_SCOPE')
         kind = command['kind']; cut = kind.endswith('_CUT'); base = kind[:-4] if cut else kind
@@ -146,8 +153,7 @@ class RetirementRecoverySimulator(DeliveryRecoverySimulator):
                   'DELIVERY_REPLAY': {'operation'}, 'RETIRE_RECOVER': {'route', 'side'}}
         if base not in fields:
             require(kind in ('PUBLIC', 'TICK', 'SEND', 'CONFIRM'), 'COMMAND_SCOPE')
-            if self.cleanup_started:
-                require(kind == 'PUBLIC' and parse_request(bytes.fromhex(command['request']))['method'] in ('POLL', 'FINAL'), 'CLEANUP_ONLY_PROFILE')
+            self.require_business_scope(command)
             return super().emit(command)
         require(not cut or base in CUTS, 'CUT_SCOPE')
         expected = {'kind', 'at'} | fields[base] | ({'cut'} if cut else {'loss'} if base == 'RETIRE_SEND' else set())
@@ -162,7 +168,7 @@ class RetirementRecoverySimulator(DeliveryRecoverySimulator):
                 self.needs_recovery = None; event = dict(command)
             else:
                 require(self.needs_recovery is None, 'RECOVERY_REQUIRED')
-                require(m.jobs and len(m.final) == len(m.jobs), 'CLEANUP_BEFORE_FINAL_OUT_OF_SCOPE')
+                self.require_cleanup_scope()
                 self.cleanup_started = True
                 if base == 'RETIRE_SEND' and not cut:
                     require(command['loss'] in ('none', 'ack'), 'LOSS_SCOPE')

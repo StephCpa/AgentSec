@@ -52,7 +52,7 @@ def child(path):
     with ExitStack() as stack:
         # Recovery may audit/decrypt state. It must not dispatch business work,
         # sample, prepare transport, confirm facts or create an authority commit.
-        for name in ('operation_randomness','advance_private_step','advance','handle_public','publish','admit_v2','confirm','prepare_envelope','prepare_terminal','accept'):
+        for name in ('operation_randomness','advance_private_step','advance','handle_public','publish','admit_v2','confirm','prepare_envelope','prepare_terminal','prepare_retirement','confirm_retirement','accept'):
             if hasattr(obj,name):stack.enter_context(patch.object(obj,name,side_effect=AssertionError('business invoked during recovery: '+name)))
         for name in ('bootstrap','compare_and_store','reassert'):
             if hasattr(w,name):stack.enter_context(patch.object(w,name,side_effect=AssertionError('authority write during recovery: '+name)))
