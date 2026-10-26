@@ -1,0 +1,1147 @@
+{
+  "passed": true,
+  "trials": [
+    {
+      "side": "receiver",
+      "workload": "count",
+      "admission": "before_fault",
+      "phases": {
+        "while_pending": {
+          "sender": {
+            "cas": 89,
+            "image_payload_bytes": 9243627,
+            "commit_rows_added": 89
+          },
+          "reader": {
+            "cas": 0,
+            "image_payload_bytes": 0,
+            "commit_rows_added": 0
+          },
+          "reader2": {
+            "cas": 1,
+            "image_payload_bytes": 4530,
+            "commit_rows_added": 1
+          }
+        },
+        "after_recovery": {
+          "sender": {
+            "cas": 6,
+            "image_payload_bytes": 751309,
+            "commit_rows_added": 6
+          },
+          "reader": {
+            "cas": 1,
+            "image_payload_bytes": 2864,
+            "commit_rows_added": 1
+          },
+          "reader2": {
+            "cas": 2,
+            "image_payload_bytes": 5752,
+            "commit_rows_added": 2
+          }
+        }
+      },
+      "trace_sha256": "547ec8827de9584e9ae64d867200c711b2940626322f4dc85ccd0e291d36416a",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ],
+      "draws": [
+        [
+          "a",
+          "count"
+        ],
+        [
+          "b",
+          "count"
+        ]
+      ],
+      "repeat": 0
+    },
+    {
+      "side": "receiver",
+      "workload": "count",
+      "admission": "before_fault",
+      "phases": {
+        "while_pending": {
+          "sender": {
+            "cas": 89,
+            "image_payload_bytes": 9243627,
+            "commit_rows_added": 89
+          },
+          "reader": {
+            "cas": 0,
+            "image_payload_bytes": 0,
+            "commit_rows_added": 0
+          },
+          "reader2": {
+            "cas": 1,
+            "image_payload_bytes": 4530,
+            "commit_rows_added": 1
+          }
+        },
+        "after_recovery": {
+          "sender": {
+            "cas": 6,
+            "image_payload_bytes": 751309,
+            "commit_rows_added": 6
+          },
+          "reader": {
+            "cas": 1,
+            "image_payload_bytes": 2864,
+            "commit_rows_added": 1
+          },
+          "reader2": {
+            "cas": 2,
+            "image_payload_bytes": 5752,
+            "commit_rows_added": 2
+          }
+        }
+      },
+      "trace_sha256": "547ec8827de9584e9ae64d867200c711b2940626322f4dc85ccd0e291d36416a",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ],
+      "draws": [
+        [
+          "a",
+          "count"
+        ],
+        [
+          "b",
+          "count"
+        ]
+      ],
+      "repeat": 1
+    },
+    {
+      "side": "receiver",
+      "workload": "count",
+      "admission": "after_fault",
+      "phases": {
+        "while_pending": {
+          "sender": {
+            "cas": 89,
+            "image_payload_bytes": 9243627,
+            "commit_rows_added": 89
+          },
+          "reader": {
+            "cas": 0,
+            "image_payload_bytes": 0,
+            "commit_rows_added": 0
+          },
+          "reader2": {
+            "cas": 1,
+            "image_payload_bytes": 4530,
+            "commit_rows_added": 1
+          }
+        },
+        "after_recovery": {
+          "sender": {
+            "cas": 6,
+            "image_payload_bytes": 751309,
+            "commit_rows_added": 6
+          },
+          "reader": {
+            "cas": 1,
+            "image_payload_bytes": 2864,
+            "commit_rows_added": 1
+          },
+          "reader2": {
+            "cas": 2,
+            "image_payload_bytes": 5752,
+            "commit_rows_added": 2
+          }
+        }
+      },
+      "trace_sha256": "9ca6e51d0c75edd2bfa5a1dbc18cb33bcc84887d19aa23d9ad451f1c95534d73",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ],
+      "draws": [
+        [
+          "a",
+          "count"
+        ],
+        [
+          "b",
+          "count"
+        ]
+      ],
+      "repeat": 0
+    },
+    {
+      "side": "receiver",
+      "workload": "count",
+      "admission": "after_fault",
+      "phases": {
+        "while_pending": {
+          "sender": {
+            "cas": 89,
+            "image_payload_bytes": 9243627,
+            "commit_rows_added": 89
+          },
+          "reader": {
+            "cas": 0,
+            "image_payload_bytes": 0,
+            "commit_rows_added": 0
+          },
+          "reader2": {
+            "cas": 1,
+            "image_payload_bytes": 4530,
+            "commit_rows_added": 1
+          }
+        },
+        "after_recovery": {
+          "sender": {
+            "cas": 6,
+            "image_payload_bytes": 751309,
+            "commit_rows_added": 6
+          },
+          "reader": {
+            "cas": 1,
+            "image_payload_bytes": 2864,
+            "commit_rows_added": 1
+          },
+          "reader2": {
+            "cas": 2,
+            "image_payload_bytes": 5752,
+            "commit_rows_added": 2
+          }
+        }
+      },
+      "trace_sha256": "9ca6e51d0c75edd2bfa5a1dbc18cb33bcc84887d19aa23d9ad451f1c95534d73",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ],
+      "draws": [
+        [
+          "a",
+          "count"
+        ],
+        [
+          "b",
+          "count"
+        ]
+      ],
+      "repeat": 1
+    },
+    {
+      "side": "receiver",
+      "workload": "histogram",
+      "admission": "before_fault",
+      "phases": {
+        "while_pending": {
+          "sender": {
+            "cas": 341,
+            "image_payload_bytes": 46403520,
+            "commit_rows_added": 341
+          },
+          "reader": {
+            "cas": 0,
+            "image_payload_bytes": 0,
+            "commit_rows_added": 0
+          },
+          "reader2": {
+            "cas": 1,
+            "image_payload_bytes": 4726,
+            "commit_rows_added": 1
+          }
+        },
+        "after_recovery": {
+          "sender": {
+            "cas": 6,
+            "image_payload_bytes": 1138453,
+            "commit_rows_added": 6
+          },
+          "reader": {
+            "cas": 1,
+            "image_payload_bytes": 2864,
+            "commit_rows_added": 1
+          },
+          "reader2": {
+            "cas": 2,
+            "image_payload_bytes": 5752,
+            "commit_rows_added": 2
+          }
+        }
+      },
+      "trace_sha256": "838e7a26f29e533feeb7a257b0252df7aaade623efa519816872e80caba8091f",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ],
+      "draws": [
+        [
+          "a",
+          "count"
+        ],
+        [
+          "b",
+          "histogram"
+        ]
+      ],
+      "repeat": 0
+    },
+    {
+      "side": "receiver",
+      "workload": "histogram",
+      "admission": "before_fault",
+      "phases": {
+        "while_pending": {
+          "sender": {
+            "cas": 341,
+            "image_payload_bytes": 46403520,
+            "commit_rows_added": 341
+          },
+          "reader": {
+            "cas": 0,
+            "image_payload_bytes": 0,
+            "commit_rows_added": 0
+          },
+          "reader2": {
+            "cas": 1,
+            "image_payload_bytes": 4726,
+            "commit_rows_added": 1
+          }
+        },
+        "after_recovery": {
+          "sender": {
+            "cas": 6,
+            "image_payload_bytes": 1138453,
+            "commit_rows_added": 6
+          },
+          "reader": {
+            "cas": 1,
+            "image_payload_bytes": 2864,
+            "commit_rows_added": 1
+          },
+          "reader2": {
+            "cas": 2,
+            "image_payload_bytes": 5752,
+            "commit_rows_added": 2
+          }
+        }
+      },
+      "trace_sha256": "838e7a26f29e533feeb7a257b0252df7aaade623efa519816872e80caba8091f",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ],
+      "draws": [
+        [
+          "a",
+          "count"
+        ],
+        [
+          "b",
+          "histogram"
+        ]
+      ],
+      "repeat": 1
+    },
+    {
+      "side": "receiver",
+      "workload": "histogram",
+      "admission": "after_fault",
+      "phases": {
+        "while_pending": {
+          "sender": {
+            "cas": 341,
+            "image_payload_bytes": 46403520,
+            "commit_rows_added": 341
+          },
+          "reader": {
+            "cas": 0,
+            "image_payload_bytes": 0,
+            "commit_rows_added": 0
+          },
+          "reader2": {
+            "cas": 1,
+            "image_payload_bytes": 4726,
+            "commit_rows_added": 1
+          }
+        },
+        "after_recovery": {
+          "sender": {
+            "cas": 6,
+            "image_payload_bytes": 1138453,
+            "commit_rows_added": 6
+          },
+          "reader": {
+            "cas": 1,
+            "image_payload_bytes": 2864,
+            "commit_rows_added": 1
+          },
+          "reader2": {
+            "cas": 2,
+            "image_payload_bytes": 5752,
+            "commit_rows_added": 2
+          }
+        }
+      },
+      "trace_sha256": "405d5d4f4c430b6a0d15ce11e376d267fdea213f522cdb20d7cad401c0f28526",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ],
+      "draws": [
+        [
+          "a",
+          "count"
+        ],
+        [
+          "b",
+          "histogram"
+        ]
+      ],
+      "repeat": 0
+    },
+    {
+      "side": "receiver",
+      "workload": "histogram",
+      "admission": "after_fault",
+      "phases": {
+        "while_pending": {
+          "sender": {
+            "cas": 341,
+            "image_payload_bytes": 46403520,
+            "commit_rows_added": 341
+          },
+          "reader": {
+            "cas": 0,
+            "image_payload_bytes": 0,
+            "commit_rows_added": 0
+          },
+          "reader2": {
+            "cas": 1,
+            "image_payload_bytes": 4726,
+            "commit_rows_added": 1
+          }
+        },
+        "after_recovery": {
+          "sender": {
+            "cas": 6,
+            "image_payload_bytes": 1138453,
+            "commit_rows_added": 6
+          },
+          "reader": {
+            "cas": 1,
+            "image_payload_bytes": 2864,
+            "commit_rows_added": 1
+          },
+          "reader2": {
+            "cas": 2,
+            "image_payload_bytes": 5752,
+            "commit_rows_added": 2
+          }
+        }
+      },
+      "trace_sha256": "405d5d4f4c430b6a0d15ce11e376d267fdea213f522cdb20d7cad401c0f28526",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ],
+      "draws": [
+        [
+          "a",
+          "count"
+        ],
+        [
+          "b",
+          "histogram"
+        ]
+      ],
+      "repeat": 1
+    },
+    {
+      "side": "sender",
+      "workload": "count",
+      "admission": "before_fault",
+      "phases": {
+        "while_pending": {
+          "sender": {
+            "cas": 0,
+            "image_payload_bytes": 0,
+            "commit_rows_added": 0
+          },
+          "reader": {
+            "cas": 1,
+            "image_payload_bytes": 4518,
+            "commit_rows_added": 1
+          },
+          "reader2": {
+            "cas": 0,
+            "image_payload_bytes": 0,
+            "commit_rows_added": 0
+          }
+        },
+        "after_recovery": {
+          "sender": {
+            "cas": 94,
+            "image_payload_bytes": 9776439,
+            "commit_rows_added": 94
+          },
+          "reader": {
+            "cas": 1,
+            "image_payload_bytes": 2864,
+            "commit_rows_added": 1
+          },
+          "reader2": {
+            "cas": 3,
+            "image_payload_bytes": 10282,
+            "commit_rows_added": 3
+          }
+        }
+      },
+      "trace_sha256": "5b610e7237786d57bce2166691f48576b347db88520f7b0719370fce96f55ce6",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ],
+      "draws": [
+        [
+          "a",
+          "count"
+        ],
+        [
+          "b",
+          "count"
+        ]
+      ],
+      "repeat": 0
+    },
+    {
+      "side": "sender",
+      "workload": "count",
+      "admission": "before_fault",
+      "phases": {
+        "while_pending": {
+          "sender": {
+            "cas": 0,
+            "image_payload_bytes": 0,
+            "commit_rows_added": 0
+          },
+          "reader": {
+            "cas": 1,
+            "image_payload_bytes": 4518,
+            "commit_rows_added": 1
+          },
+          "reader2": {
+            "cas": 0,
+            "image_payload_bytes": 0,
+            "commit_rows_added": 0
+          }
+        },
+        "after_recovery": {
+          "sender": {
+            "cas": 94,
+            "image_payload_bytes": 9776439,
+            "commit_rows_added": 94
+          },
+          "reader": {
+            "cas": 1,
+            "image_payload_bytes": 2864,
+            "commit_rows_added": 1
+          },
+          "reader2": {
+            "cas": 3,
+            "image_payload_bytes": 10282,
+            "commit_rows_added": 3
+          }
+        }
+      },
+      "trace_sha256": "5b610e7237786d57bce2166691f48576b347db88520f7b0719370fce96f55ce6",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ],
+      "draws": [
+        [
+          "a",
+          "count"
+        ],
+        [
+          "b",
+          "count"
+        ]
+      ],
+      "repeat": 1
+    },
+    {
+      "side": "sender",
+      "workload": "count",
+      "admission": "after_fault",
+      "phases": {
+        "while_pending": {
+          "sender": {
+            "cas": 0,
+            "image_payload_bytes": 0,
+            "commit_rows_added": 0
+          },
+          "reader": {
+            "cas": 1,
+            "image_payload_bytes": 4518,
+            "commit_rows_added": 1
+          },
+          "reader2": {
+            "cas": 0,
+            "image_payload_bytes": 0,
+            "commit_rows_added": 0
+          }
+        },
+        "after_recovery": {
+          "sender": {
+            "cas": 94,
+            "image_payload_bytes": 9776439,
+            "commit_rows_added": 94
+          },
+          "reader": {
+            "cas": 1,
+            "image_payload_bytes": 2864,
+            "commit_rows_added": 1
+          },
+          "reader2": {
+            "cas": 3,
+            "image_payload_bytes": 10282,
+            "commit_rows_added": 3
+          }
+        }
+      },
+      "trace_sha256": "4a034ded447ae015953d5edb48d66f3d53637e6bfcfbca29672a99025614bdd1",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ],
+      "draws": [
+        [
+          "a",
+          "count"
+        ],
+        [
+          "b",
+          "count"
+        ]
+      ],
+      "repeat": 0
+    },
+    {
+      "side": "sender",
+      "workload": "count",
+      "admission": "after_fault",
+      "phases": {
+        "while_pending": {
+          "sender": {
+            "cas": 0,
+            "image_payload_bytes": 0,
+            "commit_rows_added": 0
+          },
+          "reader": {
+            "cas": 1,
+            "image_payload_bytes": 4518,
+            "commit_rows_added": 1
+          },
+          "reader2": {
+            "cas": 0,
+            "image_payload_bytes": 0,
+            "commit_rows_added": 0
+          }
+        },
+        "after_recovery": {
+          "sender": {
+            "cas": 94,
+            "image_payload_bytes": 9776439,
+            "commit_rows_added": 94
+          },
+          "reader": {
+            "cas": 1,
+            "image_payload_bytes": 2864,
+            "commit_rows_added": 1
+          },
+          "reader2": {
+            "cas": 3,
+            "image_payload_bytes": 10282,
+            "commit_rows_added": 3
+          }
+        }
+      },
+      "trace_sha256": "4a034ded447ae015953d5edb48d66f3d53637e6bfcfbca29672a99025614bdd1",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ],
+      "draws": [
+        [
+          "a",
+          "count"
+        ],
+        [
+          "b",
+          "count"
+        ]
+      ],
+      "repeat": 1
+    },
+    {
+      "side": "sender",
+      "workload": "histogram",
+      "admission": "before_fault",
+      "phases": {
+        "while_pending": {
+          "sender": {
+            "cas": 0,
+            "image_payload_bytes": 0,
+            "commit_rows_added": 0
+          },
+          "reader": {
+            "cas": 1,
+            "image_payload_bytes": 4518,
+            "commit_rows_added": 1
+          },
+          "reader2": {
+            "cas": 0,
+            "image_payload_bytes": 0,
+            "commit_rows_added": 0
+          }
+        },
+        "after_recovery": {
+          "sender": {
+            "cas": 346,
+            "image_payload_bytes": 46982355,
+            "commit_rows_added": 346
+          },
+          "reader": {
+            "cas": 1,
+            "image_payload_bytes": 2864,
+            "commit_rows_added": 1
+          },
+          "reader2": {
+            "cas": 3,
+            "image_payload_bytes": 10478,
+            "commit_rows_added": 3
+          }
+        }
+      },
+      "trace_sha256": "937ba40c43c29029033fd30772eeed547be234b0c3f1870d51af8b8dff4a74cc",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ],
+      "draws": [
+        [
+          "a",
+          "count"
+        ],
+        [
+          "b",
+          "histogram"
+        ]
+      ],
+      "repeat": 0
+    },
+    {
+      "side": "sender",
+      "workload": "histogram",
+      "admission": "before_fault",
+      "phases": {
+        "while_pending": {
+          "sender": {
+            "cas": 0,
+            "image_payload_bytes": 0,
+            "commit_rows_added": 0
+          },
+          "reader": {
+            "cas": 1,
+            "image_payload_bytes": 4518,
+            "commit_rows_added": 1
+          },
+          "reader2": {
+            "cas": 0,
+            "image_payload_bytes": 0,
+            "commit_rows_added": 0
+          }
+        },
+        "after_recovery": {
+          "sender": {
+            "cas": 346,
+            "image_payload_bytes": 46982355,
+            "commit_rows_added": 346
+          },
+          "reader": {
+            "cas": 1,
+            "image_payload_bytes": 2864,
+            "commit_rows_added": 1
+          },
+          "reader2": {
+            "cas": 3,
+            "image_payload_bytes": 10478,
+            "commit_rows_added": 3
+          }
+        }
+      },
+      "trace_sha256": "937ba40c43c29029033fd30772eeed547be234b0c3f1870d51af8b8dff4a74cc",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ],
+      "draws": [
+        [
+          "a",
+          "count"
+        ],
+        [
+          "b",
+          "histogram"
+        ]
+      ],
+      "repeat": 1
+    },
+    {
+      "side": "sender",
+      "workload": "histogram",
+      "admission": "after_fault",
+      "phases": {
+        "while_pending": {
+          "sender": {
+            "cas": 0,
+            "image_payload_bytes": 0,
+            "commit_rows_added": 0
+          },
+          "reader": {
+            "cas": 1,
+            "image_payload_bytes": 4518,
+            "commit_rows_added": 1
+          },
+          "reader2": {
+            "cas": 0,
+            "image_payload_bytes": 0,
+            "commit_rows_added": 0
+          }
+        },
+        "after_recovery": {
+          "sender": {
+            "cas": 346,
+            "image_payload_bytes": 46982355,
+            "commit_rows_added": 346
+          },
+          "reader": {
+            "cas": 1,
+            "image_payload_bytes": 2864,
+            "commit_rows_added": 1
+          },
+          "reader2": {
+            "cas": 3,
+            "image_payload_bytes": 10478,
+            "commit_rows_added": 3
+          }
+        }
+      },
+      "trace_sha256": "0c6fd7c02100e928865aa000a42b8df58c0d0535da2f46236d4920369d923fd0",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ],
+      "draws": [
+        [
+          "a",
+          "count"
+        ],
+        [
+          "b",
+          "histogram"
+        ]
+      ],
+      "repeat": 0
+    },
+    {
+      "side": "sender",
+      "workload": "histogram",
+      "admission": "after_fault",
+      "phases": {
+        "while_pending": {
+          "sender": {
+            "cas": 0,
+            "image_payload_bytes": 0,
+            "commit_rows_added": 0
+          },
+          "reader": {
+            "cas": 1,
+            "image_payload_bytes": 4518,
+            "commit_rows_added": 1
+          },
+          "reader2": {
+            "cas": 0,
+            "image_payload_bytes": 0,
+            "commit_rows_added": 0
+          }
+        },
+        "after_recovery": {
+          "sender": {
+            "cas": 346,
+            "image_payload_bytes": 46982355,
+            "commit_rows_added": 346
+          },
+          "reader": {
+            "cas": 1,
+            "image_payload_bytes": 2864,
+            "commit_rows_added": 1
+          },
+          "reader2": {
+            "cas": 3,
+            "image_payload_bytes": 10478,
+            "commit_rows_added": 3
+          }
+        }
+      },
+      "trace_sha256": "0c6fd7c02100e928865aa000a42b8df58c0d0535da2f46236d4920369d923fd0",
+      "final": [
+        {
+          "sequence": 1,
+          "operation": "a",
+          "outcome": "ACCEPTED"
+        },
+        {
+          "sequence": 2,
+          "operation": "b",
+          "outcome": "ACCEPTED"
+        }
+      ],
+      "draws": [
+        [
+          "a",
+          "count"
+        ],
+        [
+          "b",
+          "histogram"
+        ]
+      ],
+      "repeat": 1
+    }
+  ],
+  "trials_count": 16,
+  "scope": "Count successful parent-process CAS payloads around cross-route recovery.\n\nThe original child exit is excluded; phase baselines start after that child has\nfinished. No timing, compression, performance or physical-space claim is made.\n",
+  "source_sha256": {
+    "outputs/agent-cryptography-design-20261025/prototype/mixed_delegated_ledger.py": "69b87ad162fe3d462fcb31baccb6919e82938a7e8e2b20ea570737b7e9dde7bc",
+    "outputs/agent-cryptography-design-20261025/prototype/delivery_relation_trace.py": "10e55d80a4d5938d292173de40d8b44faff29e97fa8dddd65ba2fd13bc6613a1",
+    "outputs/agent-cryptography-design-20261025/prototype/stepwise_trace.py": "a935cf823650abbf944366094e9aa8ecc187149e0d7df7f56094131ea9f5a4d4",
+    "outputs/agent-cryptography-design-20261025/prototype/public_observation.py": "53e21db6e2f507832d1a75c0c0578b2ed1aaa3b5c221a9ee6e86dc23dfa562ee",
+    "outputs/agent-cryptography-design-20261025/prototype/test_atomic_publication.py": "7830e50f432618dd845e82e30fa18b564771074419ac2b9843537666a101aa9b",
+    "outputs/agent-cryptography-design-20261025/prototype/mixed_delivery_terminal.py": "67b759be033cb2f3ce26db2caaa7afc816f1b7f723934fb22445d434ab137acc",
+    "outputs/agent-cryptography-design-20261025/prototype/cross_route_isolation_simulator.py": "06eaeb632c0dc972107e39499283cf6dda6a0f0211bd6bada277dabfff93bc70",
+    "outputs/agent-cryptography-design-20261025/prototype/ordered_publication.py": "09deb84392ba054d4541295561865a501004ce09f2d04edca2fd3bd3d9954be1",
+    "outputs/agent-cryptography-design-20261025/prototype/retention_sender.py": "1f55f6d9a68614bb03883b460c52b6cea0dfbe0ac3811ed2e3e3d5af4623dbb6",
+    "outputs/agent-cryptography-design-20261025/prototype/public_recovery_trace.py": "9c6abd2ae7c65c4c1fd7e1ac2ccdf91dc3d51fd8476171fac93945fc327b6d67",
+    "outputs/agent-cryptography-design-20261025/prototype/test_scheduled_ledger.py": "9de478264c7d94f1473e8aa24201e96984bc1339d1208125c9ade41814e8c285",
+    "outputs/agent-cryptography-design-20261025/prototype/test_p2_scenario.py": "1fd37412477e3a8063348e42a79ee1c2ee89bdff9602e4419fd43a0518f7afad",
+    "outputs/agent-cryptography-design-20261025/prototype/retirement_cost_experiment.py": "36bca134f0ae72344799073e343281f137eda9f0c7b5e07776e319b8b707e8bf",
+    "outputs/agent-cryptography-design-20261025/prototype/histogram_ledger.py": "afac61ce7dbc8cfe01e6756a243eea389724d59c8f51bcd22b2c0c2d606c32e0",
+    "outputs/agent-cryptography-design-20261025/prototype/contribution_delivery.py": "146cfa730da07e2be09d2c81192c42f9928ce6556a03dc82be525be3f3459f88",
+    "outputs/agent-cryptography-design-20261025/prototype/public_gateway.py": "b1bf08b7159f96aafc3e28f05496307d120bba688e50e9f460db6a3349b64de0",
+    "outputs/agent-cryptography-design-20261025/prototype/test_contribution_ingestion.py": "6ebb147f72824a0b1cee8ed169cb26e628b53322f48c2e3b04684f1d3b5ff9b9",
+    "outputs/agent-cryptography-design-20261025/prototype/recovery_simulator.py": "977218d331c913a7c63336f8c81e4794b23795581467d32a96ad5ca082b0e2e1",
+    "outputs/agent-cryptography-design-20261025/prototype/wire_interop.py": "1f358422551c7186299498646222368db8994e098c24cb3f33108ba1c4316bc0",
+    "outputs/agent-cryptography-design-20261025/prototype/private_state_relation.py": "a66ca4b463c4f27667051c0af54bd3222315cdb85549d40a8f030fadcf03cb69",
+    "outputs/agent-cryptography-design-20261025/prototype/test_retention_delivery.py": "1bee89816723bc7b54dd501643a340a465c7cdb17a421d8717c61ac2f25e2cd6",
+    "outputs/agent-cryptography-design-20261025/prototype/test_dp_ledger.py": "41c936fbd1cf5f5c3eb5d2cd4b99f8601d425355a8f0d8b17e67b1f0e7f3c291",
+    "outputs/agent-cryptography-design-20261025/prototype/encrypted_ledger.py": "c1ac348a1657483efeaeb0eb4d43bae80b3990ce9b461f0a2b1533dd17ce32be",
+    "outputs/agent-cryptography-design-20261025/prototype/compact_witness_model.py": "97a6d492c5f110b49e672aa87de6a584314b4c2337e6e05f26f3dca1759dbae4",
+    "outputs/agent-cryptography-design-20261025/prototype/test_retention_wire.py": "0a14471278b94db57c5a83096bb1714f5e5e73632b4bf68961dfaad7c261f3a0",
+    "outputs/agent-cryptography-design-20261025/prototype/kernel_recovery_simulator.py": "73181d63d345413731d8eafa4b4a8cbc87774d2ce7d46e47dd33e6e6f97a77df",
+    "outputs/agent-cryptography-design-20261025/prototype/retention_archive.py": "c727898455e30af80257ec307157173e109c5c9dad9b66dab404a5ca4ed943b7",
+    "outputs/agent-cryptography-design-20261025/prototype/delivery_recovery_trace.py": "8c1b03d8f02c91e9df234c8189dd86f7270465f4dcead6d966631f6c61bda3eb",
+    "outputs/agent-cryptography-design-20261025/prototype/delivery_state_relation.py": "921508576a42373429cb488db9708daa6047e64c3cfc86af978f6bfa5a418d70",
+    "outputs/agent-cryptography-design-20261025/prototype/test_witness_transport.py": "499d758ce0b39ad3bfa1bc4c015032d520d73984b15bf377f08ed2b753f0ddf6",
+    "outputs/agent-cryptography-design-20261025/prototype/public_trace_adapter.py": "5901831f51fabb08c661c59878e3a1d613b68e470963caad4738a28f2badeb3e",
+    "outputs/agent-cryptography-design-20261025/prototype/test_mixed_delivery_transport.py": "8bd848285ee32a68d3cd06bf32f892ed747e4b7cf2ff3f264022776fcb87781d",
+    "outputs/agent-cryptography-design-20261025/prototype/encrypted_mixed_ledger.py": "1a085da145bd7fd0ef95a411fbfa3d9b94132508e7a9210127daeb5d2aca5740",
+    "outputs/agent-cryptography-design-20261025/prototype/test_delegated_ledger.py": "1cee9d8febe72898d14c995a7ac93476889a2f2ae75129aa86d776f473c4c35f",
+    "outputs/agent-cryptography-design-20261025/prototype/test_ordered_publication.py": "693bea9acc98d2de0472644484760bbb46a88a13b14b69c0d76e76485449033f",
+    "outputs/agent-cryptography-design-20261025/prototype/p2_scenario.py": "8e276dbb9c0ca10282e31e63807612c0997b5e174efaf62c173e5078c3d60f94",
+    "outputs/agent-cryptography-design-20261025/prototype/public_simulator.py": "33cabb2ddc928da88d94f3592b205abd4e7293ec8c5a4d9cc722721369dc64cc",
+    "outputs/agent-cryptography-design-20261025/prototype/private_recovery_trace.py": "8dc788a601bbbc866cac1f9cb4f065b0b926056993e53e09d562a6fb4f4fbc6e",
+    "outputs/agent-cryptography-design-20261025/prototype/test_delivery_transport.py": "1a8eebe3e8650f2c6a2d6649bdc041bcd3da49742490dd68ec8a2ed45f861b2d",
+    "outputs/agent-cryptography-design-20261025/prototype/ledger.py": "5bdd63777480e26d56d89d00e4d0f7a7030668377ca164756f2752103cf04dc7",
+    "outputs/agent-cryptography-design-20261025/prototype/preparation_recovery_simulator.py": "83a889375639de4ea76667628bd24ee18494f5ed9f6294cd20a802bc156f3928",
+    "outputs/agent-cryptography-design-20261025/prototype/compact_witness_experiment.py": "4b89e5d6835be25b724230cce97be96a7ad7572c2702ccc6c902e1de1d33c393",
+    "outputs/agent-cryptography-design-20261025/prototype/test_witnessed_mixed_ledger.py": "0d764a9322f15488d1fed5a91f2019ec01296ffb63504b9693e20eb13111b06e",
+    "outputs/agent-cryptography-design-20261025/prototype/witnessed_ledger.py": "19a46aac50b8764cce235bf6670fd829d7b23b7d988bb7da2729d67d1bcd43f0",
+    "outputs/agent-cryptography-design-20261025/prototype/persistence_experiment.py": "01b818b6eb476fabef6da5555537fc8e87940f4b9ae2ab6f6eda054f31f2ab0a",
+    "outputs/agent-cryptography-design-20261025/prototype/retirement_recovery_simulator.py": "9cce1ce10a3cebc6e9486a551ef87b7764084db7a2a10294dbf0a8f574608670",
+    "outputs/agent-cryptography-design-20261025/prototype/delivery_terminal.py": "29203cf6a3fa8fce2062cb8a987d61f8a131814ad50f287d0eaf21dad422d2b2",
+    "outputs/agent-cryptography-design-20261025/prototype/cross_route_isolation_trace.py": "444015b62865c7d25039c938884beb13766f732b1bc4dabd72857f52ef7cebbf",
+    "outputs/agent-cryptography-design-20261025/prototype/public_input.py": "f037317ea9f7bf4a0997f6f061206dfd7746bd0fba1432e3f5061517ffbc0e01",
+    "outputs/agent-cryptography-design-20261025/prototype/test_mixed_delivery_terminal.py": "eec723c9ed969d088fd634a2191be83e261bdbd5282e8ceb88dcc73b5fa22aff",
+    "outputs/agent-cryptography-design-20261025/prototype/window_lifecycle_simulator.py": "7ab5ea17fdc9ffce9063188ad05d2059d7f6c8214e7583b4bfbf022295b3f745",
+    "outputs/agent-cryptography-design-20261025/prototype/preparation_recovery_trace.py": "7a7b3de2cedb810f74076e9bdb70dbdbc8019ecdb584488e7f5b35d2a075b346",
+    "outputs/agent-cryptography-design-20261025/prototype/delivery_transport.py": "71a96b0310b1004946725e09b89178fdfde5ba7b0205cf1179f95b5da134bc9e",
+    "outputs/agent-cryptography-design-20261025/prototype/wire.py": "b2e95928c604c923ec549a74f599fd4a16fc4ccec5841474aabf64ec55de6d58",
+    "outputs/agent-cryptography-design-20261025/prototype/state_relation.py": "314162686d626f2c7e3c4120dc2a5ab808edf84e4c6ea06af793483e1edfc20c",
+    "outputs/agent-cryptography-design-20261025/prototype/dp_ledger.py": "35f0c336d549bf0145fd79bcb9b02416b0a729d60d990fc34e477b744887054b",
+    "outputs/agent-cryptography-design-20261025/prototype/delegated_ledger.py": "28cd13ef8d6b43f2ca1c9d273f3d32b92943278a0dbef2894eed1dc570cf3862",
+    "outputs/agent-cryptography-design-20261025/prototype/witness_compression.py": "531b11ae1047fec08b0114afb55a76471ca73b601844729dc1024de8b8011746",
+    "outputs/agent-cryptography-design-20261025/prototype/witnessed_recipient.py": "f8386ae57b9b6593c4ca4f6899e22f1ad207dd0e8a9bb26f9416f418f30cf7fd",
+    "outputs/agent-cryptography-design-20261025/prototype/recovery_interruption_simulator.py": "901fd6477d58d5046c06c8a94a223840b0a126e641de733546fae75e1c38431e",
+    "outputs/agent-cryptography-design-20261025/prototype/retention_recipient.py": "562e3ed9404b3ea4a8d94cb73abb863949eff92931f73d4d71cca8bb253b148d",
+    "outputs/agent-cryptography-design-20261025/prototype/contribution_ingestion.py": "799a6dc88451de81b1eaddd02a0b44b9d80d859c43a0266b7c1cc46c392d51f4",
+    "outputs/agent-cryptography-design-20261025/prototype/compression_experiment.py": "c94587b2230bd94b4f2f779636190f14a491f097772176c98f2235367152b239",
+    "outputs/agent-cryptography-design-20261025/prototype/retirement_recovery_trace.py": "4557b8961015a139698a9c3684f64bc914245988220138abec2fdaaf78122b86",
+    "outputs/agent-cryptography-design-20261025/prototype/mixed_delivery_transport.py": "9127fe54d9bb7e396c4056f7db7de15f2f299d647bbb1e1cc77d23d5d1a4b491",
+    "outputs/agent-cryptography-design-20261025/prototype/test_mixed_delegated_ledger.py": "9babf15f2c9584ed6ebd3d040376d81fb61ce1e97a2e71ea1cad4c377ecbd616",
+    "outputs/agent-cryptography-design-20261025/prototype/contribution_scenario.py": "b7556cacd6d8dea98d8c7a1fff19c3785c8fe9ec82c17c5a1fe3f440c5c4065f",
+    "outputs/agent-cryptography-design-20261025/prototype/test_retention_archive.py": "bd088478e062544b5ad1ee2f48ebd9ff60e69d06d144b8c93d117c275a3fc8c3",
+    "outputs/agent-cryptography-design-20261025/prototype/restricted_trace.py": "86acc8f872b0dbc39236d455217c26e877c4e55f4e2e4fe34ec63e89efa6b43b",
+    "outputs/agent-cryptography-design-20261025/prototype/delivery_recovery_simulator.py": "d2fc8f6a590223e20d2add990f2307db98d6db87a9bc57a03c38fb2ead889d6e",
+    "outputs/agent-cryptography-design-20261025/prototype/test_witnessed_ledger.py": "73a4202b220fec643dbb88ae74449bbe307ed4e5997ff643592d7f2803e62cfc",
+    "outputs/agent-cryptography-design-20261025/prototype/witnessed_mixed_ledger.py": "9d58044454873d31648c0011c296b779d0d90f4449546c44fcb7d8d8b623aced",
+    "outputs/agent-cryptography-design-20261025/prototype/authority_race_experiment.py": "2a0623856fe4cb1f16cc7ed2e9fa134d649efa15159b29502a3ce3f5b9313fe0",
+    "outputs/agent-cryptography-design-20261025/prototype/test_witnessed_recipient.py": "d1c464fe282303cfa5446ce9e01823c81bab2a6063118299bc2e1b0226b2b7b9",
+    "outputs/agent-cryptography-design-20261025/prototype/recovery_interruption_trace.py": "2c483ab66adc312eb8238d002d253b88410b41746972e0a843a55a56bc368de1",
+    "outputs/agent-cryptography-design-20261025/prototype/test_retention_sender.py": "9311d56d525cd28e963d44ced9e8ffc784c78366f56b8e130820159f145369d1",
+    "outputs/agent-cryptography-design-20261025/prototype/test_contribution_delivery.py": "3017c1f5c89f82018b7acdeca28f1c84129baa4745ec31d0f4047633183f814a",
+    "outputs/agent-cryptography-design-20261025/prototype/test_public_gateway.py": "bbaa068581cdd755882aa5db1b0a917f703f0c24692a128ac84253d055efaed0",
+    "outputs/agent-cryptography-design-20261025/prototype/signed_ledger.py": "e777d588e232d0f6f42f3d935b8105ec8b17045ef3eb2cec516975f04a4cd22f",
+    "outputs/agent-cryptography-design-20261025/prototype/witness_transport.py": "4a94b703dd3a5d3db360abc76b430cfecfae9d5905e59e05f4048e62cc244ac7",
+    "outputs/agent-cryptography-design-20261025/prototype/atomic_publication.py": "32d5a012fcd3cb309de999666161c4af023faaefd6ed675bdb445558fc4e42cc",
+    "outputs/agent-cryptography-design-20261025/prototype/image_serialization_experiment.py": "4e467ca82b335cd417c74bde90f8dcea9c9c9e6694e9faea3413e300c6829e0f",
+    "outputs/agent-cryptography-design-20261025/prototype/scheduled_ledger.py": "d8d4b2c32b5028066190845298f8e434fe5d6e262e5adad1c48d221be06511e0",
+    "outputs/agent-cryptography-design-20261025/prototype/test_histogram_ledger.py": "d065b1af66187adf2c81a818994900887005c2e1f5713e9f0bbf5e5c34176797",
+    "outputs/agent-cryptography-design-20261025/prototype/test_public_observation.py": "2d600354949d3686950e4a40732e01df18b80e564aa3bc909a01aac2b159d959",
+    "outputs/agent-cryptography-design-20261025/prototype/public_gateway_transport.py": "7a6f6f49ce114337dca729b7b242a7e4366cf635043b65ea4f391326a52fe63b",
+    "outputs/agent-cryptography-design-20261025/prototype/retention_wire.py": "38ce3865e3be049cb570225216ec8e8ae192617b7124f03b2cb51612bd56e22a",
+    "outputs/agent-cryptography-design-20261025/prototype/test_ledger.py": "d44c082f517a09080790183bf8a9a5a8960d14160ed1c644bf2b284970e77ae7",
+    "outputs/agent-cryptography-design-20261025/prototype/constructive_trace.py": "91d6b4e43260d0a30a05889e9c9068c27c5b33b9c817f0e61d8514bce769a8a2",
+    "outputs/agent-cryptography-design-20261025/prototype/test_encrypted_ledger.py": "bbcc428ddbd8bbcc9e8ffad6358e6936a0403fcc6c9900f4d8e1c836eac3f466",
+    "outputs/agent-cryptography-design-20261025/prototype/test_retention_recipient.py": "6f2df27a2a357d9d4f68f937bfc13ed851c6486a5814b5fdddae7c47792c35ed",
+    "outputs/agent-cryptography-design-20261025/prototype/window_lifecycle_trace.py": "045a976913c6ebc7905a4969a2189349760a552deb49f6cfd2ec8eb8731abe0f",
+    "outputs/agent-cryptography-design-20261025/prototype/test_delivery_terminal.py": "1d8cc3d14e566f579ff038b960ac70cb5de9006e4e9b06dce878191c4750d137",
+    "outputs/agent-cryptography-design-20261025/prototype/retention_delivery.py": "35dd17fa0d0d50aa34674239fe68a128b1865421ef8e371145abb996e00d0d46",
+    "outputs/agent-cryptography-design-20261025/prototype/test_encrypted_mixed_ledger.py": "d2c87ea063425d266d2238758ebc0c5f1de74057fff4bdf2ebff0c6eed4a2589",
+    "outputs/agent-cryptography-design-20261025/prototype/test_signed_ledger.py": "c28e0f8fc365b5ff61e49343f2f1d433ae369c403f849efdb6ddb9c65745aa50",
+    "scripts/cross_route_isolation_cost.py": "f937652bb1052c61eddcf4c04856e173b1b04de9eeeb25cec20fbe7647257d67"
+  },
+  "measurement": "Successful whole-image CAS calls in the parent process, independently checked against witness commit-row growth. Original child commit, setup/bootstrap and pre-fault work are excluded. Fresh recovery writes local state but no authority CAS; local writes and physical files are not counted."
+}

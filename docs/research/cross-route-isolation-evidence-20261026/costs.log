@@ -1,0 +1,8 @@
+PASS receiver count before_fault two repetitions
+PASS receiver count after_fault two repetitions
+PASS receiver histogram before_fault two repetitions
+PASS receiver histogram after_fault two repetitions
+PASS sender count before_fault two repetitions
+PASS sender count after_fault two repetitions
+PASS sender histogram before_fault two repetitions
+PASS sender histogram after_fault two repetitions
