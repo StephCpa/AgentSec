@@ -24,6 +24,8 @@ def replay(directory):
     with lzma.open(directory/'cases.jsonl.xz', 'rt') as stream, patch('sqlite3.connect', side_effect=AssertionError('replay DB access')):
         for line in stream:
             x = json.loads(line); signer = FixtureSigningOracle()
+            if type(x['histogram']) is not bool or type(x['mask']) is not int:
+                raise AssertionError('typed case identity')
             sim = UnifiedLifecycleSimulator(decode(bytes.fromhex(x['config_cbor_hex'])),
                 {k: tuple(v) for k, v in x['approved_outputs'].items()}, signer)
             if len(x['commands']) != len(x['expected_records']) or len(x['checkpoints']) != len(x['commands']) + 1:
@@ -52,9 +54,13 @@ def replay(directory):
                 code = 96 if command['kind'] == 'PREPARE_CUT' else 95 if command['kind'] in ('RECEIVE_CUT', 'CONFIRM_CUT') else 97
                 if diagnostic['cut'] != command['cut'] or diagnostic['exit_code'] != code:
                     raise AssertionError('business exit binding')
+                if diagnostic['witness_advanced'] != (command['cut'] == 'after_witness_accept') or diagnostic['local_committed'] is not False or diagnostic['stale_guard_blocked'] != (command['cut'] == 'after_witness_accept'):
+                    raise AssertionError('business authority/local outcome')
             for command, diagnostic in zip(recoveries, x['recovery_diagnostics']):
                 if diagnostic['cut'] != command['cut'] or diagnostic['side'] != command['side'] or diagnostic['exit_code'] != 96:
                     raise AssertionError('recovery exit binding')
+                if diagnostic['local_commit'] != (command['cut'] == 'after_recovery_commit') or diagnostic['authority_unchanged'] is not True or diagnostic['local_atomicity'] is not True:
+                    raise AssertionError('recovery atomicity binding')
             identity = (x['cut'], x['order'], x['histogram']); signature = digest(dict(records=sim.records, checkpoints=x['checkpoints']))
             group = groups.setdefault(identity, {})
             if type(x['mask']) is not int or x['mask'] in group: raise AssertionError('duplicate dataset')

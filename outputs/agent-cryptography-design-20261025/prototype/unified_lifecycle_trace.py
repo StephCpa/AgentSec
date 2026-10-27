@@ -12,7 +12,7 @@ import tempfile
 from unittest.mock import patch
 
 from constructive_trace import FixtureSigningOracle
-from retirement_recovery_trace import RetirementRecoveryRuntime
+from retirement_recovery_trace import RetirementRecoveryRuntime, protected_archive
 from preparation_recovery_trace import PreparationRecoveryRuntime, protected_state
 from delivery_recovery_trace import DeliveryRecoveryRuntime
 from recovery_interruption_trace import RecoveryInterruptionMixin
@@ -47,6 +47,7 @@ class UnifiedLifecycleRuntime(RetirementRecoveryRuntime):
         self.checkpoints[0]['relation'] = self.relation()
         self.actual_events = EventStream(); self.canonical = []
         self.recovery_diagnostics = []; self.replica_mode = 'existing'
+        self.retirement_archive = None
 
     def context_for(self, target):
         if target in self.cfg['roots']: return self.cfg['roots'][target]['context']
@@ -55,6 +56,17 @@ class UnifiedLifecycleRuntime(RetirementRecoveryRuntime):
     def assert_protected(self, owner=None):
         if self.protected is not None and protected_state(owner or self.l) != self.protected:
             raise AssertionError('unified protected computation/budget changed')
+
+    def assert_retirement_archive(self):
+        if self.retirement_archive is not None and protected_archive(self.l) != self.retirement_archive:
+            raise AssertionError('unified retirement changed opaque archive/final prefix')
+
+    def crash(self, *args, **kwargs):
+        # Freeze only this retirement episode; B may legitimately be confirmed
+        # between episodes. Keep original encrypted sender evidence byte-exact.
+        self.retirement_archive = protected_archive(self.l)
+        super().crash(*args, **kwargs)
+        self.assert_retirement_archive()
 
     def _observe(self, actual):
         command = self.commands[len(self.simulator.records)]
@@ -83,12 +95,13 @@ class UnifiedLifecycleRuntime(RetirementRecoveryRuntime):
                     raise AssertionError('unified authority projection')
                 self.set_owner(side, target, restored)
                 try:
-                    self.assert_protected(); relation = self.relation()
+                    self.assert_protected(); self.assert_retirement_archive(); relation = self.relation()
                 finally: self.set_owner(side, target, old)
                 if self.authority_heads() != heads: raise AssertionError('diagnostic changed authority')
             finally: restored.close()
         else:
-            self.assert_protected(); relation = self.relation()
+            self.assert_protected(); self.assert_retirement_archive(); relation = self.relation()
+            self.retirement_archive = None
         relation['unified_obligation'] = digest(pending)
         self.checkpoints.append(dict(index=len(self.simulator.records), kind=command['kind'], relation=relation))
 

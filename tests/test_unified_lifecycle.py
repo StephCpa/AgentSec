@@ -2,12 +2,14 @@
 from copy import deepcopy
 from pathlib import Path
 import sys
+import tempfile
 import unittest
 from unittest.mock import patch
 P = Path(__file__).resolve().parents[1]/'outputs/agent-cryptography-design-20261025/prototype'
 sys.path.insert(0, str(P))
 from unified_lifecycle_simulator import UnifiedLifecycleSimulator
-from unified_lifecycle_trace import run_unified, SCHEDULES
+from unified_lifecycle_trace import run_unified, SCHEDULES, UnifiedLifecycleRuntime
+from retirement_recovery_trace import protected_archive
 from constructive_trace import FixtureSigningOracle
 from public_trace_adapter import ViewMismatch
 from state_relation import StateRelationMismatch, digest
@@ -104,6 +106,24 @@ class UnifiedLifecycleTests(unittest.TestCase):
             phases = [c['cut'] for c in commands if c['kind'].endswith('_CUT') and c['kind'] != 'RECOVERY_CUT']
             if case['cut'].startswith('alternating'):
                 self.assertTrue(all(a != b for a, b in zip(phases, phases[1:])))
+
+    def test_opaque_reencryption_is_not_hidden_by_semantic_relation(self):
+        with tempfile.TemporaryDirectory() as directory:
+            run = UnifiedLifecycleRuntime(directory, 3)
+            try:
+                run.submit(); run.finish(); run.send(); run.confirm()
+                run.retirement_archive = protected_archive(run.l)
+                row = run.l.db.execute('SELECT o.* FROM v2_outbox o JOIN deliveries d ON o.id=d.id AND o.tenant=d.tenant WHERE d.operation_id=?', ('a',)).fetchone()
+                raw = run.l.open('envelope', row)
+                rewritten = run.l.seal('envelope', row, raw)
+                self.assertNotEqual(rewritten, row['envelope'])
+                run.l.db.execute('UPDATE v2_outbox SET envelope=? WHERE id=?', (rewritten, row['id']))
+                # Validly re-encrypted equal plaintext still passes the semantic
+                # projection. The additional opaque-preservation check must fail.
+                run.relation()
+                with self.assertRaisesRegex(AssertionError, 'opaque archive'):
+                    run.assert_retirement_archive()
+            finally: run.close()
 
 
 if __name__ == '__main__': unittest.main()
