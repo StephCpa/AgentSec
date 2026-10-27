@@ -1,0 +1,7 @@
+PASS constructive 25
+PASS public-recovery 52
+PASS private-work-recovery 77
+PASS delivery-recovery 85
+PASS repeated-recovery 20
+PASS preparation-recovery 66
+PASS retirement-recovery 44

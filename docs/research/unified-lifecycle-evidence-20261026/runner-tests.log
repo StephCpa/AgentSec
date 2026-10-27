@@ -1,0 +1,11 @@
+test_four_shards_cover_every_command_exactly_once (test_verify_runner.VerificationRunnerTests) ... ok
+test_invalid_or_empty_shards_fail (test_verify_runner.VerificationRunnerTests) ... ok
+test_module_discovery_preserves_all_unittest_ids (test_verify_runner.VerificationRunnerTests) ... ok
+test_nonzero_exit_remains_failed_and_log_is_retained (test_verify_runner.VerificationRunnerTests) ... ok
+test_only_preserves_all_regressions_and_requested_models (test_verify_runner.VerificationRunnerTests) ... ok
+test_timeout_remains_failed_and_is_explicit (test_verify_runner.VerificationRunnerTests) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.270s
+
+OK

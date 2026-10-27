@@ -1,0 +1,76 @@
+{
+  "run_id": 40421111196,
+  "head_sha": "2c939bbe6bd49460251e9dd1ffd1c257f122c90a",
+  "conclusion": "success",
+  "verified_environments": 2,
+  "commands_per_environment": 60,
+  "regression_tests_per_environment": 259,
+  "no_missing_or_duplicate_commands": true,
+  "same_sources_all_shards": true,
+  "shards": [
+    {
+      "dependencies": "upgrade",
+      "python": "3.12",
+      "index": 0,
+      "commands": 15,
+      "regression_tests": 80,
+      "duration_seconds": 611.0789999999998
+    },
+    {
+      "dependencies": "pinned",
+      "python": "3.9",
+      "index": 1,
+      "commands": 15,
+      "regression_tests": 59,
+      "duration_seconds": 587.797
+    },
+    {
+      "dependencies": "upgrade",
+      "python": "3.12",
+      "index": 1,
+      "commands": 15,
+      "regression_tests": 59,
+      "duration_seconds": 545.987
+    },
+    {
+      "dependencies": "pinned",
+      "python": "3.9",
+      "index": 0,
+      "commands": 15,
+      "regression_tests": 80,
+      "duration_seconds": 666.873
+    },
+    {
+      "dependencies": "pinned",
+      "python": "3.9",
+      "index": 2,
+      "commands": 15,
+      "regression_tests": 55,
+      "duration_seconds": 312.673
+    },
+    {
+      "dependencies": "upgrade",
+      "python": "3.12",
+      "index": 3,
+      "commands": 15,
+      "regression_tests": 65,
+      "duration_seconds": 1127.471
+    },
+    {
+      "dependencies": "pinned",
+      "python": "3.9",
+      "index": 3,
+      "commands": 15,
+      "regression_tests": 65,
+      "duration_seconds": 1167.0169999999998
+    },
+    {
+      "dependencies": "upgrade",
+      "python": "3.12",
+      "index": 2,
+      "commands": 15,
+      "regression_tests": 55,
+      "duration_seconds": 194.95399999999998
+    }
+  ]
+}
