@@ -1,0 +1,13 @@
+test_cleanup_and_new_preparation_are_really_interleaved (test_unified_lifecycle.UnifiedLifecycleTests) ... ok
+test_independent_model_replays_combined_trace_without_database (test_unified_lifecycle.UnifiedLifecycleTests) ... ok
+test_mutant_dropping_shared_request_cache_is_detected (test_unified_lifecycle.UnifiedLifecycleTests) ... ok
+test_opaque_reencryption_is_not_hidden_by_semantic_relation (test_unified_lifecycle.UnifiedLifecycleTests) ... ok
+test_ordinary_request_and_private_work_faults_use_same_owner (test_unified_lifecycle.UnifiedLifecycleTests) ... ok
+test_real_exits_and_final_budget_across_all_schedules (test_unified_lifecycle.UnifiedLifecycleTests) ... ok
+test_recovery_commit_is_stutter_until_explicit_completion (test_unified_lifecycle.UnifiedLifecycleTests) ... ok
+test_wrong_recovery_phase_side_target_and_clock_are_atomic (test_unified_lifecycle.UnifiedLifecycleTests) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 42.378s
+
+OK

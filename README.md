@@ -157,3 +157,5 @@ python3 scripts/window_pressure_cost.py --output /tmp/agentsec-window-pressure-n
 [跨路由清理故障与组件可用性](docs/research/2026-10-26-cross-route-retention-isolation.md)新增 R16：区分独立接收方与共用发送方过期，保留不可用调用的实际异常码，并核对健康路由继续执行时的公开观察、预算、归档与 FINAL 前缀。192 个实际退出案例、独立重放和 16 次持久化计数已归档；范围仍是单故障、固定串行调度，不代表一般并发或部署可用性证明。
 
 [共用观察事件契约](docs/research/2026-10-26-unified-observation-events.md)为九类实验提供可逆事件表示，区分调用输入、真实返回、可用性异常和实验环境。完整历史记录审核与九类实际入口的新增集成检查已通过；这统一了记录边界，仍需继续完成状态机组合与完整观察精化。
+
+[共用状态转移与连续阶段故障](docs/research/2026-10-26-unified-lifecycle-transitions.md)将各阶段规则接到同一状态和带类型的恢复义务。128 个组合案例、2,688 次真实退出及独立重放通过，并核对清理段内归档原始字节；该证据仍限声明的单故障串行调度，完整故障交错与观察精化继续开放。
